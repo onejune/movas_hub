@@ -27,8 +27,8 @@ public class S3LineReader implements LineReader {
 			this.key = key;
 		}
 	}
-	public String AWS_ACCESS_KEY_ID="AKIAJ4DI35ICCNIRYFDA";
-	public String AWS_SECRET_ACCESS_KEY="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";
+	public String AWS_ACCESS_KEY_ID="xxxx";
+	public String AWS_SECRET_ACCESS_KEY="xxxx";
 	AmazonS3Client s3Client;
 	BufferedReader reader;
 	S3Object s3Obj;
