@@ -1,0 +1,107 @@
+#!/bin/bash
+
+# 模型参数配置
+declare -A params=(
+    ["param1"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.1 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.1 -w_beta 1 -w_l1 1 -w_l2 100 -core 8"
+    ["param2"]="-piece_num 4 -u_stdev 0.1 -u_alpha 0.1 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.1 -w_alpha 0.1 -w_beta 1 -w_l1 1 -w_l2 100 -core 8"
+    ["param3"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 8"
+    ["param4"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.1 -u_beta 1 -u_l1 0.5 -u_l2 100 -w_stdev 0.01 -w_alpha 0.1 -w_beta 1 -w_l1 0.5 -w_l2 100 -core 8"
+    ["param5"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.1 -u_beta 1 -u_l1 5 -u_l2 100 -w_stdev 0.01 -w_alpha 0.1 -w_beta 1 -w_l1 5 -w_l2 100 -core 8"
+    ["param6"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.1 -u_beta 1 -u_l1 5 -u_l2 300 -w_stdev 0.01 -w_alpha 0.1 -w_beta 1 -w_l1 5 -w_l2 300 -core 8"
+    ["param7"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.3 -u_beta 1 -u_l1 5 -u_l2 300 -w_stdev 0.01 -w_alpha 0.3 -w_beta 1 -w_l1 5 -w_l2 300 -core 8"
+    ["param8"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.3 -u_beta 1 -u_l1 5 -u_l2 100 -w_stdev 0.01 -w_alpha 0.3 -w_beta 1 -w_l1 5 -w_l2 100 -core 8"
+    ["param9"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.1 -u_beta 2 -u_l1 2 -u_l2 100 -w_stdev 0.01 -w_alpha 0.3 -w_beta 2 -w_l1 2 -w_l2 100 -core 8"
+    ["param10"]="-piece_num 4 -u_stdev 0.01 -u_alpha 0.3 -u_beta 1 -u_l1 0.5 -u_l2 100 -w_stdev 0.01 -w_alpha 0.3 -w_beta 1 -w_l1 2 -w_l2 100 -core 8"
+)
+
+# 设置起始日期和结束日期
+start_date="20250401"
+end_date="20250416"
+val_date="20250417"
+
+# 将日期转换为可以递增的格式
+start_date=$(date -d "$start_date" +"%Y%m%d")
+end_date=$(date -d "$end_date" +"%Y%m%d")
+val_date=$(date -d "$val_date" +"%Y-%m-%d")
+
+# 模型输出目录
+model_output_dir="./output"
+train_data_dir="../../duf_outer/sample"
+
+# 训练模型
+train_model() {
+    local train_date=$1
+    local param_id=$2
+    local para=$3
+
+    local model_out="${model_output_dir}/base_${param_id}"
+    local train_data="${train_data_dir}/sample_${train_date}"
+
+    echo "=================== train date: $train_date, param: $param_id ===================="
+    echo "$para"
+
+    if [[ ! -f "$train_data" ]]; then
+        echo "$train_data 不存在,训练终止!"
+        exit 1
+    fi
+
+    if [[ ! -f "${model_out}" ]]; then
+        cat ${train_data} | ../model_bin/plm_train $para -m ${model_out}
+    else
+        cat ${train_data} | ../model_bin/plm_train $para -m ${model_out} -im ${model_out}
+    fi
+
+    # 备份模型
+    cp ${model_out} ${model_out}.${train_date}
+}
+
+# 验证模型
+validate_model() {
+    local val_date=$1
+    local param_id=$2
+
+    local model_out="${model_output_dir}/base_${param_id}"
+    local train_data="${train_data_dir}/sample_${val_date}"
+    local para=${params[$param_id]}
+    
+    echo "=================== validation date: $val_date, param: $param_id ==================="
+    cat ${train_data} | awk -F'\002' '{if($13=="COM.ZZKKO") print $0}' | ../model_bin/plm_predict -m ${model_out} -out ${model_out}.predict -core 8 -piece_num 4
+
+    if [ -f "${model_out}.predict" ]; then
+	echo "validation result for $param_id"
+        cat ${model_out}.predict | python figure_auc.py
+    fi
+}
+
+# 清理旧模型
+cleanup_old_models() {
+    local train_date=$1
+    local param_id=$2
+    local keep_days=7
+
+    local cutoff_date=$(date -d "${train_date} - ${keep_days} days" +"%Y-%m-%d")
+    find "${model_output_dir}" -name "base_${param_id}.${cutoff_date}*" -delete
+}
+
+# 主函数
+main() {
+    # 遍历每一组参数
+    for param_id in "${!params[@]}"; do
+        local para=${params[$param_id]}
+        local current_date=$start_date
+
+	# 训练阶段
+        while [ "$current_date" -le "$end_date" ]; do
+            train_date=$(date -d "$current_date" +"%Y-%m-%d")
+            time train_model $train_date $param_id "$para"
+            cleanup_old_models $train_date $param_id
+            current_date=$(date -d "$current_date + 1 day" +"%Y%m%d")
+        done
+
+        # 验证阶段
+        time validate_model $val_date $param_id
+    done
+}
+
+# 执行主函数
+main

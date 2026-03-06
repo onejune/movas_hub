@@ -1,0 +1,4 @@
+1. WideDeep model;
+2. delete some crossed features;
+3. emb size = 12;
+4. 增加了ipua 特征;

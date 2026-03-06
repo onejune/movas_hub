@@ -1,0 +1,82 @@
+[2025-06-10 03:48:50] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/ltv/ltv_v1
+args: input = ../sample/sample_02-05, confBase = ./conf/, name = 02-05, format = f
+标签处理时初始化的loss：cross_entropy
+-标签处理时获取到配置中的loss：mse
+loadColName:./conf/column_name
+Load 361 columns, label column is label, index is 360, keys column is [demand_pkgname,business_type], index is [30, 52]
+Load 123 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading时获取的配置loss：mse
+-Loading model ...
+model ./train_output/base is not exist. all feature statistic set to 0.
+-计算指标获取的配置loss：mse
+Begin training ...
+sample_path=../sample/sample_02-05
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=mse,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.00, beta=1.00, lambda1=10.00, lambda2=100.00
+Waiting trainDataQueue tobe empty...
+Size feature 1617854.
+-Dumping时获取的配置loss：mse
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250610034925 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用回归py
+************************************************************
+AUC: 0.6763 PCOC: 0.9967 RMSE: 2.3443
+************************************************************
+total features:1617854
+Dump model and predict finish.
+
+real	0m43.305s
+user	3m37.929s
+sys	0m29.846s
+[2025-06-10 03:49:33] [INFO] 最终结果过滤...
+
+********************** validation begin: model=./train_output/base.02-05, val_date=05 ******************************
+-推理时获取的配置loss：mse
+标签处理时初始化的loss：cross_entropy
+-标签处理时获取到配置中的loss：mse
+loadColName:conf/column_name
+Load 361 columns, label column is label, index is 360, keys column is [demand_pkgname,business_type], index is [30, 52]
+Load 123 feature combine schemas.
+-计算指标获取的配置loss：mse
+-Loading时获取的配置loss：mse
+-Loading model ...
+model load completely!
+当前时间：2025-06-10 03:49:38
+ctr predict completely!
+当前时间：2025-06-10 03:49:41
+
+AucCollector at 20250610034941 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用回归py
+************************************************************
+AUC: 0.6786 PCOC: 0.9304 RMSE: 2.6482
+************************************************************
+Exception data count: 5
+当前时间：2025-06-10 03:49:41
+
+real	0m4.355s
+user	0m50.864s
+sys	0m4.942s
+********************** validation end: model=./train_output/base.02-05, val_date=05 *****************************
+
+/home/ec2-user/SageMaker/movas/ltv/ltv_v1
+train completely......

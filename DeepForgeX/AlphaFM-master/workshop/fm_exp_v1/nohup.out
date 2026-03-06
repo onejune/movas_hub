@@ -1,0 +1,2395 @@
+=================== train date: 20250220 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:187 label_index:183
+load single features:103
+load combined features:103
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+output model...
+model outputting finished
+feature count: 143582 ./output/base
+
+real	1m7.778s
+user	12m0.200s
+sys	3m23.037s
+=================== train date: 20250221 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+output model...
+model outputting finished
+feature count: 457107 ./output/base
+
+real	1m43.331s
+user	20m59.565s
+sys	3m3.858s
+=================== train date: 20250222 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+output model...
+model outputting finished
+feature count: 549347 ./output/base
+
+real	1m53.827s
+user	21m22.821s
+sys	3m5.931s
+=================== train date: 20250223 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+output model...
+model outputting finished
+feature count: 609279 ./output/base
+
+real	1m54.368s
+user	22m48.640s
+sys	3m22.662s
+=================== train date: 20250224 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+output model...
+model outputting finished
+feature count: 657390 ./output/base
+
+real	1m54.264s
+user	21m49.391s
+sys	3m20.735s
+=================== train date: 20250225 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+output model...
+model outputting finished
+feature count: 700839 ./output/base
+
+real	2m7.421s
+user	25m20.541s
+sys	3m51.930s
+=================== train date: 20250226 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+output model...
+model outputting finished
+feature count: 741220 ./output/base
+
+real	1m59.884s
+user	23m28.659s
+sys	3m38.005s
+=================== train date: 20250227 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+output model...
+model outputting finished
+feature count: 776532 ./output/base
+
+real	2m5.453s
+user	24m18.546s
+sys	3m37.439s
+=================== train date: 20250228 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+output model...
+model outputting finished
+feature count: 811717 ./output/base
+
+real	2m20.717s
+user	27m42.464s
+sys	4m3.246s
+=================== train date: 20250301 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+output model...
+model outputting finished
+feature count: 843240 ./output/base
+
+real	2m6.912s
+user	24m11.565s
+sys	3m31.787s
+=================== train date: 20250302 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+output model...
+model outputting finished
+feature count: 880113 ./output/base
+
+real	2m19.104s
+user	27m15.533s
+sys	3m59.485s
+=================== train date: 20250303 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+output model...
+model outputting finished
+feature count: 907367 ./output/base
+
+real	2m14.991s
+user	25m53.161s
+sys	3m55.636s
+=================== train date: 20250304 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+output model...
+model outputting finished
+feature count: 931366 ./output/base
+
+real	2m13.475s
+user	25m43.845s
+sys	3m53.932s
+=================== train date: 20250305 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+output model...
+model outputting finished
+feature count: 957638 ./output/base
+
+real	2m18.709s
+user	26m40.331s
+sys	4m5.370s
+=================== train date: 20250306 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+output model...
+model outputting finished
+feature count: 984713 ./output/base
+
+real	2m23.138s
+user	27m7.885s
+sys	3m56.659s
+=================== train date: 20250307 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+output model...
+model outputting finished
+feature count: 1011810 ./output/base
+
+real	2m22.338s
+user	26m58.445s
+sys	4m8.376s
+=================== train date: 20250308 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+output model...
+model outputting finished
+feature count: 1038985 ./output/base
+
+real	2m25.113s
+user	27m51.982s
+sys	4m10.468s
+=================== train date: 20250309 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+output model...
+model outputting finished
+feature count: 1062947 ./output/base
+
+real	2m26.688s
+user	27m50.613s
+sys	4m13.866s
+=================== train date: 20250310 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+output model...
+model outputting finished
+feature count: 1083659 ./output/base
+
+real	2m24.765s
+user	27m32.901s
+sys	4m16.641s
+=================== train date: 20250311 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+output model...
+model outputting finished
+feature count: 1102109 ./output/base
+
+real	2m29.119s
+user	28m47.004s
+sys	4m29.204s
+=================== train date: 20250312 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+output model...
+model outputting finished
+feature count: 1127560 ./output/base
+
+real	3m3.844s
+user	36m1.862s
+sys	5m25.831s
+=================== train date: 20250313 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+output model...
+model outputting finished
+feature count: 1151591 ./output/base
+
+real	2m54.441s
+user	34m13.484s
+sys	5m7.835s
+=================== train date: 20250314 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+output model...
+model outputting finished
+feature count: 1174713 ./output/base
+
+real	3m2.975s
+user	35m19.306s
+sys	5m8.647s
+=================== train date: 20250315 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+output model...
+model outputting finished
+feature count: 1197152 ./output/base
+
+real	3m1.127s
+user	34m56.812s
+sys	5m3.228s
+=================== train date: 20250316 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+14800000 lines finished
+15000000 lines finished
+output model...
+model outputting finished
+feature count: 1217307 ./output/base
+
+real	3m19.917s
+user	39m28.801s
+sys	5m37.728s
+=================== train date: 20250317 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+14800000 lines finished
+15000000 lines finished
+output model...
+model outputting finished
+feature count: 1233890 ./output/base
+
+real	3m14.739s
+user	38m7.192s
+sys	5m28.196s
+=================== train date: 20250318 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+14800000 lines finished
+15000000 lines finished
+15200000 lines finished
+15400000 lines finished
+15600000 lines finished
+15800000 lines finished
+16000000 lines finished
+output model...
+model outputting finished
+feature count: 1257605 ./output/base
+
+real	3m26.763s
+user	40m35.100s
+sys	6m5.400s
+=================== train date: 20250319 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+14800000 lines finished
+15000000 lines finished
+15200000 lines finished
+15400000 lines finished
+15600000 lines finished
+15800000 lines finished
+16000000 lines finished
+output model...
+model outputting finished
+feature count: 1279224 ./output/base
+
+real	3m22.529s
+user	39m39.208s
+sys	5m55.825s
+=================== train date: 20250320 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+output model...
+model outputting finished
+feature count: 1300274 ./output/base
+
+real	3m13.990s
+user	38m1.935s
+sys	5m30.069s
+=================== train date: 20250321 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+output model...
+model outputting finished
+feature count: 1315816 ./output/base
+
+real	3m12.941s
+user	36m49.321s
+sys	5m36.310s
+=================== train date: 20250322 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+14800000 lines finished
+15000000 lines finished
+15200000 lines finished
+15400000 lines finished
+15600000 lines finished
+15800000 lines finished
+16000000 lines finished
+16200000 lines finished
+output model...
+model outputting finished
+feature count: 1332361 ./output/base
+
+real	3m28.128s
+user	40m44.535s
+sys	5m58.805s
+=================== train date: 20250323 ====================
+-init_stdev 0.01 -w_l2 5.0 -w_l1 5 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.01 -w_beta 1.0 -v_beta 1.0 -core 16 -dim 1,1,8
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+5800000 lines finished
+6000000 lines finished
+6200000 lines finished
+6400000 lines finished
+6600000 lines finished
+6800000 lines finished
+7000000 lines finished
+7200000 lines finished
+7400000 lines finished
+7600000 lines finished
+7800000 lines finished
+8000000 lines finished
+8200000 lines finished
+8400000 lines finished
+8600000 lines finished
+8800000 lines finished
+9000000 lines finished
+9200000 lines finished
+9400000 lines finished
+9600000 lines finished
+9800000 lines finished
+10000000 lines finished
+10200000 lines finished
+10400000 lines finished
+10600000 lines finished
+10800000 lines finished
+11000000 lines finished
+11200000 lines finished
+11400000 lines finished
+11600000 lines finished
+11800000 lines finished
+12000000 lines finished
+12200000 lines finished
+12400000 lines finished
+12600000 lines finished
+12800000 lines finished
+13000000 lines finished
+13200000 lines finished
+13400000 lines finished
+13600000 lines finished
+13800000 lines finished
+14000000 lines finished
+14200000 lines finished
+14400000 lines finished
+14600000 lines finished
+14800000 lines finished
+15000000 lines finished
+15200000 lines finished
+15400000 lines finished
+15600000 lines finished
+15800000 lines finished
+16000000 lines finished
+16200000 lines finished
+16400000 lines finished
+16600000 lines finished
+16800000 lines finished
+17000000 lines finished
+output model...
+model outputting finished
+feature count: 1349583 ./output/base
+
+real	3m42.034s
+user	44m3.536s
+sys	6m26.275s
+=================== validation date: 2025-04-02 ===================
+../../bundle_list/sample_offline/sample_2025-03-23 不存在,训练终止!
+cat: ../../bundle_list/sample_offline/sample_2025-03-23: No such file or directory
+load column_name:114 label_index:102
+load single features:110
+load combined features:194
+load model...
+model_path=./output/base.2025-03-22, model_format=txt, factor_num=8
+model loading finished
+=================== validation result: model=./output/base.2025-03-22 data=20250323 ======================
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/movas/fm/fm_exp_v1/figure_auc.py", line 74, in <module>
+    auc, bucket = scoreClickAUC(num_clicks, num_impressions, predicted_ctr)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/SageMaker/movas/fm/fm_exp_v1/figure_auc.py", line 36, in scoreClickAUC
+    last_ctr = predicted_ctr[i_sorted[0]] + 1.0
+                             ~~~~~~~~^^^
+IndexError: list index out of range
+
+real	0m1.905s
+user	0m1.754s
+sys	0m0.149s

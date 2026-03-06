@@ -1,0 +1,28 @@
+2025-04-30 14:40:53 - values:[0.01, 0.05, 0.1, 0.2]
+2025-04-30 15:00:12 - w_alpha = 0.01, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.01 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7694, PCOC = 1.0598
+2025-04-30 15:00:12 - 更新最佳：w_alpha = 0.01, AUC = 0.7694, PCOC = 1.0598
+2025-04-30 15:19:39 - w_alpha = 0.05, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.05 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7715, PCOC = 1.0187
+2025-04-30 15:19:39 - 更新最佳：w_alpha = 0.05, AUC = 0.7715, PCOC = 1.0187
+2025-04-30 15:39:06 - w_alpha = 0.1, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7732, PCOC = 1.0626
+2025-04-30 15:39:06 - 更新最佳：w_alpha = 0.1, AUC = 0.7732, PCOC = 1.0626
+2025-04-30 15:58:37 - w_alpha = 0.2, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7721, PCOC = 1.121
+2025-04-30 15:58:37 - 最优 w_alpha: 0.1, 最佳 AUC: 0.7732
+~~~~~~~~~~~~~~~
+
+2025-05-01 04:24:46 - values:[0.001, 0.005, 0.01, 0.03, 0.05, 0.1, 0.2, 0.3]
+2025-05-01 04:44:37 - w_alpha = 0.001, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.001 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7624, PCOC = 1.1267
+2025-05-01 04:44:37 - 更新最佳：w_alpha = 0.001, AUC = 0.7624, PCOC = 1.1267
+2025-05-01 05:04:25 - w_alpha = 0.005, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.005 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7682, PCOC = 1.0995
+2025-05-01 05:04:25 - 更新最佳：w_alpha = 0.005, AUC = 0.7682, PCOC = 1.0995
+2025-05-01 05:24:15 - w_alpha = 0.01, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.01 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7696, PCOC = 1.0712
+2025-05-01 05:24:15 - 更新最佳：w_alpha = 0.01, AUC = 0.7696, PCOC = 1.0712
+2025-05-01 05:44:01 - w_alpha = 0.03, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.03 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7699, PCOC = 1.0178
+2025-05-01 05:44:01 - 更新最佳：w_alpha = 0.03, AUC = 0.7699, PCOC = 1.0178
+2025-05-01 06:03:46 - w_alpha = 0.05, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.05 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7701, PCOC = 1.0204
+2025-05-01 06:03:46 - 更新最佳：w_alpha = 0.05, AUC = 0.7701, PCOC = 1.0204
+2025-05-01 06:23:33 - w_alpha = 0.1, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7722, PCOC = 1.0606
+2025-05-01 06:23:33 - 更新最佳：w_alpha = 0.1, AUC = 0.7722, PCOC = 1.0606
+2025-05-01 06:43:24 - w_alpha = 0.2, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7731, PCOC = 1.1274
+2025-05-01 06:43:24 - 更新最佳：w_alpha = 0.2, AUC = 0.7731, PCOC = 1.1274
+2025-05-01 07:03:09 - w_alpha = 0.3, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.3 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7685, PCOC = 1.1821
+2025-05-01 07:03:09 - 最优 w_alpha: 0.2, 最佳 AUC: 0.7731

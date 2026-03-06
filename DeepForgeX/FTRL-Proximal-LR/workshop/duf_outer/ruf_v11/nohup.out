@@ -1,0 +1,1679 @@
+[2025-05-08 11:11:46] [INFO] ======== 开始训练 2025-04-12 ========
+[2025-05-08 11:11:46] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-12, confBase = ./conf/, name = 2025-04-12, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-12
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 91870299.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508112447 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-12 | metric-all                                  | 0.942151 | 0.976421 |      12840 |     15548103 | 0.000826 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.ZZKKO#shein                      | 0.778033 | 0.945907 |       1801 |     13293983 | 0.000135 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.764522 | 1.00197  |       7733 |       987531 | 0.007831 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.99218  | 0.980063 |       1484 |       651195 | 0.002279 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.845861 | 0.805683 |        357 |       273982 | 0.001303 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.SHOPEE#shopee.cps                | 0.754975 | 0.880102 |        572 |       101096 | 0.005658 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.7292   | 0.97545  |        563 |        65460 | 0.008601 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.700621 | 0.842525 |        204 |        53368 | 0.003823 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:78104124
+Dump model and predict finish.
+
+real	13m4.487s
+user	69m6.885s
+sys	5m20.740s
+[2025-05-08 11:24:56] [INFO] 模型保存完成: ./train_output/base.2025-04-12
+[2025-05-08 11:24:56] [INFO] 已清理 2025-04-05 之前的模型
+[2025-05-08 11:24:56] [INFO] ======== 开始训练 2025-04-13 ========
+[2025-05-08 11:24:56] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-13, confBase = ./conf/, name = 2025-04-13, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-13
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 79996368.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508113748 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-13 | metric-all                                  | 0.942519 | 1.00115  |      12191 |     15203047 | 0.000802 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-COM.ZZKKO#shein                      | 0.780014 | 1.00178  |       1646 |     13460587 | 0.000122 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.76864  | 1.00599  |       7556 |       992699 | 0.007612 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.832246 | 0.997228 |        420 |       303722 | 0.001383 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.968318 | 1.00597  |       1111 |       117184 | 0.009481 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-COM.SHOPEE#shopee.cps                | 0.760028 | 0.978621 |        515 |        85209 | 0.006044 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.748438 | 1.01265  |        567 |        66033 | 0.008587 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:78331078
+Dump model and predict finish.
+
+real	12m55.232s
+user	72m23.961s
+sys	4m21.871s
+[2025-05-08 11:37:57] [INFO] 模型保存完成: ./train_output/base.2025-04-13
+[2025-05-08 11:37:57] [INFO] 已清理 2025-04-06 之前的模型
+[2025-05-08 11:37:57] [INFO] ======== 开始训练 2025-04-14 ========
+[2025-05-08 11:37:57] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-14, confBase = ./conf/, name = 2025-04-14, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-14
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80389248.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508115114 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-14 | metric-all                                  | 0.940951 | 1.00001  |      11975 |     15833343 | 0.000756 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.ZZKKO#shein                      | 0.79025  | 0.99796  |       1712 |     14026887 | 0.000122 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.78097  | 1.00647  |       7515 |      1089771 | 0.006896 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.821864 | 0.924369 |        330 |       201577 | 0.001637 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.985623 | 0.988687 |        677 |       122911 | 0.005508 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.713357 | 1.01109  |        377 |       100976 | 0.003734 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.736789 | 0.999976 |        715 |        87937 | 0.008131 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.SHOPEE#shopee.cps                | 0.786592 | 0.987272 |        514 |        87120 | 0.0059   |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:78571896
+Dump model and predict finish.
+
+real	13m20.683s
+user	70m26.865s
+sys	4m27.348s
+[2025-05-08 11:51:24] [INFO] 模型保存完成: ./train_output/base.2025-04-14
+[2025-05-08 11:51:24] [INFO] 已清理 2025-04-07 之前的模型
+[2025-05-08 11:51:24] [INFO] ======== 开始训练 2025-04-15 ========
+[2025-05-08 11:51:24] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-15, confBase = ./conf/, name = 2025-04-15, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-15
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80428844.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508120450 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-15 | metric-all                                  | 0.934537 | 1.00069  |      11759 |     14828718 | 0.000793 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.ZZKKO#shein                      | 0.779577 | 0.998644 |       1938 |     13049087 | 0.000149 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.778537 | 1.00069  |       6994 |      1018757 | 0.006865 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.981649 | 0.989299 |        918 |       186257 | 0.004929 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.827871 | 1.06054  |        251 |       175479 | 0.00143  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.78388  | 1.00586  |        341 |       100547 | 0.003391 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.729654 | 1.00813  |        637 |        86493 | 0.007365 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.SHOPEE#shopee.cps                | 0.794439 | 1.00197  |        526 |        84448 | 0.006229 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:78787987
+Dump model and predict finish.
+
+real	13m30.056s
+user	98m7.911s
+sys	4m45.926s
+[2025-05-08 12:05:00] [INFO] 模型保存完成: ./train_output/base.2025-04-15
+[2025-05-08 12:05:00] [INFO] 已清理 2025-04-08 之前的模型
+[2025-05-08 12:05:00] [INFO] ======== 开始训练 2025-04-16 ========
+[2025-05-08 12:05:00] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-16, confBase = ./conf/, name = 2025-04-16, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-16
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80515270.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508121655 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-16 | metric-all                                  | 0.937883 | 0.998133 |      12789 |     14224397 | 0.000899 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-COM.ZZKKO#shein                      | 0.787273 | 0.989961 |       1878 |     12407877 | 0.000151 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.78035  | 1.00052  |       8096 |      1144263 | 0.007075 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.835585 | 1.03607  |        247 |       172019 | 0.001436 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.97477  | 0.996628 |       1085 |       139384 | 0.007784 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.739978 | 0.970687 |        653 |        82429 | 0.007922 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-COM.SHOPEE#shopee.cps                | 0.816106 | 1.00827  |        446 |        77348 | 0.005766 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:78983105
+Dump model and predict finish.
+
+real	11m58.037s
+user	65m10.864s
+sys	3m48.980s
+[2025-05-08 12:17:03] [INFO] 模型保存完成: ./train_output/base.2025-04-16
+[2025-05-08 12:17:03] [INFO] 已清理 2025-04-09 之前的模型
+[2025-05-08 12:17:03] [INFO] ======== 开始训练 2025-04-17 ========
+[2025-05-08 12:17:03] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-17, confBase = ./conf/, name = 2025-04-17, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-17
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80831626.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508122932 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-17 | metric-all                                  | 0.938444 | 1.00217  |      12482 |     14992419 | 0.000833 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-17 | metric-COM.ZZKKO#shein                      | 0.800617 | 1.00664  |       2020 |     13296632 | 0.000152 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.774994 | 0.995626 |       7879 |      1079566 | 0.007298 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-17 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.835951 | 0.975389 |        328 |       200470 | 0.001636 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-17 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.973001 | 1.0085   |        925 |        96701 | 0.009566 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-17 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.733271 | 1.06624  |        599 |        83380 | 0.007184 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-17 | metric-COM.SHOPEE#shopee.cps                | 0.798632 | 0.987178 |        479 |        83375 | 0.005745 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:79193363
+Dump model and predict finish.
+
+real	12m32.115s
+user	66m3.238s
+sys	4m25.486s
+[2025-05-08 12:29:41] [INFO] 模型保存完成: ./train_output/base.2025-04-17
+[2025-05-08 12:29:41] [INFO] 已清理 2025-04-10 之前的模型
+[2025-05-08 12:29:41] [INFO] ======== 开始训练 2025-04-18 ========
+[2025-05-08 12:29:41] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-18, confBase = ./conf/, name = 2025-04-18, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-18
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81030573.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508124156 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-18 | metric-all                                  | 0.93194  | 0.999561 |      11911 |     14335650 | 0.000831 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.ZZKKO#shein                      | 0.778103 | 0.998455 |       2092 |     12693339 | 0.000165 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.783637 | 1.00633  |       7007 |       937235 | 0.007476 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.825942 | 0.988381 |        379 |       212902 | 0.00178  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.SHOPEE#shopee.cps                | 0.830679 | 1.0126   |        453 |       113651 | 0.003986 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.972383 | 0.994122 |        814 |        92902 | 0.008762 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.750813 | 0.976309 |        681 |        91424 | 0.007449 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.742343 | 0.914102 |        269 |        58423 | 0.004604 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:79409958
+Dump model and predict finish.
+
+real	12m18.471s
+user	63m6.616s
+sys	4m11.579s
+[2025-05-08 12:42:05] [INFO] 模型保存完成: ./train_output/base.2025-04-18
+[2025-05-08 12:42:05] [INFO] 已清理 2025-04-11 之前的模型
+[2025-05-08 12:42:05] [INFO] ======== 开始训练 2025-04-19 ========
+[2025-05-08 12:42:05] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-19, confBase = ./conf/, name = 2025-04-19, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-19
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81441079.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508125517 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-19 | metric-all                                  | 0.932688 | 0.997884 |      11530 |     15825754 | 0.000729 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.ZZKKO#shein                      | 0.793786 | 0.995506 |       2232 |     14298028 | 0.000156 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.785527 | 0.998009 |       6729 |       896692 | 0.007504 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.842223 | 0.979233 |        324 |       183013 | 0.00177  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.731613 | 1.01339  |        582 |       126689 | 0.004594 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.SHOPEE#shopee.cps                | 0.827102 | 0.986162 |        458 |       102278 | 0.004478 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.761226 | 1.01337  |        664 |        89084 | 0.007454 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-19 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.962309 | 0.984508 |        407 |        41210 | 0.009876 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:79660876
+Dump model and predict finish.
+
+real	13m15.502s
+user	69m31.987s
+sys	4m20.822s
+[2025-05-08 12:55:26] [INFO] 模型保存完成: ./train_output/base.2025-04-19
+[2025-05-08 12:55:26] [INFO] 已清理 2025-04-12 之前的模型
+[2025-05-08 12:55:26] [INFO] ======== 开始训练 2025-04-20 ========
+[2025-05-08 12:55:26] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-20, confBase = ./conf/, name = 2025-04-20, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-20
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81555695.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508130821 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-20 | metric-all                                  | 0.932758 | 1.00693  |      10586 |     15340042 | 0.00069  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-20 | metric-COM.ZZKKO#shein                      | 0.801983 | 1.00383  |       2327 |     13999929 | 0.000166 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-20 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.780478 | 1.00769  |       6203 |       763686 | 0.008122 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-20 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.848751 | 1.0322   |        294 |       148552 | 0.001979 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-20 | metric-COM.SHOPEE#shopee.cps                | 0.817262 | 1.00848  |        465 |        95290 | 0.00488  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-20 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.764915 | 0.956941 |        483 |        54546 | 0.008855 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-20 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.965537 | 1.00046  |        400 |        37868 | 0.010563 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:79900453
+Dump model and predict finish.
+
+real	12m57.725s
+user	67m41.367s
+sys	4m36.247s
+[2025-05-08 13:08:30] [INFO] 模型保存完成: ./train_output/base.2025-04-20
+[2025-05-08 13:08:30] [INFO] 已清理 2025-04-13 之前的模型
+[2025-05-08 13:08:30] [INFO] ======== 开始训练 2025-04-21 ========
+[2025-05-08 13:08:30] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-21, confBase = ./conf/, name = 2025-04-21, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-21
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81830968.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508132103 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-21 | metric-all                                  | 0.928848 | 1.00134  |      11200 |     15528554 | 0.000721 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-COM.ZZKKO#shein                      | 0.802315 | 1.00451  |       2518 |     14089268 | 0.000179 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.778713 | 0.998368 |       6836 |       919108 | 0.007438 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.838198 | 1.00498  |        307 |       154143 | 0.001992 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-COM.SHOPEE#shopee.cps                | 0.824309 | 1.00753  |        449 |        92458 | 0.004856 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.759286 | 1.04099  |        390 |        53648 | 0.00727  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.959327 | 0.992826 |        442 |        36186 | 0.012215 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:80140907
+Dump model and predict finish.
+
+real	12m36.352s
+user	70m47.078s
+sys	4m17.074s
+[2025-05-08 13:21:12] [INFO] 模型保存完成: ./train_output/base.2025-04-21
+[2025-05-08 13:21:12] [INFO] 已清理 2025-04-14 之前的模型
+[2025-05-08 13:21:12] [INFO] ======== 开始训练 2025-04-22 ========
+[2025-05-08 13:21:12] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-22, confBase = ./conf/, name = 2025-04-22, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-22
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81871498.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508133250 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-22 | metric-all                                  | 0.936506 | 1.00086  |      10237 |     13243427 | 0.000773 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.ZZKKO#shein                      | 0.804309 | 1.00261  |       1797 |     11755084 | 0.000153 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.77843  | 0.999279 |       6403 |       874635 | 0.007321 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.845436 | 1.02068  |        284 |       159740 | 0.001778 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.836543 | 0.999933 |        443 |       134614 | 0.003291 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.SHOPEE#shopee.cps                | 0.814149 | 1.01343  |        327 |        73172 | 0.004469 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.748355 | 0.977694 |        421 |        55158 | 0.007633 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-22 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.965742 | 1.00073  |        392 |        40831 | 0.009601 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:80347127
+Dump model and predict finish.
+
+real	11m40.932s
+user	61m10.815s
+sys	4m9.202s
+[2025-05-08 13:32:59] [INFO] 模型保存完成: ./train_output/base.2025-04-22
+[2025-05-08 13:32:59] [INFO] 已清理 2025-04-15 之前的模型
+[2025-05-08 13:32:59] [INFO] ======== 开始训练 2025-04-23 ========
+[2025-05-08 13:32:59] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-23, confBase = ./conf/, name = 2025-04-23, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-23
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 82569433.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508134613 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-23 | metric-all                                  | 0.926285 | 1.00107  |      11650 |     15994337 | 0.000728 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.ZZKKO#shein                      | 0.80064  | 0.997638 |       2603 |     14309210 | 0.000182 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.798649 | 1.00116  |       6878 |      1026570 | 0.0067   |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.89456  | 1.02556  |        213 |       194107 | 0.001097 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.783867 | 1.00179  |        609 |       156596 | 0.003889 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.SHOPEE#shopee.cps                | 0.806677 | 0.999307 |        334 |        64967 | 0.005141 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.740116 | 0.999709 |        375 |        51942 | 0.00722  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.961036 | 0.987225 |        431 |        35004 | 0.012313 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:80654222
+Dump model and predict finish.
+
+real	13m17.571s
+user	66m19.464s
+sys	5m0.637s
+[2025-05-08 13:46:22] [INFO] 模型保存完成: ./train_output/base.2025-04-23
+[2025-05-08 13:46:22] [INFO] 已清理 2025-04-16 之前的模型
+[2025-05-08 13:46:22] [INFO] ======== 开始训练 2025-04-24 ========
+[2025-05-08 13:46:22] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-24, confBase = ./conf/, name = 2025-04-24, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-24
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 82605120.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508135757 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-24 | metric-all                                  | 0.929323 | 0.999814 |      10560 |     13984900 | 0.000755 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-24 | metric-COM.ZZKKO#shein                      | 0.810834 | 1.00108  |       2435 |     12618328 | 0.000193 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-24 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.818976 | 0.99886  |       6147 |       916956 | 0.006704 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-24 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.77413  | 0.980406 |        429 |        94082 | 0.00456  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-24 | metric-COM.SHOPEE#shopee.cps                | 0.801502 | 0.990672 |        418 |        64905 | 0.00644  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-24 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.747689 | 1.02566  |        335 |        49992 | 0.006701 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-24 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.967511 | 1.00345  |        441 |        40470 | 0.010897 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:80899278
+Dump model and predict finish.
+
+real	11m37.521s
+user	61m3.913s
+sys	3m53.587s
+[2025-05-08 13:58:05] [INFO] 模型保存完成: ./train_output/base.2025-04-24
+[2025-05-08 13:58:06] [INFO] 已清理 2025-04-17 之前的模型
+[2025-05-08 13:58:06] [INFO] ======== 开始训练 2025-04-25 ========
+[2025-05-08 13:58:06] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-25, confBase = ./conf/, name = 2025-04-25, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-25
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+java.lang.ArrayIndexOutOfBoundsException: Index 115 out of bounds for length 115
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:216)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:269)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+java.lang.ArrayIndexOutOfBoundsException
+java.lang.ArrayIndexOutOfBoundsException
+Waiting trainDataQueue tobe empty...
+Size feature 83092180.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508141102 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-25 | metric-all                                  | 0.924551 | 1.00016  |      11536 |     16115778 | 0.000716 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.ZZKKO#shein                      | 0.80312  | 0.995738 |       2974 |     14796809 | 0.000201 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.786993 | 1.00074  |       6775 |       851807 | 0.007954 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.851125 | 0.976441 |        230 |       130897 | 0.001757 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.763922 | 1.02776  |        342 |        72272 | 0.004732 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.760767 | 0.985174 |        364 |        51536 | 0.007063 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.SHOPEE#shopee.cps                | 0.790183 | 1.03289  |        291 |        47791 | 0.006089 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-25 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.967626 | 0.991017 |        375 |        36930 | 0.010154 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:81187149
+Dump model and predict finish.
+
+real	12m58.717s
+user	71m6.974s
+sys	4m22.181s
+[2025-05-08 14:11:10] [INFO] 模型保存完成: ./train_output/base.2025-04-25
+[2025-05-08 14:11:10] [INFO] 已清理 2025-04-18 之前的模型
+[2025-05-08 14:11:10] [INFO] ======== 开始训练 2025-04-26 ========
+[2025-05-08 14:11:10] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-26, confBase = ./conf/, name = 2025-04-26, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-26
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83357637.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508142335 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-26 | metric-all                                  | 0.929679 | 0.999528 |      11716 |     15500413 | 0.000756 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.ZZKKO#shein                      | 0.799539 | 0.999693 |       2568 |     14103945 | 0.000182 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.775009 | 1.00064  |       7114 |       861352 | 0.008259 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.839402 | 0.997499 |        359 |       202023 | 0.001777 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.776893 | 1.00251  |        323 |        67035 | 0.004818 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.SHOPEE#shopee.cps                | 0.762815 | 0.983684 |        372 |        58787 | 0.006328 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.762518 | 0.982685 |        392 |        55106 | 0.007114 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.965207 | 1.02281  |        374 |        36890 | 0.010138 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:81451302
+Dump model and predict finish.
+
+real	12m27.598s
+user	61m55.832s
+sys	5m14.524s
+[2025-05-08 14:23:43] [INFO] 模型保存完成: ./train_output/base.2025-04-26
+[2025-05-08 14:23:43] [INFO] 已清理 2025-04-19 之前的模型
+[2025-05-08 14:23:43] [INFO] ======== 开始训练 2025-04-27 ========
+[2025-05-08 14:23:43] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-27, confBase = ./conf/, name = 2025-04-27, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-27
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+java.lang.ArrayIndexOutOfBoundsException: Index 115 out of bounds for length 115
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:216)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:269)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Waiting trainDataQueue tobe empty...
+Size feature 83773024.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508143659 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-27 | metric-all                                  | 0.930075 | 1.0002   |      12529 |     15945555 | 0.000786 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.ZZKKO#shein                      | 0.806785 | 1.00379  |       2687 |     14418709 | 0.000186 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.773683 | 1.00045  |       7584 |       963969 | 0.007867 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.821872 | 0.977287 |        397 |       167794 | 0.002366 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.772099 | 1.00934  |        435 |        99529 | 0.004371 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.SHOPEE#shopee.cps                | 0.801654 | 1.01243  |        421 |        80785 | 0.005211 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.742177 | 0.979283 |        426 |        57102 | 0.00746  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-27 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.962122 | 0.97428  |        398 |        39692 | 0.010027 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:81738529
+Dump model and predict finish.
+
+real	13m18.633s
+user	72m18.928s
+sys	4m21.431s
+[2025-05-08 14:37:08] [INFO] 模型保存完成: ./train_output/base.2025-04-27
+[2025-05-08 14:37:08] [INFO] 已清理 2025-04-20 之前的模型
+[2025-05-08 14:37:08] [INFO] ======== 开始训练 2025-04-28 ========
+[2025-05-08 14:37:08] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-28, confBase = ./conf/, name = 2025-04-28, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-28
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83946072.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508144949 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-28 | metric-all                                  | 0.924894 | 1.00116  |      12451 |     15819807 | 0.000787 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.ZZKKO#shein                      | 0.80451  | 0.996299 |       3060 |     14396107 | 0.000213 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.780184 | 1.0003   |       6937 |       852803 | 0.008134 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.829451 | 1.01604  |        351 |       184440 | 0.001903 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.SHOPEE#shopee.cps                | 0.807151 | 1.00916  |        477 |        90313 | 0.005282 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.761718 | 1.00431  |        512 |        82721 | 0.006189 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.774841 | 1.02627  |        465 |        60373 | 0.007702 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.967763 | 1.01405  |        406 |        36473 | 0.011132 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-28 | metric-COM.HOTTOPIC.ANDROID#topicstore      | 0.718062 | 0.974921 |        211 |        10615 | 0.019878 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:81998796
+Dump model and predict finish.
+
+real	12m43.893s
+user	67m13.774s
+sys	4m34.921s
+[2025-05-08 14:49:57] [INFO] 模型保存完成: ./train_output/base.2025-04-28
+[2025-05-08 14:49:58] [INFO] 已清理 2025-04-21 之前的模型
+[2025-05-08 14:49:58] [INFO] ======== 开始训练 2025-04-29 ========
+[2025-05-08 14:49:58] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-29, confBase = ./conf/, name = 2025-04-29, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-29
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83963115.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250508150259 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-29 | metric-all                                  | 0.931446 | 0.999314 |      11953 |     14819863 | 0.000807 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.ZZKKO#shein                      | 0.804022 | 1.00153  |       2471 |     13376215 | 0.000185 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.773787 | 0.998758 |       7115 |       934056 | 0.007617 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.843489 | 1.00668  |        274 |       136927 | 0.002001 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.764572 | 0.988911 |        488 |        75611 | 0.006454 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.SHOPEE#shopee.cps                | 0.809187 | 0.974542 |        435 |        74423 | 0.005845 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.789051 | 1.01455  |        546 |        70486 | 0.007746 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-29 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.965729 | 0.999666 |        435 |        39258 | 0.011081 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:82222080
+Dump model and predict finish.
+
+real	13m4.234s
+user	80m15.022s
+sys	4m21.978s
+[2025-05-08 15:03:07] [INFO] 模型保存完成: ./train_output/base.2025-04-29
+[2025-05-08 15:03:08] [INFO] 已清理 2025-04-22 之前的模型
+[2025-05-08 15:03:08] [INFO] 最终结果过滤...
+[2025-05-08 15:06:10] [INFO] 训练完成，有效记录数: 2942311
+
+********************** validation begin: model=./train_output/base.2025-04-28, val_date=2025-04-29 ******************************
+loadColName:conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-05-08 15:09:26
+ctr predict completely!
+当前时间：2025-05-08 15:12:45
+
+AucCollector at 20250508151245 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+=============================================+==========+==========+============+==============+==========+
+| val-2025-04-29 | metric-all                                  | 0.931119 | 1.00026  |      11953 |     14819863 | 0.000807 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-COM.ZZKKO#shein                      | 0.80343  | 1.16366  |       2471 |     13376215 | 0.000185 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.773869 | 0.983884 |       7115 |       934056 | 0.007617 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.843476 | 0.85556  |        274 |       136927 | 0.002001 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.763373 | 0.811634 |        488 |        75611 | 0.006454 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-COM.SHOPEE#shopee.cps                | 0.810878 | 0.641224 |        435 |        74423 | 0.005845 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.79125  | 1.04667  |        546 |        70486 | 0.007746 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-04-29 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.966321 | 0.92565  |        435 |        39258 | 0.011081 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 3647
+当前时间：2025-05-08 15:12:46
+
+real	3m31.299s
+user	69m50.290s
+sys	5m1.621s
+********************** validation end: model=./train_output/base.2025-04-28, val_date=2025-04-29 *****************************
+
+/home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+train completely......
+[2025-05-16 08:06:11] [INFO] ======== 开始训练 2025-04-30 ========
+[2025-05-16 08:06:11] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-04-30, confBase = ./conf/, name = 2025-04-30, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-30
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+java.lang.ArrayIndexOutOfBoundsException: Index 42 out of bounds for length 8
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:181)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:295)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Waiting trainDataQueue tobe empty...
+Size feature 84254189.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516081922 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-04-30 | metric-all                                  | 0.93495  | 0.999382 |      12180 |     14970308 | 0.000814 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.ZZKKO#shein                      | 0.805104 | 1.0031   |       2266 |     13448365 | 0.000168 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.773573 | 0.997555 |       7771 |      1005507 | 0.007728 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.863602 | 0.952223 |        280 |       119575 | 0.002342 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.761812 | 1.00935  |        465 |        68506 | 0.006788 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.771423 | 1.02788  |        514 |        66752 | 0.0077   |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.SHOPEE#shopee.cps                | 0.836193 | 1.02068  |        276 |        65317 | 0.004226 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-30 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.965299 | 0.991933 |        393 |        36648 | 0.010724 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:82447909
+Dump model and predict finish.
+
+real	13m15.507s
+user	86m31.921s
+sys	7m39.773s
+[2025-05-16 08:19:57] [INFO] 模型保存完成: ./train_output/base.2025-04-30
+[2025-05-16 08:19:58] [INFO] 已清理 2025-04-23 之前的模型
+[2025-05-16 08:19:58] [INFO] ======== 开始训练 2025-05-01 ========
+[2025-05-16 08:19:58] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-01, confBase = ./conf/, name = 2025-05-01, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-01
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 84267082.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516083223 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-01 | metric-all                                  | 0.934388 | 1.00103  |      11935 |     13351609 | 0.000894 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.ZZKKO#shein                      | 0.798484 | 1.00529  |       2024 |     11837808 | 0.000171 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.771624 | 1.00297  |       7726 |       976262 | 0.007914 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.807848 | 1.07098  |        230 |       137353 | 0.001675 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.SHOPEE#shopee.cps                | 0.788598 | 0.978928 |        412 |        89870 | 0.004584 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.76165  | 0.98096  |        408 |        65142 | 0.006263 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.747357 | 0.950769 |        523 |        64060 | 0.008164 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-01 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.96622  | 1.01157  |        380 |        37943 | 0.010015 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:82647800
+Dump model and predict finish.
+
+real	12m27.766s
+user	79m17.848s
+sys	3m58.419s
+[2025-05-16 08:32:32] [INFO] 模型保存完成: ./train_output/base.2025-05-01
+[2025-05-16 08:32:32] [INFO] 已清理 2025-04-24 之前的模型
+[2025-05-16 08:32:32] [INFO] ======== 开始训练 2025-05-02 ========
+[2025-05-16 08:32:32] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-02, confBase = ./conf/, name = 2025-05-02, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-02
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 84300795.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516084354 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-02 | metric-all                                  | 0.937849 | 1.00349  |      10835 |     12102127 | 0.000895 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-02 | metric-COM.ZZKKO#shein                      | 0.804786 | 1.00288  |       1794 |     10754469 | 0.000167 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-02 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.776206 | 0.998423 |       6833 |       820252 | 0.00833  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-02 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.752672 | 1.01372  |        477 |        91985 | 0.005186 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-02 | metric-COM.SHOPEE#shopee.cps                | 0.798161 | 1.01211  |        438 |        91114 | 0.004807 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-02 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.761112 | 1.05264  |        490 |        66296 | 0.007391 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-02 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.967199 | 0.997199 |        405 |        37585 | 0.010776 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:82827823
+Dump model and predict finish.
+
+real	11m24.780s
+user	58m34.312s
+sys	3m35.480s
+[2025-05-16 08:44:02] [INFO] 模型保存完成: ./train_output/base.2025-05-02
+[2025-05-16 08:44:02] [INFO] 已清理 2025-04-25 之前的模型
+[2025-05-16 08:44:02] [INFO] ======== 开始训练 2025-05-03 ========
+[2025-05-16 08:44:02] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-03, confBase = ./conf/, name = 2025-05-03, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-03
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 84403558.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516085508 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-03 | metric-all                                  | 0.93294  | 0.998217 |      10742 |     11651200 | 0.000922 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.ZZKKO#shein                      | 0.783478 | 1.00124  |       1806 |     10294471 | 0.000175 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.784918 | 0.999463 |       6536 |       842388 | 0.007759 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.845884 | 0.9537   |        254 |       112575 | 0.002256 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.754036 | 1.00578  |        473 |        89757 | 0.00527  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.SHOPEE#shopee.cps                | 0.795507 | 0.99083  |        443 |        82211 | 0.005389 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.754306 | 0.996465 |        621 |        79843 | 0.007778 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-03 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.966138 | 0.985892 |        439 |        40075 | 0.010954 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:83007742
+Dump model and predict finish.
+
+real	11m9.073s
+user	55m1.227s
+sys	3m30.627s
+[2025-05-16 08:55:17] [INFO] 模型保存完成: ./train_output/base.2025-05-03
+[2025-05-16 08:55:17] [INFO] 已清理 2025-04-26 之前的模型
+[2025-05-16 08:55:17] [INFO] ======== 开始训练 2025-05-04 ========
+[2025-05-16 08:55:17] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-04, confBase = ./conf/, name = 2025-05-04, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-04
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+java.lang.ArrayIndexOutOfBoundsException: Index 42 out of bounds for length 8
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:181)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:295)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+java.lang.ArrayIndexOutOfBoundsException
+Waiting trainDataQueue tobe empty...
+Size feature 84949141.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516090817 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-04 | metric-all                                  | 0.934362 | 0.999245 |      11259 |     14382765 | 0.000783 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.ZZKKO#shein                      | 0.80372  | 0.997717 |       2173 |     12980277 | 0.000167 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.771318 | 1.00495  |       6709 |       864753 | 0.007758 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.851986 | 0.967005 |        293 |       130120 | 0.002252 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.768002 | 1.00776  |        451 |        82748 | 0.00545  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.SHOPEE#shopee.cps                | 0.793181 | 0.975543 |        447 |        75896 | 0.00589  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.787075 | 0.958507 |        579 |        68345 | 0.008472 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-04 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.961426 | 1.00242  |        404 |        38454 | 0.010506 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:83238132
+Dump model and predict finish.
+
+real	13m3.283s
+user	69m9.941s
+sys	4m5.799s
+[2025-05-16 09:08:25] [INFO] 模型保存完成: ./train_output/base.2025-05-04
+[2025-05-16 09:08:26] [INFO] 已清理 2025-04-27 之前的模型
+[2025-05-16 09:08:26] [INFO] ======== 开始训练 2025-05-05 ========
+[2025-05-16 09:08:26] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-05, confBase = ./conf/, name = 2025-05-05, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-05
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+java.lang.ArrayIndexOutOfBoundsException: Index 42 out of bounds for length 8
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:181)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:295)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Waiting trainDataQueue tobe empty...
+Size feature 85195770.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516092124 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-05 | metric-all                                  | 0.928407 | 1.00116  |      12228 |     14571792 | 0.000839 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.ZZKKO#shein                      | 0.80097  | 0.997326 |       2497 |     12983851 | 0.000192 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.777797 | 1.00069  |       7108 |       929946 | 0.007643 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.846488 | 1.02258  |        425 |       210287 | 0.002021 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.764327 | 0.989636 |        525 |       103133 | 0.005091 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.766884 | 1.01014  |        705 |        87988 | 0.008012 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.SHOPEE#shopee.cps                | 0.824201 | 1.0217   |        337 |        70244 | 0.004798 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.963344 | 1.01996  |        433 |        38895 | 0.011133 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:83466289
+Dump model and predict finish.
+
+real	13m1.812s
+user	91m54.847s
+sys	4m20.637s
+[2025-05-16 09:21:33] [INFO] 模型保存完成: ./train_output/base.2025-05-05
+[2025-05-16 09:21:33] [INFO] 已清理 2025-04-28 之前的模型
+[2025-05-16 09:21:33] [INFO] ======== 开始训练 2025-05-06 ========
+[2025-05-16 09:21:33] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-06, confBase = ./conf/, name = 2025-05-06, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-06
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+java.lang.ArrayIndexOutOfBoundsException: Index 42 out of bounds for length 8
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:181)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:295)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Waiting trainDataQueue tobe empty...
+Size feature 85180323.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516093337 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-06 | metric-all                                  | 0.931561 | 0.9986   |      11744 |     13261879 | 0.000886 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.ZZKKO#shein                      | 0.806473 | 1.00298  |       2197 |     11748016 | 0.000187 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.775109 | 1.00013  |       6995 |       944399 | 0.007407 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.860764 | 0.992162 |        353 |       156672 | 0.002253 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.746776 | 0.995056 |        699 |        90675 | 0.007709 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.726974 | 0.989525 |        470 |        70177 | 0.006697 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.SHOPEE#shopee.cps                | 0.819614 | 0.991247 |        354 |        69116 | 0.005122 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.957034 | 0.970587 |        461 |        36975 | 0.012468 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:83660678
+Dump model and predict finish.
+
+real	12m6.590s
+user	125m12.387s
+sys	4m10.353s
+[2025-05-16 09:33:45] [INFO] 模型保存完成: ./train_output/base.2025-05-06
+[2025-05-16 09:33:45] [INFO] 已清理 2025-04-29 之前的模型
+[2025-05-16 09:33:45] [INFO] ======== 开始训练 2025-05-07 ========
+[2025-05-16 09:33:45] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+args: input = ../sample/sample_2025-05-07, confBase = ./conf/, name = 2025-05-07, format = f
+loadColName:./conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-07
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 85477135.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250516094554 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-05-07 | metric-all                                  | 0.936727 | 1.00057  |      12608 |     13942275 | 0.000904 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.ZZKKO#shein                      | 0.80413  | 0.994824 |       2168 |     12427859 | 0.000174 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.776007 | 0.999256 |       7869 |       940785 | 0.008364 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.843711 | 1.01325  |        284 |       150977 | 0.001881 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.SHOPEE#shopee.cps                | 0.782257 | 0.999029 |        487 |        88118 | 0.005527 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.766585 | 1.00547  |        714 |        84084 | 0.008492 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.75294  | 1.01413  |        435 |        70997 | 0.006127 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-07 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.967105 | 1.02221  |        437 |        39644 | 0.011023 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:83869232
+Dump model and predict finish.
+
+real	12m11.187s
+user	127m38.116s
+sys	4m19.726s
+[2025-05-16 09:46:02] [INFO] 模型保存完成: ./train_output/base.2025-05-07
+[2025-05-16 09:46:02] [INFO] 已清理 2025-04-30 之前的模型
+[2025-05-16 09:46:02] [INFO] 最终结果过滤...
+[2025-05-16 09:49:08] [INFO] 训练完成，有效记录数: 3033740
+
+********************** validation begin: model=./train_output/base.2025-05-07, val_date=2025-05-08 ******************************
+loadColName:conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 172 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-05-16 09:52:20
+ctr predict completely!
+当前时间：2025-05-16 09:56:32
+
+AucCollector at 20250516095632 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+=============================================+==========+==========+============+==============+==========+
+| val-2025-05-08 | metric-all                                  | 0.932607 | 1.01997  |      11561 |     13661139 | 0.000846 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.ZZKKO#shein                      | 0.793127 | 1.12075  |       2100 |     12177651 | 0.000172 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.778606 | 0.997465 |       6887 |       872863 | 0.00789  |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.834758 | 1.09571  |        368 |       203532 | 0.001808 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.766522 | 0.962094 |        692 |        79361 | 0.00872  |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.SHOPEE#shopee.cps                | 0.820845 | 1.22024  |        338 |        75550 | 0.004474 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.75129  | 0.902648 |        511 |        71632 | 0.007134 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-AIR.COM.ALISACASINO.BINGO#aliexpress | 0.954051 | 1.03182  |        404 |        42606 | 0.009482 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-08 | metric-COM.HOTTOPIC.ANDROID#topicstore      | 0.768788 | 0.819633 |        225 |        13926 | 0.016157 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 0
+当前时间：2025-05-16 09:56:35
+
+real	4m26.086s
+user	67m13.204s
+sys	3m37.026s
+********************** validation end: model=./train_output/base.2025-05-07, val_date=2025-05-08 *****************************
+
+/home/ec2-user/SageMaker/movas/duf_outer/ruf_v11
+train completely......

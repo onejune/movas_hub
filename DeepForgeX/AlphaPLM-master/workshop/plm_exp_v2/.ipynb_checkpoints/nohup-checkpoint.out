@@ -1,0 +1,299 @@
+cp: cannot create regular file ‘../model_bin/plm_train’: Text file busy
+=================== train date: 20250401 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+16000000 lines have finished
+feature count: 4104705 ./output/base
+
+real	9m31.423s
+user	100m2.327s
+sys	1m7.600s
+=================== train date: 20250402 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+16000000 lines have finished
+18000000 lines have finished
+feature count: 5589824 ./output/base
+
+real	10m38.984s
+user	104m37.588s
+sys	1m11.999s
+=================== train date: 20250403 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+16000000 lines have finished
+feature count: 6519416 ./output/base
+
+real	9m59.941s
+user	92m53.209s
+sys	1m7.379s
+=================== train date: 20250404 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 7299119 ./output/base
+
+real	9m47.325s
+user	86m51.753s
+sys	1m5.214s
+=================== train date: 20250405 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 8017148 ./output/base
+
+real	9m49.315s
+user	83m52.681s
+sys	1m6.489s
+=================== train date: 20250406 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 8606140 ./output/base
+
+real	10m11.911s
+user	85m39.735s
+sys	1m10.379s
+=================== train date: 20250407 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+16000000 lines have finished
+feature count: 9177506 ./output/base
+
+real	10m38.260s
+user	89m44.074s
+sys	1m13.783s
+=================== train date: 20250408 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+16000000 lines have finished
+feature count: 9712943 ./output/base
+
+real	11m17.175s
+user	96m7.610s
+sys	1m17.172s
+=================== train date: 20250409 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+16000000 lines have finished
+feature count: 10187930 ./output/base
+
+real	10m30.925s
+user	85m8.151s
+sys	1m10.637s
+=================== train date: 20250410 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 10606281 ./output/base
+
+real	10m15.826s
+user	79m51.349s
+sys	1m7.864s
+=================== train date: 20250411 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 11046232 ./output/base
+
+real	10m16.583s
+user	78m42.203s
+sys	1m8.768s
+=================== train date: 20250412 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 11441050 ./output/base
+
+real	11m19.449s
+user	88m6.248s
+sys	1m18.869s
+=================== train date: 20250413 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 11799930 ./output/base
+
+real	10m23.551s
+user	77m0.230s
+sys	1m10.618s
+=================== train date: 20250414 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 12167211 ./output/base
+
+real	10m46.497s
+user	80m22.643s
+sys	1m14.242s
+=================== train date: 20250415 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 12484320 ./output/base
+
+real	10m24.914s
+user	74m55.776s
+sys	1m11.133s
+=================== train date: 20250416 ====================
+-piece_num 6 -u_stdev 0.01 -u_alpha 0.05 -u_beta 1 -u_l1 1 -u_l2 100 -w_stdev 0.01 -w_alpha 0.05 -w_beta 1 -w_l1 1 -w_l2 100 -core 12
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+14000000 lines have finished
+feature count: 12762926 ./output/base
+
+real	10m22.501s
+user	72m57.892s
+sys	1m9.731s
+=================== validation date: 2025-04-28 ===================
+load column_name:200 label_index:113
+load single features:120
+load combined features:153
+2000000 lines have finished
+4000000 lines have finished
+6000000 lines have finished
+8000000 lines have finished
+10000000 lines have finished
+12000000 lines have finished
+=================== validation result: model=./output/base.2025-04-16 data=2025-04-17 ======================
+******************** validation result ********************
+pos num: 2020 neg num: 13322643
+AUC: 0.7890, PCOC: 1.0946
+************************************************************
+
+real	8m19.479s
+user	56m10.410s
+sys	0m54.608s

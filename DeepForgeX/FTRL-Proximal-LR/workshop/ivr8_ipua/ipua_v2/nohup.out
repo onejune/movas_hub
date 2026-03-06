@@ -1,0 +1,2031 @@
+log_file: ./log/train_20251022132957.log
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv
+ftrl_jar_path: /mnt/workspace/walter.wan/ftrl_in_git/target/ftrl_maven_walter-0.0.1-SNAPSHOT.jar
+[2025-10-22 13:29:57] [INFO] 中断控制文件已创建: train_interrupt.flag
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+项目名称: ipua_v2
+[2025-10-22 13:29:57] [INFO] ================ 开始训练 2025-09-01 ================
+[2025-10-22 13:29:57] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-01/part-00000-fd498513-29c4-4fca-b17e-76b88b7c4e7d-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-01, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-01/part-00000-fd498513-29c4-4fca-b17e-76b88b7c4e7d-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609
+Waiting trainDataQueue tobe empty...
+Size feature 16097600.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022133851 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-01 | metric-all                                  | 0.921421 | 0.999853 |      38162 |     10377959 | 0.003677 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.ZZKKO#shein                      | 0.806328 | 1.00562  |       1541 |      6215577 | 0.000248 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.815442 | 0.998314 |      14025 |      2156346 | 0.006504 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.780977 | 1.00049  |      17257 |       775820 | 0.022244 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.811838 | 0.99984  |       1189 |       356865 | 0.003332 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.SHOPEE#shopee.cps                | 0.834601 | 1.00098  |       1788 |       326891 | 0.00547  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.ZZKKO.CPS#shein.cps              | 0.758216 | 1.01434  |        106 |       200226 | 0.000529 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-436672029#aecps                      | 0.761716 | 0.999205 |        781 |       185943 | 0.0042   |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.756268 | 0.992205 |       1014 |        47768 | 0.021228 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.793145 | 1.01181  |        447 |        46306 | 0.009653 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-01 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.813399 | 1.01659  |         14 |        29019 | 0.000482 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10923722
+Dump model and predict finish.
+
+real	8m57.157s
+user	54m57.966s
+sys	3m3.048s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 13:38:56] [INFO] 模型保存完成: ./train_output/base.2025-09-01
+[2025-10-22 13:38:56] [INFO] 将清理 2025-08-16 及之前的模型文件...
+[2025-10-22 13:38:56] [INFO] 已清理 2025-08-16 之前的模型
+[2025-10-22 13:38:56] [INFO] ================ 开始训练 2025-09-02 ================
+[2025-10-22 13:38:56] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-02/part-00000-0d1e6a3e-97ef-4037-8b92-83c1664d1b80-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-02, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-02/part-00000-0d1e6a3e-97ef-4037-8b92-83c1664d1b80-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3169063
+Waiting trainDataQueue tobe empty...
+Size feature 16222212.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022134801 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-02 | metric-all                                  | 0.917013 | 1.00076  |      40762 |     10130936 | 0.004024 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.ZZKKO#shein                      | 0.805486 | 1.00816  |       1374 |      5797757 | 0.000237 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.803781 | 1.00277  |      13079 |      2087545 | 0.006265 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.771891 | 1.00035  |      20482 |       897339 | 0.022825 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.SHOPEE#shopee.cps                | 0.820905 | 1.0001   |       2082 |       451654 | 0.00461  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.791716 | 1.00345  |       1129 |       360522 | 0.003132 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.ZZKKO.CPS#shein.cps              | 0.701459 | 0.928592 |        108 |       196854 | 0.000549 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-436672029#aecps                      | 0.726712 | 0.997233 |        740 |       165168 | 0.00448  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.729237 | 0.979718 |       1250 |        57499 | 0.02174  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-02 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.785563 | 1.01125  |        509 |        54179 | 0.009395 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11059300
+Dump model and predict finish.
+
+real	9m7.842s
+user	55m4.254s
+sys	2m59.404s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 13:48:05] [INFO] 模型保存完成: ./train_output/base.2025-09-02
+[2025-10-22 13:48:05] [INFO] 将清理 2025-08-17 及之前的模型文件...
+[2025-10-22 13:48:05] [INFO] 已清理 2025-08-17 之前的模型
+[2025-10-22 13:48:05] [INFO] ================ 开始训练 2025-09-03 ================
+[2025-10-22 13:48:05] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-03/part-00000-8cdf44c1-ca41-4567-a816-01be412b99d8-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-03, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-03/part-00000-8cdf44c1-ca41-4567-a816-01be412b99d8-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16402643.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022135652 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-03 | metric-all                                  | 0.913513 | 0.999359 |      41519 |      9766248 | 0.004251 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.ZZKKO#shein                      | 0.798854 | 0.983404 |       1448 |      5542756 | 0.000261 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.800878 | 0.995892 |      13114 |      1904912 | 0.006884 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.794418 | 1.0016   |      21275 |      1101139 | 0.019321 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.785351 | 0.988505 |       1178 |       395090 | 0.002982 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.SHOPEE#shopee.cps                | 0.813052 | 0.996277 |       1754 |       342798 | 0.005117 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-436672029#aecps                      | 0.727291 | 0.99233  |        755 |       152373 | 0.004955 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.ZZKKO.CPS#shein.cps              | 0.726457 | 0.994786 |        102 |       150894 | 0.000676 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.772228 | 1.04983  |        628 |        59580 | 0.01054  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.738695 | 1.00975  |       1253 |        54631 | 0.022936 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-03 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.786666 | 0.952816 |         12 |        28376 | 0.000423 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11204486
+Dump model and predict finish.
+
+real	8m50.657s
+user	53m50.922s
+sys	3m24.586s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 13:56:56] [INFO] 模型保存完成: ./train_output/base.2025-09-03
+[2025-10-22 13:56:56] [INFO] 将清理 2025-08-18 及之前的模型文件...
+[2025-10-22 13:56:56] [INFO] 已清理 2025-08-18 之前的模型
+[2025-10-22 13:56:56] [INFO] ================ 开始训练 2025-09-04 ================
+[2025-10-22 13:56:56] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-04/part-00000-5b1fca4f-0662-40eb-94aa-ebfbc5b73889-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-04, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-04/part-00000-5b1fca4f-0662-40eb-94aa-ebfbc5b73889-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16466473.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022140545 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-04 | metric-all                                  | 0.910543 | 0.99971  |      38331 |     10026149 | 0.003823 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.ZZKKO#shein                      | 0.798365 | 1.01003  |       1583 |      5875975 | 0.000269 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799638 | 0.997297 |      14501 |      1949025 | 0.00744  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.777134 | 1.0028   |      16965 |       958583 | 0.017698 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.768037 | 0.95623  |       1587 |       535970 | 0.002961 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.SHOPEE#shopee.cps                | 0.832377 | 1.0083   |       1167 |       229146 | 0.005093 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-436672029#aecps                      | 0.721014 | 1.00604  |        872 |       171417 | 0.005087 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.ZZKKO.CPS#shein.cps              | 0.755114 | 0.957786 |         94 |       153503 | 0.000612 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.75303  | 0.997868 |       1149 |        47396 | 0.024243 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.77326  | 1.07103  |        396 |        39649 | 0.009988 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-04 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.779438 | 0.809838 |         15 |        29190 | 0.000514 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11316883
+Dump model and predict finish.
+
+real	8m52.508s
+user	52m36.986s
+sys	2m53.700s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 14:05:49] [INFO] 模型保存完成: ./train_output/base.2025-09-04
+[2025-10-22 14:05:49] [INFO] 将清理 2025-08-19 及之前的模型文件...
+[2025-10-22 14:05:49] [INFO] 已清理 2025-08-19 之前的模型
+[2025-10-22 14:05:49] [INFO] ================ 开始训练 2025-09-05 ================
+[2025-10-22 14:05:49] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-05/part-00000-8b1c9dcd-7edd-4cdc-a833-fe105aa935ae-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-05, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-05/part-00000-8b1c9dcd-7edd-4cdc-a833-fe105aa935ae-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16213970.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022141452 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-05 | metric-all                                  | 0.916404 | 1.00158  |      27553 |      9917685 | 0.002778 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.ZZKKO#shein                      | 0.793353 | 0.998785 |       1407 |      6320297 | 0.000223 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.802744 | 1.00566  |      13304 |      1739708 | 0.007647 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.779319 | 0.951646 |       1629 |       609792 | 0.002671 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.791126 | 1.00964  |       7807 |       553309 | 0.01411  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.SHOPEE#shopee.cps                | 0.822016 | 0.993252 |       1167 |       228217 | 0.005114 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.ZZKKO.CPS#shein.cps              | 0.709851 | 1.05902  |         94 |       147316 | 0.000638 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-436672029#aecps                      | 0.738608 | 1.00132  |        680 |       146586 | 0.004639 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.77028  | 1.00305  |       1003 |        55083 | 0.018209 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.780733 | 0.940158 |        448 |        43270 | 0.010354 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-05 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.806544 | 1.07862  |         11 |        27843 | 0.000395 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11426701
+Dump model and predict finish.
+
+real	9m6.274s
+user	52m39.626s
+sys	2m57.422s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 14:14:56] [INFO] 模型保存完成: ./train_output/base.2025-09-05
+[2025-10-22 14:14:56] [INFO] 将清理 2025-08-20 及之前的模型文件...
+[2025-10-22 14:14:56] [INFO] 已清理 2025-08-20 之前的模型
+[2025-10-22 14:14:56] [INFO] ================ 开始训练 2025-09-06 ================
+[2025-10-22 14:14:56] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-06/part-00000-bfd35a93-8850-4d7f-8666-ceb38fb5694c-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-06, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-06/part-00000-bfd35a93-8850-4d7f-8666-ceb38fb5694c-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15909510.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022142319 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-06 | metric-all                                  | 0.920893 | 1.00053  |      23768 |      9630464 | 0.002468 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.ZZKKO#shein                      | 0.798407 | 1.00813  |       1469 |      6504764 | 0.000226 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.805972 | 1.00039  |      12887 |      1649470 | 0.007813 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.797545 | 1.04656  |       1365 |       503154 | 0.002713 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.771961 | 0.984507 |       4161 |       253286 | 0.016428 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.SHOPEE#shopee.cps                | 0.814072 | 0.993874 |       1312 |       232500 | 0.005643 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-436672029#aecps                      | 0.748634 | 0.996378 |        813 |       166568 | 0.004881 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.ZZKKO.CPS#shein.cps              | 0.750506 | 1.00857  |         94 |       147973 | 0.000635 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.753737 | 1.00606  |       1286 |        73022 | 0.017611 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-06 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.774931 | 0.99443  |        372 |        32112 | 0.011584 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11522096
+Dump model and predict finish.
+
+real	8m26.203s
+user	50m15.535s
+sys	2m50.485s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 14:23:23] [INFO] 模型保存完成: ./train_output/base.2025-09-06
+[2025-10-22 14:23:23] [INFO] 将清理 2025-08-21 及之前的模型文件...
+[2025-10-22 14:23:23] [INFO] 已清理 2025-08-21 之前的模型
+[2025-10-22 14:23:23] [INFO] ================ 开始训练 2025-09-07 ================
+[2025-10-22 14:23:23] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-07/part-00000-73c65af3-75d7-4606-9554-ba3035ebc1fa-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-07, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-07/part-00000-73c65af3-75d7-4606-9554-ba3035ebc1fa-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16580622.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022143243 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-07 | metric-all                                  | 0.915472 | 0.99895  |      28400 |     10688350 | 0.002657 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.ZZKKO#shein                      | 0.795097 | 0.99294  |       1575 |      6821743 | 0.000231 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.806645 | 1.00339  |      14565 |      2292550 | 0.006353 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.80406  | 0.980036 |       1518 |       519849 | 0.00292  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.761957 | 0.998621 |       7099 |       397816 | 0.017845 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.SHOPEE#shopee.cps                | 0.815652 | 1.0095   |       1236 |       205475 | 0.006015 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-436672029#aecps                      | 0.770924 | 1.00637  |        593 |       131043 | 0.004525 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.ZZKKO.CPS#shein.cps              | 0.713589 | 0.967148 |         78 |       122537 | 0.000637 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.748818 | 0.967688 |       1396 |        88579 | 0.01576  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-07 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.783826 | 1.00569  |        332 |        36321 | 0.009141 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11641723
+Dump model and predict finish.
+
+real	9m24.266s
+user	55m29.571s
+sys	3m5.270s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 14:32:47] [INFO] 模型保存完成: ./train_output/base.2025-09-07
+[2025-10-22 14:32:47] [INFO] 将清理 2025-08-22 及之前的模型文件...
+[2025-10-22 14:32:47] [INFO] 已清理 2025-08-22 之前的模型
+[2025-10-22 14:32:47] [INFO] ================ 开始训练 2025-09-08 ================
+[2025-10-22 14:32:48] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-08/part-00000-54d3e1bf-e90a-4fd1-aaa3-a05d666486f4-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-08, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-08/part-00000-54d3e1bf-e90a-4fd1-aaa3-a05d666486f4-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16402619.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022144203 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-08 | metric-all                                  | 0.914943 | 0.998923 |      28393 |     10496893 | 0.002705 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.ZZKKO#shein                      | 0.782404 | 0.994335 |       1777 |      6852101 | 0.000259 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.808643 | 0.998502 |      13889 |      2172715 | 0.006392 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.808063 | 0.948079 |       1642 |       444146 | 0.003697 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.758687 | 1.01336  |       7255 |       365940 | 0.019826 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.SHOPEE#shopee.cps                | 0.818244 | 0.972518 |       1318 |       180732 | 0.007293 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-436672029#aecps                      | 0.756136 | 0.997576 |        717 |       175296 | 0.00409  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.ZZKKO.CPS#shein.cps              | 0.730242 | 1.00609  |         67 |        92678 | 0.000723 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.74112  | 0.993076 |       1381 |        85223 | 0.016205 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-08 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.811906 | 1.10002  |        339 |        54037 | 0.006273 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11750782
+Dump model and predict finish.
+
+real	9m18.534s
+user	54m35.846s
+sys	3m5.112s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 14:42:07] [INFO] 模型保存完成: ./train_output/base.2025-09-08
+[2025-10-22 14:42:07] [INFO] 将清理 2025-08-23 及之前的模型文件...
+[2025-10-22 14:42:07] [INFO] 已清理 2025-08-23 之前的模型
+[2025-10-22 14:42:07] [INFO] ================ 开始训练 2025-09-09 ================
+[2025-10-22 14:42:07] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-09/part-00000-5c3a0b48-b379-4001-8967-cfefd2bf5ae9-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-09, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-09/part-00000-5c3a0b48-b379-4001-8967-cfefd2bf5ae9-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16705803.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022145140 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-09 | metric-all                                  | 0.917728 | 1.00048  |      29612 |     11030665 | 0.002685 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.ZZKKO#shein                      | 0.78335  | 1.01077  |       1507 |      7131125 | 0.000211 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.804789 | 1.00058  |      14369 |      2221077 | 0.006469 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.806746 | 1.00878  |       1624 |       533961 | 0.003041 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.773297 | 0.997199 |       8224 |       483992 | 0.016992 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.SHOPEE#shopee.cps                | 0.803043 | 1.01194  |       1279 |       181750 | 0.007037 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-436672029#aecps                      | 0.743124 | 1.00362  |        786 |       176689 | 0.004448 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.ZZKKO.CPS#shein.cps              | 0.763744 | 1.08233  |         48 |        94806 | 0.000506 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.749908 | 0.981688 |       1348 |        74775 | 0.018027 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-09 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.781967 | 0.991433 |        424 |        58202 | 0.007285 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11869424
+Dump model and predict finish.
+
+real	9m36.840s
+user	57m11.105s
+sys	3m11.261s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 14:51:44] [INFO] 模型保存完成: ./train_output/base.2025-09-09
+[2025-10-22 14:51:44] [INFO] 将清理 2025-08-24 及之前的模型文件...
+[2025-10-22 14:51:44] [INFO] 已清理 2025-08-24 之前的模型
+[2025-10-22 14:51:44] [INFO] ================ 开始训练 2025-09-10 ================
+[2025-10-22 14:51:44] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-10/part-00000-9ace0aab-4751-4344-9484-aa07a32b3089-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-10, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-10/part-00000-9ace0aab-4751-4344-9484-aa07a32b3089-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16639728.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022150040 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-10 | metric-all                                  | 0.922217 | 0.998971 |      25973 |     10312000 | 0.002519 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.ZZKKO#shein                      | 0.787843 | 0.990262 |       1522 |      7067207 | 0.000215 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.804012 | 0.991542 |      13420 |      1718822 | 0.007808 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.805239 | 0.985054 |       1781 |       571248 | 0.003118 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.779575 | 1.00506  |       5334 |       327167 | 0.016304 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.SHOPEE#shopee.cps                | 0.806056 | 1.01116  |       1323 |       205780 | 0.006429 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-436672029#aecps                      | 0.74994  | 0.996296 |        684 |       134410 | 0.005089 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.ZZKKO.CPS#shein.cps              | 0.660193 | 0.942964 |         91 |        97796 | 0.000931 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.739803 | 1.06785  |       1411 |        73474 | 0.019204 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.805201 | 1.01126  |        393 |        41427 | 0.009487 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-10 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.711645 | 0.569105 |         13 |        26781 | 0.000485 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11980932
+Dump model and predict finish.
+
+real	8m59.359s
+user	54m4.311s
+sys	2m59.327s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:00:44] [INFO] 模型保存完成: ./train_output/base.2025-09-10
+[2025-10-22 15:00:44] [INFO] 将清理 2025-08-25 及之前的模型文件...
+[2025-10-22 15:00:44] [INFO] 已清理 2025-08-25 之前的模型
+[2025-10-22 15:00:44] [INFO] ================ 开始训练 2025-09-11 ================
+[2025-10-22 15:00:44] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-11/part-00000-41358cee-4cbe-4b26-82b1-42ec8b638ff3-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-11, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-11/part-00000-41358cee-4cbe-4b26-82b1-42ec8b638ff3-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 17009075.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022150943 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-11 | metric-all                                  | 0.920079 | 1.00301  |      27607 |     10478404 | 0.002635 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.ZZKKO#shein                      | 0.792646 | 1.00578  |       1556 |      6795122 | 0.000229 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801812 | 0.997599 |      14134 |      1780497 | 0.007938 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.819617 | 1.03849  |       1766 |       560673 | 0.00315  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.792535 | 0.993419 |       5881 |       412500 | 0.014257 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.SHOPEE#shopee.cps                | 0.830174 | 1.00671  |       1111 |       269620 | 0.004121 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-436672029#aecps                      | 0.716439 | 1.00438  |        832 |       150391 | 0.005532 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-EICGO.COM#eicgo                      | 0.370653 | 1.52063  |         25 |       106995 | 0.000234 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.ZZKKO.CPS#shein.cps              | 0.729642 | 1.13516  |         55 |        95993 | 0.000573 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.752606 | 1.02178  |       1878 |        90680 | 0.02071  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-11 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.794031 | 0.962731 |        353 |        35922 | 0.009827 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:12131889
+Dump model and predict finish.
+
+real	9m2.677s
+user	55m7.585s
+sys	3m2.183s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:09:48] [INFO] 模型保存完成: ./train_output/base.2025-09-11
+[2025-10-22 15:09:48] [INFO] 将清理 2025-08-26 及之前的模型文件...
+[2025-10-22 15:09:48] [INFO] 已清理 2025-08-26 之前的模型
+[2025-10-22 15:09:48] [INFO] ================ 开始训练 2025-09-12 ================
+[2025-10-22 15:09:48] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-12/part-00000-0e263c3a-9792-4017-b9d3-c0efbf08f80f-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-12, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-12/part-00000-0e263c3a-9792-4017-b9d3-c0efbf08f80f-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 3326644
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Waiting trainDataQueue tobe empty...
+Size feature 16846302.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022151838 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-12 | metric-all                                  | 0.923467 | 0.999822 |      24431 |     10220655 | 0.00239  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.ZZKKO#shein                      | 0.788363 | 1.01543  |       1494 |      7060825 | 0.000212 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.800744 | 0.99677  |      13355 |      1687552 | 0.007914 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.808881 | 0.951124 |       1591 |       387898 | 0.004102 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.784331 | 1.01904  |       4042 |       291814 | 0.013851 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.SHOPEE#shopee.cps                | 0.833573 | 0.990613 |       1239 |       265472 | 0.004667 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-436672029#aecps                      | 0.762524 | 0.992194 |        638 |       107725 | 0.005922 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.ZZKKO.CPS#shein.cps              | 0.701212 | 0.945389 |         73 |        98752 | 0.000739 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.775609 | 1.01253  |       1660 |        94273 | 0.017608 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-EICGO.COM#eicgo                      | 0.579283 | 0.933765 |         35 |        69662 | 0.000502 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-12 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.79131  | 1.0459   |        295 |        32514 | 0.009073 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:12239781
+Dump model and predict finish.
+
+real	8m53.561s
+user	55m54.164s
+sys	3m0.811s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:18:42] [INFO] 模型保存完成: ./train_output/base.2025-09-12
+[2025-10-22 15:18:42] [INFO] 将清理 2025-08-27 及之前的模型文件...
+[2025-10-22 15:18:42] [INFO] 已清理 2025-08-27 之前的模型
+[2025-10-22 15:18:42] [INFO] ================ 开始训练 2025-09-13 ================
+[2025-10-22 15:18:42] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-13/part-00000-507d8e4d-af8c-4768-b858-8f87e70104b2-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-13, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-13/part-00000-507d8e4d-af8c-4768-b858-8f87e70104b2-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 2772247
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Waiting trainDataQueue tobe empty...
+Size feature 16973259.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022152728 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-13 | metric-all                                  | 0.918295 | 1.00044  |      28974 |     10058675 | 0.00288  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.ZZKKO#shein                      | 0.784029 | 0.999305 |       1356 |      6503970 | 0.000208 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.795991 | 0.996585 |      13082 |      1752976 | 0.007463 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.76296  | 0.989305 |       8850 |       509932 | 0.017355 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.81085  | 1.06139  |       1565 |       415972 | 0.003762 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.SHOPEE#shopee.cps                | 0.822804 | 1.0102   |       1244 |       287749 | 0.004323 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-436672029#aecps                      | 0.765055 | 1.01074  |        849 |       181781 | 0.00467  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.74928  | 1.0263   |       1589 |       105641 | 0.015042 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.ZZKKO.CPS#shein.cps              | 0.769454 | 0.974133 |         59 |        96242 | 0.000613 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-EICGO.COM#eicgo                      | 0.542033 | 1.05845  |         40 |        85450 | 0.000468 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.80997  | 0.985007 |        326 |        35042 | 0.009303 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-13 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.720492 | 0.727047 |         13 |        31735 | 0.00041  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:12345088
+Dump model and predict finish.
+
+real	8m49.343s
+user	53m39.271s
+sys	2m54.292s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:27:32] [INFO] 模型保存完成: ./train_output/base.2025-09-13
+[2025-10-22 15:27:32] [INFO] 将清理 2025-08-28 及之前的模型文件...
+[2025-10-22 15:27:32] [INFO] 已清理 2025-08-28 之前的模型
+[2025-10-22 15:27:32] [INFO] ================ 开始训练 2025-09-14 ================
+[2025-10-22 15:27:32] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-14/part-00000-3663ea81-ac55-4da5-b8d6-5f3ff890cd7b-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-14, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-14/part-00000-3663ea81-ac55-4da5-b8d6-5f3ff890cd7b-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 3265410
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 3265410
+Waiting trainDataQueue tobe empty...
+Size feature 17288029.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022153644 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-14 | metric-all                                  | 0.913634 | 0.999498 |      28830 |     10465931 | 0.002755 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.ZZKKO#shein                      | 0.78857  | 1.0041   |       1575 |      6669834 | 0.000236 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.796255 | 0.996772 |      13865 |      1979809 | 0.007003 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.811999 | 0.972864 |       1656 |       440122 | 0.003763 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.749287 | 1.0072   |       7416 |       401781 | 0.018458 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.SHOPEE#shopee.cps                | 0.810837 | 0.999027 |       1619 |       329458 | 0.004914 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-436672029#aecps                      | 0.766058 | 0.987838 |        876 |       203420 | 0.004306 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-EICGO.COM#eicgo                      | 0.542998 | 1.00783  |         61 |       153560 | 0.000397 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.771456 | 1.01304  |       1372 |       105142 | 0.013049 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.ZZKKO.CPS#shein.cps              | 0.674384 | 0.927645 |         36 |        59541 | 0.000605 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.824141 | 1.03561  |        340 |        41235 | 0.008245 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-14 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.688594 | 0.965508 |         13 |        37099 | 0.00035  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:12450094
+Dump model and predict finish.
+
+real	9m16.160s
+user	55m47.551s
+sys	3m0.759s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:36:49] [INFO] 模型保存完成: ./train_output/base.2025-09-14
+[2025-10-22 15:36:49] [INFO] 将清理 2025-08-29 及之前的模型文件...
+[2025-10-22 15:36:49] [INFO] 已清理 2025-08-29 之前的模型
+[2025-10-22 15:36:49] [INFO] ================ 开始训练 2025-09-15 ================
+[2025-10-22 15:36:49] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-15/part-00000-fcf63e59-17d5-4863-8b1b-dc77f331fad7-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-15, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-15/part-00000-fcf63e59-17d5-4863-8b1b-dc77f331fad7-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 3326644
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Waiting trainDataQueue tobe empty...
+Size feature 17441850.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022154555 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-15 | metric-all                                  | 0.917905 | 1.00111  |      26938 |     10846114 | 0.002484 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.ZZKKO#shein                      | 0.784542 | 0.989648 |       1830 |      7311144 | 0.00025  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799014 | 1.00281  |      12225 |      1697358 | 0.007202 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.823805 | 1.03977  |       1637 |       465766 | 0.003515 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.760538 | 0.994673 |       7293 |       402637 | 0.018113 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.SHOPEE#shopee.cps                | 0.821793 | 0.994643 |       1595 |       327249 | 0.004874 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-EICGO.COM#eicgo                      | 0.582165 | 1.00613  |        102 |       214882 | 0.000475 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-436672029#aecps                      | 0.732487 | 1.0126   |        826 |       184622 | 0.004474 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.76566  | 0.98898  |       1188 |        91133 | 0.013036 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.ZZKKO.CPS#shein.cps              | 0.648285 | 1.31335  |         20 |        46910 | 0.000426 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-15 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.762115 | 0.953851 |        213 |        25398 | 0.008386 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:12558039
+Dump model and predict finish.
+
+real	9m9.593s
+user	56m12.106s
+sys	3m3.426s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:45:58] [INFO] filt old feature......
+[2025-10-22 15:47:20] [INFO] 过滤掉的老特征数: 1545825
+[2025-10-22 15:47:20] [INFO] 模型保存完成: ./train_output/base.2025-09-15
+[2025-10-22 15:47:20] [INFO] 将清理 2025-08-30 及之前的模型文件...
+[2025-10-22 15:47:20] [INFO] 已清理 2025-08-30 之前的模型
+[2025-10-22 15:47:20] [INFO] ================ 开始训练 2025-09-16 ================
+[2025-10-22 15:47:20] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-16/part-00000-782f468f-4a74-446a-bdcb-172a0d95a1ef-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-16, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-16/part-00000-782f468f-4a74-446a-bdcb-172a0d95a1ef-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 3326644
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Waiting trainDataQueue tobe empty...
+Size feature 16421872.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022155748 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-16 | metric-all                                  | 0.924748 | 1.00047  |      28293 |     12351193 | 0.002291 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.ZZKKO#shein                      | 0.794979 | 1.00298  |       1784 |      8185108 | 0.000218 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.798639 | 1.00275  |      12010 |      1620461 | 0.007411 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.804514 | 0.997604 |       2395 |       743148 | 0.003223 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-EICGO.COM#eicgo                      | 0.583106 | 1.01355  |        164 |       568702 | 0.000288 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.SHOPEE#shopee.cps                | 0.829126 | 1.00188  |       1627 |       396324 | 0.004105 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.756586 | 0.998952 |       7775 |       375824 | 0.020688 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-436672029#aecps                      | 0.759154 | 0.99727  |        777 |       189878 | 0.004092 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.766087 | 0.9897   |       1564 |       104568 | 0.014957 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.ZZKKO.CPS#shein.cps              | 0.684282 | 0.922952 |         24 |        47957 | 0.0005   |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-16 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.782028 | 0.988939 |        168 |        22231 | 0.007557 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11154462
+Dump model and predict finish.
+
+real	10m31.758s
+user	62m4.956s
+sys	3m28.041s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 15:57:52] [INFO] filt old feature......
+[2025-10-22 15:59:14] [INFO] 过滤掉的老特征数: 116877
+[2025-10-22 15:59:15] [INFO] 模型保存完成: ./train_output/base.2025-09-16
+[2025-10-22 15:59:15] [INFO] 将清理 2025-08-31 及之前的模型文件...
+[2025-10-22 15:59:15] [INFO] 已清理 2025-08-31 之前的模型
+[2025-10-22 15:59:15] [INFO] ================ 开始训练 2025-09-17 ================
+[2025-10-22 15:59:15] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-17/part-00000-a05027fa-10ce-45c0-9a8e-4ac71145a8d4-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-17, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-17/part-00000-a05027fa-10ce-45c0-9a8e-4ac71145a8d4-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16379823.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022160900 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-17 | metric-all                                  | 0.919355 | 0.99993  |      29031 |     11688707 | 0.002484 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.ZZKKO#shein                      | 0.791336 | 1.00182  |       1818 |      7586832 | 0.00024  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799946 | 0.9986   |      12349 |      1674586 | 0.007374 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.818001 | 0.99161  |       2680 |       780876 | 0.003432 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.747223 | 1.00275  |       8090 |       428523 | 0.018879 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-EICGO.COM#eicgo                      | 0.494029 | 1.01291  |        135 |       421348 | 0.00032  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.SHOPEE#shopee.cps                | 0.819058 | 0.998507 |       1605 |       366850 | 0.004375 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-436672029#aecps                      | 0.740801 | 0.990802 |        798 |       158140 | 0.005046 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.754742 | 1.00244  |       1359 |        81988 | 0.016576 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.ZZKKO.CPS#shein.cps              | 0.696135 | 0.895046 |         39 |        48421 | 0.000805 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-17 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.77448  | 1.03051  |        151 |        20315 | 0.007433 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11169486
+Dump model and predict finish.
+
+real	9m48.410s
+user	57m57.150s
+sys	3m22.736s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 16:09:03] [INFO] filt old feature......
+[2025-10-22 16:10:24] [INFO] 过滤掉的老特征数: 124121
+[2025-10-22 16:10:24] [INFO] 模型保存完成: ./train_output/base.2025-09-17
+[2025-10-22 16:10:24] [INFO] 将清理 2025-09-01 及之前的模型文件...
+[2025-10-22 16:10:24] [INFO] 已清理 2025-09-01 之前的模型
+[2025-10-22 16:10:24] [INFO] ================ 开始训练 2025-09-18 ================
+[2025-10-22 16:10:24] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-18/part-00000-a31d2300-a338-40d0-8703-762b9413b2c9-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-18, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-18/part-00000-a31d2300-a338-40d0-8703-762b9413b2c9-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16528388.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022162031 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-18 | metric-all                                  | 0.921821 | 1.0019   |      32913 |     12141260 | 0.002711 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.ZZKKO#shein                      | 0.798322 | 1.01002  |       1737 |      7670842 | 0.000226 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799024 | 1.00401  |      13117 |      1824573 | 0.007189 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.797774 | 1.03904  |       2766 |       725196 | 0.003814 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-EICGO.COM#eicgo                      | 0.616786 | 0.99507  |        184 |       525800 | 0.00035  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.756719 | 0.989067 |      10747 |       481519 | 0.022319 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.SHOPEE#shopee.cps                | 0.812106 | 0.994382 |       1971 |       413679 | 0.004765 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-436672029#aecps                      | 0.734305 | 1.01567  |        771 |       154719 | 0.004983 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.766118 | 0.998805 |       1287 |        86277 | 0.014917 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.ZZKKO.CPS#shein.cps              | 0.678236 | 1.0124   |         30 |        48795 | 0.000615 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.614994 | 0.603281 |         12 |        36322 | 0.00033  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-18 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.800844 | 0.971815 |        280 |        35780 | 0.007826 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11202453
+Dump model and predict finish.
+
+real	10m10.334s
+user	60m47.287s
+sys	3m27.600s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 16:20:35] [INFO] filt old feature......
+[2025-10-22 16:21:54] [INFO] 过滤掉的老特征数: 150347
+[2025-10-22 16:21:54] [INFO] 模型保存完成: ./train_output/base.2025-09-18
+[2025-10-22 16:21:54] [INFO] 将清理 2025-09-02 及之前的模型文件...
+[2025-10-22 16:21:54] [INFO] 已清理 2025-09-02 之前的模型
+[2025-10-22 16:21:54] [INFO] ================ 开始训练 2025-09-19 ================
+[2025-10-22 16:21:54] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-19/part-00000-6f1e497c-cc71-4919-9ae4-3f6e4ce9dad7-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-19, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-19/part-00000-6f1e497c-cc71-4919-9ae4-3f6e4ce9dad7-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16420890.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022163129 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-19 | metric-all                                  | 0.923082 | 0.998568 |      33234 |     11646839 | 0.002853 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.ZZKKO#shein                      | 0.802092 | 0.989782 |       1752 |      7292812 | 0.00024  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801341 | 1.00002  |      12367 |      1643079 | 0.007527 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.801638 | 1.01568  |       2667 |       684516 | 0.003896 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.746567 | 0.993567 |      11956 |       528802 | 0.02261  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-EICGO.COM#eicgo                      | 0.61075  | 0.985485 |        180 |       511727 | 0.000352 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.SHOPEE#shopee.cps                | 0.818374 | 1.00787  |       1696 |       361839 | 0.004687 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-436672029#aecps                      | 0.801073 | 0.987813 |        929 |       247924 | 0.003747 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.778306 | 1.0061   |       1310 |        97610 | 0.013421 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.ZZKKO.CPS#shein.cps              | 0.814983 | 1.90323  |         11 |        49011 | 0.000224 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-19 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.774236 | 0.925323 |        353 |        40158 | 0.00879  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11170137
+Dump model and predict finish.
+
+real	9m38.180s
+user	58m22.634s
+sys	3m14.998s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 16:31:33] [INFO] filt old feature......
+[2025-10-22 16:32:52] [INFO] 过滤掉的老特征数: 183527
+[2025-10-22 16:32:53] [INFO] 模型保存完成: ./train_output/base.2025-09-19
+[2025-10-22 16:32:53] [INFO] 将清理 2025-09-03 及之前的模型文件...
+[2025-10-22 16:32:53] [INFO] 已清理 2025-09-03 之前的模型
+[2025-10-22 16:32:53] [INFO] ================ 开始训练 2025-09-20 ================
+[2025-10-22 16:32:53] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-20/part-00000-79cf69af-58ce-43bb-93c4-6db239a47222-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-20, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-20/part-00000-79cf69af-58ce-43bb-93c4-6db239a47222-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 2939234
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Waiting trainDataQueue tobe empty...
+Size feature 16222085.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022164240 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-20 | metric-all                                  | 0.925777 | 1.00176  |      31381 |     11699791 | 0.002682 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.ZZKKO#shein                      | 0.798672 | 1.00268  |       1805 |      7269588 | 0.000248 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.8278   | 1.00331  |      12016 |      1855153 | 0.006477 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.81486  | 1.00926  |       2689 |       655477 | 0.004102 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-EICGO.COM#eicgo                      | 0.57938  | 1.01035  |        148 |       549955 | 0.000269 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.758538 | 0.999156 |      10593 |       453968 | 0.023334 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.SHOPEE#shopee.cps                | 0.819172 | 0.996868 |       1567 |       339930 | 0.00461  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-436672029#aecps                      | 0.795694 | 1.0005   |        811 |       204890 | 0.003958 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.777976 | 0.997123 |       1317 |        94054 | 0.014003 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.ZZKKO.CPS#shein.cps              | 0.69348  | 0.860004 |         21 |        49470 | 0.000424 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.77386  | 1.01213  |        394 |        46168 | 0.008534 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-20 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.697981 | 0.709959 |         11 |        29810 | 0.000369 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11117249
+Dump model and predict finish.
+
+real	9m51.085s
+user	61m5.838s
+sys	3m13.980s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 16:42:44] [INFO] filt old feature......
+[2025-10-22 16:44:03] [INFO] 过滤掉的老特征数: 133040
+[2025-10-22 16:44:04] [INFO] 模型保存完成: ./train_output/base.2025-09-20
+[2025-10-22 16:44:04] [INFO] 将清理 2025-09-04 及之前的模型文件...
+[2025-10-22 16:44:04] [INFO] 已清理 2025-09-04 之前的模型
+[2025-10-22 16:44:04] [INFO] ================ 开始训练 2025-09-21 ================
+[2025-10-22 16:44:04] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-21/part-00000-d4fcc17c-0157-4927-bb43-befee9b0501c-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-21, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-21/part-00000-d4fcc17c-0157-4927-bb43-befee9b0501c-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16250745.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022165320 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-21 | metric-all                                  | 0.916321 | 1.00059  |      29231 |     11329778 | 0.00258  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.ZZKKO#shein                      | 0.792328 | 0.991603 |       1929 |      6830557 | 0.000282 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.807738 | 1.00143  |      12764 |      1855986 | 0.006877 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-EICGO.COM#eicgo                      | 0.527679 | 0.979856 |        194 |       691263 | 0.000281 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.805101 | 1.01426  |       2537 |       620175 | 0.004091 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.754708 | 0.993167 |       7518 |       347983 | 0.021605 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.SHOPEE#shopee.cps                | 0.822454 | 0.997141 |       1538 |       324303 | 0.004742 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-436672029#aecps                      | 0.822928 | 1.01463  |        786 |       237519 | 0.003309 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.76143  | 1.01705  |       1516 |       114384 | 0.013254 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-DETROITRAIN.COM#detroitrain          | 0.51951  | 0.843407 |         20 |       105514 | 0.00019  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.ZZKKO.CPS#shein.cps              | 0.697657 | 0.790055 |         46 |        50297 | 0.000915 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-21 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.791733 | 1.02588  |        374 |        39549 | 0.009457 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11104355
+Dump model and predict finish.
+
+real	9m19.939s
+user	55m56.885s
+sys	3m25.011s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 16:53:24] [INFO] filt old feature......
+[2025-10-22 16:54:45] [INFO] 过滤掉的老特征数: 152606
+[2025-10-22 16:54:45] [INFO] 模型保存完成: ./train_output/base.2025-09-21
+[2025-10-22 16:54:45] [INFO] 将清理 2025-09-05 及之前的模型文件...
+[2025-10-22 16:54:45] [INFO] 已清理 2025-09-05 之前的模型
+[2025-10-22 16:54:45] [INFO] ================ 开始训练 2025-09-22 ================
+[2025-10-22 16:54:45] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-22/part-00000-0a1c4681-696a-4615-8d60-74cb308d7a89-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-22, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-22/part-00000-0a1c4681-696a-4615-8d60-74cb308d7a89-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 2939234
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 1072382
+Waiting trainDataQueue tobe empty...
+Size feature 16744188.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022170457 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-22 | metric-all                                  | 0.914513 | 1.00209  |      33217 |     12602498 | 0.002636 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.ZZKKO#shein                      | 0.784719 | 1.01459  |       2103 |      7390896 | 0.000285 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.8      | 1.00511  |      14185 |      2163041 | 0.006558 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-EICGO.COM#eicgo                      | 0.595776 | 1.02724  |        185 |       823687 | 0.000225 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.808611 | 1.00724  |       3088 |       632429 | 0.004883 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.755398 | 0.997717 |       8808 |       403079 | 0.021852 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.SHOPEE#shopee.cps                | 0.813528 | 0.997633 |       1812 |       381192 | 0.004754 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-436672029#aecps                      | 0.817694 | 0.987956 |        897 |       264892 | 0.003386 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-DETROITRAIN.COM#detroitrain          | 0.45419  | 0.975883 |         38 |       198074 | 0.000192 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.766661 | 0.985625 |       1692 |       129807 | 0.013035 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.ZZKKO.CPS#shein.cps              | 0.728764 | 1.1331   |         30 |        49890 | 0.000601 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-22 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.773683 | 0.977402 |        371 |        48166 | 0.007703 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11087689
+Dump model and predict finish.
+
+real	10m15.358s
+user	62m32.491s
+sys	3m25.864s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 17:05:00] [INFO] filt old feature......
+[2025-10-22 17:06:25] [INFO] 过滤掉的老特征数: 129311
+[2025-10-22 17:06:25] [INFO] 模型保存完成: ./train_output/base.2025-09-22
+[2025-10-22 17:06:25] [INFO] 将清理 2025-09-06 及之前的模型文件...
+[2025-10-22 17:06:25] [INFO] 已清理 2025-09-06 之前的模型
+[2025-10-22 17:06:25] [INFO] ================ 开始训练 2025-09-23 ================
+[2025-10-22 17:06:25] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-23/part-00000-b696a1cc-0ee4-43c9-a366-f5f3a360d564-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-23, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-23/part-00000-b696a1cc-0ee4-43c9-a366-f5f3a360d564-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16523202.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022171747 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-23 | metric-all                                  | 0.917123 | 0.999778 |      31377 |     12601831 | 0.00249  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.ZZKKO#shein                      | 0.798671 | 0.996335 |       1899 |      7248255 | 0.000262 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799277 | 0.996606 |      13357 |      2002692 | 0.00667  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-EICGO.COM#eicgo                      | 0.59771  | 1.00249  |        247 |      1081283 | 0.000228 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.797469 | 0.979139 |       3271 |       681176 | 0.004802 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.759434 | 1.00683  |       8084 |       395498 | 0.02044  |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.SHOPEE#shopee.cps                | 0.822178 | 1.00446  |       1708 |       364871 | 0.004681 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-DETROITRAIN.COM#detroitrain          | 0.598372 | 1.14089  |         36 |       266851 | 0.000135 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-436672029#aecps                      | 0.811889 | 1.00321  |        838 |       223137 | 0.003756 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.759574 | 1.03027  |       1434 |       117439 | 0.012211 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.790521 | 1.00773  |        443 |        54482 | 0.008131 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.ZZKKO.CPS#shein.cps              | 0.7385   | 0.930076 |         48 |        51815 | 0.000926 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-23 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.710728 | 0.733813 |         12 |        29126 | 0.000412 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11093275
+Dump model and predict finish.
+
+real	11m24.864s
+user	65m14.876s
+sys	3m8.099s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 17:17:50] [INFO] filt old feature......
+[2025-10-22 17:19:11] [INFO] 过滤掉的老特征数: 149884
+[2025-10-22 17:19:11] [INFO] 模型保存完成: ./train_output/base.2025-09-23
+[2025-10-22 17:19:11] [INFO] 将清理 2025-09-07 及之前的模型文件...
+[2025-10-22 17:19:11] [INFO] 已清理 2025-09-07 之前的模型
+[2025-10-22 17:19:11] [INFO] ================ 开始训练 2025-09-24 ================
+[2025-10-22 17:19:11] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-24/part-00000-8b1a79d7-df45-4dd4-b45f-5059e6f7f162-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-24, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-24/part-00000-8b1a79d7-df45-4dd4-b45f-5059e6f7f162-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16471364.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022172919 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-24 | metric-all                                  | 0.918316 | 0.999338 |      30714 |     12288148 | 0.002499 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.ZZKKO#shein                      | 0.797045 | 0.997915 |       2170 |      7802228 | 0.000278 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801114 | 0.995684 |      13137 |      1813821 | 0.007243 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-EICGO.COM#eicgo                      | 0.616112 | 0.985956 |        173 |       601281 | 0.000288 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.801514 | 0.998837 |       2692 |       568965 | 0.004731 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.SHOPEE#shopee.cps                | 0.830987 | 0.99923  |       2673 |       529655 | 0.005047 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.746148 | 0.99945  |       7407 |       337658 | 0.021936 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-DETROITRAIN.COM#detroitrain          | 0.550367 | 0.997507 |         28 |       175569 | 0.000159 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-436672029#aecps                      | 0.762236 | 0.998008 |        731 |       156410 | 0.004674 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.761598 | 1.02771  |       1284 |        99399 | 0.012918 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.ZZKKO.CPS#shein.cps              | 0.712985 | 0.900146 |         54 |        50814 | 0.001063 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.792267 | 1.06693  |        352 |        40110 | 0.008776 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-24 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.748913 | 0.971579 |         12 |        30979 | 0.000387 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11074543
+Dump model and predict finish.
+
+real	10m11.967s
+user	61m26.767s
+sys	3m26.105s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 17:29:23] [INFO] filt old feature......
+[2025-10-22 17:30:43] [INFO] 过滤掉的老特征数: 180650
+[2025-10-22 17:30:44] [INFO] 模型保存完成: ./train_output/base.2025-09-24
+[2025-10-22 17:30:44] [INFO] 将清理 2025-09-08 及之前的模型文件...
+[2025-10-22 17:30:44] [INFO] 已清理 2025-09-08 之前的模型
+[2025-10-22 17:30:44] [INFO] ================ 开始训练 2025-09-25 ================
+[2025-10-22 17:30:44] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-25/part-00000-dae5da55-5efa-4950-bffb-8699e0ab9235-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-25, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-25/part-00000-dae5da55-5efa-4950-bffb-8699e0ab9235-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 2801474
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+max col for column_name is 587, but the column count for sample is 581, requestid is 2801474
+max col for column_name is 587, but the column count for sample is 581, requestid is 2801474
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+max col for column_name is 587, but the column count for sample is 581, requestid is 2801474
+max col for column_name is 587, but the column count for sample is 581, requestid is 2801474
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+max col for column_name is 587, but the column count for sample is 581, requestid is 2801474
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+Waiting trainDataQueue tobe empty...
+Size feature 16151407.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022174033 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-25 | metric-all                                  | 0.911136 | 1.00138  |      29909 |     11640665 | 0.002569 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.ZZKKO#shein                      | 0.797311 | 0.992849 |       2109 |      6962395 | 0.000303 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.800976 | 1.00776  |      13899 |      1925480 | 0.007218 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-EICGO.COM#eicgo                      | 0.621608 | 1.02326  |        181 |       667725 | 0.000271 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.797743 | 0.98643  |       3238 |       658764 | 0.004915 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.SHOPEE#shopee.cps                | 0.802266 | 0.996542 |       2783 |       489378 | 0.005687 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-DETROITRAIN.COM#detroitrain          | 0.522099 | 1.00195  |         20 |       185391 | 0.000108 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.730854 | 1.01166  |       4724 |       177881 | 0.026557 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-436672029#aecps                      | 0.727949 | 1.00649  |        922 |       167537 | 0.005503 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-NEWSPARKINGS.COM#saker               | 0.560962 | 1.05643  |        171 |       101725 | 0.001681 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.762302 | 0.964998 |       1387 |        90391 | 0.015344 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.ZZKKO.CPS#shein.cps              | 0.700437 | 1.01139  |         46 |        50239 | 0.000916 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-25 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.780428 | 0.937697 |        418 |        43201 | 0.009676 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11011257
+Dump model and predict finish.
+
+real	9m52.758s
+user	68m0.303s
+sys	3m13.244s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 17:40:37] [INFO] filt old feature......
+[2025-10-22 17:41:58] [INFO] 过滤掉的老特征数: 148963
+[2025-10-22 17:41:58] [INFO] 模型保存完成: ./train_output/base.2025-09-25
+[2025-10-22 17:41:58] [INFO] 将清理 2025-09-09 及之前的模型文件...
+[2025-10-22 17:41:58] [INFO] 已清理 2025-09-09 之前的模型
+[2025-10-22 17:41:58] [INFO] ================ 开始训练 2025-09-26 ================
+[2025-10-22 17:41:58] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-26/part-00000-09100cfd-e29f-4656-a214-98c314d4c6a4-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-26, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-26/part-00000-09100cfd-e29f-4656-a214-98c314d4c6a4-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16925712.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20251022175228 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                     | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++==========================+=============================================+==========+==========+============+==============+==========+
+| train-ipua_v2-2025-09-26 | metric-all                                  | 0.916393 | 0.999213 |      34550 |     12818564 | 0.002695 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.ZZKKO#shein                      | 0.805705 | 1.00426  |       2074 |      7612475 | 0.000272 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799874 | 0.994478 |      14330 |      1729777 | 0.008284 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.SHOPEE#shopee.cps                | 0.84878  | 1.00212  |       4951 |      1110937 | 0.004457 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.79901  | 0.984135 |       3734 |       792227 | 0.004713 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-EICGO.COM#eicgo                      | 0.598066 | 0.971617 |        159 |       614521 | 0.000259 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.737666 | 1.00501  |       6297 |       273274 | 0.023043 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-436672029#aecps                      | 0.799342 | 0.995242 |        878 |       183985 | 0.004772 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-DETROITRAIN.COM#detroitrain          | 0.532005 | 0.914609 |         17 |       124790 | 0.000136 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.811108 | 1.03676  |       1564 |       123368 | 0.012678 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.ZZKKO.CPS#shein.cps              | 0.703584 | 0.922256 |         55 |        49018 | 0.001122 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-NEWSPARKINGS.COM#saker               | 0.567546 | 0.970221 |        104 |        48800 | 0.002131 |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ipua_v2-2025-09-26 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.804249 | 1.05164  |        377 |        40108 | 0.0094   |
++--------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11042890
+Dump model and predict finish.
+
+real	10m33.842s
+user	64m5.684s
+sys	3m32.167s
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+[2025-10-22 17:52:32] [INFO] filt old feature......
+[2025-10-22 17:53:53] [INFO] 过滤掉的老特征数: 117443
+[2025-10-22 17:53:53] [INFO] 模型保存完成: ./train_output/base.2025-09-26
+[2025-10-22 17:53:53] [INFO] 将清理 2025-09-10 及之前的模型文件...
+[2025-10-22 17:53:54] [INFO] 已清理 2025-09-10 之前的模型
+[2025-10-22 17:53:54] [INFO] ================ 开始训练 2025-09-27 ================
+[2025-10-22 17:53:54] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-27/part-00000-028f1db0-600f-44ee-a0c6-2d0a91eaa892-c000.csv, confBase = ./conf/, name = train-ipua_v2-2025-09-27, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 320 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-27/part-00000-028f1db0-600f-44ee-a0c6-2d0a91eaa892-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 3325914
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)

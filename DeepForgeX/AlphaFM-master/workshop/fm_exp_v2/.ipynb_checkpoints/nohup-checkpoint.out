@@ -1,0 +1,2196 @@
+cp: cannot create regular file ‘../model_bin/fm_train’: Text file busy
+=================== train date: 20241201 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+output model...
+model outputting finished
+
+real	1m12.992s
+user	4m37.352s
+sys	0m14.839s
+=================== train date: 20241202 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m17.694s
+user	4m59.065s
+sys	0m15.434s
+=================== train date: 20241203 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+output model...
+model outputting finished
+
+real	1m4.400s
+user	4m3.315s
+sys	0m12.698s
+=================== train date: 20241204 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+output model...
+model outputting finished
+
+real	1m0.551s
+user	3m45.904s
+sys	0m11.106s
+=================== train date: 20241205 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+output model...
+model outputting finished
+
+real	1m4.476s
+user	4m3.158s
+sys	0m12.700s
+=================== train date: 20241206 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+output model...
+model outputting finished
+
+real	1m6.282s
+user	4m9.584s
+sys	0m12.714s
+=================== train date: 20241207 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+output model...
+model outputting finished
+
+real	1m0.359s
+user	3m44.928s
+sys	0m11.740s
+=================== train date: 20241208 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+output model...
+model outputting finished
+
+real	1m5.595s
+user	4m4.355s
+sys	0m12.701s
+=================== train date: 20241209 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+output model...
+model outputting finished
+
+real	1m10.563s
+user	4m24.256s
+sys	0m13.545s
+=================== train date: 20241210 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+output model...
+model outputting finished
+
+real	1m3.342s
+user	3m56.328s
+sys	0m12.883s
+=================== train date: 20241211 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+output model...
+model outputting finished
+
+real	0m56.275s
+user	3m28.905s
+sys	0m10.736s
+=================== train date: 20241212 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+output model...
+model outputting finished
+
+real	1m4.633s
+user	4m0.671s
+sys	0m12.508s
+=================== train date: 20241213 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+output model...
+model outputting finished
+
+real	0m54.973s
+user	3m22.069s
+sys	0m10.487s
+=================== train date: 20241214 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+output model...
+model outputting finished
+
+real	0m49.019s
+user	2m58.495s
+sys	0m9.558s
+=================== train date: 20241215 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+output model...
+model outputting finished
+
+real	0m55.270s
+user	3m23.785s
+sys	0m10.926s
+=================== train date: 20241216 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+output model...
+model outputting finished
+
+real	1m5.733s
+user	4m1.869s
+sys	0m12.668s
+=================== train date: 20241217 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+output model...
+model outputting finished
+
+real	0m58.159s
+user	3m34.495s
+sys	0m11.082s
+=================== train date: 20241218 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+output model...
+model outputting finished
+
+real	0m54.019s
+user	3m19.028s
+sys	0m10.359s
+=================== train date: 20241219 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+output model...
+model outputting finished
+
+real	0m59.292s
+user	3m39.161s
+sys	0m11.786s
+=================== train date: 20241220 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+output model...
+model outputting finished
+
+real	1m10.520s
+user	4m23.789s
+sys	0m13.693s
+=================== train date: 20241221 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+output model...
+model outputting finished
+
+real	1m8.048s
+user	4m13.140s
+sys	0m13.190s
+=================== train date: 20241222 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+output model...
+model outputting finished
+
+real	1m13.072s
+user	4m29.975s
+sys	0m14.723s
+=================== train date: 20241223 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+output model...
+model outputting finished
+
+real	1m12.913s
+user	4m30.921s
+sys	0m13.751s
+=================== train date: 20241224 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+output model...
+model outputting finished
+
+real	1m14.119s
+user	4m35.835s
+sys	0m14.102s
+=================== train date: 20241225 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+output model...
+model outputting finished
+
+real	1m9.308s
+user	4m16.152s
+sys	0m14.228s
+=================== train date: 20241226 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m15.893s
+user	4m42.661s
+sys	0m14.980s
+=================== train date: 20241227 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+output model...
+model outputting finished
+
+real	1m8.352s
+user	4m12.103s
+sys	0m14.530s
+=================== train date: 20241228 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+output model...
+model outputting finished
+
+real	1m9.635s
+user	4m17.821s
+sys	0m13.565s
+=================== train date: 20241229 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m24.028s
+user	5m12.037s
+sys	0m16.294s
+=================== train date: 20241230 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+output model...
+model outputting finished
+
+real	1m26.821s
+user	5m24.244s
+sys	0m16.807s
+=================== train date: 20241231 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+output model...
+model outputting finished
+
+real	1m10.916s
+user	4m21.188s
+sys	0m13.622s
+=================== train date: 20250101 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+output model...
+model outputting finished
+
+real	1m14.775s
+user	4m35.648s
+sys	0m15.140s
+=================== train date: 20250102 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+output model...
+model outputting finished
+
+real	1m1.167s
+user	3m42.639s
+sys	0m11.939s
+=================== train date: 20250103 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+output model...
+model outputting finished
+
+real	1m18.716s
+user	4m51.179s
+sys	0m15.853s
+=================== train date: 20250104 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m30.916s
+user	5m36.905s
+sys	0m17.518s
+=================== train date: 20250105 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+output model...
+model outputting finished
+
+real	1m37.052s
+user	6m3.087s
+sys	0m18.861s
+=================== train date: 20250106 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+output model...
+model outputting finished
+
+real	1m37.885s
+user	6m5.851s
+sys	0m18.591s
+=================== train date: 20250107 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+output model...
+model outputting finished
+
+real	1m28.307s
+user	5m28.268s
+sys	0m17.025s
+=================== train date: 20250108 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+output model...
+model outputting finished
+
+real	1m30.899s
+user	5m36.861s
+sys	0m17.875s
+=================== train date: 20250109 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+output model...
+model outputting finished
+
+real	1m42.285s
+user	6m22.855s
+sys	0m19.577s
+=================== train date: 20250110 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m26.559s
+user	5m22.109s
+sys	0m17.381s
+=================== train date: 20250111 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+output model...
+model outputting finished
+
+real	1m13.655s
+user	4m31.278s
+sys	0m14.565s
+=================== train date: 20250112 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m26.247s
+user	5m19.548s
+sys	0m17.499s
+=================== train date: 20250113 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m26.862s
+user	5m20.681s
+sys	0m18.258s
+=================== train date: 20250114 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+output model...
+model outputting finished
+
+real	1m28.818s
+user	5m28.184s
+sys	0m17.798s
+=================== train date: 20250115 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m23.003s
+user	5m5.539s
+sys	0m15.634s
+=================== train date: 20250116 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+output model...
+model outputting finished
+
+real	1m33.354s
+user	5m47.147s
+sys	0m18.733s
+=================== train date: 20250117 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m22.636s
+user	5m5.566s
+sys	0m16.878s
+=================== train date: 20250118 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m18.323s
+user	4m48.125s
+sys	0m15.598s
+=================== train date: 20250119 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+output model...
+model outputting finished
+
+real	1m33.112s
+user	5m43.980s
+sys	0m18.219s
+=================== train date: 20250120 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+output model...
+model outputting finished
+
+real	1m33.426s
+user	5m45.461s
+sys	0m18.665s
+=================== train date: 20250121 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+output model...
+model outputting finished
+
+real	1m31.200s
+user	5m38.112s
+sys	0m17.894s
+=================== train date: 20250122 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m23.224s
+user	5m4.899s
+sys	0m16.841s
+=================== train date: 20250123 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+output model...
+model outputting finished
+
+real	1m26.914s
+user	5m21.415s
+sys	0m18.402s
+=================== train date: 20250124 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m19.603s
+user	4m50.642s
+sys	0m15.981s
+=================== train date: 20250125 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+output model...
+model outputting finished
+
+real	1m24.736s
+user	5m10.600s
+sys	0m16.418s
+=================== train date: 20250126 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+output model...
+model outputting finished
+
+real	1m33.266s
+user	5m45.348s
+sys	0m19.213s
+=================== train date: 20250127 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+output model...
+model outputting finished
+
+real	1m28.277s
+user	5m25.254s
+sys	0m18.073s
+=================== train date: 20250128 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m21.831s
+user	4m59.824s
+sys	0m16.691s
+=================== train date: 20250129 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+output model...
+model outputting finished
+
+real	1m35.143s
+user	5m54.474s
+sys	0m17.439s
+=================== train date: 20250130 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+output model...
+model outputting finished
+
+real	1m17.998s
+user	4m44.402s
+sys	0m16.085s
+=================== train date: 20250131 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m20.704s
+user	4m54.419s
+sys	0m16.431s
+=================== train date: 20250201 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m22.844s
+user	5m4.057s
+sys	0m16.305s
+=================== train date: 20250202 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+output model...
+model outputting finished
+
+real	1m21.764s
+user	4m58.909s
+sys	0m17.167s
+=================== train date: 20250203 ====================
+-init_stdev 0.01 -w_l2 100.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1.0 -v_beta 1.0 -core 4 -dim 1,1,1
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+4800000 lines finished
+5000000 lines finished
+5200000 lines finished
+5400000 lines finished
+5600000 lines finished
+output model...
+model outputting finished
+
+real	1m42.593s
+user	6m18.970s
+sys	0m21.052s
+=================== validation date: 2025-02-04 ===================
+load column_name:185 label_index:183
+load combine_schema:102
+load model...
+model_path=./output/base.2025-02-03, model_format=txt, factor_num=1
+model loading finished
+200000 lines finished
+400000 lines finished
+600000 lines finished
+800000 lines finished
+1000000 lines finished
+1200000 lines finished
+1400000 lines finished
+1600000 lines finished
+1800000 lines finished
+2000000 lines finished
+2200000 lines finished
+2400000 lines finished
+2600000 lines finished
+2800000 lines finished
+3000000 lines finished
+3200000 lines finished
+3400000 lines finished
+3600000 lines finished
+3800000 lines finished
+4000000 lines finished
+4200000 lines finished
+4400000 lines finished
+4600000 lines finished
+
+******************** validation result ********************
+pos num: 649 neg num: 4748655
+AUC: 0.7661, PCOC: 1.1546
+************************************************************
+
+real	0m38.864s
+user	4m13.095s
+sys	0m44.824s

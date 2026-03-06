@@ -1,0 +1,5 @@
+matplotlib
+scikit-plot
+bayesian-optimization
+hyperopt
+scipy==1.7

@@ -1,0 +1,20 @@
+2025-04-30 13:42:21 - values:[0.001, 0.01, 0.1, 0.2]
+2025-04-30 14:01:51 - init_stdev = 0.001, -dim 1,1,1 -init_stdev 0.001 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7678, PCOC = 1.0698
+2025-04-30 14:01:51 - 更新最佳：init_stdev = 0.001, AUC = 0.7678, PCOC = 1.0698
+2025-04-30 14:21:23 - init_stdev = 0.01, -dim 1,1,1 -init_stdev 0.01 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7735, PCOC = 1.0546
+2025-04-30 14:21:23 - 更新最佳：init_stdev = 0.01, AUC = 0.7735, PCOC = 1.0546
+2025-04-30 14:40:52 - init_stdev = 0.1, -dim 1,1,1 -init_stdev 0.1 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.771, PCOC = 1.0596
+2025-04-30 14:40:53 - [出错] init_stdev = 0.2 时发生错误：Command 'cat ../../duf_outer/sample/sample_2025-04-01 | ../model_bin/fm_train -dim 1,1,1 -init_stdev 0.2 -w_l2 100 -w_l1 1 -v_l1 0.1 -w_alpha 0.1 -v_l2 5.0 -v_alpha 0.1 -w_beta 1 -v_beta 1.0 -core 24 -m ./output/base.init_stdev_0.2' returned non-zero exit status 139.
+2025-04-30 14:40:53 - 最优 init_stdev: 0.01, 最佳 AUC: 0.7735
+2025-05-01 14:57:35 - values:[0.0001, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3]
+2025-05-01 15:17:18 - init_stdev = 0.0001, -dim 1,1,1 -init_stdev 0.0001 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7692, PCOC = 1.131
+2025-05-01 15:17:18 - 更新最佳：init_stdev = 0.0001, AUC = 0.7692, PCOC = 1.131
+2025-05-01 15:36:57 - init_stdev = 0.001, -dim 1,1,1 -init_stdev 0.001 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7692, PCOC = 1.1296
+2025-05-01 15:56:37 - init_stdev = 0.003, -dim 1,1,1 -init_stdev 0.003 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7719, PCOC = 1.1395
+2025-05-01 15:56:37 - 更新最佳：init_stdev = 0.003, AUC = 0.7719, PCOC = 1.1395
+2025-05-01 16:16:28 - init_stdev = 0.01, -dim 1,1,1 -init_stdev 0.01 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7729, PCOC = 1.1393
+2025-05-01 16:16:28 - 更新最佳：init_stdev = 0.01, AUC = 0.7729, PCOC = 1.1393
+2025-05-01 16:36:15 - init_stdev = 0.03, -dim 1,1,1 -init_stdev 0.03 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7697, PCOC = 1.1269
+2025-05-01 16:55:58 - init_stdev = 0.1, -dim 1,1,1 -init_stdev 0.1 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7694, PCOC = 1.1341
+2025-05-01 17:15:44 - init_stdev = 0.3, -dim 1,1,1 -init_stdev 0.3 -w_l2 50.0 -w_l1 1 -v_l1 0.1 -w_alpha 0.2 -v_l2 0.1 -v_alpha 0.03 -w_beta 1 -v_beta 1.0 -core 24, AUC = 0.7708, PCOC = 1.1333
+2025-05-01 17:15:44 - 最优 init_stdev: 0.01, 最佳 AUC: 0.7729

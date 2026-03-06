@@ -1,0 +1,49 @@
+download model: oss://spark-ml-train-new/liufashuai/dsp/cps/union_purchase/ruf_sample_v1/model_ruf_v7
+Total num: 1, size: 8,982,665,820. Dealed num: 0, OK size: 1,976,186,520, Progress: 22.000%, Speed: 383804.95KB/sTotal num: 1, size: 8,982,665,820. Dealed num: 0, OK size: 4,132,026,360, Progress: 46.000%, Speed: 415400.78KB/sTotal num: 1, size: 8,982,665,820. Dealed num: 0, OK size: 6,265,409,535, Progress: 69.750%, Speed: 414482.88KB/sTotal num: 1, size: 8,982,665,820. Dealed num: 0, OK size: 8,443,706,040, Progress: 94.000%, Speed: 421973.61KB/s                                                                                                                  Succeed: Total num: 1, size: 8,982,665,820. OK num: 1(download 1 objects).
+
+average speed 410036000(byte/s)
+
+21.909883(s) elapsed
+
+******************* validation: model=./train_output/model_file_2025-06-04, val_data=../sample/sample_2025-06-05 ********************
+loadColName:conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 234 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-06-13 17:58:56
+ctr predict completely!
+当前时间：2025-06-13 18:01:13
+
+AucCollector at 20250613180113 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+=============================================+==========+==========+============+==============+==========+
+| val-2025-06-05 | metric-all                                  | 0.958689 | 1.05497  |      34591 |      9092359 | 0.003804 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.ZZKKO#shein                      | 0.781441 | 0.819512 |       1587 |      6797560 | 0.000233 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.792928 | 1.03897  |       9536 |      1010463 | 0.009437 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.SHOPEE#shopee.cps                | 0.954873 | 1.17847  |      17009 |       388844 | 0.043742 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.942032 | 0.70291  |       3449 |       341330 | 0.010105 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.700301 | 0.952355 |       1828 |       239608 | 0.007629 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-EVERY-DAYWINNER.COM#point2web        | 0.798775 | 0.737383 |        575 |        67795 | 0.008481 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.788824 | 1.02765  |        575 |        53090 | 0.010831 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 0
+当前时间：2025-06-13 18:01:14
+
+real	2m29.866s
+user	56m54.813s
+sys	0m52.728s
+******************* validation over: model=./train_output/model_file_2025-06-04, val_data=../sample/sample_2025-06-05 *******************
+
+3434927 ./train_output/model_file_2025-06-04.filt
+/home/ec2-user/SageMaker/movas/ruf/validation_v7

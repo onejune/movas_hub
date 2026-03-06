@@ -1,0 +1,47 @@
+download model: oss://spark-ml-train-new/liufashuai/dsp/cps/union_purchase/ruf_sample_v1/model_ruf_v1
+Total num: 1, size: 8,824,417,995. Dealed num: 0, OK size: 1,676,639,420, Progress: 19.000%, Speed: 321047.58KB/sTotal num: 1, size: 8,824,417,995. Dealed num: 0, OK size: 3,463,584,065, Progress: 39.250%, Speed: 347490.70KB/sTotal num: 1, size: 8,824,417,995. Dealed num: 0, OK size: 5,118,162,440, Progress: 58.000%, Speed: 316276.00KB/sTotal num: 1, size: 8,824,417,995. Dealed num: 0, OK size: 6,728,618,725, Progress: 76.250%, Speed: 309987.83KB/sTotal num: 1, size: 8,824,417,995. Dealed num: 0, OK size: 8,515,563,370, Progress: 96.500%, Speed: 347401.16KB/s                                                                                                                  Succeed: Total num: 1, size: 8,824,417,995. OK num: 1(download 1 objects).
+
+average speed 323002000(byte/s)
+
+27.320503(s) elapsed
+
+******************* validation: model=./train_output/model_file_2025-05-29, val_data=../sample/sample_2025-05-30 ********************
+loadColName:conf/column_name
+Load 200 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115]
+Load 200 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-06-07 11:22:57
+ctr predict completely!
+当前时间：2025-06-07 11:26:03
+
+AucCollector at 20250607112603 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| DATE           | Key                                         |      AUC |      PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+=============================================+==========+===========+============+==============+==========+
+| val-2025-05-30 | metric-all                                  | 0.943393 | 0.400843  |      37241 |     12357187 | 0.003014 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.ZZKKO#shein                      | 0.774552 | 0.985859  |       2658 |     10532297 | 0.000252 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.793609 | 0.958521  |       8229 |       853529 | 0.009641 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.760971 | 0.773561  |        580 |       288942 | 0.002007 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.SHOPEE#shopee.cps                | 0.739445 | 0.0736844 |      23263 |       282200 | 0.082434 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.691856 | 0.834099  |       1768 |       202124 | 0.008747 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.791865 | 0.880832  |        573 |        53068 | 0.010797 |
++----------------+---------------------------------------------+----------+-----------+------------+--------------+----------+
+Exception data count: 0
+当前时间：2025-06-07 11:26:05
+
+real	3m18.797s
+user	50m26.885s
+sys	2m56.286s
+******************* validation over: model=./train_output/model_file_2025-05-29, val_data=../sample/sample_2025-05-30 *******************
+
+3319112 ./train_output/model_file_2025-05-29.filt
+/home/ec2-user/SageMaker/movas/ruf/validation_v1

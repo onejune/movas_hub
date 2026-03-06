@@ -17,6 +17,5 @@ target/
 *.lst
 *.so
 output/
-temp/
-tmp/
 
+MetaSpore/utils/metaspore.tar.gz

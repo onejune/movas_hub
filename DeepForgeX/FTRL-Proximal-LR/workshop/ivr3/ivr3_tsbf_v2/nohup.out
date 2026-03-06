@@ -1,0 +1,2665 @@
+log_file: ./log/train_20250827132451.log
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv
+ftrl_jar_path: /mnt/workspace/walter.wan/ftrl_in_git/target/ftrl_maven_walter-0.0.1-SNAPSHOT.jar
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+项目名称: ivr3_tsbf_v2
+[2025-08-27 13:24:51] [INFO] ================ 开始训练 2025-07-11 ================
+[2025-08-27 13:24:51] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-11/part-00000-ff7ac939-cdcf-4cc1-a67d-f9fd991ba114-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-11, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-11/part-00000-ff7ac939-cdcf-4cc1-a67d-f9fd991ba114-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+Waiting trainDataQueue tobe empty...
+Size feature 15127649.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827133449 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-all                                  | 0.930793 | 1.00005  |      17138 |     11183498 | 0.001532 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-COM.ZZKKO#shein                      | 0.785376 | 1.00518  |       1870 |      9061461 | 0.000206 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.7931   | 1.00133  |      12266 |      1363481 | 0.008996 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.79866  | 0.979292 |        990 |       461307 | 0.002146 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-COM.SHOPEE#shopee.cps                | 0.810735 | 0.994176 |       1266 |       191795 | 0.006601 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.785329 | 1.00401  |        591 |        61441 | 0.009619 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-11 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.766765 | 0.982665 |        146 |         3150 | 0.046349 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:9151888
+Dump model and predict finish.
+
+real	10m1.123s
+user	57m32.083s
+sys	3m25.232s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 13:34:53] [INFO] 模型保存完成: ./train_output/base.2025-07-11
+[2025-08-27 13:34:53] [INFO] 将清理 2025-06-25 及之前的模型文件...
+[2025-08-27 13:34:53] [INFO] 已清理 2025-06-25 之前的模型
+[2025-08-27 13:34:53] [INFO] ================ 开始训练 2025-07-12 ================
+[2025-08-27 13:34:53] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-12/part-00000-b9c57402-aae9-43b5-8ef5-7c5308bae9f6-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-12, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-12/part-00000-b9c57402-aae9-43b5-8ef5-7c5308bae9f6-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14893434.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827134442 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-all                                  | 0.933458 | 1.00131  |      18208 |     11052741 | 0.001647 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-COM.ZZKKO#shein                      | 0.781465 | 0.994269 |       1766 |      8897529 | 0.000198 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.792092 | 0.997979 |      13969 |      1488187 | 0.009387 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.815446 | 0.99454  |        789 |       363786 | 0.002169 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-COM.SHOPEE#shopee.cps                | 0.851245 | 1.02032  |        903 |       193404 | 0.004669 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.780948 | 0.994063 |        657 |        54768 | 0.011996 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.733087 | 1.35244  |        109 |         3750 | 0.029067 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:9458902
+Dump model and predict finish.
+
+real	9m51.181s
+user	56m36.559s
+sys	3m18.758s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 13:44:46] [INFO] 模型保存完成: ./train_output/base.2025-07-12
+[2025-08-27 13:44:46] [INFO] 将清理 2025-06-26 及之前的模型文件...
+[2025-08-27 13:44:46] [INFO] 已清理 2025-06-26 之前的模型
+[2025-08-27 13:44:46] [INFO] ================ 开始训练 2025-07-13 ================
+[2025-08-27 13:44:46] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-13/part-00000-12022426-4eb5-4225-93a7-7bd4309436b8-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-13, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-13/part-00000-12022426-4eb5-4225-93a7-7bd4309436b8-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15083064.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827135438 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-all                                  | 0.928931 | 0.999204 |      18762 |     11235525 | 0.00167  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.ZZKKO#shein                      | 0.77582  | 1.00216  |       1879 |      8781454 | 0.000214 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.795416 | 0.999644 |      14341 |      1690924 | 0.008481 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.804127 | 0.986597 |        692 |       341565 | 0.002026 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.SHOPEE#shopee.cps                | 0.903947 | 0.977621 |       1132 |       317773 | 0.003562 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.795947 | 1.01352  |        604 |        54955 | 0.010991 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.ZZKKO.CPS#shein.cps              | 0.390187 | 0.880534 |         10 |         4453 | 0.002246 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.748855 | 1.12688  |         98 |         3173 | 0.030886 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:9709245
+Dump model and predict finish.
+
+real	9m54.133s
+user	56m0.418s
+sys	3m21.464s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 13:54:42] [INFO] 模型保存完成: ./train_output/base.2025-07-13
+[2025-08-27 13:54:42] [INFO] 将清理 2025-06-27 及之前的模型文件...
+[2025-08-27 13:54:42] [INFO] 已清理 2025-06-27 之前的模型
+[2025-08-27 13:54:42] [INFO] ================ 开始训练 2025-07-14 ================
+[2025-08-27 13:54:43] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-14/part-00000-a824004e-7412-4756-b202-fa3af117e740-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-14, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-14/part-00000-a824004e-7412-4756-b202-fa3af117e740-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15417422.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827140516 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-all                                  | 0.927949 | 1.00001  |      19539 |     12163824 | 0.001606 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.ZZKKO#shein                      | 0.78645  | 0.996935 |       2296 |      9798342 | 0.000234 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.78838  | 0.998552 |      14928 |      1729916 | 0.008629 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.SHOPEE#shopee.cps                | 0.908099 | 1.00545  |       1031 |       276436 | 0.00373  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.831634 | 1.00995  |        481 |       239278 | 0.00201  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.76502  | 0.998695 |        691 |        72953 | 0.009472 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.ZZKKO.CPS#shein.cps              | 0.531257 | 1.0599   |         10 |         4217 | 0.002371 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.789277 | 1.28234  |         88 |         3444 | 0.025552 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:9936921
+Dump model and predict finish.
+
+real	10m35.984s
+user	61m39.881s
+sys	3m36.925s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 14:05:19] [INFO] 模型保存完成: ./train_output/base.2025-07-14
+[2025-08-27 14:05:19] [INFO] 将清理 2025-06-28 及之前的模型文件...
+[2025-08-27 14:05:19] [INFO] 已清理 2025-06-28 之前的模型
+[2025-08-27 14:05:19] [INFO] ================ 开始训练 2025-07-15 ================
+[2025-08-27 14:05:19] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-15/part-00000-c0a0a105-9ca2-4cb4-a23d-9cef2f673f53-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-15, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-15/part-00000-c0a0a105-9ca2-4cb4-a23d-9cef2f673f53-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15496349.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827141541 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-all                                  | 0.930577 | 1.00053  |      16988 |     11862211 | 0.001432 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-COM.ZZKKO#shein                      | 0.780586 | 1.00306  |       2075 |      9794488 | 0.000212 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.79273  | 0.998929 |      13171 |      1541405 | 0.008545 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.795982 | 0.998486 |        516 |       266682 | 0.001935 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-COM.SHOPEE#shopee.cps                | 0.894941 | 1.00384  |        635 |       164395 | 0.003863 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.778321 | 1.0108   |        494 |        52161 | 0.009471 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.701966 | 1.0362   |         91 |         3059 | 0.029748 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10133854
+Dump model and predict finish.
+
+real	10m24.976s
+user	57m22.134s
+sys	3m33.852s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 14:15:44] [INFO] 模型保存完成: ./train_output/base.2025-07-15
+[2025-08-27 14:15:44] [INFO] 将清理 2025-06-29 及之前的模型文件...
+[2025-08-27 14:15:44] [INFO] 已清理 2025-06-29 之前的模型
+[2025-08-27 14:15:44] [INFO] ================ 开始训练 2025-07-16 ================
+[2025-08-27 14:15:45] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-16/part-00000-e6a81933-9735-4825-ae4f-31861b8a4916-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-16, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-16/part-00000-e6a81933-9735-4825-ae4f-31861b8a4916-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15596695.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827142616 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-all                                  | 0.933087 | 1.00064  |      17784 |     11919268 | 0.001492 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-COM.ZZKKO#shein                      | 0.791146 | 0.998157 |       2006 |      9804217 | 0.000205 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.790411 | 0.999995 |      13588 |      1563825 | 0.008689 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.824995 | 1.00513  |        596 |       267109 | 0.002231 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-COM.SHOPEE#shopee.cps                | 0.869483 | 0.996071 |        745 |       159144 | 0.004681 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.791895 | 1.0146   |        733 |        64975 | 0.011281 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.703205 | 1.08793  |         97 |         3383 | 0.028673 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10317498
+Dump model and predict finish.
+
+real	10m33.750s
+user	60m50.503s
+sys	3m35.196s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 14:26:19] [INFO] 模型保存完成: ./train_output/base.2025-07-16
+[2025-08-27 14:26:19] [INFO] 将清理 2025-06-30 及之前的模型文件...
+[2025-08-27 14:26:19] [INFO] 已清理 2025-06-30 之前的模型
+[2025-08-27 14:26:19] [INFO] ================ 开始训练 2025-07-17 ================
+[2025-08-27 14:26:19] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-17/part-00000-373e8f01-8f31-4176-9b4f-c9ff4618295b-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-17, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-17/part-00000-373e8f01-8f31-4176-9b4f-c9ff4618295b-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16109916.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827143722 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-all                                  | 0.936602 | 0.999459 |      17573 |     12420887 | 0.001415 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.ZZKKO#shein                      | 0.793514 | 0.996891 |       1898 |     10348873 | 0.000183 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.788299 | 1.00037  |      13733 |      1545403 | 0.008886 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.796883 | 0.989259 |        555 |       292809 | 0.001895 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.SHOPEE#shopee.cps                | 0.854298 | 0.991982 |        603 |       133775 | 0.004508 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.787355 | 0.97869  |        651 |        54144 | 0.012023 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.ZZKKO.CPS#shein.cps              | 0.670061 | 1.41106  |         13 |        11923 | 0.00109  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.783843 | 1.08673  |        115 |         3734 | 0.030798 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10537055
+Dump model and predict finish.
+
+real	11m5.974s
+user	59m53.057s
+sys	3m43.601s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 14:37:25] [INFO] 模型保存完成: ./train_output/base.2025-07-17
+[2025-08-27 14:37:25] [INFO] 将清理 2025-07-01 及之前的模型文件...
+[2025-08-27 14:37:25] [INFO] 已清理 2025-07-01 之前的模型
+[2025-08-27 14:37:25] [INFO] ================ 开始训练 2025-07-18 ================
+[2025-08-27 14:37:25] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-18/part-00000-392f4a08-048d-4122-8fe0-5eab574e5ec5-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-18, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-18/part-00000-392f4a08-048d-4122-8fe0-5eab574e5ec5-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16127666.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827144750 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-all                                  | 0.932597 | 1.00085  |      18735 |     11794333 | 0.001588 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.ZZKKO#shein                      | 0.794274 | 1.00095  |       1820 |      9487043 | 0.000192 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.790324 | 0.998142 |      14659 |      1785678 | 0.008209 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.813376 | 1.016    |        557 |       206185 | 0.002701 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.SHOPEE#shopee.cps                | 0.864528 | 1.00807  |        789 |       135981 | 0.005802 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.779688 | 1.02536  |        744 |        72738 | 0.010228 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.ZZKKO.CPS#shein.cps              | 0.580573 | 1.1005   |         38 |        44689 | 0.00085  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-18 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.769702 | 1.04172  |        119 |         3901 | 0.030505 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10723309
+Dump model and predict finish.
+
+real	10m27.708s
+user	58m9.954s
+sys	3m32.375s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 14:47:54] [INFO] 模型保存完成: ./train_output/base.2025-07-18
+[2025-08-27 14:47:54] [INFO] 将清理 2025-07-02 及之前的模型文件...
+[2025-08-27 14:47:54] [INFO] 已清理 2025-07-02 之前的模型
+[2025-08-27 14:47:54] [INFO] ================ 开始训练 2025-07-19 ================
+[2025-08-27 14:47:54] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-19/part-00000-85b0de5c-8ba1-458f-be3d-c0977025507d-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-19, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-19/part-00000-85b0de5c-8ba1-458f-be3d-c0977025507d-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15747582.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827145734 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-all                                  | 0.928093 | 1.00184  |      18921 |     10399908 | 0.001819 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.ZZKKO#shein                      | 0.785212 | 1.01101  |       1490 |      7940907 | 0.000188 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.79271  | 1.00141  |      14789 |      1851809 | 0.007986 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.820325 | 1.00361  |        690 |       254722 | 0.002709 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.SHOPEE#shopee.cps                | 0.826741 | 1.00445  |       1062 |       185976 | 0.00571  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.759884 | 0.9902   |        762 |        68915 | 0.011057 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.ZZKKO.CPS#shein.cps              | 0.610159 | 1.0468   |         35 |        51221 | 0.000683 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-19 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.730069 | 0.942225 |         87 |         2210 | 0.039367 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10872083
+Dump model and predict finish.
+
+real	9m42.905s
+user	53m49.037s
+sys	3m10.240s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 14:57:37] [INFO] 模型保存完成: ./train_output/base.2025-07-19
+[2025-08-27 14:57:37] [INFO] 将清理 2025-07-03 及之前的模型文件...
+[2025-08-27 14:57:37] [INFO] 已清理 2025-07-03 之前的模型
+[2025-08-27 14:57:37] [INFO] ================ 开始训练 2025-07-20 ================
+[2025-08-27 14:57:37] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-20/part-00000-3ed46af7-2545-4660-ab76-95086ecf6b11-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-20, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-20/part-00000-3ed46af7-2545-4660-ab76-95086ecf6b11-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15384540.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827150557 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-all                                  | 0.921904 | 0.99756  |      18434 |      9077160 | 0.002031 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.ZZKKO#shein                      | 0.778086 | 0.991925 |       1448 |      6703477 | 0.000216 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.791599 | 0.999101 |      14511 |      1805224 | 0.008038 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.826154 | 0.96647  |        638 |       197879 | 0.003224 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.SHOPEE#shopee.cps                | 0.815892 | 0.994882 |        976 |       170247 | 0.005733 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.780626 | 0.995985 |        739 |        64835 | 0.011398 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.ZZKKO.CPS#shein.cps              | 0.648333 | 0.948017 |         39 |        50338 | 0.000775 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-20 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.717568 | 0.908955 |         72 |         1770 | 0.040678 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10999973
+Dump model and predict finish.
+
+real	8m22.595s
+user	47m50.030s
+sys	2m45.308s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 15:06:00] [INFO] 模型保存完成: ./train_output/base.2025-07-20
+[2025-08-27 15:06:00] [INFO] 将清理 2025-07-04 及之前的模型文件...
+[2025-08-27 15:06:00] [INFO] 已清理 2025-07-04 之前的模型
+[2025-08-27 15:06:00] [INFO] ================ 开始训练 2025-07-21 ================
+[2025-08-27 15:06:00] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-21/part-00000-28c622ea-b07a-49fe-b7dc-58d59badc853-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-21, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-21/part-00000-28c622ea-b07a-49fe-b7dc-58d59badc853-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16214240.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827151547 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-all                                  | 0.922465 | 1.00239  |      18386 |     10960008 | 0.001678 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.ZZKKO#shein                      | 0.784575 | 0.999208 |       2046 |      8504263 | 0.000241 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.79662  | 1.00388  |      14038 |      1776721 | 0.007901 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.825432 | 0.978657 |        718 |       280885 | 0.002556 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.SHOPEE#shopee.cps                | 0.815766 | 1.00627  |        885 |       164394 | 0.005383 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.ZZKKO.CPS#shein.cps              | 0.602524 | 1.08383  |         51 |        66330 | 0.000769 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.757629 | 0.976595 |        575 |        57848 | 0.00994  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-21 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.706708 | 0.93702  |         64 |         1730 | 0.036994 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11175870
+Dump model and predict finish.
+
+real	9m49.349s
+user	56m3.310s
+sys	3m17.249s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 15:15:50] [INFO] 模型保存完成: ./train_output/base.2025-07-21
+[2025-08-27 15:15:50] [INFO] 将清理 2025-07-05 及之前的模型文件...
+[2025-08-27 15:15:50] [INFO] 已清理 2025-07-05 之前的模型
+[2025-08-27 15:15:50] [INFO] ================ 开始训练 2025-07-22 ================
+[2025-08-27 15:15:50] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-22/part-00000-0cfb84d2-c37c-45af-b362-c18dfc997115-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-22, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-22/part-00000-0cfb84d2-c37c-45af-b362-c18dfc997115-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16012914.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827152512 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-all                                  | 0.926728 | 0.998281 |      17786 |     10471525 | 0.001699 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.ZZKKO#shein                      | 0.786204 | 1.0072   |       1710 |      8166007 | 0.000209 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.792823 | 0.998883 |      13772 |      1709008 | 0.008058 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.830932 | 1.00318  |        574 |       202823 | 0.00283  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.SHOPEE#shopee.cps                | 0.795935 | 0.986246 |       1036 |       176667 | 0.005864 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.ZZKKO.CPS#shein.cps              | 0.614421 | 0.949452 |         52 |        62958 | 0.000826 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.772847 | 0.977796 |        551 |        59315 | 0.009289 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-22 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.734177 | 0.974499 |         74 |         1692 | 0.043735 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11319284
+Dump model and predict finish.
+
+real	9m25.189s
+user	53m17.668s
+sys	3m21.614s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 15:25:16] [INFO] 模型保存完成: ./train_output/base.2025-07-22
+[2025-08-27 15:25:16] [INFO] 将清理 2025-07-06 及之前的模型文件...
+[2025-08-27 15:25:16] [INFO] 已清理 2025-07-06 之前的模型
+[2025-08-27 15:25:16] [INFO] ================ 开始训练 2025-07-23 ================
+[2025-08-27 15:25:16] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-23/part-00000-c0ea1d44-abf5-4e85-99b2-755635ee55fe-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-23, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-23/part-00000-c0ea1d44-abf5-4e85-99b2-755635ee55fe-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16171757.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827153439 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-all                                  | 0.925871 | 1.00047  |      19185 |     10263344 | 0.001869 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.ZZKKO#shein                      | 0.789989 | 0.997505 |       1636 |      7778080 | 0.00021  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.794332 | 1.00164  |      14669 |      1762222 | 0.008324 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.818945 | 1.01888  |        693 |       251744 | 0.002753 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.SHOPEE#shopee.cps                | 0.792179 | 1.01114  |       1232 |       221076 | 0.005573 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.778321 | 0.980408 |        756 |        72803 | 0.010384 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.ZZKKO.CPS#shein.cps              | 0.663501 | 0.961096 |         67 |        71675 | 0.000935 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.657394 | 0.462977 |         37 |        11999 | 0.003084 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-23 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.784128 | 0.996141 |         83 |         1802 | 0.04606  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11461145
+Dump model and predict finish.
+
+real	9m25.203s
+user	53m21.892s
+sys	3m11.544s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 15:34:42] [INFO] 模型保存完成: ./train_output/base.2025-07-23
+[2025-08-27 15:34:42] [INFO] 将清理 2025-07-07 及之前的模型文件...
+[2025-08-27 15:34:42] [INFO] 已清理 2025-07-07 之前的模型
+[2025-08-27 15:34:42] [INFO] ================ 开始训练 2025-07-24 ================
+[2025-08-27 15:34:42] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-24/part-00000-220da64d-2418-4565-8096-51464c839c53-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-24, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-24/part-00000-220da64d-2418-4565-8096-51464c839c53-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16836405.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827154455 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-all                                  | 0.92672  | 0.999737 |      18648 |     10794026 | 0.001728 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.ZZKKO#shein                      | 0.799492 | 0.993118 |       1824 |      8271723 | 0.000221 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801965 | 0.999868 |      14154 |      1745507 | 0.008109 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.848614 | 1.08868  |        624 |       285302 | 0.002187 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.SHOPEE#shopee.cps                | 0.801865 | 0.999505 |       1124 |       250533 | 0.004486 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.ZZKKO.CPS#shein.cps              | 0.68017  | 1.11527  |         55 |        84155 | 0.000654 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.795546 | 1.00663  |        692 |        70477 | 0.009819 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.605845 | 0.36727  |         85 |        10778 | 0.007886 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-24 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.735053 | 0.971176 |         76 |         1870 | 0.040642 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11647329
+Dump model and predict finish.
+
+real	10m15.634s
+user	56m59.548s
+sys	3m45.344s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 15:44:58] [INFO] 模型保存完成: ./train_output/base.2025-07-24
+[2025-08-27 15:44:58] [INFO] 将清理 2025-07-08 及之前的模型文件...
+[2025-08-27 15:44:58] [INFO] 已清理 2025-07-08 之前的模型
+[2025-08-27 15:44:58] [INFO] ================ 开始训练 2025-07-25 ================
+[2025-08-27 15:44:58] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-25/part-00000-e2350920-917a-490d-91b1-1fef52521f03-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-25, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-25/part-00000-e2350920-917a-490d-91b1-1fef52521f03-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16439424.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827155414 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-all                                  | 0.921682 | 1.00029  |      18938 |     10276098 | 0.001843 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.ZZKKO#shein                      | 0.784182 | 1.00147  |       1701 |      7700949 | 0.000221 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.792929 | 0.999487 |      14487 |      1793458 | 0.008078 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.827755 | 1.17605  |        669 |       317201 | 0.002109 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.SHOPEE#shopee.cps                | 0.797213 | 0.998312 |        953 |       229257 | 0.004157 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.ZZKKO.CPS#shein.cps              | 0.759014 | 0.990886 |         69 |        79674 | 0.000866 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.77221  | 0.99695  |        770 |        77268 | 0.009965 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.660984 | 0.49201  |        207 |        23304 | 0.008883 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-25 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.754484 | 1.03122  |         72 |         1895 | 0.037995 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:11781749
+Dump model and predict finish.
+
+real	9m18.553s
+user	53m24.829s
+sys	3m2.988s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 15:54:17] [INFO] filt old feature......
+[2025-08-27 15:55:37] [INFO] 过滤掉的老特征数: 1239272
+[2025-08-27 15:55:37] [INFO] 模型保存完成: ./train_output/base.2025-07-25
+[2025-08-27 15:55:37] [INFO] 将清理 2025-07-09 及之前的模型文件...
+[2025-08-27 15:55:37] [INFO] 已清理 2025-07-09 之前的模型
+[2025-08-27 15:55:37] [INFO] ================ 开始训练 2025-07-26 ================
+[2025-08-27 15:55:38] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-26/part-00000-9967a7ca-f222-42fe-b09b-7397d489ca93-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-26, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-26/part-00000-9967a7ca-f222-42fe-b09b-7397d489ca93-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15873976.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827160628 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-all                                  | 0.924824 | 1.00053  |      19477 |     12008020 | 0.001622 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.ZZKKO#shein                      | 0.784675 | 0.997141 |       2037 |      9355970 | 0.000218 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799996 | 0.99933  |      14694 |      1886975 | 0.007787 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.SHOPEE#shopee.cps                | 0.806749 | 1.00203  |       1268 |       301826 | 0.004201 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.846908 | 1.00008  |        666 |       275776 | 0.002415 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.778743 | 1.01836  |        662 |        71368 | 0.009276 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.6714   | 0.84346  |         12 |        29780 | 0.000403 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.ZZKKO.CPS#shein.cps              | 0.681694 | 1.05585  |         18 |        26259 | 0.000685 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.638064 | 0.954866 |         42 |         9563 | 0.004392 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-436672029#aecps                      | 0.488525 | 1.305    |         16 |         8202 | 0.001951 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-26 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.73665  | 1.10966  |         60 |         1967 | 0.030503 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10710348
+Dump model and predict finish.
+
+real	10m53.171s
+user	60m56.820s
+sys	3m34.009s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 16:06:31] [INFO] filt old feature......
+[2025-08-27 16:07:53] [INFO] 过滤掉的老特征数: 77245
+[2025-08-27 16:07:54] [INFO] 模型保存完成: ./train_output/base.2025-07-26
+[2025-08-27 16:07:54] [INFO] 将清理 2025-07-10 及之前的模型文件...
+[2025-08-27 16:07:54] [INFO] 已清理 2025-07-10 之前的模型
+[2025-08-27 16:07:54] [INFO] ================ 开始训练 2025-07-27 ================
+[2025-08-27 16:07:54] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-27/part-00000-4405e08d-1de3-482b-b991-1088ff992819-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-27, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-27/part-00000-4405e08d-1de3-482b-b991-1088ff992819-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 16390392.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827161839 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-all                                  | 0.924874 | 1.0009   |      19715 |     12112224 | 0.001628 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.ZZKKO#shein                      | 0.790934 | 1.00176  |       1955 |      9064522 | 0.000216 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.828517 | 1.0021   |      15026 |      2258061 | 0.006654 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.832256 | 1.03604  |        712 |       302664 | 0.002352 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.SHOPEE#shopee.cps                | 0.806154 | 0.992522 |       1318 |       296278 | 0.004449 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.828474 | 1.00546  |        491 |        64589 | 0.007602 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.720219 | 0.75235  |         17 |        26913 | 0.000632 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-436672029#aecps                      | 0.517953 | 1.16316  |         29 |        21661 | 0.001339 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.ZZKKO.CPS#shein.cps              | 0.544709 | 0.903865 |         16 |        19262 | 0.000831 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.78452  | 0.482899 |         75 |         4902 | 0.0153   |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-27 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.697591 | 0.954905 |         72 |         1886 | 0.038176 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10797955
+Dump model and predict finish.
+
+real	10m48.406s
+user	65m36.299s
+sys	3m40.485s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 16:18:42] [INFO] filt old feature......
+[2025-08-27 16:19:59] [INFO] 过滤掉的老特征数: 81581
+[2025-08-27 16:20:00] [INFO] 模型保存完成: ./train_output/base.2025-07-27
+[2025-08-27 16:20:00] [INFO] 将清理 2025-07-11 及之前的模型文件...
+[2025-08-27 16:20:00] [INFO] 已清理 2025-07-11 之前的模型
+[2025-08-27 16:20:00] [INFO] ================ 开始训练 2025-07-28 ================
+[2025-08-27 16:20:00] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-28/part-00000-4c36227b-a2a5-4c10-b5d8-7a182f080edc-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-28, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-28/part-00000-4c36227b-a2a5-4c10-b5d8-7a182f080edc-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15737497.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827163014 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-all                                  | 0.921812 | 1.00047  |      20322 |     11495577 | 0.001768 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.ZZKKO#shein                      | 0.778949 | 0.998224 |       1980 |      8742743 | 0.000226 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.79866  | 0.999679 |      15633 |      2006432 | 0.007791 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.828936 | 1.02061  |        817 |       333945 | 0.002447 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.SHOPEE#shopee.cps                | 0.82922  | 0.999441 |       1208 |       236281 | 0.005113 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.771967 | 1.00558  |        470 |        65519 | 0.007173 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-436672029#aecps                      | 0.52603  | 1.01451  |         60 |        37042 | 0.00162  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.719663 | 0.834896 |         90 |         7588 | 0.011861 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-28 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.768703 | 1.01853  |         50 |         1430 | 0.034965 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10865878
+Dump model and predict finish.
+
+real	10m16.311s
+user	60m5.465s
+sys	3m25.979s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 16:30:16] [INFO] filt old feature......
+[2025-08-27 16:31:38] [INFO] 过滤掉的老特征数: 96195
+[2025-08-27 16:31:39] [INFO] 模型保存完成: ./train_output/base.2025-07-28
+[2025-08-27 16:31:39] [INFO] 将清理 2025-07-12 及之前的模型文件...
+[2025-08-27 16:31:39] [INFO] 已清理 2025-07-12 之前的模型
+[2025-08-27 16:31:39] [INFO] ================ 开始训练 2025-07-29 ================
+[2025-08-27 16:31:39] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-29/part-00000-90a8f248-e39c-4cdb-99b0-04c248ab17ee-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-29, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-29/part-00000-90a8f248-e39c-4cdb-99b0-04c248ab17ee-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15517246.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827164141 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-all                                  | 0.923735 | 1.00066  |      18927 |     11030137 | 0.001716 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.ZZKKO#shein                      | 0.788009 | 1.00383  |       1819 |      8410392 | 0.000216 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.80164  | 0.999984 |      14492 |      1888766 | 0.007673 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.805058 | 1.00101  |        638 |       248979 | 0.002562 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.SHOPEE#shopee.cps                | 0.81455  | 1.00697  |       1141 |       223020 | 0.005116 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.ZZKKO.CPS#shein.cps              | 0.680804 | 1.0208   |         59 |        89088 | 0.000662 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.771453 | 0.99871  |        482 |        68960 | 0.00699  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-436672029#aecps                      | 0.611831 | 1.00523  |         75 |        39248 | 0.001911 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.72501  | 0.955369 |        143 |        13584 | 0.010527 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-29 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.751304 | 0.984913 |         70 |         1762 | 0.039728 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10894460
+Dump model and predict finish.
+
+real	10m4.745s
+user	58m13.896s
+sys	3m14.588s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 16:41:44] [INFO] filt old feature......
+[2025-08-27 16:43:07] [INFO] 过滤掉的老特征数: 104883
+[2025-08-27 16:43:07] [INFO] 模型保存完成: ./train_output/base.2025-07-29
+[2025-08-27 16:43:07] [INFO] 将清理 2025-07-13 及之前的模型文件...
+[2025-08-27 16:43:07] [INFO] 已清理 2025-07-13 之前的模型
+[2025-08-27 16:43:07] [INFO] ================ 开始训练 2025-07-30 ================
+[2025-08-27 16:43:07] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-30/part-00000-5af4ec6c-1d4f-4731-ab52-054e99e13bfa-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-30, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-30/part-00000-5af4ec6c-1d4f-4731-ab52-054e99e13bfa-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15854924.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827165258 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-all                                  | 0.921533 | 0.999066 |      19947 |     11194981 | 0.001782 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.ZZKKO#shein                      | 0.789948 | 0.993413 |       1764 |      8340533 | 0.000211 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.797926 | 0.999795 |      15349 |      2022264 | 0.00759  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.788381 | 1.01413  |        912 |       378775 | 0.002408 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.SHOPEE#shopee.cps                | 0.814586 | 0.993246 |        974 |       189908 | 0.005129 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.ZZKKO.CPS#shein.cps              | 0.694107 | 1.0117   |         91 |        90625 | 0.001004 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.762702 | 1.00698  |        614 |        76515 | 0.008025 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-436672029#aecps                      | 0.653111 | 0.973564 |         98 |        42119 | 0.002327 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.665592 | 0.751628 |         67 |         2428 | 0.027595 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-30 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.783945 | 0.982101 |         69 |         1631 | 0.042305 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10924108
+Dump model and predict finish.
+
+real	9m53.709s
+user	57m49.185s
+sys	3m16.034s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 16:53:01] [INFO] filt old feature......
+[2025-08-27 16:54:22] [INFO] 过滤掉的老特征数: 107272
+[2025-08-27 16:54:23] [INFO] 模型保存完成: ./train_output/base.2025-07-30
+[2025-08-27 16:54:23] [INFO] 将清理 2025-07-14 及之前的模型文件...
+[2025-08-27 16:54:23] [INFO] 已清理 2025-07-14 之前的模型
+[2025-08-27 16:54:23] [INFO] ================ 开始训练 2025-07-31 ================
+[2025-08-27 16:54:23] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-31/part-00000-bb542618-1c89-48e2-837d-8d086529bfcd-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-07-31, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-07-31/part-00000-bb542618-1c89-48e2-837d-8d086529bfcd-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15710807.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827170513 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-all                                  | 0.925843 | 1.00019  |      19915 |     11438822 | 0.001741 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.ZZKKO#shein                      | 0.796138 | 1.00679  |       1828 |      8745201 | 0.000209 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.795026 | 0.999983 |      16001 |      2034733 | 0.007864 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.830704 | 0.992245 |        652 |       277534 | 0.002349 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.SHOPEE#shopee.cps                | 0.816534 | 1.0174   |        674 |       131303 | 0.005133 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.ZZKKO.CPS#shein.cps              | 0.638644 | 1.0235   |         59 |        91955 | 0.000642 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.774436 | 0.960477 |        436 |        53095 | 0.008212 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-436672029#aecps                      | 0.678169 | 0.997784 |        111 |        51056 | 0.002174 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.745659 | 1.04362  |         66 |         4675 | 0.014118 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-07-31 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.787483 | 0.931434 |         79 |         1625 | 0.048615 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10938545
+Dump model and predict finish.
+
+real	10m53.863s
+user	58m35.073s
+sys	3m10.472s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 17:05:17] [INFO] filt old feature......
+[2025-08-27 17:06:52] [INFO] 过滤掉的老特征数: 135013
+[2025-08-27 17:06:52] [INFO] 模型保存完成: ./train_output/base.2025-07-31
+[2025-08-27 17:06:52] [INFO] 将清理 2025-07-15 及之前的模型文件...
+[2025-08-27 17:06:52] [INFO] 已清理 2025-07-15 之前的模型
+[2025-08-27 17:06:52] [INFO] ================ 开始训练 2025-08-01 ================
+[2025-08-27 17:06:52] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-01/part-00000-bedb1603-2575-45ef-91b6-9a3f8c085c0a-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-01, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-01/part-00000-bedb1603-2575-45ef-91b6-9a3f8c085c0a-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15164771.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827171645 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-all                                  | 0.923388 | 1.0012   |      17932 |      9965938 | 0.001799 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.ZZKKO#shein                      | 0.78602  | 1.00454  |       1697 |      7607051 | 0.000223 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.795571 | 1.00186  |      14142 |      1795303 | 0.007877 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.843475 | 0.983327 |        548 |       184742 | 0.002966 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.SHOPEE#shopee.cps                | 0.798554 | 0.988041 |        928 |       130440 | 0.007114 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.ZZKKO.CPS#shein.cps              | 0.640734 | 0.937868 |         80 |        93333 | 0.000857 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-436672029#aecps                      | 0.659269 | 0.994762 |        104 |        56277 | 0.001848 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.778667 | 1.01203  |        263 |        39208 | 0.006708 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.652954 | 1.12586  |         10 |        36126 | 0.000277 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.714701 | 1.10799  |         79 |         6823 | 0.011578 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-01 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.779855 | 1.00847  |         80 |         1931 | 0.041429 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10898615
+Dump model and predict finish.
+
+real	9m55.831s
+user	54m12.795s
+sys	2m43.707s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 17:16:48] [INFO] filt old feature......
+[2025-08-27 17:18:24] [INFO] 过滤掉的老特征数: 150414
+[2025-08-27 17:18:25] [INFO] 模型保存完成: ./train_output/base.2025-08-01
+[2025-08-27 17:18:25] [INFO] 将清理 2025-07-16 及之前的模型文件...
+[2025-08-27 17:18:25] [INFO] 已清理 2025-07-16 之前的模型
+[2025-08-27 17:18:25] [INFO] ================ 开始训练 2025-08-02 ================
+[2025-08-27 17:18:25] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-02/part-00000-354aaa9f-fde9-417f-aa37-286780181f7e-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-02, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-02/part-00000-354aaa9f-fde9-417f-aa37-286780181f7e-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15370394.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827172832 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-all                                  | 0.920481 | 0.999079 |      19835 |     10220716 | 0.001941 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.ZZKKO#shein                      | 0.787166 | 1.00356  |       1564 |      7412559 | 0.000211 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.797714 | 0.998909 |      15196 |      1954446 | 0.007775 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.796123 | 0.968098 |       1069 |       286952 | 0.003725 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.SHOPEE#shopee.cps                | 0.816409 | 1.00206  |       1274 |       280229 | 0.004546 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.ZZKKO.CPS#shein.cps              | 0.703432 | 0.976052 |        124 |       129662 | 0.000956 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.780825 | 0.983339 |        313 |        42446 | 0.007374 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-436672029#aecps                      | 0.703501 | 0.995869 |         72 |        39230 | 0.001835 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.796623 | 1.04845  |         11 |        35124 | 0.000313 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.746999 | 1.20926  |        131 |        14062 | 0.009316 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-02 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.75829  | 1.03321  |         81 |         1985 | 0.040806 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10861322
+Dump model and predict finish.
+
+real	10m10.821s
+user	56m40.816s
+sys	2m49.544s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 17:28:36] [INFO] filt old feature......
+[2025-08-27 17:30:09] [INFO] 过滤掉的老特征数: 137490
+[2025-08-27 17:30:10] [INFO] 模型保存完成: ./train_output/base.2025-08-02
+[2025-08-27 17:30:10] [INFO] 将清理 2025-07-17 及之前的模型文件...
+[2025-08-27 17:30:10] [INFO] 已清理 2025-07-17 之前的模型
+[2025-08-27 17:30:10] [INFO] ================ 开始训练 2025-08-03 ================
+[2025-08-27 17:30:10] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-03/part-00000-ddb0b98f-157a-40f6-848e-f882aa90be58-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-03, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-03/part-00000-ddb0b98f-157a-40f6-848e-f882aa90be58-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15164968.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827174009 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-all                                  | 0.918607 | 1.00024  |      19448 |      9680448 | 0.002009 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.ZZKKO#shein                      | 0.786978 | 0.991472 |       1520 |      6929557 | 0.000219 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.796764 | 0.998489 |      14402 |      1863785 | 0.007727 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.799208 | 1.00376  |       1098 |       322607 | 0.003404 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.SHOPEE#shopee.cps                | 0.799087 | 0.999434 |       1460 |       271733 | 0.005373 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.ZZKKO.CPS#shein.cps              | 0.702065 | 1.00661  |         66 |        89263 | 0.000739 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.796768 | 1.03557  |        618 |        72917 | 0.008475 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-436672029#aecps                      | 0.728777 | 0.989879 |         67 |        36263 | 0.001848 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.711843 | 1.01369  |        129 |        14025 | 0.009198 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-03 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.769482 | 1.05716  |         80 |         2095 | 0.038186 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10817911
+Dump model and predict finish.
+
+real	10m2.288s
+user	55m31.164s
+sys	2m51.266s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 17:40:12] [INFO] filt old feature......
+[2025-08-27 17:41:49] [INFO] 过滤掉的老特征数: 124970
+[2025-08-27 17:41:49] [INFO] 模型保存完成: ./train_output/base.2025-08-03
+[2025-08-27 17:41:49] [INFO] 将清理 2025-07-18 及之前的模型文件...
+[2025-08-27 17:41:49] [INFO] 已清理 2025-07-18 之前的模型
+[2025-08-27 17:41:49] [INFO] ================ 开始训练 2025-08-04 ================
+[2025-08-27 17:41:50] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-04/part-00000-e4e1d4d0-93c1-4f7a-8755-df2275a7e8a3-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-04, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-04/part-00000-e4e1d4d0-93c1-4f7a-8755-df2275a7e8a3-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 15240040.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827175221 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-all                                  | 0.918028 | 0.999028 |      19770 |     10236741 | 0.001931 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.ZZKKO#shein                      | 0.780139 | 0.999149 |       1816 |      7564716 | 0.00024  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.795394 | 1.00128  |      14767 |      1903055 | 0.00776  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.801826 | 1.00524  |        903 |       269549 | 0.00335  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.SHOPEE#shopee.cps                | 0.811197 | 0.998306 |       1150 |       215735 | 0.005331 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.779038 | 0.922384 |        798 |        83497 | 0.009557 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.ZZKKO.CPS#shein.cps              | 0.649114 | 1.0596   |         55 |        74642 | 0.000737 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-436672029#aecps                      | 0.769606 | 0.990716 |         57 |        36587 | 0.001558 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.739445 | 1.01207  |        117 |        16808 | 0.006961 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-04 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.727215 | 1.05299  |         96 |         2786 | 0.034458 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10788637
+Dump model and predict finish.
+
+real	10m34.635s
+user	55m48.905s
+sys	3m12.967s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 17:52:24] [INFO] filt old feature......
+[2025-08-27 17:53:59] [INFO] 过滤掉的老特征数: 188312
+[2025-08-27 17:54:00] [INFO] 模型保存完成: ./train_output/base.2025-08-04
+[2025-08-27 17:54:00] [INFO] 将清理 2025-07-19 及之前的模型文件...
+[2025-08-27 17:54:00] [INFO] 已清理 2025-07-19 之前的模型
+[2025-08-27 17:54:00] [INFO] ================ 开始训练 2025-08-05 ================
+[2025-08-27 17:54:00] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-05/part-00000-02c0eb51-8a97-45a3-a107-2c2e5b73c414-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-05, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-05/part-00000-02c0eb51-8a97-45a3-a107-2c2e5b73c414-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14903753.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827180402 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-all                                  | 0.923885 | 1.00239  |      17433 |      9985489 | 0.001746 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.ZZKKO#shein                      | 0.792981 | 1.00649  |       1612 |      7612109 | 0.000212 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.794384 | 1.00001  |      12797 |      1641637 | 0.007795 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.797764 | 1.01314  |        778 |       264883 | 0.002937 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.SHOPEE#shopee.cps                | 0.805991 | 1.00482  |       1030 |       194615 | 0.005293 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.766354 | 1.01285  |        919 |        93734 | 0.009804 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.ZZKKO.CPS#shein.cps              | 0.698377 | 1.01983  |         56 |        72007 | 0.000778 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-436672029#aecps                      | 0.796389 | 0.985907 |         54 |        36226 | 0.001491 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.720742 | 0.948381 |         82 |        13139 | 0.006241 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-IOS.ALIEXPRESS.COM#aecps             | 0.408477 | 0.928736 |         10 |         3732 | 0.00268  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-05 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.736243 | 1.02883  |         89 |         2584 | 0.034443 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10688789
+Dump model and predict finish.
+
+real	10m5.974s
+user	53m21.063s
+sys	2m53.046s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 18:04:06] [INFO] filt old feature......
+[2025-08-27 18:05:43] [INFO] 过滤掉的老特征数: 126744
+[2025-08-27 18:05:43] [INFO] 模型保存完成: ./train_output/base.2025-08-05
+[2025-08-27 18:05:43] [INFO] 将清理 2025-07-20 及之前的模型文件...
+[2025-08-27 18:05:43] [INFO] 已清理 2025-07-20 之前的模型
+[2025-08-27 18:05:43] [INFO] ================ 开始训练 2025-08-06 ================
+[2025-08-27 18:05:44] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-06/part-00000-500efe88-91df-44f3-b490-6367d75dc8ca-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-06, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-06/part-00000-500efe88-91df-44f3-b490-6367d75dc8ca-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14984768.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827181552 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-all                                  | 0.925522 | 0.999274 |      18121 |     10161981 | 0.001783 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.ZZKKO#shein                      | 0.781005 | 1.00355  |       1560 |      7765623 | 0.000201 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.788871 | 0.99712  |      13652 |      1645678 | 0.008296 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.810597 | 1.00795  |        718 |       260889 | 0.002752 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.SHOPEE#shopee.cps                | 0.804117 | 1.00536  |        892 |       183270 | 0.004867 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.77003  | 1.00802  |        895 |        83025 | 0.01078  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-436672029#aecps                      | 0.735111 | 1.01725  |        126 |        69574 | 0.001811 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.ZZKKO.CPS#shein.cps              | 0.726464 | 1.03395  |         52 |        62239 | 0.000835 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.605974 | 0.553849 |         12 |        21018 | 0.000571 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.731589 | 0.886559 |        118 |        15698 | 0.007517 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-06 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.736947 | 1.11423  |         91 |         2931 | 0.031047 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10649471
+Dump model and predict finish.
+
+real	10m12.039s
+user	53m40.919s
+sys	3m9.557s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 18:15:56] [INFO] filt old feature......
+[2025-08-27 18:17:32] [INFO] 过滤掉的老特征数: 106876
+[2025-08-27 18:17:33] [INFO] 模型保存完成: ./train_output/base.2025-08-06
+[2025-08-27 18:17:33] [INFO] 将清理 2025-07-21 及之前的模型文件...
+[2025-08-27 18:17:33] [INFO] 已清理 2025-07-21 之前的模型
+[2025-08-27 18:17:33] [INFO] ================ 开始训练 2025-08-07 ================
+[2025-08-27 18:17:33] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-07/part-00000-5d8d4278-41a9-4b6a-9182-4569b1de3822-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-07, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-07/part-00000-5d8d4278-41a9-4b6a-9182-4569b1de3822-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14562820.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827182649 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-all                                  | 0.925493 | 1.00082  |      18436 |      8890691 | 0.002074 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.ZZKKO#shein                      | 0.790182 | 1.00924  |       1300 |      6495946 | 0.0002   |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.795704 | 1.00062  |      14299 |      1694188 | 0.00844  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.835884 | 1.02128  |        690 |       241563 | 0.002856 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.SHOPEE#shopee.cps                | 0.821307 | 1.02218  |        715 |       169156 | 0.004227 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.771576 | 0.988677 |        797 |        78101 | 0.010205 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-436672029#aecps                      | 0.76209  | 0.991205 |        143 |        65148 | 0.002195 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.ZZKKO.CPS#shein.cps              | 0.708506 | 0.986683 |         33 |        45186 | 0.00073  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.700357 | 0.914895 |        303 |        28722 | 0.010549 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-07 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.769689 | 0.948265 |        147 |         3943 | 0.037281 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10618598
+Dump model and predict finish.
+
+real	9m19.351s
+user	48m18.928s
+sys	2m43.053s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 18:26:52] [INFO] filt old feature......
+[2025-08-27 18:28:15] [INFO] 过滤掉的老特征数: 160020
+[2025-08-27 18:28:16] [INFO] 模型保存完成: ./train_output/base.2025-08-07
+[2025-08-27 18:28:16] [INFO] 将清理 2025-07-22 及之前的模型文件...
+[2025-08-27 18:28:16] [INFO] 已清理 2025-07-22 之前的模型
+[2025-08-27 18:28:16] [INFO] ================ 开始训练 2025-08-08 ================
+[2025-08-27 18:28:16] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-08/part-00000-3e942378-e527-4022-a4c6-8078a3437bb7-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-08, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-08/part-00000-3e942378-e527-4022-a4c6-8078a3437bb7-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14399013.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827183708 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-all                                  | 0.924945 | 1.00087  |      17163 |      8737122 | 0.001964 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.ZZKKO#shein                      | 0.77633  | 0.989662 |       1351 |      6433488 | 0.00021  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799573 | 1.00001  |      12811 |      1483276 | 0.008637 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.845609 | 1.00456  |        538 |       237098 | 0.002269 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.SHOPEE#shopee.cps                | 0.833678 | 0.984861 |        811 |       163704 | 0.004954 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-436672029#aecps                      | 0.748927 | 1.00503  |        220 |       111472 | 0.001974 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.ZZKKO.CPS#shein.cps              | 0.671246 | 1.03386  |         73 |        95682 | 0.000763 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.748303 | 1.01773  |        857 |        86483 | 0.009909 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.718489 | 1.04419  |        384 |        63718 | 0.006027 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-08 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.765482 | 0.939053 |        115 |         2876 | 0.039986 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10541502
+Dump model and predict finish.
+
+real	8m55.546s
+user	47m2.750s
+sys	2m28.100s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 18:37:11] [INFO] filt old feature......
+[2025-08-27 18:38:42] [INFO] 过滤掉的老特征数: 120850
+[2025-08-27 18:38:43] [INFO] 模型保存完成: ./train_output/base.2025-08-08
+[2025-08-27 18:38:43] [INFO] 将清理 2025-07-23 及之前的模型文件...
+[2025-08-27 18:38:43] [INFO] 已清理 2025-07-23 之前的模型
+[2025-08-27 18:38:43] [INFO] ================ 开始训练 2025-08-09 ================
+[2025-08-27 18:38:43] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-09/part-00000-f7e17876-84bc-43ab-b360-10b5fb5a5988-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-09, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-09/part-00000-f7e17876-84bc-43ab-b360-10b5fb5a5988-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14734718.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827184756 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-all                                  | 0.923727 | 1.00191  |      17449 |      9352235 | 0.001866 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.ZZKKO#shein                      | 0.780366 | 1.00311  |       1355 |      6820987 | 0.000199 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.799151 | 1.00169  |      12573 |      1598161 | 0.007867 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.844402 | 1.04644  |        513 |       252561 | 0.002031 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.SHOPEE#shopee.cps                | 0.79602  | 0.991012 |       1195 |       192424 | 0.00621  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.ZZKKO.CPS#shein.cps              | 0.690715 | 0.986932 |         78 |       109319 | 0.000714 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-436672029#aecps                      | 0.777836 | 0.987401 |        247 |       104534 | 0.002363 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.76823  | 0.966783 |        878 |        92161 | 0.009527 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.737217 | 0.991634 |        498 |        85602 | 0.005818 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-09 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.733703 | 1.0392   |        103 |         2926 | 0.035202 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10519540
+Dump model and predict finish.
+
+real	9m16.669s
+user	50m10.810s
+sys	2m37.273s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 18:47:59] [INFO] filt old feature......
+[2025-08-27 18:49:30] [INFO] 过滤掉的老特征数: 129401
+[2025-08-27 18:49:30] [INFO] 模型保存完成: ./train_output/base.2025-08-09
+[2025-08-27 18:49:30] [INFO] 将清理 2025-07-24 及之前的模型文件...
+[2025-08-27 18:49:30] [INFO] 已清理 2025-07-24 之前的模型
+[2025-08-27 18:49:30] [INFO] ================ 开始训练 2025-08-10 ================
+[2025-08-27 18:49:30] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-10/part-00000-de40e963-34a1-4164-a4c7-b18335336e93-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-10, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-10/part-00000-de40e963-34a1-4164-a4c7-b18335336e93-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14757732.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827185902 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-all                                  | 0.922715 | 0.998354 |      16536 |      9432033 | 0.001753 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.ZZKKO#shein                      | 0.782841 | 1.00141  |       1358 |      6899197 | 0.000197 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801032 | 1.00218  |      11821 |      1632614 | 0.007241 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.822899 | 1.03317  |        530 |       277912 | 0.001907 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.SHOPEE#shopee.cps                | 0.81549  | 0.984214 |       1043 |       164005 | 0.00636  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.ZZKKO.CPS#shein.cps              | 0.71587  | 1.05688  |         63 |       118340 | 0.000532 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-436672029#aecps                      | 0.758129 | 1.00377  |        246 |        96379 | 0.002552 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.778626 | 1.0136   |        783 |        89938 | 0.008706 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.757416 | 0.951846 |        509 |        65338 | 0.00779  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.ALIBABA.ALIEXPRESSHD#ae.rta      | 0.57324  | 0.330797 |         76 |        19335 | 0.003931 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-10 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.741356 | 1.01687  |         98 |         2841 | 0.034495 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10486375
+Dump model and predict finish.
+
+real	9m35.391s
+user	51m27.118s
+sys	2m41.791s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 18:59:06] [INFO] filt old feature......
+[2025-08-27 19:00:36] [INFO] 过滤掉的老特征数: 157967
+[2025-08-27 19:00:37] [INFO] 模型保存完成: ./train_output/base.2025-08-10
+[2025-08-27 19:00:37] [INFO] 将清理 2025-07-25 及之前的模型文件...
+[2025-08-27 19:00:37] [INFO] 已清理 2025-07-25 之前的模型
+[2025-08-27 19:00:37] [INFO] ================ 开始训练 2025-08-11 ================
+[2025-08-27 19:00:37] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-11/part-00000-be5ccec4-18a6-4cac-9590-eea3e5322709-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-11, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-11/part-00000-be5ccec4-18a6-4cac-9590-eea3e5322709-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14870395.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827191032 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-all                                  | 0.921207 | 0.999574 |      17840 |      9670114 | 0.001845 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.ZZKKO#shein                      | 0.782978 | 0.991226 |       1386 |      6881751 | 0.000201 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.804076 | 1.00148  |      12511 |      1660046 | 0.007537 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.79513  | 0.979639 |        931 |       466338 | 0.001996 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.SHOPEE#shopee.cps                | 0.797581 | 1.00814  |       1213 |       190266 | 0.006375 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.ZZKKO.CPS#shein.cps              | 0.714214 | 0.981034 |         71 |       127291 | 0.000558 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-436672029#aecps                      | 0.768536 | 1.00646  |        288 |       100564 | 0.002864 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.784383 | 0.975258 |        741 |        84081 | 0.008813 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.758738 | 1.05567  |        469 |        62555 | 0.007497 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-11 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.752913 | 0.955514 |        211 |        20230 | 0.01043  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10439448
+Dump model and predict finish.
+
+real	9m59.007s
+user	52m53.862s
+sys	3m0.197s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 19:10:36] [INFO] filt old feature......
+[2025-08-27 19:11:58] [INFO] 过滤掉的老特征数: 112186
+[2025-08-27 19:11:59] [INFO] 模型保存完成: ./train_output/base.2025-08-11
+[2025-08-27 19:11:59] [INFO] 将清理 2025-07-26 及之前的模型文件...
+[2025-08-27 19:11:59] [INFO] 已清理 2025-07-26 之前的模型
+[2025-08-27 19:11:59] [INFO] ================ 开始训练 2025-08-12 ================
+[2025-08-27 19:11:59] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-12/part-00000-a85c81e8-62e5-4750-b561-3ef916459f6a-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-12, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-12/part-00000-a85c81e8-62e5-4750-b561-3ef916459f6a-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14310346.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827192025 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-all                                  | 0.916666 | 0.999687 |      18334 |      8105293 | 0.002262 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.ZZKKO#shein                      | 0.77981  | 1.00577  |       1288 |      5461896 | 0.000236 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.806679 | 0.996406 |      13285 |      1578337 | 0.008417 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.795669 | 0.969111 |       1050 |       456121 | 0.002302 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.SHOPEE#shopee.cps                | 0.81421  | 0.995319 |        932 |       150108 | 0.006209 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.ZZKKO.CPS#shein.cps              | 0.706611 | 0.942318 |         59 |       129569 | 0.000455 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-436672029#aecps                      | 0.758555 | 0.990795 |        281 |        86383 | 0.003253 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.772584 | 1.00292  |        761 |        83733 | 0.009088 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.746944 | 1.05993  |        535 |        72017 | 0.007429 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-12 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.847421 | 1.32196  |        132 |        15741 | 0.008386 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10414566
+Dump model and predict finish.
+
+real	8m30.326s
+user	46m8.501s
+sys	2m27.454s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 19:20:29] [INFO] filt old feature......
+[2025-08-27 19:21:50] [INFO] 过滤掉的老特征数: 106294
+[2025-08-27 19:21:51] [INFO] 模型保存完成: ./train_output/base.2025-08-12
+[2025-08-27 19:21:51] [INFO] 将清理 2025-07-27 及之前的模型文件...
+[2025-08-27 19:21:51] [INFO] 已清理 2025-07-27 之前的模型
+[2025-08-27 19:21:51] [INFO] ================ 开始训练 2025-08-13 ================
+[2025-08-27 19:21:51] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-13/part-00000-5c9654ba-2a29-4547-b9d8-669d21df08a2-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-13, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-13/part-00000-5c9654ba-2a29-4547-b9d8-669d21df08a2-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14338233.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827193022 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-all                                  | 0.923076 | 1.00009  |      19616 |      8396718 | 0.002336 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.ZZKKO#shein                      | 0.791346 | 0.996216 |       1377 |      5731385 | 0.00024  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.81468  | 0.996554 |      14538 |      1593457 | 0.009124 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.802682 | 0.998574 |        795 |       311482 | 0.002552 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.SHOPEE#shopee.cps                | 0.887664 | 1.00407  |       1073 |       287183 | 0.003736 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.ZZKKO.CPS#shein.cps              | 0.709068 | 1.0345   |         92 |       132208 | 0.000696 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-436672029#aecps                      | 0.787765 | 1.00666  |        365 |       107660 | 0.00339  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.776284 | 1.06256  |        758 |        78514 | 0.009654 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.732011 | 0.99315  |        472 |        67809 | 0.006961 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-13 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.857778 | 1.00899  |        137 |        12124 | 0.0113   |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10421157
+Dump model and predict finish.
+
+real	8m34.083s
+user	45m24.088s
+sys	2m28.769s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 19:30:25] [INFO] filt old feature......
+[2025-08-27 19:31:49] [INFO] 过滤掉的老特征数: 126212
+[2025-08-27 19:31:49] [INFO] 模型保存完成: ./train_output/base.2025-08-13
+[2025-08-27 19:31:49] [INFO] 将清理 2025-07-28 及之前的模型文件...
+[2025-08-27 19:31:49] [INFO] 已清理 2025-07-28 之前的模型
+[2025-08-27 19:31:49] [INFO] ================ 开始训练 2025-08-14 ================
+[2025-08-27 19:31:50] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-14/part-00000-ee82df7f-b362-4796-94e3-355e490a05dc-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-14, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-14/part-00000-ee82df7f-b362-4796-94e3-355e490a05dc-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14094990.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827193955 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-all                                  | 0.922115 | 1.00157  |      15249 |      7883808 | 0.001934 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.ZZKKO#shein                      | 0.781061 | 1.00747  |       1261 |      5585770 | 0.000226 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.809879 | 1.00432  |      10375 |      1328982 | 0.007807 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.81047  | 1.02491  |        874 |       272603 | 0.003206 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.SHOPEE#shopee.cps                | 0.883292 | 1.01121  |        820 |       228432 | 0.00359  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.ZZKKO.CPS#shein.cps              | 0.709022 | 1.07416  |         70 |       145460 | 0.000481 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-436672029#aecps                      | 0.775498 | 0.981844 |        237 |        76606 | 0.003094 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.737223 | 0.950057 |        559 |        63929 | 0.008744 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.76032  | 0.957616 |        545 |        61570 | 0.008852 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-14 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.803587 | 0.977848 |        495 |        37522 | 0.013192 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10384167
+Dump model and predict finish.
+
+real	8m8.538s
+user	43m54.527s
+sys	2m36.323s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 19:39:58] [INFO] filt old feature......
+[2025-08-27 19:41:23] [INFO] 过滤掉的老特征数: 133753
+[2025-08-27 19:41:23] [INFO] 模型保存完成: ./train_output/base.2025-08-14
+[2025-08-27 19:41:23] [INFO] 将清理 2025-07-29 及之前的模型文件...
+[2025-08-27 19:41:23] [INFO] 已清理 2025-07-29 之前的模型
+[2025-08-27 19:41:23] [INFO] ================ 开始训练 2025-08-15 ================
+[2025-08-27 19:41:23] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-15/part-00000-320e962f-ddf5-4902-8de2-c8c780687159-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-15, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-15/part-00000-320e962f-ddf5-4902-8de2-c8c780687159-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14612415.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827195036 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-all                                  | 0.918048 | 0.999134 |      16813 |      9115468 | 0.001844 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.ZZKKO#shein                      | 0.788345 | 0.997671 |       1301 |      6309916 | 0.000206 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.809898 | 1.00313  |      11815 |      1802410 | 0.006555 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.792001 | 1.0027   |        770 |       261781 | 0.002941 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.SHOPEE#shopee.cps                | 0.860352 | 0.993802 |        697 |       191738 | 0.003635 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.ZZKKO.CPS#shein.cps              | 0.720066 | 0.91827  |         86 |       148883 | 0.000578 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-436672029#aecps                      | 0.751885 | 0.980519 |        343 |       114639 | 0.002992 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.722548 | 0.994972 |        893 |       100563 | 0.00888  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.799171 | 0.99869  |        481 |        58503 | 0.008222 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-15 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.831263 | 0.938523 |        413 |        35376 | 0.011675 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10380520
+Dump model and predict finish.
+
+real	9m16.644s
+user	48m22.529s
+sys	2m41.476s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 19:50:40] [INFO] filt old feature......
+[2025-08-27 19:52:01] [INFO] 过滤掉的老特征数: 111989
+[2025-08-27 19:52:02] [INFO] 模型保存完成: ./train_output/base.2025-08-15
+[2025-08-27 19:52:02] [INFO] 将清理 2025-07-30 及之前的模型文件...
+[2025-08-27 19:52:02] [INFO] 已清理 2025-07-30 之前的模型
+[2025-08-27 19:52:02] [INFO] ================ 开始训练 2025-08-16 ================
+[2025-08-27 19:52:02] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-16/part-00000-dfb95b23-f06b-444e-897f-cb3e7fc24e31-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-16, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-16/part-00000-dfb95b23-f06b-444e-897f-cb3e7fc24e31-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 14673096.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827200100 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-all                                  | 0.919049 | 1.00031  |      17392 |      8886787 | 0.001957 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.ZZKKO#shein                      | 0.775817 | 1.01492  |       1136 |      5987340 | 0.00019  |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.806806 | 1.00053  |      12336 |      1814659 | 0.006798 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.80703  | 1.03149  |        723 |       261595 | 0.002764 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.SHOPEE#shopee.cps                | 0.883008 | 1.00248  |        728 |       222722 | 0.003269 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.ZZKKO.CPS#shein.cps              | 0.740063 | 0.984308 |         80 |       149810 | 0.000534 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-436672029#aecps                      | 0.765541 | 0.999408 |        384 |       142471 | 0.002695 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.749601 | 0.989186 |        987 |        94930 | 0.010397 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.767794 | 1.00952  |        503 |        66637 | 0.007548 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-16 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.81752  | 0.9326   |        498 |        44309 | 0.011239 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10399087
+Dump model and predict finish.
+
+real	9m0.884s
+user	46m33.790s
+sys	2m33.580s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 20:01:03] [INFO] filt old feature......
+[2025-08-27 20:02:25] [INFO] 过滤掉的老特征数: 110627
+[2025-08-27 20:02:26] [INFO] 模型保存完成: ./train_output/base.2025-08-16
+[2025-08-27 20:02:26] [INFO] 将清理 2025-07-31 及之前的模型文件...
+[2025-08-27 20:02:26] [INFO] 已清理 2025-07-31 之前的模型
+[2025-08-27 20:02:26] [INFO] ================ 开始训练 2025-08-17 ================
+[2025-08-27 20:02:26] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-17/part-00000-3a5d4a18-92b0-49e4-a829-085def268f29-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v2-2025-08-17, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv/part=2025-08-17/part-00000-3a5d4a18-92b0-49e4-a829-085def268f29-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+Waiting trainDataQueue tobe empty...
+Size feature 14592596.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250827201047 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                          | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++===============================+=============================================+==========+==========+============+==============+==========+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-all                                  | 0.916581 | 1.00066  |      17779 |      8740776 | 0.002034 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.ZZKKO#shein                      | 0.79636  | 0.982774 |       1177 |      5834850 | 0.000202 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801149 | 1.00285  |      12386 |      1830440 | 0.006767 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.SHOPEE#shopee.cps                | 0.880256 | 1.00229  |       1107 |       279928 | 0.003955 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.817842 | 0.988953 |        705 |       228482 | 0.003086 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.ZZKKO.CPS#shein.cps              | 0.711853 | 1.05464  |         61 |       136856 | 0.000446 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-436672029#aecps                      | 0.716049 | 1.00385  |        418 |       136007 | 0.003073 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.760536 | 0.997687 |       1190 |       129318 | 0.009202 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.694683 | 1.12799  |         10 |        43756 | 0.000229 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.806646 | 0.961689 |        445 |        41637 | 0.010688 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| train-ivr3_tsbf_v2-2025-08-17 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.788055 | 1.0524   |        274 |        37650 | 0.007278 |
++-------------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:10411164
+Dump model and predict finish.
+
+real	8m24.208s
+user	47m0.665s
+sys	2m27.786s
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+[2025-08-27 20:10:50] [INFO] filt old feature......
+[2025-08-27 20:12:07] [INFO] 过滤掉的老特征数: 106818
+[2025-08-27 20:12:08] [INFO] 模型保存完成: ./train_output/base.2025-08-17
+[2025-08-27 20:12:08] [INFO] 将清理 2025-08-01 及之前的模型文件...
+[2025-08-27 20:12:08] [INFO] 已清理 2025-08-01 之前的模型
+[2025-08-27 20:12:21] [INFO] 训练完成，有效记录数: 1766715
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+log_file: ./log/train_20250827201221.log
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v3/csv
+ftrl_jar_path: /mnt/workspace/walter.wan/ftrl_in_git/target/ftrl_maven_walter-0.0.1-SNAPSHOT.jar
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+项目名称: ivr3_tsbf_v2
+[2025-08-27 20:12:21] [INFO] Filtering model file for model: ./train_output/base.2025-08-16
+[2025-08-27 20:13:42] [INFO] 
+********************** validation begin: model=./train_output/base.2025-08-16.filt, val_date=2025-08-17 ******************************
+model_type:ivr
+loadColName:conf/column_name
+Load 299 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 298
+Load 232 feature combine schemas.
+-Loading model from ./train_output/base.2025-08-16.filt......
+model load completely!
+当前时间：2025-08-27 20:13:46
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+max col for column_name is 298, but the column count for sample is 8
+max col for column_name is 298, but the column count for sample is 292
+ctr predict completely!
+当前时间：2025-08-27 20:15:45
+
+AucCollector at 20250827201545 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE                        | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++=============================+=============================================+==========+==========+============+==============+==========+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-all                                  | 0.916286 | 1.10001  |      17779 |      8740616 | 0.002034 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.ZZKKO#shein                      | 0.797033 | 0.831166 |       1177 |      5834741 | 0.000202 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.801269 | 1.13468  |      12386 |      1830407 | 0.006767 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.SHOPEE#shopee.cps                | 0.88019  | 1.02412  |       1107 |       279924 | 0.003955 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.LAZADA.ANDROID#lazada.cps        | 0.816914 | 0.91735  |        705 |       228479 | 0.003086 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.ZZKKO.CPS#shein.cps              | 0.721189 | 1.53322  |         61 |       136856 | 0.000446 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-436672029#aecps                      | 0.726403 | 1.65458  |        418 |       136006 | 0.003073 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.LAZADA.ANDROID#lazada.rta        | 0.761424 | 0.935242 |       1190 |       129313 | 0.009202 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.MIRAVIA.ANDROID#miravia.rta      | 0.713034 | 1.39383  |         10 |        43752 | 0.000229 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.ALIBABA.ALIEXPRESSHD#aerta       | 0.806371 | 1.09124  |        445 |        41637 | 0.010688 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-ivr3_tsbf_v2-2025-08-17 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.787484 | 1.23803  |        274 |        37650 | 0.007278 |
++-----------------------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 6
+当前时间：2025-08-27 20:15:46
+
+real	2m4.964s
+user	22m59.148s
+sys	0m29.488s
+[2025-08-27 20:15:47] [INFO] 
+********************** validation end: model=./train_output/base.2025-08-16.filt, val_date=2025-08-17 *****************************
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v2
+validation completely......
+train completely......

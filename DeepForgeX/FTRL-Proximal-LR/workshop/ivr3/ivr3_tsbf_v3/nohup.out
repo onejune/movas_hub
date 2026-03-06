@@ -1,0 +1,52 @@
+log_file: ./log/train_20250908071218.log
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v4/csv
+ftrl_jar_path: /mnt/data/oss_dsp_algo/tools/ftrl_jars/ftrl_maven_walter-0.0.1-SNAPSHOT.jar_v1.1
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v3
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+项目名称: ivr3_tsbf_v3
+[2025-09-08 07:12:18] [INFO] ================ 开始训练 2025-08-10 ================
+[2025-09-08 07:12:19] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v3
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v4/csv/part=2025-08-10/part-00000-9375b340-6847-4c3b-a313-c6994b8bcc74-c000.csv, confBase = ./conf/, name = train-ivr3_tsbf_v3-2025-08-10, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 323 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 322
+null fname duf_dev_product_num_11_30d
+
+real	0m0.206s
+user	0m0.143s
+sys	0m0.050s
+log_file: ./log/train_20250908071219.log
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v4/csv
+ftrl_jar_path: /mnt/data/oss_dsp_algo/tools/ftrl_jars/ftrl_maven_walter-0.0.1-SNAPSHOT.jar_v1.1
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v3
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+项目名称: ivr3_tsbf_v3
+[2025-09-08 07:12:19] [INFO] Filtering model file for model: ./train_output/base.2025-08-29
+awk: cannot open ./train_output/base.2025-08-29 (No such file or directory)
+[2025-09-08 07:13:36] [INFO] 
+********************** validation begin: model=./train_output/base.2025-08-29.filt, val_date=2025-08-30 ******************************
+model_type:ivr
+loadColName:conf/column_name
+Load 323 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 322
+null fname duf_dev_product_num_11_30d
+java.lang.RuntimeException: Not exist column duf_dev_product_num_11_30d line is duf_dev_product_num_11_30d#demand_pkgname
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.loadCombineSchema(SingleFeatureDataSource.java:71)
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.init(SingleFeatureDataSource.java:193)
+	at com.mobvista.ftrl.tools.OnlineReplay.main(OnlineReplay.java:87)
+usage: Online replay usage: [-conf <arg>] [-data <arg>] [-model <arg>]
+       [-name <arg>] [-out <arg>]
+ -conf <arg>    data config path
+ -data <arg>    data_path
+ -model <arg>   model_path
+ -name <arg>    validation tag
+ -out <arg>     output dir
+
+real	0m0.213s
+user	0m0.174s
+sys	0m0.024s
+[2025-09-08 07:13:37] [INFO] 
+********************** validation end: model=./train_output/base.2025-08-29.filt, val_date=2025-08-30 *****************************
+current_dir: /mnt/workspace/walter.wan/ivr3/ivr3_tsbf_v3
+validation completely......
+train completely......

@@ -1,0 +1,655 @@
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv
+ftrl_jar_path: /mnt/data/oss_dsp_algo/tools/ftrl_jars/ftrl_maven_walter-0.0.1-SNAPSHOT.jar_v1.1
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+[2025-07-08 16:52:00] [INFO] ================ 开始训练 2025-06-21 ================
+[2025-07-08 16:52:00] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-21/part-00000-24882d62-5fe7-4c1e-8f25-3734c5853d11-c000.csv, confBase = ./conf/, name = 2025-06-21, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-21/part-00000-24882d62-5fe7-4c1e-8f25-3734c5853d11-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+Waiting trainDataQueue tobe empty...
+Size feature 9617427.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708170230 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+----------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================================+==========+==========+============+==============+==========+
+| 2025-06-21 | metric-all                             | 0.932862 | 0.997725 |      17762 |     13224075 | 0.001343 |
++------------+----------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-21 | metric-COM.ZZKKO#shein                 | 0.796749 | 1.01432  |       2490 |     10797807 | 0.000231 |
++------------+----------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-21 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps  | 0.786114 | 0.999735 |      10492 |      1149075 | 0.009131 |
++------------+----------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-21 | metric-COM.SHOPEE#shopee.cps           | 0.796548 | 0.981072 |        960 |       263116 | 0.003649 |
++------------+----------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-21 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop | 0.708492 | 1.00025  |       2879 |       204071 | 0.014108 |
++------------+----------------------------------------+----------+----------+------------+--------------+----------+
+total features:7608039
+Dump model and predict finish.
+
+real	10m31.736s
+user	58m55.743s
+sys	4m10.770s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 17:02:33] [INFO] 模型保存完成: ./train_output/base.2025-06-21
+[2025-07-08 17:02:33] [INFO] 已清理 2025-06-05 之前的模型
+[2025-07-08 17:02:33] [INFO] ================ 开始训练 2025-06-22 ================
+[2025-07-08 17:02:33] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-22/part-00000-c90fdd12-0745-4fcf-b1df-6b84793e329f-c000.csv, confBase = ./conf/, name = 2025-06-22, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-22/part-00000-c90fdd12-0745-4fcf-b1df-6b84793e329f-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 9652560.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708171305 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-22 | metric-all                                  | 0.929485 | 0.9999   |      18907 |     12803923 | 0.001477 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-22 | metric-COM.ZZKKO#shein                      | 0.794051 | 1.01108  |       2611 |     10264978 | 0.000254 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-22 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.785337 | 1.00251  |      10164 |      1087697 | 0.009345 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-22 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.712132 | 0.997845 |       4011 |       315601 | 0.012709 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-22 | metric-COM.SHOPEE#shopee.cps                | 0.805627 | 1.00426  |       1121 |       307107 | 0.00365  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-22 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.765589 | 0.98541  |        507 |        47335 | 0.010711 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7665255
+Dump model and predict finish.
+
+real	10m33.426s
+user	57m6.313s
+sys	3m45.538s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 17:13:08] [INFO] 模型保存完成: ./train_output/base.2025-06-22
+[2025-07-08 17:13:08] [INFO] 已清理 2025-06-06 之前的模型
+[2025-07-08 17:13:08] [INFO] ================ 开始训练 2025-06-23 ================
+[2025-07-08 17:13:08] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-23/part-00000-837fe016-9c38-4c54-9e5d-3023f3604cc8-c000.csv, confBase = ./conf/, name = 2025-06-23, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-23/part-00000-837fe016-9c38-4c54-9e5d-3023f3604cc8-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 9840744.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708172351 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-23 | metric-all                                  | 0.927851 | 1.00071  |      18964 |     14007625 | 0.001354 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-23 | metric-COM.ZZKKO#shein                      | 0.801143 | 1.00929  |       3013 |     11469380 | 0.000263 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-23 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.779548 | 1.00027  |      11512 |      1186890 | 0.009699 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-23 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.709793 | 1.01225  |       2403 |       264386 | 0.009089 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-23 | metric-COM.SHOPEE#shopee.cps                | 0.805604 | 0.996195 |        983 |       254731 | 0.003859 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-23 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.771321 | 1.00408  |        599 |        60331 | 0.009929 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7730337
+Dump model and predict finish.
+
+real	10m44.339s
+user	59m31.652s
+sys	3m53.826s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 17:23:54] [INFO] 模型保存完成: ./train_output/base.2025-06-23
+[2025-07-08 17:23:54] [INFO] 已清理 2025-06-07 之前的模型
+[2025-07-08 17:23:54] [INFO] ================ 开始训练 2025-06-24 ================
+[2025-07-08 17:23:54] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-24/part-00000-7a7519fb-04c4-4d61-b0b8-d9be75f0e490-c000.csv, confBase = ./conf/, name = 2025-06-24, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-24/part-00000-7a7519fb-04c4-4d61-b0b8-d9be75f0e490-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 9784998.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708173402 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-24 | metric-all                                  | 0.922254 | 1.00089  |      19578 |     12873217 | 0.001521 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-24 | metric-COM.ZZKKO#shein                      | 0.793092 | 1.00422  |       3101 |     10306757 | 0.000301 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-24 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.77844  | 1.00049  |      12911 |      1343368 | 0.009611 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-24 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.721892 | 1.00691  |       1579 |       225954 | 0.006988 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-24 | metric-COM.SHOPEE#shopee.cps                | 0.823187 | 1.01159  |        779 |       167317 | 0.004656 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-24 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.755293 | 0.989094 |        821 |        93209 | 0.008808 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7789604
+Dump model and predict finish.
+
+real	10m9.542s
+user	55m11.793s
+sys	3m47.575s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 17:34:05] [INFO] 模型保存完成: ./train_output/base.2025-06-24
+[2025-07-08 17:34:05] [INFO] 已清理 2025-06-08 之前的模型
+[2025-07-08 17:34:05] [INFO] ================ 开始训练 2025-06-25 ================
+[2025-07-08 17:34:05] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-25/part-00000-837a4686-a14a-422f-ba59-60a504c322fd-c000.csv, confBase = ./conf/, name = 2025-06-25, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-25/part-00000-837a4686-a14a-422f-ba59-60a504c322fd-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 9885322.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708174459 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-25 | metric-all                                  | 0.926301 | 0.999538 |      20574 |     12992900 | 0.001583 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-25 | metric-COM.ZZKKO#shein                      | 0.803489 | 1.01244  |       2984 |     10414371 | 0.000287 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-25 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.782494 | 0.996128 |      13573 |      1436301 | 0.00945  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-25 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.720687 | 0.997145 |       2222 |       234062 | 0.009493 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-25 | metric-COM.SHOPEE#shopee.cps                | 0.803934 | 0.999379 |        652 |       129572 | 0.005032 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-25 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.781605 | 1.04242  |        750 |        79228 | 0.009466 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7849539
+Dump model and predict finish.
+
+real	10m56.756s
+user	57m32.032s
+sys	3m36.838s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 17:45:03] [INFO] 模型保存完成: ./train_output/base.2025-06-25
+[2025-07-08 17:45:03] [INFO] 已清理 2025-06-09 之前的模型
+[2025-07-08 17:45:03] [INFO] ================ 开始训练 2025-06-26 ================
+[2025-07-08 17:45:04] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-26/part-00000-1ba92557-4ad5-4776-bfbf-904f575265f6-c000.csv, confBase = ./conf/, name = 2025-06-26, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-26/part-00000-1ba92557-4ad5-4776-bfbf-904f575265f6-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+Waiting trainDataQueue tobe empty...
+Size feature 10014373.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708175630 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-26 | metric-all                                  | 0.932608 | 1.00001  |      21852 |     13866395 | 0.001576 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-26 | metric-COM.ZZKKO#shein                      | 0.805392 | 1.00326  |       2912 |     11263180 | 0.000259 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-26 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.779288 | 1.00023  |      14289 |      1366489 | 0.010457 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-26 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.712169 | 0.998074 |       2723 |       252782 | 0.010772 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-26 | metric-COM.SHOPEE#shopee.cps                | 0.803376 | 1.00384  |        792 |       180034 | 0.004399 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-26 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.766334 | 1.00907  |        751 |        81026 | 0.009269 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7909115
+Dump model and predict finish.
+
+real	11m28.051s
+user	59m37.410s
+sys	3m43.453s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 17:56:33] [INFO] 模型保存完成: ./train_output/base.2025-06-26
+[2025-07-08 17:56:33] [INFO] 已清理 2025-06-10 之前的模型
+[2025-07-08 17:56:33] [INFO] ================ 开始训练 2025-06-27 ================
+[2025-07-08 17:56:33] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-27/part-00000-fdb80487-9736-47bf-8651-c2f62dca07d2-c000.csv, confBase = ./conf/, name = 2025-06-27, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-27/part-00000-fdb80487-9736-47bf-8651-c2f62dca07d2-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+Waiting trainDataQueue tobe empty...
+Size feature 9975891.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708180654 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-27 | metric-all                                  | 0.934779 | 0.998658 |      20489 |     13115764 | 0.001562 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-27 | metric-COM.ZZKKO#shein                      | 0.806825 | 1.00407  |       2737 |     10689105 | 0.000256 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-27 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.786945 | 0.997764 |      13344 |      1215382 | 0.010979 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-27 | metric-COM.SHOPEE#shopee.cps                | 0.804381 | 0.983265 |        968 |       248240 | 0.003899 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-27 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.717542 | 1.00134  |       2390 |       203279 | 0.011757 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-27 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.773417 | 1.03752  |        656 |        63880 | 0.010269 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7968607
+Dump model and predict finish.
+
+real	10m22.804s
+user	65m24.651s
+sys	3m39.121s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 18:06:57] [INFO] 模型保存完成: ./train_output/base.2025-06-27
+[2025-07-08 18:06:57] [INFO] 已清理 2025-06-11 之前的模型
+[2025-07-08 18:06:57] [INFO] ================ 开始训练 2025-06-28 ================
+[2025-07-08 18:06:57] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-28/part-00000-25373c38-75c3-465a-a96a-11900b1ccb60-c000.csv, confBase = ./conf/, name = 2025-06-28, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-28/part-00000-25373c38-75c3-465a-a96a-11900b1ccb60-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 9967006.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708181712 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-28 | metric-all                                  | 0.93344  | 1.00043  |      22925 |     12502877 | 0.001834 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-28 | metric-COM.ZZKKO#shein                      | 0.791705 | 1.01318  |       2354 |      9795349 | 0.00024  |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-28 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.784784 | 1.00531  |      14382 |      1457809 | 0.009865 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-28 | metric-COM.SHOPEE#shopee.cps                | 0.783114 | 1.00514  |       1076 |       318753 | 0.003376 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-28 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.708557 | 0.997466 |       3844 |       200907 | 0.019133 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-28 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.757416 | 0.937678 |        796 |        68840 | 0.011563 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:8025569
+Dump model and predict finish.
+
+real	10m16.351s
+user	54m40.565s
+sys	5m25.902s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 18:17:15] [INFO] 模型保存完成: ./train_output/base.2025-06-28
+[2025-07-08 18:17:15] [INFO] 已清理 2025-06-12 之前的模型
+[2025-07-08 18:17:15] [INFO] ================ 开始训练 2025-06-29 ================
+[2025-07-08 18:17:15] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-29/part-00000-af551706-3f84-4f29-a76f-ffbf0ade3942-c000.csv, confBase = ./conf/, name = 2025-06-29, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-29/part-00000-af551706-3f84-4f29-a76f-ffbf0ade3942-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 313, but the column count for sample is 8
+max col for column_name is 313, but the column count for sample is 307
+Waiting trainDataQueue tobe empty...
+Size feature 10377191.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708182804 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-29 | metric-all                                  | 0.928471 | 1.00056  |      21520 |     13306226 | 0.001617 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-29 | metric-COM.ZZKKO#shein                      | 0.799492 | 0.992138 |       2641 |      9971931 | 0.000265 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-29 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.844642 | 1.00428  |      13436 |      2045292 | 0.006569 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-29 | metric-COM.SHOPEE#shopee.cps                | 0.775943 | 0.990836 |       1339 |       354767 | 0.003774 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-29 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.698078 | 0.995942 |       3128 |       175841 | 0.017789 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-29 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.839893 | 1.03542  |        606 |        80511 | 0.007527 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:8106017
+Dump model and predict finish.
+
+real	10m50.464s
+user	73m46.981s
+sys	5m18.225s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 18:28:06] [INFO] filt old feature......
+[2025-07-08 18:29:09] [INFO] 过滤掉的老特征数: 547844
+[2025-07-08 18:29:11] [INFO] 模型保存完成: ./train_output/base.2025-06-29
+[2025-07-08 18:29:11] [INFO] 已清理 2025-06-13 之前的模型
+[2025-07-08 18:29:11] [INFO] ================ 开始训练 2025-06-30 ================
+[2025-07-08 18:29:11] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-30/part-00000-32f1dffa-1f4d-498f-bead-da4eed6bdfc7-c000.csv, confBase = ./conf/, name = 2025-06-30, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ruf_sample_v2/csv/part=2025-06-30/part-00000-32f1dffa-1f4d-498f-bead-da4eed6bdfc7-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 9771121.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250708184007 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+=============================================+==========+==========+============+==============+==========+
+| 2025-06-30 | metric-all                                  | 0.923977 | 1.00152  |      23437 |     13852721 | 0.001692 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-30 | metric-COM.ZZKKO#shein                      | 0.787149 | 0.99964  |       3075 |     10926409 | 0.000281 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-30 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.783247 | 0.999489 |      14179 |      1555581 | 0.009115 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-30 | metric-COM.SHOPEE#shopee.cps                | 0.794427 | 0.999604 |       1379 |       345720 | 0.003989 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-30 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.703835 | 1.00252  |       3859 |       306649 | 0.012584 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-30 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.776276 | 1.05166  |        625 |        75405 | 0.008289 |
++------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+total features:7626210
+Dump model and predict finish.
+
+real	10m57.918s
+user	58m55.095s
+sys	5m25.816s
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 18:40:09] [INFO] filt old feature......
+[2025-07-08 18:41:10] [INFO] 过滤掉的老特征数: 58097
+[2025-07-08 18:41:11] [INFO] 模型保存完成: ./train_output/base.2025-06-30
+[2025-07-08 18:41:11] [INFO] 已清理 2025-06-14 之前的模型
+[2025-07-08 18:41:20] [INFO] 训练完成，有效记录数: 941416
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+[2025-07-08 18:41:20] [INFO] Filtering model file for model: ./train_output/base.2025-06-29
+[2025-07-08 18:41:29] [INFO] 
+********************** validation begin: model=./train_output/base.2025-06-29.filt, val_date=2025-06-30 ******************************
+model_type:ivr
+loadColName:conf/column_name
+Load 314 columns, label column is label, index is 113, click_label index is 313, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 313
+Load 219 feature combine schemas.
+-Loading model from ./train_output/base.2025-06-29.filt......
+model load completely!
+当前时间：2025-07-08 18:41:32
+ctr predict completely!
+当前时间：2025-07-08 18:48:40
+
+AucCollector at 20250708184840 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
+-调用分类py
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                                         |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+=============================================+==========+==========+============+==============+==========+
+| val-2025-06-30 | metric-all                                  | 0.923567 | 1.07416  |      23437 |     13852383 | 0.001692 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-30 | metric-COM.ZZKKO#shein                      | 0.787333 | 1.07738  |       3075 |     10926132 | 0.000281 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-30 | metric-COM.ALIBABA.ALIEXPRESSHD#aecps       | 0.782554 | 0.959543 |      14179 |      1555550 | 0.009115 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-30 | metric-COM.SHOPEE#shopee.cps                | 0.792838 | 1.12778  |       1379 |       345713 | 0.003989 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-30 | metric-COM.SS.ANDROID.UGC.TRILL#ttshop      | 0.704654 | 1.47278  |       3859 |       306640 | 0.012585 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-30 | metric-COM.ALIBABA.ALIEXPRESSHD#mena.ae.cps | 0.775871 | 1.12122  |        625 |        75403 | 0.008289 |
++----------------+---------------------------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 0
+当前时间：2025-07-08 18:48:41
+
+real	7m12.786s
+user	36m56.716s
+sys	0m49.141s
+[2025-07-08 18:48:42] [INFO] 
+********************** validation end: model=./train_output/base.2025-06-29.filt, val_date=2025-06-30 *****************************
+current_dir: /mnt/workspace/walter.wan/ruf2/ruf2_v5
+validation completely......
+train completely......

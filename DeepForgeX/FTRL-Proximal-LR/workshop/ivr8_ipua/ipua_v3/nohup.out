@@ -1,0 +1,44 @@
+log_file: ./log/train_20251022175722.log
+oss_sample_path: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv
+ftrl_jar_path: /mnt/workspace/walter.wan/ftrl_in_git/target/ftrl_maven_walter-0.0.1-SNAPSHOT.jar
+[2025-10-22 17:57:22] [INFO] 中断控制文件已创建: train_interrupt.flag
+current_dir: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v3
+lib_common.sh 所在的目录是: /mnt/workspace/walter.wan/utils
+项目名称: ipua_v3
+[2025-10-22 17:57:22] [INFO] ================ 开始训练 2025-09-01 ================
+[2025-10-22 17:57:23] [INFO] 启动模型训练...
+Current Directory: /mnt/workspace/walter.wan/ivr8_ipua/ipua_v3
+args: input = /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-01/part-00000-fd498513-29c4-4fca-b17e-76b88b7c4e7d-c000.csv, confBase = ./conf/, name = train-ipua_v3-2025-09-01, format = f
+model_type:ivr
+loadColName:./conf/column_name
+Load 588 columns, label column is label, index is 112, click_label index is 255, keys column is [demand_pkgname,business_type], index is [12, 114], max_col is 587
+Load 306 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+-Loading model from ./train_output/base......
+Begin training ...
+sample_path=/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v8/csv/part=2025-09-01/part-00000-fd498513-29c4-4fca-b17e-76b88b7c4e7d-c000.csv
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.9000, 
+feature_freqence_threshold=6, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609
+java.lang.ArrayIndexOutOfBoundsException: 113
+	at com.mobvista.ftrl.datasource.SingleFeatureDataSource.extracSample(SingleFeatureDataSource.java:214)
+	at com.mobvista.ftrl.train.LocalParaTrainer$RunParser.run(LocalParaTrainer.java:448)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609
+java.lang.ArrayIndexOutOfBoundsException
+max col for column_name is 587, but the column count for sample is 581, requestid is 2911609

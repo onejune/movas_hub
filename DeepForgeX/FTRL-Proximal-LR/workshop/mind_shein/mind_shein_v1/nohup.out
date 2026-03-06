@@ -1,0 +1,2911 @@
+[2025-06-11 04:09:11] [INFO] ======== 开始训练 2025-04-12 ========
+[2025-06-11 04:09:11] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-12, confBase = ./conf/, name = 2025-04-12, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-12
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 91799261.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611042200 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-04-12 | metric-all             | 0.765155 | 0.875418 |       1840 |     13265129 | 0.000139 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-12 | metric-COM.ZZKKO#shein | 0.765155 | 0.875418 |       1840 |     13265129 | 0.000139 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:78666432
+Dump model and predict finish.
+
+real	12m51.760s
+user	90m13.131s
+sys	7m9.487s
+[2025-06-11 04:22:08] [INFO] 模型保存完成: ./train_output/base.2025-04-12
+[2025-06-11 04:22:08] [INFO] 已清理 2025-04-02 之前的模型
+[2025-06-11 04:22:08] [INFO] ======== 开始训练 2025-04-13 ========
+[2025-06-11 04:22:08] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-13, confBase = ./conf/, name = 2025-04-13, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-13
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80020893.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611043422 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+----------+------------+--------------+----------+
+| DATE       | Key                    |     AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+=========+==========+============+==============+==========+
+| 2025-04-13 | metric-all             | 0.77831 | 0.998244 |       1719 |     13431601 | 0.000128 |
++------------+------------------------+---------+----------+------------+--------------+----------+
+| 2025-04-13 | metric-COM.ZZKKO#shein | 0.77831 | 0.998244 |       1719 |     13431601 | 0.000128 |
++------------+------------------------+---------+----------+------------+--------------+----------+
+total features:78830126
+Dump model and predict finish.
+
+real	12m15.838s
+user	66m39.075s
+sys	3m43.960s
+[2025-06-11 04:34:29] [INFO] 模型保存完成: ./train_output/base.2025-04-13
+[2025-06-11 04:34:29] [INFO] 已清理 2025-04-03 之前的模型
+[2025-06-11 04:34:29] [INFO] ======== 开始训练 2025-04-14 ========
+[2025-06-11 04:34:29] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-14, confBase = ./conf/, name = 2025-04-14, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-14
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80279443.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611044654 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-14 | metric-all             | 0.789411 | 1.00289 |       2018 |     13997275 | 0.000144 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-14 | metric-COM.ZZKKO#shein | 0.789411 | 1.00289 |       2018 |     13997275 | 0.000144 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:79003886
+Dump model and predict finish.
+
+real	12m27.244s
+user	68m12.923s
+sys	4m8.026s
+[2025-06-11 04:47:01] [INFO] 模型保存完成: ./train_output/base.2025-04-14
+[2025-06-11 04:47:01] [INFO] 已清理 2025-04-04 之前的模型
+[2025-06-11 04:47:01] [INFO] ======== 开始训练 2025-04-15 ========
+[2025-06-11 04:47:01] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-15, confBase = ./conf/, name = 2025-04-15, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-15
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80307019.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611045838 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-15 | metric-all             | 0.781327 | 1.00123 |       1998 |     13021121 | 0.000153 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-15 | metric-COM.ZZKKO#shein | 0.781327 | 1.00123 |       1998 |     13021121 | 0.000153 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:79161358
+Dump model and predict finish.
+
+real	11m38.857s
+user	62m28.074s
+sys	4m11.730s
+[2025-06-11 04:58:45] [INFO] 模型保存完成: ./train_output/base.2025-04-15
+[2025-06-11 04:58:45] [INFO] 已清理 2025-04-05 之前的模型
+[2025-06-11 04:58:45] [INFO] ======== 开始训练 2025-04-16 ========
+[2025-06-11 04:58:45] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-16, confBase = ./conf/, name = 2025-04-16, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-16
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80337159.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611051046 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-04-16 | metric-all             | 0.788471 | 0.991585 |       1949 |     12381266 | 0.000157 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-16 | metric-COM.ZZKKO#shein | 0.788471 | 0.991585 |       1949 |     12381266 | 0.000157 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:79300246
+Dump model and predict finish.
+
+real	12m2.618s
+user	65m55.947s
+sys	3m31.762s
+[2025-06-11 05:10:53] [INFO] 模型保存完成: ./train_output/base.2025-04-16
+[2025-06-11 05:10:53] [INFO] 已清理 2025-04-06 之前的模型
+[2025-06-11 05:10:53] [INFO] ======== 开始训练 2025-04-17 ========
+[2025-06-11 05:10:53] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-17, confBase = ./conf/, name = 2025-04-17, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-17
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80611848.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611052231 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-17 | metric-all             | 0.802784 | 1.00661 |       2179 |     13269204 | 0.000164 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-17 | metric-COM.ZZKKO#shein | 0.802784 | 1.00661 |       2179 |     13269204 | 0.000164 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:79456676
+Dump model and predict finish.
+
+real	11m39.622s
+user	89m53.660s
+sys	4m44.820s
+[2025-06-11 05:22:38] [INFO] 模型保存完成: ./train_output/base.2025-04-17
+[2025-06-11 05:22:38] [INFO] 已清理 2025-04-07 之前的模型
+[2025-06-11 05:22:38] [INFO] ======== 开始训练 2025-04-18 ========
+[2025-06-11 05:22:38] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-18, confBase = ./conf/, name = 2025-04-18, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-18
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 80730329.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611053404 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-04-18 | metric-all             | 0.781513 | 0.999333 |       2168 |     12666168 | 0.000171 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-18 | metric-COM.ZZKKO#shein | 0.781513 | 0.999333 |       2168 |     12666168 | 0.000171 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:79615819
+Dump model and predict finish.
+
+real	11m27.605s
+user	65m30.429s
+sys	3m23.055s
+[2025-06-11 05:34:11] [INFO] 模型保存完成: ./train_output/base.2025-04-18
+[2025-06-11 05:34:11] [INFO] 已清理 2025-04-08 之前的模型
+[2025-06-11 05:34:11] [INFO] ======== 开始训练 2025-04-19 ========
+[2025-06-11 05:34:11] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-19, confBase = ./conf/, name = 2025-04-19, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-19
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81115570.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611054638 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-19 | metric-all             | 0.795498 | 0.99637 |       2355 |     14266958 | 0.000165 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-19 | metric-COM.ZZKKO#shein | 0.795498 | 0.99637 |       2355 |     14266958 | 0.000165 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:79813432
+Dump model and predict finish.
+
+real	12m28.390s
+user	69m1.636s
+sys	3m57.046s
+[2025-06-11 05:46:45] [INFO] 模型保存完成: ./train_output/base.2025-04-19
+[2025-06-11 05:46:45] [INFO] 已清理 2025-04-09 之前的模型
+[2025-06-11 05:46:45] [INFO] ======== 开始训练 2025-04-20 ========
+[2025-06-11 05:46:45] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-20, confBase = ./conf/, name = 2025-04-20, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-20
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81289132.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611055858 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-20 | metric-all             | 0.804841 | 1.00211 |       2522 |     13943048 | 0.000181 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-20 | metric-COM.ZZKKO#shein | 0.804841 | 1.00211 |       2522 |     13943048 | 0.000181 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:79995507
+Dump model and predict finish.
+
+real	12m15.153s
+user	64m29.440s
+sys	4m2.919s
+[2025-06-11 05:59:05] [INFO] 模型保存完成: ./train_output/base.2025-04-20
+[2025-06-11 05:59:05] [INFO] 已清理 2025-04-10 之前的模型
+[2025-06-11 05:59:05] [INFO] ======== 开始训练 2025-04-21 ========
+[2025-06-11 05:59:05] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-21, confBase = ./conf/, name = 2025-04-21, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-21
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81497399.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611061159 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-04-21 | metric-all             | 0.802757 | 0.997506 |       2577 |     14061608 | 0.000183 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-21 | metric-COM.ZZKKO#shein | 0.802757 | 0.997506 |       2577 |     14061608 | 0.000183 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:80183755
+Dump model and predict finish.
+
+real	12m55.736s
+user	69m1.527s
+sys	3m59.951s
+[2025-06-11 06:12:06] [INFO] 模型保存完成: ./train_output/base.2025-04-21
+[2025-06-11 06:12:06] [INFO] 已清理 2025-04-11 之前的模型
+[2025-06-11 06:12:06] [INFO] ======== 开始训练 2025-04-22 ========
+[2025-06-11 06:12:06] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-22, confBase = ./conf/, name = 2025-04-22, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-22
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81436864.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611062252 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-22 | metric-all             | 0.807859 | 1.00445 |       1852 |     11727722 | 0.000158 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-22 | metric-COM.ZZKKO#shein | 0.807859 | 1.00445 |       1852 |     11727722 | 0.000158 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:80332824
+Dump model and predict finish.
+
+real	10m47.888s
+user	58m40.578s
+sys	3m38.735s
+[2025-06-11 06:22:59] [INFO] 模型保存完成: ./train_output/base.2025-04-22
+[2025-06-11 06:23:00] [INFO] 已清理 2025-04-12 之前的模型
+[2025-06-11 06:23:00] [INFO] ======== 开始训练 2025-04-23 ========
+[2025-06-11 06:23:00] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-23, confBase = ./conf/, name = 2025-04-23, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-23
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 81935466.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611063526 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-04-23 | metric-all             | 0.801871 | 0.994964 |       2689 |     14278980 | 0.000188 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-23 | metric-COM.ZZKKO#shein | 0.801871 | 0.994964 |       2689 |     14278980 | 0.000188 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:80539353
+Dump model and predict finish.
+
+real	12m28.173s
+user	67m32.581s
+sys	4m23.287s
+[2025-06-11 06:35:33] [INFO] 模型保存完成: ./train_output/base.2025-04-23
+[2025-06-11 06:35:33] [INFO] 已清理 2025-04-13 之前的模型
+[2025-06-11 06:35:33] [INFO] ======== 开始训练 2025-04-24 ========
+[2025-06-11 06:35:33] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-24, confBase = ./conf/, name = 2025-04-24, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-24
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 82015873.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611064712 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-24 | metric-all             | 0.814149 | 1.00265 |       2525 |     12592313 | 0.000201 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-24 | metric-COM.ZZKKO#shein | 0.814149 | 1.00265 |       2525 |     12592313 | 0.000201 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:80735991
+Dump model and predict finish.
+
+real	11m40.025s
+user	60m6.206s
+sys	4m6.627s
+[2025-06-11 06:47:18] [INFO] 模型保存完成: ./train_output/base.2025-04-24
+[2025-06-11 06:47:18] [INFO] 已清理 2025-04-14 之前的模型
+[2025-06-11 06:47:18] [INFO] ======== 开始训练 2025-04-25 ========
+[2025-06-11 06:47:18] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-25, confBase = ./conf/, name = 2025-04-25, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-25
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 115
+max col for column_name is 254, but the column count for sample is 141
+max col for column_name is 254, but the column count for sample is 115
+max col for column_name is 254, but the column count for sample is 141
+max col for column_name is 254, but the column count for sample is 115
+max col for column_name is 254, but the column count for sample is 141
+Waiting trainDataQueue tobe empty...
+Size feature 82489378.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611070009 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-04-25 | metric-all             | 0.806531 | 0.99984 |       3060 |     14765510 | 0.000207 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-04-25 | metric-COM.ZZKKO#shein | 0.806531 | 0.99984 |       3060 |     14765510 | 0.000207 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:80968749
+Dump model and predict finish.
+
+real	12m52.115s
+user	69m44.783s
+sys	4m21.956s
+[2025-06-11 07:00:16] [INFO] 模型保存完成: ./train_output/base.2025-04-25
+[2025-06-11 07:00:16] [INFO] 已清理 2025-04-15 之前的模型
+[2025-06-11 07:00:16] [INFO] ======== 开始训练 2025-04-26 ========
+[2025-06-11 07:00:16] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-26, confBase = ./conf/, name = 2025-04-26, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-26
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 82638191.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611071251 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-04-26 | metric-all             | 0.800513 | 0.999854 |       2643 |     14073248 | 0.000188 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-04-26 | metric-COM.ZZKKO#shein | 0.800513 | 0.999854 |       2643 |     14073248 | 0.000188 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:81168247
+Dump model and predict finish.
+
+real	12m36.375s
+user	67m17.986s
+sys	4m2.960s
+[2025-06-11 07:12:58] [INFO] 模型保存完成: ./train_output/base.2025-04-26
+[2025-06-11 07:12:58] [INFO] 已清理 2025-04-16 之前的模型
+[2025-06-11 07:12:58] [INFO] ======== 开始训练 2025-04-27 ========
+[2025-06-11 07:12:58] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-27, confBase = ./conf/, name = 2025-04-27, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-27
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 115
+max col for column_name is 254, but the column count for sample is 141
+Waiting trainDataQueue tobe empty...
+Size feature 82944167.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611072600 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+--------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |   PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+========+============+==============+==========+
+| 2025-04-27 | metric-all             | 0.809529 | 1.0015 |       2786 |     14387667 | 0.000194 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+| 2025-04-27 | metric-COM.ZZKKO#shein | 0.809529 | 1.0015 |       2786 |     14387667 | 0.000194 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+total features:81383620
+Dump model and predict finish.
+
+real	13m3.980s
+user	74m41.485s
+sys	4m8.150s
+[2025-06-11 07:26:07] [INFO] 模型保存完成: ./train_output/base.2025-04-27
+[2025-06-11 07:26:07] [INFO] 已清理 2025-04-17 之前的模型
+[2025-06-11 07:26:07] [INFO] ======== 开始训练 2025-04-28 ========
+[2025-06-11 07:26:07] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-28, confBase = ./conf/, name = 2025-04-28, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-28
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83063556.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611073832 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+---------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |     IVR |
++============+========================+==========+==========+============+==============+=========+
+| 2025-04-28 | metric-all             | 0.807673 | 0.999853 |       3163 |     14365961 | 0.00022 |
++------------+------------------------+----------+----------+------------+--------------+---------+
+| 2025-04-28 | metric-COM.ZZKKO#shein | 0.807673 | 0.999853 |       3163 |     14365961 | 0.00022 |
++------------+------------------------+----------+----------+------------+--------------+---------+
+total features:81583606
+Dump model and predict finish.
+
+real	12m26.066s
+user	65m28.456s
+sys	4m47.144s
+[2025-06-11 07:38:39] [INFO] 模型保存完成: ./train_output/base.2025-04-28
+[2025-06-11 07:38:39] [INFO] 已清理 2025-04-18 之前的模型
+[2025-06-11 07:38:39] [INFO] ======== 开始训练 2025-04-29 ========
+[2025-06-11 07:38:39] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-29, confBase = ./conf/, name = 2025-04-29, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-29
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83021192.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611075031 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+--------+------------+--------------+----------+
+| DATE       | Key                    |     AUC |   PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+=========+========+============+==============+==========+
+| 2025-04-29 | metric-all             | 0.80418 | 1.0002 |       2567 |     13349034 | 0.000192 |
++------------+------------------------+---------+--------+------------+--------------+----------+
+| 2025-04-29 | metric-COM.ZZKKO#shein | 0.80418 | 1.0002 |       2567 |     13349034 | 0.000192 |
++------------+------------------------+---------+--------+------------+--------------+----------+
+total features:81751104
+Dump model and predict finish.
+
+real	11m54.017s
+user	65m5.480s
+sys	4m3.462s
+[2025-06-11 07:50:38] [INFO] 模型保存完成: ./train_output/base.2025-04-29
+[2025-06-11 07:50:38] [INFO] 已清理 2025-04-19 之前的模型
+[2025-06-11 07:50:38] [INFO] ======== 开始训练 2025-04-30 ========
+[2025-06-11 07:50:38] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-04-30, confBase = ./conf/, name = 2025-04-30, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-04-30
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83252577.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611080320 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+---------+------------+--------------+----------+
+| DATE       | Key                    |     AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+=========+=========+============+==============+==========+
+| 2025-04-30 | metric-all             | 0.80616 | 1.00259 |       2316 |     13448365 | 0.000172 |
++------------+------------------------+---------+---------+------------+--------------+----------+
+| 2025-04-30 | metric-COM.ZZKKO#shein | 0.80616 | 1.00259 |       2316 |     13448365 | 0.000172 |
++------------+------------------------+---------+---------+------------+--------------+----------+
+total features:81925366
+Dump model and predict finish.
+
+real	12m44.062s
+user	63m28.288s
+sys	4m12.523s
+[2025-06-11 08:03:28] [INFO] 模型保存完成: ./train_output/base.2025-04-30
+[2025-06-11 08:03:28] [INFO] 已清理 2025-04-20 之前的模型
+[2025-06-11 08:03:28] [INFO] ======== 开始训练 2025-05-01 ========
+[2025-06-11 08:03:28] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-01, confBase = ./conf/, name = 2025-05-01, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-01
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83238772.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611081423 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-01 | metric-all             | 0.801974 | 1.00037 |       2096 |     11837808 | 0.000177 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-01 | metric-COM.ZZKKO#shein | 0.801974 | 1.00037 |       2096 |     11837808 | 0.000177 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:82078418
+Dump model and predict finish.
+
+real	10m56.527s
+user	61m37.056s
+sys	3m29.043s
+[2025-06-11 08:14:30] [INFO] 模型保存完成: ./train_output/base.2025-05-01
+[2025-06-11 08:14:30] [INFO] 已清理 2025-04-21 之前的模型
+[2025-06-11 08:14:30] [INFO] ======== 开始训练 2025-05-02 ========
+[2025-06-11 08:14:30] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-02, confBase = ./conf/, name = 2025-05-02, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-02
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83254758.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611082513 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-02 | metric-all             | 0.805288 | 0.99807 |       1862 |     10754469 | 0.000173 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-02 | metric-COM.ZZKKO#shein | 0.805288 | 0.99807 |       1862 |     10754469 | 0.000173 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:82217622
+Dump model and predict finish.
+
+real	10m44.221s
+user	53m29.845s
+sys	3m13.589s
+[2025-06-11 08:25:20] [INFO] 模型保存完成: ./train_output/base.2025-05-02
+[2025-06-11 08:25:20] [INFO] 已清理 2025-04-22 之前的模型
+[2025-06-11 08:25:20] [INFO] ======== 开始训练 2025-05-03 ========
+[2025-06-11 08:25:20] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-03, confBase = ./conf/, name = 2025-05-03, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-03
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83319954.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611083548 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-03 | metric-all             | 0.786355 | 1.00289 |       1869 |     10294471 | 0.000182 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-03 | metric-COM.ZZKKO#shein | 0.786355 | 1.00289 |       1869 |     10294471 | 0.000182 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:82351158
+Dump model and predict finish.
+
+real	10m29.372s
+user	56m5.306s
+sys	3m8.829s
+[2025-06-11 08:35:55] [INFO] 模型保存完成: ./train_output/base.2025-05-03
+[2025-06-11 08:35:55] [INFO] 已清理 2025-04-23 之前的模型
+[2025-06-11 08:35:55] [INFO] ======== 开始训练 2025-05-04 ========
+[2025-06-11 08:35:55] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-04, confBase = ./conf/, name = 2025-05-04, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-04
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83813537.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611084821 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-04 | metric-all             | 0.807938 | 1.00193 |       2271 |     12980277 | 0.000175 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-04 | metric-COM.ZZKKO#shein | 0.807938 | 1.00193 |       2271 |     12980277 | 0.000175 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:82540789
+Dump model and predict finish.
+
+real	12m27.524s
+user	68m29.416s
+sys	3m58.903s
+[2025-06-11 08:48:28] [INFO] 模型保存完成: ./train_output/base.2025-05-04
+[2025-06-11 08:48:28] [INFO] 已清理 2025-04-24 之前的模型
+[2025-06-11 08:48:28] [INFO] ======== 开始训练 2025-05-05 ========
+[2025-06-11 08:48:28] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-05, confBase = ./conf/, name = 2025-05-05, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-05
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 83962697.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611090038 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-05 | metric-all             | 0.801911 | 0.995157 |       2589 |     12983851 | 0.000199 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-05 | metric-COM.ZZKKO#shein | 0.801911 | 0.995157 |       2589 |     12983851 | 0.000199 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:82719544
+Dump model and predict finish.
+
+real	12m10.727s
+user	68m12.126s
+sys	3m56.925s
+[2025-06-11 09:00:44] [INFO] 模型保存完成: ./train_output/base.2025-05-05
+[2025-06-11 09:00:45] [INFO] 已清理 2025-04-25 之前的模型
+[2025-06-11 09:00:45] [INFO] ======== 开始训练 2025-05-06 ========
+[2025-06-11 09:00:45] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-06, confBase = ./conf/, name = 2025-05-06, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-06
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 83938197.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611091157 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-06 | metric-all             | 0.808935 | 0.998522 |       2288 |     11748016 | 0.000195 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-06 | metric-COM.ZZKKO#shein | 0.808935 | 0.998522 |       2288 |     11748016 | 0.000195 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:82865884
+Dump model and predict finish.
+
+real	11m13.440s
+user	62m8.601s
+sys	3m53.407s
+[2025-06-11 09:12:04] [INFO] 模型保存完成: ./train_output/base.2025-05-06
+[2025-06-11 09:12:04] [INFO] 已清理 2025-04-26 之前的模型
+[2025-06-11 09:12:04] [INFO] ======== 开始训练 2025-05-07 ========
+[2025-06-11 09:12:04] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-07, confBase = ./conf/, name = 2025-05-07, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-07
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 84192791.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611092345 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-07 | metric-all             | 0.806485 | 1.00331 |       2246 |     12427859 | 0.000181 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-07 | metric-COM.ZZKKO#shein | 0.806485 | 1.00331 |       2246 |     12427859 | 0.000181 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:83029106
+Dump model and predict finish.
+
+real	11m42.385s
+user	64m50.580s
+sys	3m50.836s
+[2025-06-11 09:23:52] [INFO] 模型保存完成: ./train_output/base.2025-05-07
+[2025-06-11 09:23:52] [INFO] 已清理 2025-04-27 之前的模型
+[2025-06-11 09:23:52] [INFO] ======== 开始训练 2025-05-08 ========
+[2025-06-11 09:23:52] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-08, confBase = ./conf/, name = 2025-05-08, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-08
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 84369539.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611093545 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+--------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |   PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+========+============+==============+==========+
+| 2025-05-08 | metric-all             | 0.794004 | 1.0038 |       2231 |     12177651 | 0.000183 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+| 2025-05-08 | metric-COM.ZZKKO#shein | 0.794004 | 1.0038 |       2231 |     12177651 | 0.000183 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+total features:83197425
+Dump model and predict finish.
+
+real	11m54.288s
+user	63m53.947s
+sys	4m15.138s
+[2025-06-11 09:35:51] [INFO] 模型保存完成: ./train_output/base.2025-05-08
+[2025-06-11 09:35:52] [INFO] 已清理 2025-04-28 之前的模型
+[2025-06-11 09:35:52] [INFO] ======== 开始训练 2025-05-09 ========
+[2025-06-11 09:35:52] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-09, confBase = ./conf/, name = 2025-05-09, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-09
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 84579477.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611094736 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+--------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |   PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+========+============+==============+==========+
+| 2025-05-09 | metric-all             | 0.800973 | 1.0018 |       2153 |     12544749 | 0.000172 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+| 2025-05-09 | metric-COM.ZZKKO#shein | 0.800973 | 1.0018 |       2153 |     12544749 | 0.000172 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+total features:83375423
+Dump model and predict finish.
+
+real	11m45.834s
+user	66m14.164s
+sys	3m44.212s
+[2025-06-11 09:47:43] [INFO] 模型保存完成: ./train_output/base.2025-05-09
+[2025-06-11 09:47:43] [INFO] 已清理 2025-04-29 之前的模型
+[2025-06-11 09:47:43] [INFO] ======== 开始训练 2025-05-10 ========
+[2025-06-11 09:47:43] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-10, confBase = ./conf/, name = 2025-05-10, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-10
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 84679144.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611095940 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-10 | metric-all             | 0.795742 | 0.996802 |       1884 |     12032003 | 0.000157 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-10 | metric-COM.ZZKKO#shein | 0.795742 | 0.996802 |       1884 |     12032003 | 0.000157 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:83538477
+Dump model and predict finish.
+
+real	11m58.584s
+user	64m32.291s
+sys	3m31.771s
+[2025-06-11 09:59:47] [INFO] 模型保存完成: ./train_output/base.2025-05-10
+[2025-06-11 09:59:47] [INFO] 已清理 2025-04-30 之前的模型
+[2025-06-11 09:59:47] [INFO] ======== 开始训练 2025-05-11 ========
+[2025-06-11 09:59:47] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-11, confBase = ./conf/, name = 2025-05-11, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-11
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 84895294.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611101115 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+----------+------------+--------------+----------+
+| DATE       | Key                    |     AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+=========+==========+============+==============+==========+
+| 2025-05-11 | metric-all             | 0.80045 | 0.998436 |       2225 |     12045738 | 0.000185 |
++------------+------------------------+---------+----------+------------+--------------+----------+
+| 2025-05-11 | metric-COM.ZZKKO#shein | 0.80045 | 0.998436 |       2225 |     12045738 | 0.000185 |
++------------+------------------------+---------+----------+------------+--------------+----------+
+total features:83715970
+Dump model and predict finish.
+
+real	11m29.306s
+user	62m46.207s
+sys	3m47.265s
+[2025-06-11 10:11:22] [INFO] 模型保存完成: ./train_output/base.2025-05-11
+[2025-06-11 10:11:22] [INFO] 已清理 2025-05-01 之前的模型
+[2025-06-11 10:11:22] [INFO] ======== 开始训练 2025-05-12 ========
+[2025-06-11 10:11:22] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-12, confBase = ./conf/, name = 2025-05-12, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-12
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 85117232.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611102329 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-12 | metric-all             | 0.797484 | 1.00248 |       2519 |     12910995 | 0.000195 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-12 | metric-COM.ZZKKO#shein | 0.797484 | 1.00248 |       2519 |     12910995 | 0.000195 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:83895035
+Dump model and predict finish.
+
+real	12m7.607s
+user	68m58.788s
+sys	3m59.283s
+[2025-06-11 10:23:35] [INFO] 模型保存完成: ./train_output/base.2025-05-12
+[2025-06-11 10:23:36] [INFO] 已清理 2025-05-02 之前的模型
+[2025-06-11 10:23:36] [INFO] ======== 开始训练 2025-05-13 ========
+[2025-06-11 10:23:36] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-13, confBase = ./conf/, name = 2025-05-13, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-13
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 85175552.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611103453 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-13 | metric-all             | 0.780337 | 0.996973 |       2073 |     11740786 | 0.000177 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-13 | metric-COM.ZZKKO#shein | 0.780337 | 0.996973 |       2073 |     11740786 | 0.000177 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:84067047
+Dump model and predict finish.
+
+real	11m19.207s
+user	61m22.320s
+sys	3m55.499s
+[2025-06-11 10:35:00] [INFO] 模型保存完成: ./train_output/base.2025-05-13
+[2025-06-11 10:35:00] [INFO] 已清理 2025-05-03 之前的模型
+[2025-06-11 10:35:00] [INFO] ======== 开始训练 2025-05-14 ========
+[2025-06-11 10:35:00] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-14, confBase = ./conf/, name = 2025-05-14, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-14
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 85239453.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611104600 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-14 | metric-all             | 0.794288 | 1.00388 |       2073 |     10974941 | 0.000189 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-14 | metric-COM.ZZKKO#shein | 0.794288 | 1.00388 |       2073 |     10974941 | 0.000189 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:84211313
+Dump model and predict finish.
+
+real	11m0.435s
+user	59m40.710s
+sys	3m14.025s
+[2025-06-11 10:46:06] [INFO] 模型保存完成: ./train_output/base.2025-05-14
+[2025-06-11 10:46:07] [INFO] 已清理 2025-05-04 之前的模型
+[2025-06-11 10:46:07] [INFO] ======== 开始训练 2025-05-15 ========
+[2025-06-11 10:46:07] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-15, confBase = ./conf/, name = 2025-05-15, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-15
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 85476880.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611105713 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-15 | metric-all             | 0.789789 | 0.999699 |       1931 |     11573876 | 0.000167 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-15 | metric-COM.ZZKKO#shein | 0.789789 | 0.999699 |       1931 |     11573876 | 0.000167 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:84374919
+Dump model and predict finish.
+
+real	11m7.573s
+user	60m13.855s
+sys	3m27.957s
+[2025-06-11 10:57:20] [INFO] 模型保存完成: ./train_output/base.2025-05-15
+[2025-06-11 10:57:20] [INFO] 已清理 2025-05-05 之前的模型
+[2025-06-11 10:57:20] [INFO] ======== 开始训练 2025-05-16 ========
+[2025-06-11 10:57:20] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-16, confBase = ./conf/, name = 2025-05-16, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-16
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 85641614.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611110852 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-16 | metric-all             | 0.794203 | 0.996791 |       2076 |     11896061 | 0.000175 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-16 | metric-COM.ZZKKO#shein | 0.794203 | 0.996791 |       2076 |     11896061 | 0.000175 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:84532551
+Dump model and predict finish.
+
+real	11m33.728s
+user	63m50.864s
+sys	3m27.489s
+[2025-06-11 11:08:59] [INFO] 模型保存完成: ./train_output/base.2025-05-16
+[2025-06-11 11:08:59] [INFO] 已清理 2025-05-06 之前的模型
+[2025-06-11 11:08:59] [INFO] ======== 开始训练 2025-05-17 ========
+[2025-06-11 11:08:59] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-17, confBase = ./conf/, name = 2025-05-17, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-17
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 85755863.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611111946 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-17 | metric-all             | 0.781365 | 1.00948 |       1883 |     11120423 | 0.000169 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-17 | metric-COM.ZZKKO#shein | 0.781365 | 1.00948 |       1883 |     11120423 | 0.000169 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:84685484
+Dump model and predict finish.
+
+real	10m48.007s
+user	59m1.152s
+sys	3m33.513s
+[2025-06-11 11:19:53] [INFO] 模型保存完成: ./train_output/base.2025-05-17
+[2025-06-11 11:19:53] [INFO] 已清理 2025-05-07 之前的模型
+[2025-06-11 11:19:53] [INFO] ======== 开始训练 2025-05-18 ========
+[2025-06-11 11:19:53] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-18, confBase = ./conf/, name = 2025-05-18, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-18
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 86060705.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611113141 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-18 | metric-all             | 0.788081 | 0.992982 |       2359 |     12091735 | 0.000195 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-18 | metric-COM.ZZKKO#shein | 0.788081 | 0.992982 |       2359 |     12091735 | 0.000195 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:84860108
+Dump model and predict finish.
+
+real	11m49.396s
+user	64m15.872s
+sys	3m31.088s
+[2025-06-11 11:31:48] [INFO] 模型保存完成: ./train_output/base.2025-05-18
+[2025-06-11 11:31:48] [INFO] 已清理 2025-05-08 之前的模型
+[2025-06-11 11:31:48] [INFO] ======== 开始训练 2025-05-19 ========
+[2025-06-11 11:31:48] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-19, confBase = ./conf/, name = 2025-05-19, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-19
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 86285809.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611114355 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-19 | metric-all             | 0.793903 | 0.997953 |       2495 |     12717905 | 0.000196 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-19 | metric-COM.ZZKKO#shein | 0.793903 | 0.997953 |       2495 |     12717905 | 0.000196 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:85041701
+Dump model and predict finish.
+
+real	12m8.363s
+user	66m4.994s
+sys	3m59.006s
+[2025-06-11 11:44:02] [INFO] 模型保存完成: ./train_output/base.2025-05-19
+[2025-06-11 11:44:02] [INFO] 已清理 2025-05-09 之前的模型
+[2025-06-11 11:44:02] [INFO] ======== 开始训练 2025-05-20 ========
+[2025-06-11 11:44:02] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-20, confBase = ./conf/, name = 2025-05-20, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-20
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 86444235.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611115622 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-20 | metric-all             | 0.799604 | 1.00385 |       2334 |     13306872 | 0.000175 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-20 | metric-COM.ZZKKO#shein | 0.799604 | 1.00385 |       2334 |     13306872 | 0.000175 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:85222099
+Dump model and predict finish.
+
+real	12m20.997s
+user	72m58.774s
+sys	3m52.882s
+[2025-06-11 11:56:29] [INFO] 模型保存完成: ./train_output/base.2025-05-20
+[2025-06-11 11:56:29] [INFO] 已清理 2025-05-10 之前的模型
+[2025-06-11 11:56:29] [INFO] ======== 开始训练 2025-05-21 ========
+[2025-06-11 11:56:29] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-21, confBase = ./conf/, name = 2025-05-21, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-21
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 86529142.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611120750 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-21 | metric-all             | 0.789227 | 0.997721 |       2252 |     11931123 | 0.000189 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-21 | metric-COM.ZZKKO#shein | 0.789227 | 0.997721 |       2252 |     11931123 | 0.000189 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:85379754
+Dump model and predict finish.
+
+real	11m22.324s
+user	62m12.290s
+sys	3m46.902s
+[2025-06-11 12:07:57] [INFO] 模型保存完成: ./train_output/base.2025-05-21
+[2025-06-11 12:07:57] [INFO] 已清理 2025-05-11 之前的模型
+[2025-06-11 12:07:57] [INFO] ======== 开始训练 2025-05-22 ========
+[2025-06-11 12:07:57] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-22, confBase = ./conf/, name = 2025-05-22, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-22
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 86652415.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611121900 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-22 | metric-all             | 0.794258 | 1.00393 |       2377 |     11055169 | 0.000215 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-22 | metric-COM.ZZKKO#shein | 0.794258 | 1.00393 |       2377 |     11055169 | 0.000215 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:85529364
+Dump model and predict finish.
+
+real	11m4.173s
+user	60m24.964s
+sys	3m17.815s
+[2025-06-11 12:19:07] [INFO] 模型保存完成: ./train_output/base.2025-05-22
+[2025-06-11 12:19:07] [INFO] 已清理 2025-05-12 之前的模型
+[2025-06-11 12:19:07] [INFO] ======== 开始训练 2025-05-23 ========
+[2025-06-11 12:19:07] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-23, confBase = ./conf/, name = 2025-05-23, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-23
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 86740150.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611122944 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+----------+------------+--------------+---------+
+| DATE       | Key                    |     AUC |     PCOC |   PURCHASE |   IMPRESSION |     IVR |
++============+========================+=========+==========+============+==============+=========+
+| 2025-05-23 | metric-all             | 0.79675 | 0.997037 |       2509 |     10454784 | 0.00024 |
++------------+------------------------+---------+----------+------------+--------------+---------+
+| 2025-05-23 | metric-COM.ZZKKO#shein | 0.79675 | 0.997037 |       2509 |     10454784 | 0.00024 |
++------------+------------------------+---------+----------+------------+--------------+---------+
+total features:85672344
+Dump model and predict finish.
+
+real	10m38.376s
+user	57m11.365s
+sys	3m6.069s
+[2025-06-11 12:29:51] [INFO] 模型保存完成: ./train_output/base.2025-05-23
+[2025-06-11 12:29:51] [INFO] 已清理 2025-05-13 之前的模型
+[2025-06-11 12:29:51] [INFO] ======== 开始训练 2025-05-24 ========
+[2025-06-11 12:29:51] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-24, confBase = ./conf/, name = 2025-05-24, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-24
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 86928301.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611124110 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-24 | metric-all             | 0.794397 | 1.00413 |       2597 |     10957695 | 0.000237 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-24 | metric-COM.ZZKKO#shein | 0.794397 | 1.00413 |       2597 |     10957695 | 0.000237 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:85822092
+Dump model and predict finish.
+
+real	11m20.638s
+user	116m57.742s
+sys	3m38.930s
+[2025-06-11 12:41:17] [INFO] 模型保存完成: ./train_output/base.2025-05-24
+[2025-06-11 12:41:18] [INFO] 已清理 2025-05-14 之前的模型
+[2025-06-11 12:41:18] [INFO] ======== 开始训练 2025-05-25 ========
+[2025-06-11 12:41:18] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-25, confBase = ./conf/, name = 2025-05-25, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-25
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 87226925.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611125222 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-25 | metric-all             | 0.800491 | 0.993147 |       2937 |     11352995 | 0.000259 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-25 | metric-COM.ZZKKO#shein | 0.800491 | 0.993147 |       2937 |     11352995 | 0.000259 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:85986488
+Dump model and predict finish.
+
+real	11m6.012s
+user	60m57.105s
+sys	3m58.674s
+[2025-06-11 12:52:29] [INFO] 模型保存完成: ./train_output/base.2025-05-25
+[2025-06-11 12:52:29] [INFO] 已清理 2025-05-15 之前的模型
+[2025-06-11 12:52:29] [INFO] ======== 开始训练 2025-05-26 ========
+[2025-06-11 12:52:29] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-26, confBase = ./conf/, name = 2025-05-26, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-26
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 87442483.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611130350 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-26 | metric-all             | 0.798333 | 1.00097 |       3223 |     12312348 | 0.000262 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-26 | metric-COM.ZZKKO#shein | 0.798333 | 1.00097 |       3223 |     12312348 | 0.000262 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:86162279
+Dump model and predict finish.
+
+real	11m22.454s
+user	64m53.051s
+sys	3m31.230s
+[2025-06-11 13:03:57] [INFO] 模型保存完成: ./train_output/base.2025-05-26
+[2025-06-11 13:03:57] [INFO] 已清理 2025-05-16 之前的模型
+[2025-06-11 13:03:57] [INFO] ======== 开始训练 2025-05-27 ========
+[2025-06-11 13:03:57] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-27, confBase = ./conf/, name = 2025-05-27, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-27
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 87527130.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611131525 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+----------+------------+--------------+----------+
+| DATE       | Key                    |     AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+=========+==========+============+==============+==========+
+| 2025-05-27 | metric-all             | 0.79987 | 0.999573 |       2902 |     12279137 | 0.000236 |
++------------+------------------------+---------+----------+------------+--------------+----------+
+| 2025-05-27 | metric-COM.ZZKKO#shein | 0.79987 | 0.999573 |       2902 |     12279137 | 0.000236 |
++------------+------------------------+---------+----------+------------+--------------+----------+
+total features:86317734
+Dump model and predict finish.
+
+real	11m29.390s
+user	64m35.502s
+sys	3m35.915s
+[2025-06-11 13:15:32] [INFO] 模型保存完成: ./train_output/base.2025-05-27
+[2025-06-11 13:15:32] [INFO] 已清理 2025-05-17 之前的模型
+[2025-06-11 13:15:32] [INFO] ======== 开始训练 2025-05-28 ========
+[2025-06-11 13:15:32] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-28, confBase = ./conf/, name = 2025-05-28, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-28
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 87577898.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611132624 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-28 | metric-all             | 0.791313 | 1.00167 |       2822 |     10967006 | 0.000257 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-28 | metric-COM.ZZKKO#shein | 0.791313 | 1.00167 |       2822 |     10967006 | 0.000257 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:86436877
+Dump model and predict finish.
+
+real	10m52.615s
+user	113m12.815s
+sys	4m20.710s
+[2025-06-11 13:26:31] [INFO] 模型保存完成: ./train_output/base.2025-05-28
+[2025-06-11 13:26:31] [INFO] 已清理 2025-05-18 之前的模型
+[2025-06-11 13:26:31] [INFO] ======== 开始训练 2025-05-29 ========
+[2025-06-11 13:26:31] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-29, confBase = ./conf/, name = 2025-05-29, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-29
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 87671258.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611133712 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+---------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |     IVR |
++============+========================+==========+=========+============+==============+=========+
+| 2025-05-29 | metric-all             | 0.788457 | 1.00127 |       2743 |     10561560 | 0.00026 |
++------------+------------------------+----------+---------+------------+--------------+---------+
+| 2025-05-29 | metric-COM.ZZKKO#shein | 0.788457 | 1.00127 |       2743 |     10561560 | 0.00026 |
++------------+------------------------+----------+---------+------------+--------------+---------+
+total features:86552947
+Dump model and predict finish.
+
+real	10m42.729s
+user	57m25.872s
+sys	3m41.254s
+[2025-06-11 13:37:19] [INFO] 模型保存完成: ./train_output/base.2025-05-29
+[2025-06-11 13:37:19] [INFO] 已清理 2025-05-19 之前的模型
+[2025-06-11 13:37:19] [INFO] ======== 开始训练 2025-05-30 ========
+[2025-06-11 13:37:19] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-30, confBase = ./conf/, name = 2025-05-30, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-30
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+Waiting trainDataQueue tobe empty...
+Size feature 87766430.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611134801 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-30 | metric-all             | 0.779362 | 1.00461 |       2658 |     10532297 | 0.000252 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-30 | metric-COM.ZZKKO#shein | 0.779362 | 1.00461 |       2658 |     10532297 | 0.000252 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:86671739
+Dump model and predict finish.
+
+real	10m43.340s
+user	57m38.259s
+sys	3m48.222s
+[2025-06-11 13:48:08] [INFO] 模型保存完成: ./train_output/base.2025-05-30
+[2025-06-11 13:48:08] [INFO] 已清理 2025-05-20 之前的模型
+[2025-06-11 13:48:08] [INFO] ======== 开始训练 2025-05-31 ========
+[2025-06-11 13:48:08] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-31, confBase = ./conf/, name = 2025-05-31, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-31
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 88104844.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250611135926 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-05-31 | metric-all             | 0.789755 | 0.999849 |       2683 |     11546235 | 0.000232 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-05-31 | metric-COM.ZZKKO#shein | 0.789755 | 0.999849 |       2683 |     11546235 | 0.000232 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:86804433
+Dump model and predict finish.
+
+real	11m18.787s
+user	62m33.276s
+sys	3m49.365s
+[2025-06-11 13:59:33] [INFO] 模型保存完成: ./train_output/base.2025-05-31
+[2025-06-11 13:59:33] [INFO] 已清理 2025-05-21 之前的模型
+[2025-06-11 13:59:33] [INFO] 最终结果过滤...
+[2025-06-11 14:02:40] [INFO] 训练完成，有效记录数: 2900101
+
+********************** validation begin: model=./train_output/base.2025-05-29, val_date=2025-05-30 ******************************
+loadColName:conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-06-11 14:05:54
+max col for column_name is 254, but the column count for sample is 248
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 248
+ctr predict completely!
+当前时间：2025-06-11 14:08:57
+
+AucCollector at 20250611140857 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+========================+==========+==========+============+==============+==========+
+| val-2025-05-30 | metric-all             | 0.778851 | 0.940038 |       2658 |     10532297 | 0.000252 |
++----------------+------------------------+----------+----------+------------+--------------+----------+
+| val-2025-05-30 | metric-COM.ZZKKO#shein | 0.778851 | 0.940038 |       2658 |     10532297 | 0.000252 |
++----------------+------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 4
+当前时间：2025-06-11 14:08:58
+
+real	3m13.924s
+user	69m58.681s
+sys	8m36.637s
+********************** validation end: model=./train_output/base.2025-05-29, val_date=2025-05-30 *****************************
+
+/home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+train completely......
+[2025-06-13 11:08:34] [INFO] ======== 开始训练 2025-06-01 ========
+[2025-06-13 11:08:34] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-06-01, confBase = ./conf/, name = 2025-06-01, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-06-01
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 88326818.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250613112122 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-06-01 | metric-all             | 0.789201 | 0.994816 |       3063 |     11832651 | 0.000259 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-01 | metric-COM.ZZKKO#shein | 0.789201 | 0.994816 |       3063 |     11832651 | 0.000259 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:86935147
+Dump model and predict finish.
+
+real	12m49.639s
+user	66m18.831s
+sys	4m4.524s
+[2025-06-13 11:21:30] [INFO] 模型保存完成: ./train_output/base.2025-06-01
+[2025-06-13 11:21:30] [INFO] 已清理 2025-05-22 之前的模型
+[2025-06-13 11:21:30] [INFO] ======== 开始训练 2025-06-02 ========
+[2025-06-13 11:21:30] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-06-02, confBase = ./conf/, name = 2025-06-02, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-06-02
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+Waiting trainDataQueue tobe empty...
+Size feature 88470239.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250613113339 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+---------+---------+------------+--------------+----------+
+| DATE       | Key                    |     AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+=========+=========+============+==============+==========+
+| 2025-06-02 | metric-all             | 0.77764 | 1.00383 |       3422 |     11821589 | 0.000289 |
++------------+------------------------+---------+---------+------------+--------------+----------+
+| 2025-06-02 | metric-COM.ZZKKO#shein | 0.77764 | 1.00383 |       3422 |     11821589 | 0.000289 |
++------------+------------------------+---------+---------+------------+--------------+----------+
+total features:87065625
+Dump model and predict finish.
+
+real	12m11.034s
+user	64m31.926s
+sys	4m11.751s
+[2025-06-13 11:33:47] [INFO] 模型保存完成: ./train_output/base.2025-06-02
+[2025-06-13 11:33:47] [INFO] 已清理 2025-05-23 之前的模型
+[2025-06-13 11:33:47] [INFO] ======== 开始训练 2025-06-03 ========
+[2025-06-13 11:33:47] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-06-03, confBase = ./conf/, name = 2025-06-03, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-06-03
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+Waiting trainDataQueue tobe empty...
+Size feature 88553756.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250613114537 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+---------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |     IVR |
++============+========================+==========+==========+============+==============+=========+
+| 2025-06-03 | metric-all             | 0.781741 | 0.999145 |       3055 |     12209112 | 0.00025 |
++------------+------------------------+----------+----------+------------+--------------+---------+
+| 2025-06-03 | metric-COM.ZZKKO#shein | 0.781741 | 0.999145 |       3055 |     12209112 | 0.00025 |
++------------+------------------------+----------+----------+------------+--------------+---------+
+total features:87188877
+Dump model and predict finish.
+
+real	11m52.329s
+user	61m45.203s
+sys	3m51.970s
+[2025-06-13 11:45:45] [INFO] 模型保存完成: ./train_output/base.2025-06-03
+[2025-06-13 11:45:45] [INFO] 已清理 2025-05-24 之前的模型
+[2025-06-13 11:45:45] [INFO] ======== 开始训练 2025-06-04 ========
+[2025-06-13 11:45:45] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-06-04, confBase = ./conf/, name = 2025-06-04, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-06-04
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+Waiting trainDataQueue tobe empty...
+Size feature 88675482.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250613115815 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+--------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |   PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+========+============+==============+==========+
+| 2025-06-04 | metric-all             | 0.784195 |  1.002 |       3078 |     11796071 | 0.000261 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+| 2025-06-04 | metric-COM.ZZKKO#shein | 0.784195 |  1.002 |       3078 |     11796071 | 0.000261 |
++------------+------------------------+----------+--------+------------+--------------+----------+
+total features:87310118
+Dump model and predict finish.
+
+real	12m31.533s
+user	131m45.483s
+sys	4m7.924s
+[2025-06-13 11:58:22] [INFO] 模型保存完成: ./train_output/base.2025-06-04
+[2025-06-13 11:58:23] [INFO] 已清理 2025-05-25 之前的模型
+[2025-06-13 11:58:23] [INFO] 最终结果过滤...
+[2025-06-13 12:01:38] [INFO] 训练完成，有效记录数: 2916880
+
+********************** validation begin: model=./train_output/base.2025-06-04, val_date=2025-06-05 ******************************
+loadColName:conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-06-13 12:05:05
+ctr predict completely!
+当前时间：2025-06-13 12:07:00
+
+AucCollector at 20250613120700 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+========================+==========+==========+============+==============+==========+
+| val-2025-06-05 | metric-all             | 0.781899 | 0.814698 |       1587 |      6810906 | 0.000233 |
++----------------+------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.ZZKKO#shein | 0.781678 | 0.813968 |       1587 |      6797560 | 0.000233 |
++----------------+------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 0
+当前时间：2025-06-13 12:07:00
+
+real	2m6.013s
+user	30m5.091s
+sys	1m29.601s
+********************** validation end: model=./train_output/base.2025-06-04, val_date=2025-06-05 *****************************
+
+/home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+train completely......
+[2025-06-13 13:51:18] [INFO] ======== 开始训练 2025-05-31 ========
+[2025-06-13 13:51:18] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-05-31, confBase = ./conf/, name = 2025-05-31, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-05-31
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+Waiting trainDataQueue tobe empty...
+Size feature 88105321.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250613140326 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+---------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |    PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+=========+============+==============+==========+
+| 2025-05-31 | metric-all             | 0.789773 | 0.99987 |       2683 |     11546235 | 0.000232 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+| 2025-05-31 | metric-COM.ZZKKO#shein | 0.789773 | 0.99987 |       2683 |     11546235 | 0.000232 |
++------------+------------------------+----------+---------+------------+--------------+----------+
+total features:86805090
+Dump model and predict finish.
+
+real	12m10.204s
+user	66m29.892s
+sys	3m42.871s
+[2025-06-13 14:04:06] [INFO] 模型保存完成: ./train_output/base.2025-05-31
+[2025-06-13 14:04:06] [INFO] 已清理 2025-05-21 之前的模型
+[2025-06-13 14:04:06] [INFO] ======== 开始训练 2025-06-01 ========
+[2025-06-13 14:04:06] [INFO] 启动模型训练...
+Current Directory: /home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+args: input = ../sample/sample_2025-06-01, confBase = ./conf/, name = 2025-06-01, format = f
+loadColName:./conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Init Main succeed!
+Parallel train.
+ModelConfig init, path = ./conf/para.conf, pkg_params = null
+
+Loading model ...
+Begin training ...
+sample_path=../sample/sample_2025-06-01
+model_path=./train_output/base
+output_path=./train_output
+feature_include_rate=0.3000, 
+feature_freqence_threshold=3, 
+loss_func=cross_entropy,
+fl_alpha=0.250000, 
+fl_gamma=2.000000, 
+pos_weight=1.0000
+model config......
+model_name=base:
+	alpha=0.10, beta=1.00, lambda1=1.00, lambda2=300.00
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+max col for column_name is 254, but the column count for sample is 8
+max col for column_name is 254, but the column count for sample is 249
+
+NotRealCollector at 20250613144049 (Queue size is 14)
+	Size of feature 92381307.
+	Length of trainning queue 5000.
+
+LossCollector at 20250613144049 (Queue size is 14)
+	base: WinAverageLoss=-0.0022263789682854915, AllAverageLoss=-0.0022263789682854915
+	samples:5000.0w
+Waiting trainDataQueue tobe empty...
+Size feature 93124833.
+Dumping model to ./train_output
+Dump base to ./train_output/base
+
+AucCollector at 20250613144838 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE       | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++============+========================+==========+==========+============+==============+==========+
+| 2025-06-01 | metric-all             | 0.786693 | 0.999523 |      15301 |     59205658 | 0.000258 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+| 2025-06-01 | metric-COM.ZZKKO#shein | 0.786693 | 0.999523 |      15301 |     59205658 | 0.000258 |
++------------+------------------------+----------+----------+------------+--------------+----------+
+total features:88023921
+Dump model and predict finish.
+
+real	44m34.510s
+user	295m5.876s
+sys	16m34.599s
+[2025-06-13 14:49:24] [INFO] 模型保存完成: ./train_output/base.2025-06-01
+[2025-06-13 14:49:24] [INFO] 已清理 2025-05-22 之前的模型
+[2025-06-13 14:49:24] [INFO] 最终结果过滤...
+[2025-06-13 14:52:44] [INFO] 训练完成，有效记录数: 2929377
+
+********************** validation begin: model=./train_output/base.2025-06-01, val_date=2025-06-05 ******************************
+loadColName:conf/column_name
+Load 255 columns, label column is label, index is 113, keys column is [demand_pkgname,business_type], index is [12, 115], max_col is 254
+Load 199 feature combine schemas.
+Loading model ...
+model load completely!
+当前时间：2025-06-13 14:56:06
+ctr predict completely!
+当前时间：2025-06-13 14:58:19
+
+AucCollector at 20250613145819 (Queue size is 0)
+Dumping AUC ...
+Waiting full dump finish.
++----------------+------------------------+----------+----------+------------+--------------+----------+
+| DATE           | Key                    |      AUC |     PCOC |   PURCHASE |   IMPRESSION |      IVR |
++================+========================+==========+==========+============+==============+==========+
+| val-2025-06-05 | metric-all             | 0.780205 | 0.975054 |       1587 |      6810906 | 0.000233 |
++----------------+------------------------+----------+----------+------------+--------------+----------+
+| val-2025-06-05 | metric-COM.ZZKKO#shein | 0.779935 | 0.974351 |       1587 |      6797560 | 0.000233 |
++----------------+------------------------+----------+----------+------------+--------------+----------+
+Exception data count: 0
+当前时间：2025-06-13 14:58:20
+
+real	2m23.636s
+user	40m51.603s
+sys	4m8.414s
+********************** validation end: model=./train_output/base.2025-06-01, val_date=2025-06-05 *****************************
+
+/home/ec2-user/SageMaker/movas/mind_shein/mind_shein_v1
+train completely......
