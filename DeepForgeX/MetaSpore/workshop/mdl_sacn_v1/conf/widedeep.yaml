@@ -1,0 +1,41 @@
+## spark session
+app_name: 'dnn_ivr7_v2'
+local: True
+worker_count: 6
+server_count: 2
+batch_size: 256
+worker_memory: '10G'
+server_memory: '10G'
+coordinator_memory: '8G'
+local_spark: local
+
+## datasets
+train_path_prefix: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet
+train_start_date: 2025-09-20
+train_end_date: 2025-11-20
+validation_date: 2025-11-21
+movas_log_output_path: ./log/movas.log
+
+## model configurations
+combine_schema_path: ./conf/combine_schema
+wide_combine_schema_path: ./conf/combine_schema
+
+model_in_path: null
+model_out_base_path: ./output/
+model_export_path: null
+model_version: '0.1'
+experiment_name: dnn_ruf2_v1
+input_label_column_index: 113
+
+## model hyper params
+embedding_size: 8
+adam_learning_rate: 0.00001
+ftrl_alpha: 0.005
+ftrl_beta: 0.05
+ftrl_l1: 1.0
+ftrl_l2: 10.0
+training_epoches: 1
+shuffle_training_dataset: True
+dnn_hidden_units: [512, 256]
+model_type: sacn
+loss_func: log_loss

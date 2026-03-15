@@ -1,0 +1,2 @@
+1. star model;
+2. center_hidden_units = [1024, 512, 256];

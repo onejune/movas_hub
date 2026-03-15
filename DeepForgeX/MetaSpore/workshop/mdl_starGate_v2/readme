@@ -1,0 +1,2 @@
+1. star model with Gate embedding;
+2. center_hidden_units = [1024, 512, 256];

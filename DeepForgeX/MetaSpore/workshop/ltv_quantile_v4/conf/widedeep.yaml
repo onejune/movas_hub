@@ -1,0 +1,42 @@
+## spark session
+app_name: 'dnn1'
+local: True
+worker_count: 6
+server_count: 2
+batch_size: 256
+worker_memory: '8G'
+server_memory: '8G'
+coordinator_memory: '8G'
+local_spark: local
+
+## datasets
+train_path_prefix: /mnt/data/oss_dsp_algo/ltv/sample/ltv_sample_v8/parquet
+train_start_date: 2025-10-08
+train_end_date: 2026-01-20
+validation_date: 2026-01-21
+movas_log_output_path: ./log/movas.log
+
+## model configurations
+combine_schema_path: ./conf/combine_schema
+wide_combine_schema_path: ./conf/combine_schema
+
+model_in_path: null
+model_out_base_path: ./output/
+model_export_path: null
+model_version: '0.1'
+experiment_name: dnn_ruf2_v1
+input_label_column_index: 113
+
+## model hyper params
+embedding_size: 8
+adam_learning_rate: 0.00001
+ftrl_alpha: 0.001
+ftrl_beta: 0.05
+ftrl_l1: 1.0
+ftrl_l2: 100.0
+training_epoches: 1
+shuffle_training_dataset: True
+dnn_hidden_units: [512, 256, 128]
+model_type: quantile
+quantiles: [0.001, 0.005, 0.01, 0.015, 0.02, 0.03, 0.05, 0.1, 0.25, 0.5, 0.6, 0.65, 0.7, 0.73, 0.75, 0.78, 0.8, 0.83, 0.85, 0.9, 0.95, 0.99]
+target_quantile: 0.85

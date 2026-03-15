@@ -1,0 +1,6 @@
+基于Scene Aware MMoE 的 multi task model;
+task_weights_dict:
+  purchase: 0.5
+  atc: 0.4
+  content_view: 0.3
+  open: 0.2

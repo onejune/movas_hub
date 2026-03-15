@@ -1,0 +1,4 @@
+1. MDL-pepnet, 调整task_towers_hidden_units=[1024, 512, 128]；
+2. task id 设置为 0，多个 domain 共享一个 task 输出；
+3. epnet的 input 只有 domain_id；
+4. ppnet 的 input 单独 features；
