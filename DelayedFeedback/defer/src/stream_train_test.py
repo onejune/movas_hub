@@ -107,13 +107,23 @@ def test(model, test_data, params):
         cv_prop_numpy = np.reshape(cv_prop.numpy(),(-1, 1))
         cv_label_numpy_1 = np.reshape(cv_label.numpy(),(-1))
         cv_prop_numpy_1 = np.reshape(cv_prop.numpy(),(-1))
-        llloss = cal_llloss_with_prob(all_labels, all_probs)
+
+        # 过滤 NaN（WinAdapt/win_time 模型可能产生 NaN probs）
+        import math
+        nan_mask = ~np.isnan(cv_prop_numpy_1)
+        if nan_mask.sum() < len(cv_prop_numpy_1):
+            cv_prop_numpy_1 = cv_prop_numpy_1[nan_mask]
+            cv_label_numpy_1 = cv_label_numpy_1[nan_mask]
+            cv_prop_numpy = cv_prop_numpy[nan_mask]
+            cv_label_numpy = cv_label_numpy[nan_mask]
+
+        llloss = cal_llloss_with_prob(cv_label_numpy_1, cv_prop_numpy_1)
 
         cv_auc = cal_auc(cv_label_numpy, cv_prop_numpy)
-        prauc = cal_prauc(all_labels, all_probs)
+        prauc = cal_prauc(cv_label_numpy_1, cv_prop_numpy_1)
 
-        ctr = np.mean(cv_label_numpy,axis=0)
-        pctr = np.mean(cv_prop_numpy,axis=0)
+        ctr = np.mean(cv_label_numpy_1,axis=0)
+        pctr = np.mean(cv_prop_numpy_1,axis=0)
 
         ece = ece_score(cv_label_numpy_1,cv_prop_numpy_1)
         #print "cv_auc"
