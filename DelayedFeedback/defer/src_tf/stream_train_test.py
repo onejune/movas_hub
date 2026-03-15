@@ -6,6 +6,28 @@ from data import get_criteo_dataset_stream
 from model_utils import load_model_weights
 from tqdm import tqdm
 import numpy as np
+import json, os
+
+# business_type 分窗口分组（bt_col_index=0，即 x["0"]）
+_BT_GROUPS = {
+    "short": [39, 48, 45, 24, 49, 37, 7, 56, 31, 20, 62, 17, 59],  # ≤24h
+    "mid":   [12, 47, 53],                                            # 24-72h
+    "long":  [60, 22, 43],                                            # >72h
+}
+
+def _bt_group_auc(bt_col, labels, probs):
+    """按 business_type 分组计算 AUC，返回 {short/mid/long: auc}"""
+    bt_arr = np.array(bt_col).astype(int)
+    results = {}
+    for gname, bt_list in _BT_GROUPS.items():
+        mask = np.isin(bt_arr, bt_list)
+        if mask.sum() == 0:
+            results[gname] = float('nan')
+            continue
+        g_labels = labels[mask]
+        g_probs  = probs[mask]
+        results[gname] = cal_auc(g_labels, g_probs)
+    return results
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras import layers, Model
 import tensorflow as tf
@@ -286,6 +308,10 @@ def stream_run(params):
     nowin_pctr_ma = ScalarMovingAverage()
     nowin_ece_ma = ScalarMovingAverage()
 
+    # business_type 分窗口 AUC MA
+    bt_auc_ma = {g: ScalarMovingAverage() for g in _BT_GROUPS}
+    nowin_bt_auc_ma = {g: ScalarMovingAverage() for g in _BT_GROUPS}
+
     for ep, (train_dataset, test_dataset, test_dataset_nowin) in enumerate(zip(train_stream, test_stream, test_stream_nowin)):
         train_data = tf.data.Dataset.from_tensor_slices(
             (dict(train_dataset["x"]), train_dataset["labels"]))
@@ -310,8 +336,17 @@ def stream_run(params):
             ece_ma.add(ece*test_batch_size,test_batch_size)
         print("epoch {}, auc_ma {}, prauc_ma {}, llloss_ma {}, ece_ma {}, ctr_ma {}, pctr_ma {}".format(
             ep, auc_ma.get(), prauc_ma.get(), nll_ma.get(), ece_ma.get(), ctr_ma.get(), pctr_ma.get()))
-        #for i in range(0, len(probs)):
-        #    print 'epoch%d gcn:%d,%f' %(ep, label[i],probs[i])
+
+        # business_type 分窗口 AUC（win 版）
+        bt_col = test_dataset["x"]["0"].to_numpy() if hasattr(test_dataset["x"]["0"], 'to_numpy') else np.array(test_dataset["x"]["0"])
+        bt_aucs = _bt_group_auc(bt_col, np.array(label), np.array(probs))
+        for g, g_auc in bt_aucs.items():
+            if not math.isnan(float(g_auc)):
+                bt_auc_ma[g].add(g_auc * test_batch_size, test_batch_size)
+        print("epoch {}, bt_short_auc {}, bt_mid_auc {}, bt_long_auc {}".format(
+            ep, bt_aucs.get('short', float('nan')), bt_aucs.get('mid', float('nan')), bt_aucs.get('long', float('nan'))))
+        print("epoch {}, bt_short_auc_ma {}, bt_mid_auc_ma {}, bt_long_auc_ma {}".format(
+            ep, bt_auc_ma['short'].get(), bt_auc_ma['mid'].get(), bt_auc_ma['long'].get()))
 
 
         if True: #params["method"] == "FNW":
@@ -332,8 +367,17 @@ def stream_run(params):
                 nowin_ece_ma.add(ece*test_batch_size,test_batch_size)
             print("epoch {}, nowin_auc_ma {}, nowin_prauc_ma {}, nowin_llloss_ma {}, nowin_ece_ma {},  nowin_ctr_ma {}, nowin_pctr_ma {}".format(
                 ep, nowin_auc_ma.get(), nowin_prauc_ma.get(), nowin_nll_ma.get(), nowin_ece_ma.get(), nowin_ctr_ma.get(), nowin_pctr_ma.get()))
-            #for i in range(0, len(probs)):
-            #    print 'epoch%d gcn:%d,%f' %(ep, label[i],probs[i])
+
+            # business_type 分窗口 AUC（nowin 版）
+            nowin_bt_col = test_dataset_nowin["x"]["0"].to_numpy() if hasattr(test_dataset_nowin["x"]["0"], 'to_numpy') else np.array(test_dataset_nowin["x"]["0"])
+            nowin_bt_aucs = _bt_group_auc(nowin_bt_col, np.array(label), np.array(probs))
+            for g, g_auc in nowin_bt_aucs.items():
+                if not math.isnan(float(g_auc)):
+                    nowin_bt_auc_ma[g].add(g_auc * test_batch_size, test_batch_size)
+            print("epoch {}, nowin_bt_short_auc {}, nowin_bt_mid_auc {}, nowin_bt_long_auc {}".format(
+                ep, nowin_bt_aucs.get('short', float('nan')), nowin_bt_aucs.get('mid', float('nan')), nowin_bt_aucs.get('long', float('nan'))))
+            print("epoch {}, nowin_bt_short_auc_ma {}, nowin_bt_mid_auc_ma {}, nowin_bt_long_auc_ma {}".format(
+                ep, nowin_bt_auc_ma['short'].get(), nowin_bt_auc_ma['mid'].get(), nowin_bt_auc_ma['long'].get()))
 
 
 
