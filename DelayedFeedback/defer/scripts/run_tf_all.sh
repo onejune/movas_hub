@@ -15,7 +15,7 @@ ts() { echo "[$(date '+%Y-%m-%d %H:%M:%S')]"; }
 run_tf() {
     local method="$1" mode="$2" extra_args="$3" log="$4"
     echo "$(ts) >>> $method ($mode)"
-    (cd src && python3 main.py \
+    (cd src_tf && python3 main.py \
         --method "$method" --mode "$mode" \
         --data_path "../data/business_64d_v3.txt" \
         --data_cache_path "../cache_tf" \
