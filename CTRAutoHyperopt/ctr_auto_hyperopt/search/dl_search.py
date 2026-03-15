@@ -13,8 +13,13 @@ from sklearn.metrics import roc_auc_score, log_loss
 import optuna
 from optuna.trial import Trial
 
-# DeepCTR imports
+# DeepCTR imports (try vendored first, then system)
+DEEPCTR_AVAILABLE = False
 try:
+    # Try vendored version first
+    _third_party_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'third_party', 'DeepCTR-Torch')
+    if os.path.exists(_third_party_path):
+        sys.path.insert(0, _third_party_path)
     from deepctr_torch.inputs import SparseFeat, get_feature_names
     from deepctr_torch.models import (
         DeepFM, DCN, DCNMix, xDeepFM, AutoInt,
@@ -22,16 +27,18 @@ try:
     )
     DEEPCTR_AVAILABLE = True
 except ImportError:
-    DEEPCTR_AVAILABLE = False
+    pass
 
-# MLGB imports
+# MLGB imports (try vendored first, then system)
 MLGB_AVAILABLE = False
+mlgb_ranking = None
 try:
-    mlgb_path = '/mnt/workspace/walter.wan/open_research/mlgb'
-    if os.path.exists(mlgb_path):
-        sys.path.insert(0, mlgb_path)
-        from mlgb.torch.models import ranking as mlgb_ranking
-        MLGB_AVAILABLE = True
+    # Try vendored version first
+    _mlgb_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'third_party', 'mlgb')
+    if os.path.exists(_mlgb_path):
+        sys.path.insert(0, _mlgb_path)
+    from mlgb.torch.models import ranking as mlgb_ranking
+    MLGB_AVAILABLE = True
 except ImportError:
     pass
 
