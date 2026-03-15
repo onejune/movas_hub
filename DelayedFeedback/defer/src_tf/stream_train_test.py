@@ -55,6 +55,10 @@ def test(model, test_data, params):
             all_probs.append(tf.sigmoid(logits[:,0]))
             all_props.append(tf.sigmoid(logits[:,0]))
 
+        elif params["method"] == "ES-DFM" or params["method"] == "ES-DFM-normal" or params["method"] == "ES-DFM10" or params["method"] == "ES-DFM-FULL":
+            # MLP_tn_dp: logits shape (-1, 2), col0=tn_logits (cv pred)
+            all_probs.append(tf.sigmoid(logits[:, 0]))
+            all_props.append(tf.sigmoid(logits[:, 0]))
         else:
             all_probs.append(tf.sigmoid(logits))
             all_props.append(tf.sigmoid(logits))
@@ -119,7 +123,7 @@ def test(model, test_data, params):
 
         llloss = cal_llloss_with_prob(cv_label_numpy_1, cv_prop_numpy_1)
 
-        cv_auc = cal_auc(cv_label_numpy, cv_prop_numpy)
+        cv_auc = cal_auc(cv_label_numpy_1, cv_prop_numpy_1)
         prauc = cal_prauc(cv_label_numpy_1, cv_prop_numpy_1)
 
         ctr = np.mean(cv_label_numpy_1,axis=0)

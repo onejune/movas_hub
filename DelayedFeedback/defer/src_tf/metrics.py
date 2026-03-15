@@ -5,6 +5,14 @@ def sigmoid(x):
     return 1/(1+np.exp(np.clip(-x, a_min=-1e50, a_max=1e20)))
 
 def cal_auc(label, pos_prob):
+    label = np.reshape(label, (-1,))
+    pos_prob = np.reshape(pos_prob, (-1,))
+    # 过滤 NaN
+    mask = ~np.isnan(pos_prob)
+    label, pos_prob = label[mask], pos_prob[mask]
+    # 空数组或只有一类标签时返回 nan
+    if len(label) == 0 or len(np.unique(label)) < 2:
+        return float('nan')
     fpr, tpr, thresholds = metrics.roc_curve(label, pos_prob, pos_label=1)
     auc = metrics.auc(fpr, tpr)
     return auc
@@ -80,6 +88,12 @@ def cal_softmax_cross_entropy_loss(targets, outputs):
 
 
 def cal_prauc(label, pos_prob):
+    label = np.reshape(label, (-1,))
+    pos_prob = np.reshape(pos_prob, (-1,))
+    mask = ~np.isnan(pos_prob)
+    label, pos_prob = label[mask], pos_prob[mask]
+    if len(label) == 0 or len(np.unique(label)) < 2:
+        return float('nan')
     precision, recall, thresholds = metrics.precision_recall_curve(label, pos_prob)
     area = metrics.auc(recall, precision)
     return area
