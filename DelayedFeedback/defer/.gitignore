@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Data & Cache (large files)
+data/
+cache/
+cache_tf/
+cache_pytorch/
+cache_business/
+
+# Checkpoints
+checkpoints/
+checkpoints_tf/
+checkpoints_pytorch/
+
+# Logs
+logs/
+logs_tf/
+logs_pytorch/
+logs_business/
+logs_pytorch_6h_24h_72h/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
