@@ -1,0 +1,296 @@
+# CTR Auto HyperOpt 特征配置
+# 通过 YAML 文件配置特征，方便修改和版本管理
+
+# 标签列
+label_col: label
+
+# 排除的列（不参与训练）
+exclude_features:
+  - req_hour
+  - sample_bid_date
+  - diff_hours
+
+# 高基数特征阈值（出现次数少于此值的归为 OTHER）
+high_cardinality_threshold: 50
+
+# Embedding 维度
+embed_dim: 16
+
+# ============================================================
+# 稀疏特征（类别型）- 共 249 个
+# ============================================================
+sparse_features:
+  # --- 基础特征 (30个) ---
+  - adid
+  - adsize
+  - adx
+  - bundle
+  - business_type
+  - campaignid
+  - campaignsetid
+  - carrier
+  - city
+  - connectiontype
+  - country
+  - country-hour
+  - demand_pkgname
+  - devicetype
+  - image_id
+  - imptype
+  - is_ifa_null
+  - is_interstitial_ad
+  - is_reward_ad
+  - language
+  - make
+  - model
+  - objective_type
+  - offerid
+  - os
+  - osv
+  - publishier_id_new
+  - rta_id
+  - schain_len
+  - schain_new
+  - screen_bucket
+  - screen_ratio
+  - screenhw
+  - source_adx_new
+  - subcategory_id
+  - supply_pkg_pub_days
+  - tagid
+  - tags
+  - video_id
+  - vnd_estimated_installs
+
+  # --- 用户行为特征 inner (duf_inner_) ---
+  - duf_inner_dev_pkg_atc_11_30d
+  - duf_inner_dev_pkg_atc_180d
+  - duf_inner_dev_pkg_atc_30d
+  - duf_inner_dev_pkg_atc_31_60d
+  - duf_inner_dev_pkg_atc_4_10d
+  - duf_inner_dev_pkg_atc_60d
+  - duf_inner_dev_pkg_atc_61_180d
+  - duf_inner_dev_pkg_atc_90d
+  - duf_inner_dev_pkg_clk_11_30d
+  - duf_inner_dev_pkg_clk_15d
+  - duf_inner_dev_pkg_clk_1d
+  - duf_inner_dev_pkg_clk_30d
+  - duf_inner_dev_pkg_clk_31_60d
+  - duf_inner_dev_pkg_clk_3d
+  - duf_inner_dev_pkg_clk_4_10d
+  - duf_inner_dev_pkg_clk_7d
+  - duf_inner_dev_pkg_cv_15d
+  - duf_inner_dev_pkg_cv_30d
+  - duf_inner_dev_pkg_cv_3d
+  - duf_inner_dev_pkg_cv_7d
+  - duf_inner_dev_pkg_dpn_15d
+  - duf_inner_dev_pkg_dpn_30d
+  - duf_inner_dev_pkg_dpn_3d
+  - duf_inner_dev_pkg_dpn_7d
+  - duf_inner_dev_pkg_gmv_15d
+  - duf_inner_dev_pkg_gmv_30d
+  - duf_inner_dev_pkg_gmv_3d
+  - duf_inner_dev_pkg_gmv_7d
+  - duf_inner_dev_pkg_gmv_new_11_30d
+  - duf_inner_dev_pkg_gmv_new_15d
+  - duf_inner_dev_pkg_gmv_new_180d
+  - duf_inner_dev_pkg_gmv_new_1d
+  - duf_inner_dev_pkg_gmv_new_30d
+  - duf_inner_dev_pkg_gmv_new_31_60d
+  - duf_inner_dev_pkg_gmv_new_3d
+  - duf_inner_dev_pkg_gmv_new_4_10d
+  - duf_inner_dev_pkg_gmv_new_60d
+  - duf_inner_dev_pkg_gmv_new_61_180d
+  - duf_inner_dev_pkg_gmv_new_7d
+  - duf_inner_dev_pkg_gmv_new_90d
+  - duf_inner_dev_pkg_imp_11_30d
+  - duf_inner_dev_pkg_imp_15d
+  - duf_inner_dev_pkg_imp_30d
+  - duf_inner_dev_pkg_imp_31_60d
+  - duf_inner_dev_pkg_imp_3d
+  - duf_inner_dev_pkg_imp_4_10d
+  - duf_inner_dev_pkg_imp_7d
+  - duf_inner_dev_pkg_imp_bucket_15d
+  - duf_inner_dev_pkg_imp_bucket_3d
+  - duf_inner_dev_pkg_imp_bucket_7d
+  - duf_inner_dev_pkg_open_11_30d
+  - duf_inner_dev_pkg_open_180d
+  - duf_inner_dev_pkg_open_31_60d
+  - duf_inner_dev_pkg_open_4_10d
+  - duf_inner_dev_pkg_open_60d
+  - duf_inner_dev_pkg_open_61_180d
+  - duf_inner_dev_pkg_open_90d
+  - duf_inner_dev_pkg_pur_11_30d
+  - duf_inner_dev_pkg_pur_15d
+  - duf_inner_dev_pkg_pur_180d
+  - duf_inner_dev_pkg_pur_30d
+  - duf_inner_dev_pkg_pur_31_60d
+  - duf_inner_dev_pkg_pur_3d
+  - duf_inner_dev_pkg_pur_4_10d
+  - duf_inner_dev_pkg_pur_60d
+  - duf_inner_dev_pkg_pur_61_180d
+  - duf_inner_dev_pkg_pur_7d
+  - duf_inner_dev_pkg_pur_90d
+  - duf_inner_dev_pkg_pur_bucket_15d
+  - duf_inner_dev_pkg_pur_bucket_3d
+  - duf_inner_dev_pkg_pur_bucket_7d
+  - duf_inner_dev_pkg_re_15d
+  - duf_inner_dev_pkg_re_30d
+  - duf_inner_dev_pkg_re_3d
+  - duf_inner_dev_pkg_re_7d
+  - duf_inner_dev_pkg_re_bucket_15d
+  - duf_inner_dev_pkg_re_bucket_3d
+  - duf_inner_dev_pkg_re_bucket_7d
+  - duf_inner_dev_pkg_rev_11_30d
+  - duf_inner_dev_pkg_rev_180d
+  - duf_inner_dev_pkg_rev_31_60d
+  - duf_inner_dev_pkg_rev_4_10d
+  - duf_inner_dev_pkg_rev_60d
+  - duf_inner_dev_pkg_rev_61_180d
+  - duf_inner_dev_pkg_rev_90d
+  - duf_inner_dev_pkg_view_11_30d
+  - duf_inner_dev_pkg_view_180d
+  - duf_inner_dev_pkg_view_31_60d
+  - duf_inner_dev_pkg_view_4_10d
+  - duf_inner_dev_pkg_view_60d
+  - duf_inner_dev_pkg_view_61_180d
+  - duf_inner_dev_pkg_view_90d
+
+  # --- 用户行为特征 outer (duf_outer_) ---
+  - duf_outer_dev_pkg_atc_11_30d
+  - duf_outer_dev_pkg_atc_15d
+  - duf_outer_dev_pkg_atc_180d
+  - duf_outer_dev_pkg_atc_1d
+  - duf_outer_dev_pkg_atc_30d
+  - duf_outer_dev_pkg_atc_31_60d
+  - duf_outer_dev_pkg_atc_3d
+  - duf_outer_dev_pkg_atc_4_10d
+  - duf_outer_dev_pkg_atc_60d
+  - duf_outer_dev_pkg_atc_61_180d
+  - duf_outer_dev_pkg_atc_7d
+  - duf_outer_dev_pkg_atc_90d
+  - duf_outer_dev_pkg_cv_15d
+  - duf_outer_dev_pkg_cv_1d
+  - duf_outer_dev_pkg_cv_30d
+  - duf_outer_dev_pkg_cv_3d
+  - duf_outer_dev_pkg_cv_60d
+  - duf_outer_dev_pkg_cv_7d
+  - duf_outer_dev_pkg_cv_90d
+  - duf_outer_dev_pkg_gmv_15d
+  - duf_outer_dev_pkg_gmv_1d
+  - duf_outer_dev_pkg_gmv_30d
+  - duf_outer_dev_pkg_gmv_3d
+  - duf_outer_dev_pkg_gmv_60d
+  - duf_outer_dev_pkg_gmv_7d
+  - duf_outer_dev_pkg_gmv_90d
+  - duf_outer_dev_pkg_gmv_new_11_30d
+  - duf_outer_dev_pkg_gmv_new_15d
+  - duf_outer_dev_pkg_gmv_new_180d
+  - duf_outer_dev_pkg_gmv_new_1d
+  - duf_outer_dev_pkg_gmv_new_30d
+  - duf_outer_dev_pkg_gmv_new_31_60d
+  - duf_outer_dev_pkg_gmv_new_3d
+  - duf_outer_dev_pkg_gmv_new_4_10d
+  - duf_outer_dev_pkg_gmv_new_60d
+  - duf_outer_dev_pkg_gmv_new_61_180d
+  - duf_outer_dev_pkg_gmv_new_7d
+  - duf_outer_dev_pkg_gmv_new_90d
+  - duf_outer_dev_pkg_open_11_30d
+  - duf_outer_dev_pkg_open_180d
+  - duf_outer_dev_pkg_open_31_60d
+  - duf_outer_dev_pkg_open_4_10d
+  - duf_outer_dev_pkg_open_61_180d
+  - duf_outer_dev_pkg_pur_11_30d
+  - duf_outer_dev_pkg_pur_15d
+  - duf_outer_dev_pkg_pur_180d
+  - duf_outer_dev_pkg_pur_1d
+  - duf_outer_dev_pkg_pur_30d
+  - duf_outer_dev_pkg_pur_31_60d
+  - duf_outer_dev_pkg_pur_3d
+  - duf_outer_dev_pkg_pur_4_10d
+  - duf_outer_dev_pkg_pur_60d
+  - duf_outer_dev_pkg_pur_61_180d
+  - duf_outer_dev_pkg_pur_7d
+  - duf_outer_dev_pkg_pur_90d
+  - duf_outer_dev_pkg_re_15d
+  - duf_outer_dev_pkg_re_1d
+  - duf_outer_dev_pkg_re_30d
+  - duf_outer_dev_pkg_re_3d
+  - duf_outer_dev_pkg_re_60d
+  - duf_outer_dev_pkg_re_7d
+  - duf_outer_dev_pkg_re_90d
+  - duf_outer_dev_pkg_rev_11_30d
+  - duf_outer_dev_pkg_rev_180d
+  - duf_outer_dev_pkg_rev_31_60d
+  - duf_outer_dev_pkg_rev_4_10d
+  - duf_outer_dev_pkg_rev_61_180d
+  - duf_outer_dev_pkg_view_11_30d
+  - duf_outer_dev_pkg_view_180d
+  - duf_outer_dev_pkg_view_31_60d
+  - duf_outer_dev_pkg_view_4_10d
+  - duf_outer_dev_pkg_view_61_180d
+
+  # --- 小时级用户特征 (huf_) ---
+  - huf_deviceid_demand_pkgname_gmv_24h
+  - huf_deviceid_demand_pkgname_gmv_48h
+  - huf_deviceid_demand_pkgname_imp_12h
+  - huf_deviceid_demand_pkgname_imp_1h
+  - huf_deviceid_demand_pkgname_imp_24h
+  - huf_deviceid_demand_pkgname_imp_3h
+  - huf_deviceid_demand_pkgname_imp_48h
+  - huf_deviceid_demand_pkgname_pur_24h
+  - huf_deviceid_demand_pkgname_pur_48h
+  - huf_deviceid_demand_pkgname_re_12h
+  - huf_deviceid_demand_pkgname_re_1h
+  - huf_deviceid_demand_pkgname_re_24h
+  - huf_deviceid_demand_pkgname_re_3h
+  - huf_deviceid_demand_pkgname_re_48h
+
+  # --- 实时用户特征 (ruf2_) ---
+  - ruf2_dev_pkg_an_12h
+  - ruf2_dev_pkg_an_24h
+  - ruf2_dev_pkg_an_48h
+  - ruf2_dev_pkg_clk_10m
+  - ruf2_dev_pkg_clk_12h
+  - ruf2_dev_pkg_clk_1h
+  - ruf2_dev_pkg_clk_24h
+  - ruf2_dev_pkg_clk_30m
+  - ruf2_dev_pkg_clk_3h
+  - ruf2_dev_pkg_clk_3m
+  - ruf2_dev_pkg_clk_48h
+  - ruf2_dev_pkg_dpn_24h
+  - ruf2_dev_pkg_dpn_48h
+  - ruf2_dev_pkg_imp_10m
+  - ruf2_dev_pkg_imp_12h
+  - ruf2_dev_pkg_imp_1h
+  - ruf2_dev_pkg_imp_24h
+  - ruf2_dev_pkg_imp_30m
+  - ruf2_dev_pkg_imp_3h
+  - ruf2_dev_pkg_imp_3m
+  - ruf2_dev_pkg_imp_48h
+  - ruf2_dev_pkg_pur_24h
+  - ruf2_dev_pkg_pur_48h
+  - ruf2_dev_pkg_re_12h
+  - ruf2_dev_pkg_re_24h
+  - ruf2_dev_pkg_re_48h
+  - ruf2_dev_pkg_vn_12h
+  - ruf2_dev_pkg_vn_1h
+  - ruf2_dev_pkg_vn_24h
+  - ruf2_dev_pkg_vn_3h
+  - ruf2_dev_pkg_vn_48h
+
+# ============================================================
+# 稠密特征（数值型）- 当前为空，所有特征都是类别型
+# ============================================================
+dense_features: []
+
+# ============================================================
+# 交叉特征 (col1, col2) -> col1_x_col2
+# ============================================================
+cross_features:
+  - [country, adx]
+  - [country, business_type]
+  - [make, model]
+  - [adx, business_type]
+  - [country, bundle]
+  - [adx, campaignid]
