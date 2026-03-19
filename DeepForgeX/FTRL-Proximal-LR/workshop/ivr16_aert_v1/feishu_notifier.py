@@ -1,11 +1,4 @@
 # feishu_notifier.py
-'''
-模型验证结果发送飞书消息通用模块
-使用流程:
-    1. 自建一个飞书群，添加机器人，并获取群的 WebHook URL；
-    2. 拿WebHook URL跟李武申请token和 topic；
-    3. 替换代码中的以上 3 个变量；
-'''
 import json
 import requests
 from typing import Dict, List, Any
@@ -13,12 +6,8 @@ from datetime import datetime
 import pandas as pd
 
 class FeishuNotifier:
-    # 飞书 WebHook URL，跟飞书群绑定, token和 topic 需要找管理员申请
-    ################### private config #################
+    # 飞书 WebHook URL，跟飞书群绑定
     _WEBHOOK_URL = "https://open.feishu.cn/open-apis/bot/v2/hook/a6b95cf6-1715-4c8e-b96d-bbc8928a19bf"
-    _TOKEN = "0cdb867f-2837-428f-a0f8-64e64586cbdd"
-    _TOPIC = "dsp_alert3"
-    ####################################################
 
     @staticmethod
     #纯文本发送飞书消息
@@ -55,11 +44,11 @@ class FeishuNotifier:
         url = "http://api.ymnotify.dy/send"
         headers = {
             "Content-Type": "application/json",
-            "token":FeishuNotifier. _TOKEN
+            "token": "0cdb867f-2837-428f-a0f8-64e64586cbdd"
         }
         data = {
             "client": "zmaticoo_dsp",
-            "topic": FeishuNotifier._TOPIC,  # 写死的 topic
+            "topic": "dsp_alert3",  # 写死的 topic
             "subject": subject,
             "alliance_id": "2",
             "content": html_content
@@ -79,14 +68,14 @@ class FeishuNotifier:
     def dataframe_to_html_table(df: pd.DataFrame, title: str = "Table", text: str = "") -> str:
         # 创建 HTML 表格
         html = f"""
-        <div style="text-align: center; margin: 10px 0;">
-            <!-- 文本内容区域 -->
-            {f'<div style="text-align: left; margin: 15px 0; line-height: 1.6; white-space: pre-line;">{text}</div>' if text else ''}
-            
-            <!-- 标题区域 -->
-            <h4 style="margin: 15px 0; text-align: center; color: #333;">{title}</h4>
+        <div style="text-align: center;">
+            <h4 style="margin: 10px 0; text-align: center;">{title}</h4>
         </div>
         """
+        
+        # 如果有文本内容，则添加文本
+        if text:
+            html += f'<div style="text-align: left; margin: 10px 0; white-space: pre-line;">{text}</div>'
         
         html += f"""
         <div style="overflow-x: auto;">
@@ -96,34 +85,27 @@ class FeishuNotifier:
                 border: 1px solid #ddd;
                 font-family: Arial, sans-serif;
                 font-size: 12px;
-                margin: 15px 0;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                margin: 10px 0;
             ">
                 <thead>
-                    <tr style="background-color: #4CAF50; color: white; font-weight: bold;">
+                    <tr style="background-color: #4CAF50; color: white;">
         """
         
         # 添加表头
         for col in df.columns:
-            html += f'<th style="border: 1px solid #ddd; padding: 10px; text-align: center; min-width: 80px;">{col}</th>'
+            html += f'<th style="border: 1px solid #ddd; padding: 8px; text-align: center;">{col}</th>'
         
         html += "</tr></thead><tbody>"
         
         # 添加数据行
-        for idx, row in df.iterrows():
-            # 交替行颜色以提高可读性
-            row_style = "background-color: #f9f9f9;" if idx % 2 == 0 else "background-color: #ffffff;"
-            html += f"<tr style='{row_style}'>"
+        for _, row in df.iterrows():
+            html += "<tr style='background-color: #f9f9f9;'>"
             for cell in row:
                 # 处理数字格式，保留适当的小数位
                 if isinstance(cell, (int, float)):
                     if isinstance(cell, float):
-                        # 对于小数，保留4位小数但去除尾随零
-                        formatted_cell = f"{cell:.4f}".rstrip('0').rstrip('.')
-                        cell = formatted_cell if formatted_cell != '' else '0'
-                    else:
-                        cell = str(cell)
-                html += f'<td style="border: 1px solid #ddd; padding: 8px; text-align: center; vertical-align: top;">{cell}</td>'
+                        cell = f"{cell:.4f}" if cell != int(cell) else str(int(cell))
+                html += f'<td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{cell}</td>'
             html += "</tr>"
         
         html += """

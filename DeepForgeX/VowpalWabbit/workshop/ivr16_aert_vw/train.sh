@@ -13,7 +13,7 @@ WORKSHOP_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # 数据路径 (CSV 格式，需要先用 csv2vw 转换)
 CSV_ROOT="/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/csv"
-VW_DATA_ROOT="/mnt/workspace/walter.wan/vw_data/ivr16_aert_v1"
+VW_DATA_ROOT="/mnt/workspace/walter.wan/vw_data/ivr16_aert_vw"
 
 SCHEMA="${WORKSHOP_DIR}/conf/combine_schema"
 OUTPUT_DIR="${WORKSHOP_DIR}/output"

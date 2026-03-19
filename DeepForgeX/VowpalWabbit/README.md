@@ -14,7 +14,7 @@ VowpalWabbit/
 │   ├── evaluate.py           # 评估脚本 (AUC/PCOC/LogLoss by business_type)
 │   └── score_kdd.py          # KDD 格式评分
 ├── workshop/
-│   └── ivr16_aert_v1/        # 实验目录
+│   └── ivr16_aert_vw/        # 实验目录
 │       ├── conf/
 │       │   └── combine_schema    # 特征配置 (与 Java 版相同)
 │       ├── train.sh              # VW 训练脚本
@@ -61,7 +61,7 @@ VW 格式示例:
 ## 训练
 
 ```bash
-cd workshop/ivr16_aert_v1
+cd workshop/ivr16_aert_vw
 
 # 单日训练
 vw --ftrl \
@@ -129,5 +129,5 @@ python ../../tools/evaluate.py -d test.vw -p pred.txt
 ## 数据路径
 
 - **源数据 (CSV)**: `/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/csv/part=YYYY-MM-DD`
-- **转换后 (VW)**: `/mnt/workspace/walter.wan/vw_data/ivr16_aert_v1/`
-- **特征配置**: `workshop/ivr16_aert_v1/conf/combine_schema`
+- **转换后 (VW)**: `/mnt/workspace/walter.wan/vw_data/ivr16_aert_vw/`
+- **特征配置**: `workshop/ivr16_aert_vw/conf/combine_schema`

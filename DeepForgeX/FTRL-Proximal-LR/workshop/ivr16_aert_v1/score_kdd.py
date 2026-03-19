@@ -378,13 +378,13 @@ def main(input_file, output_file):
     headers = ["DATE", "Key", "AUC", "PCOC", "PURCHASE", "IMPRESSION", "IVR"]
     new_result = []
     for ele in metric_result:
-        if ele[3] < 50:
+        if ele[3] < 10:
             continue
         ele[0] = 'metric-' + ele[0]
         ele = [model_name] + ele
         new_result.append(ele)
         
-    new_result.sort(key = lambda d: d[4], reverse = True)
+    new_result.sort(key = lambda d: d[5], reverse = True)
     # 使用 tabulate 生成表格: simple/plain/grid
     table = tabulate(new_result, headers, tablefmt="grid")
     # 将表格写入文件
@@ -394,20 +394,15 @@ def main(input_file, output_file):
 
     #************************************* 发飞书消息 ******************************************
     if model_name.startswith('val'):
-        exp_readme = '实验信息：\n'
-        if os.path.exists('readme'):
-            with open('readme', 'r') as file:
-                exp_readme = exp_readme + file.read()
         # 使用 zip 将 headers 和 values 组合成字典，然后转成 df，结果发送飞书消息
         formatted_results = [dict(zip(headers, row)) for row in new_result]
         df = pd.DataFrame(formatted_results)
         now = datetime.now()
         formatted_dtm = now.strftime("%Y-%m-%d %H:%M:%S")
-        msg_text = f"send_time: {formatted_dtm} \n {exp_readme}" # 表格以外的消息正文
+        msg_text = f"send_time: {formatted_dtm} " # 表格以外的消息正文
         table_title = "Validation Result" #表格的标题
         msg_title = f"{model_name}" #消息的标题
         FeishuNotifier.send_dataframe_html(df, title = table_title, subject=msg_title, text = msg_text)
-    #************************************* 发飞书消息 ******************************************
 
 if __name__=="__main__":
     import sys
