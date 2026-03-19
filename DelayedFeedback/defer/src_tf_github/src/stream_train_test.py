@@ -3,48 +3,26 @@ from loss import get_loss_fn
 from utils import get_optimizer, ScalarMovingAverage
 from metrics import cal_llloss_with_logits, cal_auc, cal_prauc, cal_llloss_with_prob, ece_score
 from data import get_criteo_dataset_stream
-from model_utils import load_model_weights
 from tqdm import tqdm
 import numpy as np
-import json, os
-
-# business_type 分窗口分组（bt_col_index=0，即 x["0"]）
-_BT_GROUPS = {
-    "short": [39, 48, 45, 24, 49, 37, 7, 56, 31, 20, 62, 17, 59],  # ≤24h
-    "mid":   [12, 47, 53],                                            # 24-72h
-    "long":  [60, 22, 43],                                            # >72h
-}
-
-def _bt_group_auc(bt_col, labels, probs):
-    """按 business_type 分组计算 AUC，返回 {short/mid/long: auc}"""
-    bt_arr = np.array(bt_col).astype(int)
-    results = {}
-    for gname, bt_list in _BT_GROUPS.items():
-        mask = np.isin(bt_arr, bt_list)
-        if mask.sum() == 0:
-            results[gname] = float('nan')
-            continue
-        g_labels = labels[mask]
-        g_probs  = probs[mask]
-        results[gname] = cal_auc(g_labels, g_probs)
-    return results
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras import layers, Model
 import tensorflow as tf
 from collections import defaultdict
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-physical_devices = tf.config.list_physical_devices('GPU')
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
-    try:
-        tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
-    except RuntimeError as e:
-        print(f"GPU memory growth setting failed: {e}")
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
+physical_devices = tf.config.experimental.list_physical_devices('GPU') #tf.config.list_physical_devices('GPU')
+#tf.config.experimental.set_memory_growth(
+#    physical_devices[0], enable=True
+#)
 if len(physical_devices) > 1:
-    try:
-        tf.config.experimental.set_memory_growth(physical_devices[1], enable=True)
-    except RuntimeError as e:
-        print(f"GPU 1 memory growth setting failed: {e}")
+    tf.config.experimental.set_memory_growth(
+        physical_devices[1], enable=True
+    )
 
 
 def test(model, test_data, params):
@@ -53,16 +31,10 @@ def test(model, test_data, params):
     all_labels = []
     all_props = []
     for step, (batch_x, batch_y) in enumerate(tqdm(test_data), 1):
-        outputs = model.predict(batch_x)
-        
-        # 处理返回值为字典的情况
-        if isinstance(outputs, dict):
-            logits = outputs["logits"]
-        else:
-            logits = outputs
+        logits = model.predict(batch_x)
 
-        all_logits.append(logits if isinstance(logits, np.ndarray) else logits.numpy())
-        all_labels.append(batch_y.numpy() if hasattr(batch_y, 'numpy') else batch_y)
+        all_logits.append(logits.numpy())
+        all_labels.append(batch_y.numpy())
          
         if params["method"] == "3class":
             prop = tf.nn.softmax(logits)
@@ -77,10 +49,6 @@ def test(model, test_data, params):
             all_probs.append(tf.sigmoid(logits[:,0]))
             all_props.append(tf.sigmoid(logits[:,0]))
 
-        elif params["method"] == "ES-DFM" or params["method"] == "ES-DFM-normal" or params["method"] == "ES-DFM10" or params["method"] == "ES-DFM-FULL":
-            # MLP_tn_dp: logits shape (-1, 2), col0=tn_logits (cv pred)
-            all_probs.append(tf.sigmoid(logits[:, 0]))
-            all_props.append(tf.sigmoid(logits[:, 0]))
         else:
             all_probs.append(tf.sigmoid(logits))
             all_props.append(tf.sigmoid(logits))
@@ -133,23 +101,13 @@ def test(model, test_data, params):
         cv_prop_numpy = np.reshape(cv_prop.numpy(),(-1, 1))
         cv_label_numpy_1 = np.reshape(cv_label.numpy(),(-1))
         cv_prop_numpy_1 = np.reshape(cv_prop.numpy(),(-1))
+        llloss = cal_llloss_with_prob(all_labels, all_probs)
 
-        # 过滤 NaN（WinAdapt/win_time 模型可能产生 NaN probs）
-        import math
-        nan_mask = ~np.isnan(cv_prop_numpy_1)
-        if nan_mask.sum() < len(cv_prop_numpy_1):
-            cv_prop_numpy_1 = cv_prop_numpy_1[nan_mask]
-            cv_label_numpy_1 = cv_label_numpy_1[nan_mask]
-            cv_prop_numpy = cv_prop_numpy[nan_mask]
-            cv_label_numpy = cv_label_numpy[nan_mask]
+        cv_auc = cal_auc(cv_label_numpy, cv_prop_numpy)
+        prauc = cal_prauc(all_labels, all_probs)
 
-        llloss = cal_llloss_with_prob(cv_label_numpy_1, cv_prop_numpy_1)
-
-        cv_auc = cal_auc(cv_label_numpy_1, cv_prop_numpy_1)
-        prauc = cal_prauc(cv_label_numpy_1, cv_prop_numpy_1)
-
-        ctr = np.mean(cv_label_numpy_1,axis=0)
-        pctr = np.mean(cv_prop_numpy_1,axis=0)
+        ctr = np.mean(cv_label_numpy,axis=0)
+        pctr = np.mean(cv_prop_numpy,axis=0)
 
         ece = ece_score(cv_label_numpy_1,cv_prop_numpy_1)
         #print "cv_auc"
@@ -159,13 +117,6 @@ def test(model, test_data, params):
     else:
         llloss = cal_llloss_with_logits(all_labels, all_logits)
     batch_size = all_logits.shape[0]
-
-    # 过滤 NaN（ES-DFM 重要性权重可能产生 NaN）
-    nan_mask = ~np.isnan(all_probs)
-    if nan_mask.sum() < len(all_probs):
-        all_probs = all_probs[nan_mask]
-        all_labels = all_labels[nan_mask]
-
     pred = all_probs >= 0.5
 
     auc = cal_auc(all_labels, all_probs)
@@ -218,25 +169,12 @@ def train(models, optimizer, train_data, params):
             reg_loss = tf.add_n(models["model"].losses)
             loss_dict = loss_fn(targets, outputs, params)
             loss = loss_dict["loss"] + reg_loss
-            print("train_loss:")
-            print(loss_dict)
+            print "train_loss:" 
+            print loss_dict 
         
         trainable_variables = models["model"].trainable_variables
         gradients = g.gradient(loss, trainable_variables)
         optimizer.apply_gradients(zip(gradients, trainable_variables))
-
-
-def _safe_load(model, ckpt_path):
-    """安全加载权重，路径为 None 时跳过"""
-    if ckpt_path is None:
-        print(f"[WARN] pretrain ckpt path is None, skipping weight load for {model.name}")
-        return
-    full_path = ckpt_path + "/weights.weights.h5"
-    import os
-    if not os.path.exists(full_path):
-        print(f"[WARN] ckpt not found: {full_path}, skipping")
-        return
-    load_model_weights(model, full_path)
 
 
 def stream_run(params):
@@ -244,50 +182,50 @@ def stream_run(params):
     ws_model = None
     if params["method"] == "DFM":
         model = get_model("MLP_EXP_DELAY", params)
-        _safe_load(model, params["pretrain_dfm_model_ckpt_path"])
+        model.load_weights(params["pretrain_dfm_model_ckpt_path"])
     elif params["method"] == "3class":
         model = get_model("MLP_3class", params)
-        _safe_load(model, params["pretrain_3class_model_ckpt_path"])
-    elif params["method"] == "likeli" or params["method"] == "delay_win_time" or params["method"] == "delay_win_time_iw" or params["method"] == "ES-DFM-win" or params["method"] == "ES-DFM-wines":
+        model.load_weights(params["pretrain_3class_model_ckpt_path"])
+    elif params["method"] == "likeli" or params["method"] == "delay_win_time" or params["method"] == "delay_win_adapt" or params["method"] == "delay_win_time_iw" or params["method"] == "ES-DFM-win" or params["method"] == "ES-DFM-wines": # or params["method"] == "test":
         model = get_model("MLP_likeli", params)
-        _safe_load(model, params["pretrain_wintime_model_ckpt_path"])
-    elif params["method"] == "delay_win_adapt":
-        model = get_model("MLP_winadapt", params)
-        _safe_load(model, params["pretrain_winselect_model_ckpt_path"])
+        model.load_weights(params["pretrain_wintime_model_ckpt_path"])
     elif params["method"] == "delay_win_time_sep":
         model = get_model("MLP_wintime_sep", params)
-        _safe_load(model, params["pretrain_sepwintime_model_ckpt_path"])
+        model.load_weights(params["pretrain_sepwintime_model_ckpt_path"])
+    #elif params["method"] == "delay_win_select" or params["method"] == "test":
+    #    model = get_model("MLP_winadapt", params)
+    #    model.load_weights(params["pretrain_winselect_model_ckpt_path"])
+
     else:
         model = get_model("MLP_SIG", params)
-        _safe_load(model, params["pretrain_baseline_model_ckpt_path"])
+        model.load_weights(params["pretrain_baseline_model_ckpt_path"])
     models = {"model": model}
     if params["method"] == "FSIW":
         fsiw0_model = get_model("MLP_FSIW", params)
-        _safe_load(fsiw0_model, params["pretrain_fsiw0_model_ckpt_path"])
+        fsiw0_model.load_weights(params["pretrain_fsiw0_model_ckpt_path"])
         fsiw1_model = get_model("MLP_FSIW", params)
-        _safe_load(fsiw1_model, params["pretrain_fsiw1_model_ckpt_path"])
+        fsiw1_model.load_weights(params["pretrain_fsiw1_model_ckpt_path"])
         models["fsiw0"] = fsiw0_model
         models["fsiw1"] = fsiw1_model
     elif params["method"] == "ES-DFM" or params["method"] == "ES-DFM-win" or params["method"] == "ES-DFM-normal" or params["method"] == "ES-DFM10" or params["method"] == "ES-DFM-wines" or params["method"] == "ES-DFM-FULL":
         esdfm_model = get_model("MLP_tn_dp", params)
-        _safe_load(esdfm_model, params["pretrain_esdfm_model_ckpt_path"])
+        esdfm_model.load_weights(params["pretrain_esdfm_model_ckpt_path"])
         models["esdfm"] = esdfm_model
-    elif params["method"] == "delay_win_select":
+    #elif params["method"] == "3class":
+    #    class3_model = get_model("MLP_3class", params)
+    #    class3_model.load_weights(params["pretrain_3class_model_ckpt_path"])
+    #    models["3class"] = class3_model
+    elif params["method"] == "delay_win_select" :
         ws_model = get_model("MLP_winadapt", params)
-        _safe_load(ws_model, params["pretrain_winselect_model_ckpt_path"])
+        ws_model.load_weights(params["pretrain_winselect_model_ckpt_path"])
         models["wsm"] = ws_model
         esdfm_model = get_model("MLP_tn_dp", params)
-        _safe_load(esdfm_model, params["pretrain_esdfm_model_ckpt_path"])
+        esdfm_model.load_weights(params["pretrain_esdfm_model_ckpt_path"])
         models["esdfm"] = esdfm_model
-    elif params["method"] == "delay_win_adapt":
-        # delay_win_adapt 需要 winselect 模型用于时间窗口选择
-        ws_model = get_model("MLP_winadapt", params)
-        _safe_load(ws_model, params["pretrain_winselect_model_ckpt_path"])
-        models["wsm"] = ws_model
 
     elif params["method"] == "DFM":
         dfm_model = get_model("MLP_EXP_DELAY", params)
-        _safe_load(dfm_model, params["pretrain_dfm_model_ckpt_path"])
+        dfm_model.load_weights(params["pretrain_dfm_model_ckpt_path"])
         models["model"] = dfm_model
 
     train_stream, test_stream, test_stream_nowin = get_criteo_dataset_stream(params, pre_trained_model=ws_model)
@@ -308,10 +246,6 @@ def stream_run(params):
     nowin_pctr_ma = ScalarMovingAverage()
     nowin_ece_ma = ScalarMovingAverage()
 
-    # business_type 分窗口 AUC MA
-    bt_auc_ma = {g: ScalarMovingAverage() for g in _BT_GROUPS}
-    nowin_bt_auc_ma = {g: ScalarMovingAverage() for g in _BT_GROUPS}
-
     for ep, (train_dataset, test_dataset, test_dataset_nowin) in enumerate(zip(train_stream, test_stream, test_stream_nowin)):
         train_data = tf.data.Dataset.from_tensor_slices(
             (dict(train_dataset["x"]), train_dataset["labels"]))
@@ -325,28 +259,16 @@ def stream_run(params):
         auc, prauc, llloss, ctr, pctr, label, probs, ece = test(model, test_data, params)
         print("epoch {}, auc {}, prauc {}, llloss {}, ece {}".format(
             ep, auc, prauc, llloss, ece))
-        import math
-        if not math.isnan(float(auc)):
-            auc_ma.add(auc*test_batch_size, test_batch_size)
+        auc_ma.add(auc*test_batch_size, test_batch_size)
         nll_ma.add(llloss*test_batch_size, test_batch_size)
         prauc_ma.add(prauc*test_batch_size, test_batch_size)
         ctr_ma.add(ctr*test_batch_size, test_batch_size)
         pctr_ma.add(pctr*test_batch_size, test_batch_size)
-        if not math.isnan(float(ece)):
-            ece_ma.add(ece*test_batch_size,test_batch_size)
+        ece_ma.add(ece*test_batch_size,test_batch_size)
         print("epoch {}, auc_ma {}, prauc_ma {}, llloss_ma {}, ece_ma {}, ctr_ma {}, pctr_ma {}".format(
             ep, auc_ma.get(), prauc_ma.get(), nll_ma.get(), ece_ma.get(), ctr_ma.get(), pctr_ma.get()))
-
-        # business_type 分窗口 AUC（win 版）
-        bt_col = test_dataset["x"]["0"].to_numpy() if hasattr(test_dataset["x"]["0"], 'to_numpy') else np.array(test_dataset["x"]["0"])
-        bt_aucs = _bt_group_auc(bt_col, np.array(label), np.array(probs))
-        for g, g_auc in bt_aucs.items():
-            if not math.isnan(float(g_auc)):
-                bt_auc_ma[g].add(g_auc * test_batch_size, test_batch_size)
-        print("epoch {}, bt_short_auc {}, bt_mid_auc {}, bt_long_auc {}".format(
-            ep, bt_aucs.get('short', float('nan')), bt_aucs.get('mid', float('nan')), bt_aucs.get('long', float('nan'))))
-        print("epoch {}, bt_short_auc_ma {}, bt_mid_auc_ma {}, bt_long_auc_ma {}".format(
-            ep, bt_auc_ma['short'].get(), bt_auc_ma['mid'].get(), bt_auc_ma['long'].get()))
+        #for i in range(0, len(probs)):
+        #    print 'epoch%d gcn:%d,%f' %(ep, label[i],probs[i])
 
 
         if True: #params["method"] == "FNW":
@@ -357,27 +279,16 @@ def stream_run(params):
             auc, prauc, llloss, ctr, pctr, label, probs, ece = test(model, test_data_nowin, params)
             print("epoch {}, nowin_auc {}, nowin_prauc {}, nowin_llloss {} nowin_ece {}".format(
                 ep, auc, prauc, llloss, ece))
-            if not math.isnan(float(auc)):
-                nowin_auc_ma.add(auc*test_batch_size, test_batch_size)
+            nowin_auc_ma.add(auc*test_batch_size, test_batch_size)
             nowin_nll_ma.add(llloss*test_batch_size, test_batch_size)
             nowin_prauc_ma.add(prauc*test_batch_size, test_batch_size)
             nowin_ctr_ma.add(ctr*test_batch_size, test_batch_size)
             nowin_pctr_ma.add(pctr*test_batch_size, test_batch_size)
-            if not math.isnan(float(ece)):
-                nowin_ece_ma.add(ece*test_batch_size,test_batch_size)
+            nowin_ece_ma.add(ece*test_batch_size,test_batch_size)
             print("epoch {}, nowin_auc_ma {}, nowin_prauc_ma {}, nowin_llloss_ma {}, nowin_ece_ma {},  nowin_ctr_ma {}, nowin_pctr_ma {}".format(
                 ep, nowin_auc_ma.get(), nowin_prauc_ma.get(), nowin_nll_ma.get(), nowin_ece_ma.get(), nowin_ctr_ma.get(), nowin_pctr_ma.get()))
-
-            # business_type 分窗口 AUC（nowin 版）
-            nowin_bt_col = test_dataset_nowin["x"]["0"].to_numpy() if hasattr(test_dataset_nowin["x"]["0"], 'to_numpy') else np.array(test_dataset_nowin["x"]["0"])
-            nowin_bt_aucs = _bt_group_auc(nowin_bt_col, np.array(label), np.array(probs))
-            for g, g_auc in nowin_bt_aucs.items():
-                if not math.isnan(float(g_auc)):
-                    nowin_bt_auc_ma[g].add(g_auc * test_batch_size, test_batch_size)
-            print("epoch {}, nowin_bt_short_auc {}, nowin_bt_mid_auc {}, nowin_bt_long_auc {}".format(
-                ep, nowin_bt_aucs.get('short', float('nan')), nowin_bt_aucs.get('mid', float('nan')), nowin_bt_aucs.get('long', float('nan'))))
-            print("epoch {}, nowin_bt_short_auc_ma {}, nowin_bt_mid_auc_ma {}, nowin_bt_long_auc_ma {}".format(
-                ep, nowin_bt_auc_ma['short'].get(), nowin_bt_auc_ma['mid'].get(), nowin_bt_auc_ma['long'].get()))
+            #for i in range(0, len(probs)):
+            #    print 'epoch%d gcn:%d,%f' %(ep, label[i],probs[i])
 
 
 

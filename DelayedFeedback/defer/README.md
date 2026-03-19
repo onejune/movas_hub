@@ -6,36 +6,31 @@ Real Negatives Matter: Continuous Training with Real Negatives for Delayed Feedb
 
 ```
 defer/
-├── src_tf/                 # TensorFlow 实现 (论文原版)
-│   ├── data.py             # 数据加载与预处理
-│   ├── models.py           # 模型定义
-│   ├── loss.py             # 损失函数 (FNW, FNC, DFM, ES-DFM, WinAdapt)
-│   ├── main.py             # 训练入口
-│   ├── pretrain.py         # 预训练逻辑
-│   ├── stream_train_test.py  # 流式训练测试
-│   ├── metrics.py          # 评估指标
-│   ├── test.py             # 测试脚本
-│   └── utils.py            # 工具函数
+├── src_tf_github/          # TensorFlow 实现 (论文原版代码)
+│   └── src/
+│       ├── data.py         # 数据加载与预处理
+│       ├── models.py       # 模型定义
+│       ├── loss.py         # 损失函数 (FNW, FNC, DFM, ES-DFM, WinAdapt)
+│       ├── main.py         # 训练入口
+│       ├── pretrain.py     # 预训练逻辑
+│       ├── stream_train_test.py  # 流式训练测试
+│       ├── metrics.py      # 评估指标
+│       ├── test.py         # 测试脚本
+│       └── utils.py        # 工具函数
 │
-├── src_pytorch/            # PyTorch 实现 (推荐使用)
+├── src_pytorch_v2/         # PyTorch 实现 (推荐)
 │   ├── data.py             # Parquet 数据加载, 249 特征
 │   ├── models.py           # DeferModel, WinAdapt 4-head 输出
 │   ├── loss.py             # 损失函数实现
-│   ├── metrics.py          # 评估指标
 │   └── train.py            # 训练入口
 │
 ├── scripts/
-│   ├── preprocess_v2.py    # 数据预处理 (生成 parquet)
-│   └── run_*.sh            # 各种训练脚本
+│   └── preprocess_v2.py    # 数据预处理 (生成 parquet)
 │
-├── tools/
-│   ├── convert_data.py     # 原始数据转换
-│   ├── convert_data_fast.py  # 快速数据转换 (大文件优化)
-│   ├── download_data.sh    # 下载公开数据集
-│   └── ...
-│
-├── docs/                   # 文档
-└── versions/               # 历史版本备份
+├── convert_data.py         # 原始数据转换
+├── convert_data_fast.py    # 快速数据转换 (大文件优化)
+├── download_data.sh        # 下载公开数据集
+└── run_serial.sh           # 串行训练脚本
 ```
 
 ## 数据处理
@@ -43,7 +38,7 @@ defer/
 ### 1. 下载原始数据
 
 ```bash
-bash tools/download_data.sh
+bash download_data.sh
 ```
 
 ### 2. 数据转换
@@ -51,12 +46,12 @@ bash tools/download_data.sh
 原始 txt 格式转换为中间格式：
 
 ```bash
-python tools/convert_data.py --input data/criteo_data.txt --output data/converted/
+python convert_data.py --input data/criteo_data.txt --output data/converted/
 # 或使用快速版本 (大文件推荐)
-python tools/convert_data_fast.py --input data/criteo_data.txt --output data/converted/
+python convert_data_fast.py --input data/criteo_data.txt --output data/converted/
 ```
 
-### 3. 生成 Parquet 格式 (PyTorch 使用)
+### 3. 生成 Parquet 格式 (PyTorch v2 使用)
 
 ```bash
 python scripts/preprocess_v2.py \
@@ -72,10 +67,10 @@ python scripts/preprocess_v2.py \
 
 ## 模型训练
 
-### PyTorch (推荐)
+### PyTorch v2 (推荐)
 
 ```bash
-cd src_pytorch
+cd src_pytorch_v2
 
 # Vanilla (基础模型)
 python train.py --method vanilla --epochs 1 --batch_size 4096
@@ -99,7 +94,7 @@ python train.py --method winadapt --epochs 1 --batch_size 4096
 ### TensorFlow 原版
 
 ```bash
-cd src_tf
+cd src_tf_github/src
 python main.py --method oracle --epochs 1
 ```
 
