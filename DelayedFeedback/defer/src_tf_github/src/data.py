@@ -9,8 +9,7 @@ import pickle
 import matplotlib.pyplot as plt
 from utils import parse_float_arg
 
-# 延迟导入 pretrain 以避免循环依赖
-# import pretrain  # 移到函数内部
+import pretrain 
 from models import get_model
 from loss import get_loss_fn
 from utils import get_optimizer
@@ -22,7 +21,7 @@ from collections import defaultdict
 from utils import ScalarMovingAverage
 
 
-MIN_SAMPLE_PER_HOUR=10  # 降低阈值以适应小数据集
+MIN_SAMPLE_PER_HOUR=100
 
 SECONDS_5_MINS = 60*5
 SECONDS_10_MINS = 60*10
@@ -37,23 +36,6 @@ SECONDS_FSIW_NORM = SECONDS_A_DAY*5
 
 
 def get_data_df(params):
-    # 原始数据 cache（避免每次重新读 2200 万行）
-    _raw_cache = os.path.join(
-        params["data_cache_path"] if params["data_cache_path"] != "None" else "/tmp",
-        "raw_data.pkl"
-    )
-    if os.path.isfile(_raw_cache):
-        print(f"[cache] loading raw data from {_raw_cache}")
-        with open(_raw_cache, "rb") as f:
-            _cached = pickle.load(f)
-        df = _cached["df"]
-        click_ts = _cached["click_ts"]
-        pay_ts = _cached["pay_ts"]
-        if params["ddline"] > 0:
-            pos_mask = pay_ts - click_ts > params["ddline"] * SECONDS_A_DAY
-            pay_ts[pos_mask] = -1
-        return df, click_ts, pay_ts
-
     df = pd.read_csv(params["data_path"], sep="\t", header=None)
     click_ts = df[df.columns[0]].to_numpy()
     pay_ts = df[df.columns[1]].fillna(-1).to_numpy()
@@ -61,81 +43,74 @@ def get_data_df(params):
     pos_mask = pay_ts > 0
     pos_mask2 = pay_ts < 0
     gap = pay_ts[pos_mask] -click_ts[pos_mask]
-    print('pay >0 <0:')
+    print 'pay >0 <0:'
     total = pay_ts[pos_mask].shape[0]
-    print(pay_ts[pos_mask].shape)
-    print('pay_ts.shape')
-    print(pay_ts.shape)
-    print('time gap mean:')
-    print(np.mean(gap,axis=0))
-    print(np.max(gap,axis=0))
-    print(np.min(gap,axis=0))
+    print  pay_ts[pos_mask].shape
+    print 'pay_ts.shape'
+    print pay_ts.shape
+    print 'time gap mean:'
+    print np.mean(gap,axis=0)
+    print np.max(gap,axis=0)
+    print np.min(gap,axis=0)
 
-    print('min')
+    print 'min'
     pos_mask = pay_ts - click_ts > SECONDS_5_MINS
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_10_MINS
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
 
-    print('win quater')
+    print 'win quater'
     pos_mask = pay_ts - click_ts > SECONDS_A_QUATER
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_2_QUATER
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_3_QUATER
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
-    print('win hour')
+    print  pay_ts[pos_mask].shape[0]*1.0/total
+    print 'win hour'
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR 
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*3
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*6
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*12
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
-    print('win day')
+    print  pay_ts[pos_mask].shape[0]*1.0/total
+    print 'win day'
     pos_mask = pay_ts - click_ts > SECONDS_A_DAY
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*48
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*72
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*96
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*120
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*144
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*168
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*192
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
+    print  pay_ts[pos_mask].shape[0]*1.0/total
     pos_mask = pay_ts - click_ts > SECONDS_AN_HOUR*240
-    print(pay_ts[pos_mask].shape[0]*1.0/total)
-
-    df = df[df.columns[2:]]
-    # 只保留类别特征 (原来的 8-16 列)，与 PyTorch 版本对齐
-    # 去掉数值特征 (原来的 0-7 列)
-    df = df[df.columns[8:]]  # 只保留类别特征
-    for c in df.columns:
-        df[c] = df[c].fillna("")
-        df[c] = df[c].astype(str)
-    df.columns = [str(i) for i in range(9)]  # 重命名为 0-8
-    df.reset_index(drop=True, inplace=True)  # drop=True 避免多出 'index' 列
-
-    # 保存原始数据 cache
-    if params["data_cache_path"] != "None":
-        os.makedirs(params["data_cache_path"], exist_ok=True)
-        with open(_raw_cache, "wb") as f:
-            pickle.dump({"df": df, "click_ts": click_ts, "pay_ts": pay_ts}, f)
-        print(f"[cache] raw data saved to {_raw_cache}")
+    print  pay_ts[pos_mask].shape[0]*1.0/total
 
     if params["ddline"] > 0:
-        print('ddline 1')
+        print 'ddline 1'
         pos_mask = pay_ts - click_ts > params["ddline"] * SECONDS_A_DAY
         pay_ts[pos_mask] = -1
-        print(params["ddline"], pay_ts[pos_mask].shape)
+        print params["ddline"],pay_ts[pos_mask].shape
+        
 
+    df = df[df.columns[2:]]
+    for c in df.columns[8:]:
+        df[c] = df[c].fillna("")
+        df[c] = df[c].astype(str)
+    for c in df.columns[:8]:
+        df[c] = df[c].fillna(-1)
+        df[c] = (df[c] - df[c].min())/(df[c].max() - df[c].min())
+    df.columns = [str(i) for i in range(17)]
+    df.reset_index(inplace=True)
     return df, click_ts, pay_ts
 
 
@@ -184,7 +159,7 @@ class DataDF(object):
 
         pos_mask = self.pay_ts > end_ts
 
-        print('del_future_label:', np.sum(pos_mask, axis=0), pos_mask.shape[0])
+        print 'del_future_label:', np.sum(pos_mask, axis=0), pos_mask.shape[0]
 
         #x = pd.concat(
         #    (self.x.copy(deep=True), self.x.iloc[pos_mask].copy(deep=True)))
@@ -198,10 +173,10 @@ class DataDF(object):
         click_ts = copy.deepcopy(self.click_ts)
         pay_ts = copy.deepcopy(self.pay_ts)
         labels = copy.deepcopy(self.labels)
-        print('del_future_label before:',np.sum(labels, axis=0))
+        print 'del_future_label before:',np.sum(labels, axis=0)
         pay_ts[pos_mask] = -1
         labels[pos_mask] = 0
-        print('del_future_label after:',np.sum(labels, axis=0))
+        print 'del_future_label after:',np.sum(labels, axis=0)
         #labels = np.concatenate([labels, np.ones((np.sum(pos_mask),))], axis=0)
         idx = list(range(x.shape[0]))
         idx = sorted(idx, key=lambda x: sample_ts[x])
@@ -425,19 +400,19 @@ class DataDF(object):
        
         #train_label = np.reshape(pay_ts > 0, (-1, 1))
         labels = np.concatenate([train_label_spm, train_label_winneg, train_label_winpos], axis=1)
-        print('self.pay_ts')
-        print(self.pay_ts.shape)
-        print('labels.shape')
-        print(labels.shape)
-        print('allsum')
-        print(np.sum(labels))
-        print('linesum')
-        print(np.sum(labels, axis=0))
-        print('label')
-        print(labels)
-        print('mask_3')
-        print(mask_3)
-        print(self.pay_ts[mask_3].shape)
+        print 'self.pay_ts'
+        print self.pay_ts.shape
+        print 'labels.shape'
+        print labels.shape
+        print 'allsum'
+        print np.sum(labels)
+        print 'linesum'
+        print np.sum(labels, axis=0)
+        print 'label'
+        print labels
+        print 'mask_3'
+        print mask_3
+        print self.pay_ts[mask_3].shape
         #train_label = copy.deepcopy(self.labels)
         #train_label[mask] = 0  # fake negatives
         #labels = np.concatenate([train_label_tn, train_label_dp, train_label], axis=1)
@@ -476,17 +451,17 @@ class DataDF(object):
         #train_label = np.reshape(pay_ts > 0, (-1, 1))
         labels = np.concatenate([train_label_01, train_label_00, train_label_11, train_label_10], axis=1)
  
-        print('labels.shape')
-        print(labels.shape)
-        print('allsum')
-        print(np.sum(labels))
-        print('linesum')
-        print(np.sum(labels, axis=0))
-        print('label')
-        print(labels)
-        print('mask_3')
-        print(mask_3)
-        print(self.pay_ts[mask_3].shape)
+        print 'labels.shape'
+        print labels.shape
+        print 'allsum'
+        print np.sum(labels)
+        print 'linesum'
+        print np.sum(labels, axis=0)
+        print 'label'
+        print labels
+        print 'mask_3'
+        print mask_3
+        print self.pay_ts[mask_3].shape
 
         idx = list(range(x.shape[0]))
         idx = sorted(idx, key=lambda x: sample_ts[x])  # sort by sampling time
@@ -497,7 +472,7 @@ class DataDF(object):
                       labels[idx])
 
     def add_delay_wintime_cut_fake_neg2(self, cut_size):
-        print("add_delay_wintime_cut_fake_neg2")
+        print "add_delay_wintime_cut_fake_neg2"
         #ddline = int(params["ddline"])*SECONDS_A_DAY
         #print 'ddline'
         #print ddline
@@ -522,17 +497,17 @@ class DataDF(object):
         #train_label = np.reshape(pay_ts > 0, (-1, 1))
         labels = np.concatenate([train_label_01, train_label_00, train_label_11, train_label_10], axis=1)
 
-        print('labels.shape')
-        print(labels.shape)
-        print('allsum')
-        print(np.sum(labels))
-        print('linesum')
-        print(np.sum(labels, axis=0))
-        print('label')
-        print(labels)
-        print('mask_3')
-        print(mask_3)
-        print(self.pay_ts[mask_3].shape)
+        print 'labels.shape'
+        print labels.shape
+        print 'allsum'
+        print np.sum(labels)
+        print 'linesum'
+        print np.sum(labels, axis=0)
+        print 'label'
+        print labels
+        print 'mask_3'
+        print mask_3
+        print self.pay_ts[mask_3].shape
 
         idx = list(range(x.shape[0]))
         idx = sorted(idx, key=lambda x: sample_ts[x])  # sort by sampling time
@@ -547,15 +522,15 @@ class DataDF(object):
         cut_hour = 0.25
         cut_size = cut_hour*SECONDS_AN_HOUR
         self.time_cut = time_cut
-        print('self.time_cut.new2')
-        print(self.time_cut.shape)
-        print(self.time_cut)
-        print('self.pay_ts')
-        print(self.pay_ts.shape)
-        print(self.pay_ts)
-        print('self.click_ts')
-        print(self.click_ts.shape)
-        print(self.click_ts)
+        print 'self.time_cut.new2'
+        print self.time_cut.shape
+        print self.time_cut
+        print 'self.pay_ts'
+        print self.pay_ts.shape
+        print self.pay_ts
+        print 'self.click_ts'
+        print self.click_ts.shape
+        print self.click_ts
 
         self.pay_ts = self.pay_ts.reshape(-1,)
         self.click_ts = self.click_ts.reshape(-1,)
@@ -565,8 +540,8 @@ class DataDF(object):
         cut_hour2 = params["win2"] #0.5
         cut_hour3 = params["win3"] #1
 
-        print('win 1 2 3')
-        print(cut_hour1, cut_hour2, cut_hour3)
+        print 'win 1 2 3'
+        print cut_hour1, cut_hour2, cut_hour3
 
         print("ch {}".format(cut_hour1))
         cut_sec1 = int(SECONDS_AN_HOUR * cut_hour1)
@@ -582,19 +557,19 @@ class DataDF(object):
             winada = time_win
         else:
             winada = cut_size
-        print('winada')
-        print(winada)
+        print 'winada'
+        print winada
         #time_pos = time_cut[:,1]
-        print('self.pay_ts')
-        print(self.pay_ts.shape)
-        print('self.click_ts')
-        print(self.click_ts.shape)
-        print('time_win3')
-        print(time_win.shape)
+        print 'self.pay_ts'
+        print self.pay_ts.shape
+        print 'self.click_ts'
+        print self.click_ts.shape
+        print 'time_win3'
+        print time_win.shape
         mask_spm1 = self.pay_ts - self.click_ts > winada#time_win #cut_size #time_win ####################time_win
         #mask_spm2 = self.pay_ts - self.click_ts > cut_size
-        print('succ pass')
-        print(mask_spm1.shape)
+        print 'succ pass'
+        print mask_spm1.shape
         mask_spm0 = self.pay_ts <= 0
         mask_3 = (self.pay_ts == 0)
 
@@ -612,17 +587,16 @@ class DataDF(object):
         label = np.concatenate([labels, np.ones((np.sum(mask_spm1),))], axis=0)
         time_cut_new = np.reshape(time_cut,(-1,1))
         time_cut_new2 = np.concatenate([time_cut_new, time_cut_new[mask_spm1]], axis=0)
-        label = np.reshape(label, (-1, 1))  # 确保 label 是 2D
-        labels = np.concatenate([label, time_cut_new2], axis=1)
+        labels = np.concatenate([label,time_cut_new2], axis=1)
 
-        print('labels.shape')
-        print(labels.shape)
-        print('allsum')
-        print(np.sum(labels))
-        print('linesum')
-        print(np.sum(labels, axis=0))
-        print('label')
-        print(labels)
+        print 'labels.shape'
+        print labels.shape
+        print 'allsum'
+        print np.sum(labels)
+        print 'linesum'
+        print np.sum(labels, axis=0)
+        print 'label'
+        print labels
 
         idx = list(range(x.shape[0]))
         idx = sorted(idx, key=lambda x: sample_ts[x])  # sort by sampling time
@@ -638,15 +612,15 @@ class DataDF(object):
         cut_hour = 0.25
         cut_size = cut_hour*SECONDS_AN_HOUR
         self.time_cut = time_cut
-        print('self.time_cut.new2')
-        print(self.time_cut.shape)
-        print(self.time_cut)
-        print('self.pay_ts')
-        print(self.pay_ts.shape)
-        print(self.pay_ts)
-        print('self.click_ts')
-        print(self.click_ts.shape)
-        print(self.click_ts)
+        print 'self.time_cut.new2'
+        print self.time_cut.shape
+        print self.time_cut
+        print 'self.pay_ts'
+        print self.pay_ts.shape
+        print self.pay_ts
+        print 'self.click_ts'
+        print self.click_ts.shape
+        print self.click_ts
 
         self.pay_ts = self.pay_ts.reshape(-1,)
         self.click_ts = self.click_ts.reshape(-1,)
@@ -656,8 +630,8 @@ class DataDF(object):
         cut_hour2 = params["win2"] #0.5
         cut_hour3 = params["win3"] #1
 
-        print('win 1 2 3')
-        print(cut_hour1, cut_hour2, cut_hour3)
+        print 'win 1 2 3'
+        print cut_hour1, cut_hour2, cut_hour3
 
         print("ch {}".format(cut_hour1))
         cut_sec1 = int(SECONDS_AN_HOUR * cut_hour1)
@@ -673,19 +647,19 @@ class DataDF(object):
             winada = time_win 
         else:
             winada = cut_size
-        print('winada')
-        print(winada)
+        print 'winada'
+        print winada
         #time_pos = time_cut[:,1]
-        print('self.pay_ts')
-        print(self.pay_ts.shape)
-        print('self.click_ts')
-        print(self.click_ts.shape)
-        print('time_win3')
-        print(time_win.shape)
+        print 'self.pay_ts'
+        print self.pay_ts.shape
+        print 'self.click_ts'
+        print self.click_ts.shape
+        print 'time_win3'
+        print time_win.shape
         mask_spm1 = self.pay_ts - self.click_ts > winada#time_win #cut_size #time_win ####################time_win
         #mask_spm2 = self.pay_ts - self.click_ts > cut_size
-        print('succ pass')
-        print(mask_spm1.shape)
+        print 'succ pass'
+        print mask_spm1.shape
         mask_spm0 = self.pay_ts <= 0
         mask_3 = (self.pay_ts == 0)
         x = pd.concat(
@@ -716,12 +690,12 @@ class DataDF(object):
         '''
         train_label_01_30_sum_part = np.minimum(train_label_01_15_part+train_label_01_30_part, 1)
         train_label_01_30_sum = np.minimum(train_label_01_15+train_label_01_30, 1)
-        print('time_win6')
-        print(time_win.shape)
+        print 'time_win6'
+        print time_win.shape
         #print 'cut_sec2'
         #print cut_sec2.shape
-        print('train_label_01_30_sum')
-        print(train_label_01_30_sum.shape)
+        print 'train_label_01_30_sum'
+        print train_label_01_30_sum.shape
         # mask is to solve the quesiotn that label11 is neg for which window
         label_01_30_mask = np.concatenate([np.logical_and((time_win+0.0001 < cut_sec2),(train_label_01_30_sum_part<1)), ############time_win 
 						np.zeros(self.pay_ts[mask_spm1].shape),
@@ -775,16 +749,16 @@ class DataDF(object):
         #cv30sum 1487993. 0.42 
         #cv60sum 1661859  0.468
         #labels.shape (29976173, 11).
-        print('labels.shape')
-        print(labels.shape)
-        print('allsum')
-        print(np.sum(labels))
-        print('linesum')
-        print(np.sum(labels, axis=0))
-        print('label')
-        print(labels)
-        print('label_01_30_mask')
-        print(np.sum(label_01_30_mask, axis=0))
+        print 'labels.shape'
+        print labels.shape
+        print 'allsum'
+        print np.sum(labels)
+        print 'linesum'
+        print np.sum(labels, axis=0)
+        print 'label'
+        print labels
+        print 'label_01_30_mask'
+        print np.sum(label_01_30_mask, axis=0)
 
         idx = list(range(x.shape[0]))
         idx = sorted(idx, key=lambda x: sample_ts[x])  # sort by sampling time
@@ -892,7 +866,7 @@ class DataDF(object):
 
 
 def get_criteo_dataset_stream(params, pre_trained_model=None):
-    print('get_criteo_dataset_stream in')
+    print 'get_criteo_dataset_stream in'
     name = params["dataset"]
     print("loading datasest {}".format(name))
     cache_path = os.path.join(
@@ -1016,13 +990,13 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
             cut_sec = cut_hour*SECONDS_AN_HOUR
             data = DataDF(df, click_ts, pay_ts)
             if params["method"] == "ES-DFM10" or params["method"] == "Vanilla":
-                print('last_30_train_test_esdfm 10')
+                print 'last_30_train_test_esdfm 10'
                 train_data = data.sub_days(0, 60).add_esdfm_cut_fake_neg2(cut_sec,params)
             elif params["method"] == "ES-DFM-FULL":
-                print('last_30_train_test_esdfm full')
+                print 'last_30_train_test_esdfm full'
                 train_data = data.sub_days(0, 60).add_esdfm_cut_fake_neg3(cut_sec)
             else:
-                print('last_30_train_test_esdfm')
+                print 'last_30_train_test_esdfm'
                 train_data = data.sub_days(0, 60).add_esdfm_cut_fake_neg(cut_sec)
             test_data = data.sub_days(30, 60)
 
@@ -1071,17 +1045,17 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
             mid = int(params["mid"])
             end = int(params["end"])
 
-            print('start mid end')
-            print(start, mid, end)
+            print 'start mid end'
+            print start, mid, end
 
             if params["method"] == "FNC10" or params["method"] == "FNW10":
-                print('last_30_train_test_fnw 10')
+                print 'last_30_train_test_fnw 10'
                 train_data = data.sub_days(start, end).add_fake_neg2(params) #add_fake_neg() #.add_fake_neg2
             elif params["method"] == "Vanilla":
-                print('last_30_train_test_fnw odl')
+                print 'last_30_train_test_fnw odl'
                 train_data = data.sub_days(start, end).add_fake_neg3(cut_sec,params)
             else:
-                print('last_30_train_test_fnw')
+                print 'last_30_train_test_fnw'
                 train_data = data.sub_days(start, end).add_fake_neg() #add_fake_neg() #.add_fake_neg2
             test_data = data.sub_days(mid, end)
             #test_data_nowin = data.sub_days(30, 60).add_nowin_auc()
@@ -1090,7 +1064,7 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
             #test_stream_nowin = []
             #print 'train_hour.labels'
             #print train_hour.labels
-            print('test_hour.labels')
+            print 'test_hour.labels'
             #print test_hour.labels
 
             for tr in range(mid*24, (end-1)*24+23):
@@ -1164,8 +1138,8 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
             mid = int(params["mid"])
             end = int(params["end"])
 
-            print('start mid end')
-            print(start, mid, end)
+            print 'start mid end'
+            print start, mid, end
 
             train_data = data.sub_days(start, end).add_3class_cut_fake_neg(cut_sec)
             test_data = data.sub_days(mid, end)
@@ -1213,8 +1187,8 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
             mid = int(params["mid"])
             end = int(params["end"])
 
-            print('start mid end')
-            print(start, mid, end)
+            print 'start mid end'
+            print start, mid, end
 
             train_data = data.sub_days(start, end).add_delay_wintime_cut_fake_neg(cut_sec)
             #train_data = data.sub_days(start, end).add_delay_wintime_cut_fake_neg2(cut_sec)
@@ -1276,11 +1250,10 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
                 (dict(train_dataset_time["x"]), train_dataset_time["labels"]))
             train_data_time = train_data_time.batch(params["batch_size"]).prefetch(1)
             model_time = pre_trained_model #get_model(params["model"], params)
-            import pretrain  # 延迟导入避免循环依赖
             time_cut = pretrain.test(model_time, train_data_time, params, before=True)
-            print('time_cut.shape0')
-            print(time_cut.shape)
-            print(time_cut)
+            print 'time_cut.shape0'
+            print time_cut.shape
+            print time_cut
 
             time_cut_15 = time_cut[:,1]
             time_cut_30 = (1-time_cut[:,1])*(time_cut[:,2])
@@ -1291,50 +1264,49 @@ def get_criteo_dataset_stream(params, pre_trained_model=None):
             #time_cut_60 = np.array(time_cut_60)
 
             time_cut_new = np.concatenate([time_cut_15.reshape(-1,1), time_cut_30.reshape(-1,1), time_cut_60.reshape(-1,1)], axis=1)
-            print('time_cut_new')
-            print(time_cut_new.shape)
-            print(time_cut_new)
+            print 'time_cut_new'
+            print time_cut_new.shape
+            print time_cut_new
 
             time_cut_arg = np.argmax(time_cut_new, axis=1) #.reshape(-1,1)
-            print('time_cut_arg')
-            print(time_cut_arg.shape)
-            print(time_cut_arg)
+            print 'time_cut_arg'
+            print time_cut_arg.shape
+            print time_cut_arg
 
             win1 = params["win1"] #0.25
             win2 = params["win2"] #0.5 
             win3 = params["win3"]
             
-            print('win 1 2 3 new')
-            print(win1, win2, win3)
+            print 'win 1 2 3 new'
+            print win1, win2, win3
 
             time_win = np.where(time_cut_arg == 0, win1, time_cut_arg)
             time_win = np.where(time_win == 1, win2, time_win)
             time_win = np.where(time_win == 2, win3, time_win)
             #time_cut_final = np.concatenate(
             #    [time_win, time_cut_arg], axis=1)
-            print('time_win.shape1')
-            print(time_win.shape)
-            print(np.sum(time_win))
-            print(time_win)
+            print 'time_win.shape1'
+            print time_win.shape
+            print np.sum(time_win)
+            print time_win
 
             mask = time_win==win1
-            print('time_win 0.25 .shape')
-            print(time_win[mask].shape)
-            print(time_win[mask])
+            print 'time_win 0.25 .shape'
+            print time_win[mask].shape
+            print time_win[mask]
 
             mask = time_win==win2
-            print('time_win 0.5 .shape')
-            print(time_win[mask].shape)
-            print(time_win[mask])
+            print 'time_win 0.5 .shape'
+            print time_win[mask].shape
+            print time_win[mask]
 
             mask = time_win==win3
-            print('time_win 1 .shape')
-            print(time_win[mask].shape)
-            print(time_win[mask])
+            print 'time_win 1 .shape'
+            print time_win[mask].shape
+            print time_win[mask]
 
             data = DataDF(df, click_ts, pay_ts,time_cut=time_win)
-            # 使用 add_delay_winadapt_cut_fake_neg 来生成完整的 14 维标签
-            train_data = data.sub_days(0, 60).add_delay_winadapt_cut_fake_neg(cut_sec, time_win, params)
+            train_data = data.sub_days(0, 60).add_delay_winadapt2_cut_fake_neg(cut_sec, time_win, params)
             test_data = data.sub_days(mid, 60)
 
             train_stream = []
@@ -1400,18 +1372,18 @@ def get_criteo_dataset(params):
             testend = int(params["pre_testend"])
 
             delfu = int(params["delfu"])
-            print('start,end,',trainstart, trainend, teststart, testend)
-            print('delfu:',delfu)
+            print 'start,end,',trainstart, trainend, teststart, testend
+            print 'delfu:',delfu
             if delfu == 0:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).shuffle()
             else:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 #train_data = data.sub_days(trainstart, trainend).del_future_label(trainstart, trainend).shuffle()
                 train_data = data.sub_days(trainstart, trainend).shuffle().del_future_label(trainstart, trainend)
-            print('train_data.labels')
-            print(train_data.labels)
-            print(np.sum(train_data.labels, axis = 0), train_data.labels.shape[0])
+            print 'train_data.labels'
+            print train_data.labels
+            print np.sum(train_data.labels, axis = 0), train_data.labels.shape[0]
 
             mask = train_data.pay_ts < 0
             train_data.pay_ts[mask] = trainend * \
@@ -1423,21 +1395,21 @@ def get_criteo_dataset(params):
             teststart = int(params["pre_teststart"])
             testend = int(params["pre_testend"])
 
-            print('start mid end')
-            print(trainstart, trainend, teststart, testend)
+            print 'start mid end'
+            print trainstart, trainend, teststart, testend
 
             delfu = int(params["delfu"])
-            print('start,end,',trainstart, trainend, teststart, testend)
-            print('delfu:',delfu)
+            print 'start,end,',trainstart, trainend, teststart, testend
+            print 'delfu:',delfu
             if delfu == 0:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).shuffle()
             else:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).del_future_label(trainstart, trainend).shuffle()
-            print('train_data.labels')
-            print(train_data.labels)
-            print(np.sum(train_data.labels, axis = 0), train_data.labels.shape[0])
+            print 'train_data.labels'
+            print train_data.labels
+            print np.sum(train_data.labels, axis = 0), train_data.labels.shape[0]
 
             #train_data = data.sub_days(0, 30).shuffle()
             train_data.pay_ts[train_data.pay_ts < 0] = SECONDS_A_DAY*30
@@ -1453,24 +1425,24 @@ def get_criteo_dataset(params):
             teststart = int(params["pre_teststart"])
             testend = int(params["pre_testend"])
 
-            print('start mid end')
-            print(trainstart, trainend, teststart, testend)
+            print 'start mid end'
+            print trainstart, trainend, teststart, testend
 
             cut_hour = parse_float_arg(name, "cut_hour")
             cut_sec = int(SECONDS_AN_HOUR*cut_hour)
             #train_data = data.sub_days(trainstart, trainend).shuffle()
             delfu = int(params["delfu"])
-            print('start,end,',trainstart, trainend, teststart, testend)
-            print('delfu:',delfu)
+            print 'start,end,',trainstart, trainend, teststart, testend
+            print 'delfu:',delfu
             if delfu == 0:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).shuffle()
             else:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).del_future_label(trainstart, trainend).shuffle()
-            print('train_data.labels')
-            print(train_data.labels)
-            print(np.sum(train_data.labels, axis = 0), train_data.labels.shape[0])
+            print 'train_data.labels'
+            print train_data.labels
+            print np.sum(train_data.labels, axis = 0), train_data.labels.shape[0]
 
             train_label_tn = np.reshape(train_data.pay_ts < 0, (-1, 1))
             train_label_dp = np.reshape(
@@ -1498,7 +1470,7 @@ def get_criteo_dataset(params):
             testend = int(params["pre_testend"])
 
             delfu = int(params["delfu"])
-            print('start,end,',trainstart, trainend, teststart, testend)
+            print 'start,end,',trainstart, trainend, teststart, testend
 
             cv_mask_day = int(params["cv_mask_day"])
             end_ts = (trainend-cv_mask_day)*SECONDS_A_DAY
@@ -1506,10 +1478,10 @@ def get_criteo_dataset(params):
             #print 'ddline'
             #print ddline
             if delfu == 0:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).shuffle()
             else:
-                print('delfu:',delfu)
+                print 'delfu:',delfu
                 train_data = data.sub_days(trainstart, trainend).shuffle().del_future_label(trainstart, trainend)
 
 
@@ -1523,15 +1495,15 @@ def get_criteo_dataset(params):
             else:
                 train_label_cv_mask = np.reshape(np.logical_or(train_data.click_ts <= end_ts,train_data.pay_ts > 0), (-1, 1))
 
-            print('train_label_cv_mask:', np.sum(train_label_cv_mask, axis=0), train_label_cv_mask.shape[0])
+            print 'train_label_cv_mask:', np.sum(train_label_cv_mask, axis=0), train_label_cv_mask.shape[0]
             #train_label_win = np.reshape(
             #    train_data.pay_ts - train_data.click_ts <= cut_sec, (-1, 1))
             #train_label = np.reshape(train_data.pay_ts > 0, (-1, 1))
             train_data.labels = np.concatenate(
                 [train_label_cv, train_label_win, train_label_cv_mask], axis=1)
-            print('train_data.labels')
-            print(train_data.labels)
-            print(np.sum(train_data.labels, axis = 0), train_data.labels.shape[0])
+            print 'train_data.labels'
+            print train_data.labels
+            print np.sum(train_data.labels, axis = 0), train_data.labels.shape[0]
 
             #test_data = data.sub_days(30, 60)
             test_data = data.sub_days(teststart, testend)
@@ -1543,9 +1515,9 @@ def get_criteo_dataset(params):
             #test_label = np.reshape(test_data.pay_ts > 0, (-1, 1))
             test_data.labels = np.concatenate(
                 [test_label_cv, test_label_win], axis=1)
-            print("test_data.labels")
-            print(test_data.labels)
-            print(np.sum(test_data.labels, axis = 0))
+            print "test_data.labels"
+            print test_data.labels
+            print np.sum(test_data.labels, axis = 0)
 
         elif "fsiw1" in name:
             cd = parse_float_arg(name, "cd")
@@ -1582,15 +1554,15 @@ def get_criteo_dataset(params):
                 [test_label_00, test_label_01, test_label_11], axis=1)
             temp = train_label_00 + train_label_01 + train_label_11
             temp2 = test_label_00 + test_label_01 + test_label_11
-            print("temp")
-            print(temp)
-            print("temp2")
-            print(temp2)
-            print("train_data.labels")
-            print(train_data.labels)
+            print "temp"
+            print temp
+            print "temp2"
+            print temp2
+            print "train_data.labels" 
+            print train_data.labels
             temp3 = np.sum(train_data.labels,axis=0)
-            print("temp3")
-            print(temp3)
+            print "temp3"
+            print temp3
 
         elif "win_adapt" in name:
             cut_hour1 = 0.25
@@ -1609,9 +1581,9 @@ def get_criteo_dataset(params):
             train_label_11 = np.reshape(train_data.pay_ts > 0, (-1, 1))
             train_data.labels = np.concatenate(
                 [train_label_11, train_label_15, train_label_30, train_label_60], axis=1)
-            print('train_data.labels')
-            print(train_data.labels)
-            print(np.sum(train_data.labels, axis = 0))
+            print 'train_data.labels'
+            print train_data.labels
+            print np.sum(train_data.labels, axis = 0)
             test_data = data.sub_days(30, 60)
             #train_label_00 = np.reshape(test_data.pay_ts < 0, (-1, 1))
             test_label_15 = np.reshape(np.logical_and((test_data.pay_ts - test_data.click_ts <= cut_sec1), test_data.pay_ts > 0), (-1, 1))
@@ -1620,9 +1592,9 @@ def get_criteo_dataset(params):
             test_label_11 = np.reshape(test_data.pay_ts > 0, (-1, 1))
             test_data.labels = np.concatenate(
                 [test_label_11, test_label_15, test_label_30, test_label_60], axis=1)
-            print("test_data.labels")
-            print(test_data.labels)
-            print(np.sum(test_data.labels, axis = 0))
+            print "test_data.labels"
+            print test_data.labels
+            print np.sum(test_data.labels, axis = 0)
 
         else:
             raise NotImplementedError("{} dataset does not exist".format(name))

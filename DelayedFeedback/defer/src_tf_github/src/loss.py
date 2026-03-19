@@ -52,7 +52,7 @@ def newfnw_test_loss(targets, outputs, params=None):
     return {"loss": loss}
 
 def fnw10_test_loss(targets, outputs, params=None):
-    print("fnw10_test_loss")
+    print "fnw10_test_loss"
     z = targets["label"]
     x = outputs["logits"]
     x = tf.reshape(x[:,0], (-1,))
@@ -67,7 +67,7 @@ def fnw10_test_loss(targets, outputs, params=None):
     return {"loss": loss}
 
 def fnw_test_loss(targets, outputs, params=None):
-    print('fnw_test_loss')
+    print 'fnw_test_loss'
     z = targets["label"]
     x = outputs["logits"]
     x = tf.reshape(x[:,0], (-1,))
@@ -302,8 +302,8 @@ def win_select_loss(targets, outputs, params=None):
 def delay_win_select_loss(targets, outputs, params=None):
     z = targets["label"]
 
-    print('logits.shape')
-    print(outputs["logits"].shape)
+    print 'logits.shape'
+    print outputs["logits"].shape
 
     cv_logit = tf.cast(tf.reshape(outputs["logits"][:, 0], (-1, 1)), tf.float32)
     time15_logit = tf.cast(tf.reshape(outputs["logits"][:, 1], (-1, 1)), tf.float32)
@@ -320,21 +320,21 @@ def delay_win_select_loss(targets, outputs, params=None):
     stable_time30_prop_stop = tf.stop_gradient(stable_time30_prop)
     stable_time60_prop_stop = tf.stop_gradient(stable_time60_prop)
    
-    print('delay_win_select_loss')
-    print('cv_logit')
-    print(cv_logit)
+    print 'delay_win_select_loss'
+    print 'cv_logit'
+    print cv_logit
     #print tf.cast(outputs["cv_logits"], tf.float32)
-    print('time15_logit')
-    print(time15_logit)
+    print 'time15_logit'
+    print time15_logit
     #print tf.cast(outputs["time_logits"], tf.float32)
 
-    print('prop all')
-    print(tf.reduce_mean(tf.concat([stable_cv_prop, stable_time15_prop, stable_time30_prop, stable_time60_prop], axis=1), axis=0))
+    print 'prop all'
+    print tf.reduce_mean(tf.concat([stable_cv_prop, stable_time15_prop, stable_time30_prop, stable_time60_prop], axis=1), axis=0)
 
-    print('loss z')
-    print(z.shape)
-    print(tf.reduce_mean(z, axis=0))
-    print(z)
+    print 'loss z'
+    print z.shape
+    print tf.reduce_mean(z, axis=0)
+    print z
     ###########train_label_11, train_label_10, train_label_01_15, train_label_01_30, train_label_01_60, label_01_30_mask, label_01_60_mask
     '''
     label01 = tf.cast(tf.reshape(z[:, 0], (-1, 1)), tf.float32)
@@ -395,15 +395,15 @@ def delay_win_select_loss(targets, outputs, params=None):
     label_30_0 = tf.minimum(label_11_30+label_11_60+label10, 1)
     label_60_0 = tf.minimum(label_11_60+label10, 1)
 
-    print('label_15_0')
-    print(label_15_0.shape)
-    print(label_15_0)
-    print('label_15_0 3')
-    print(tf.reduce_mean(tf.concat([label_15_0, label_30_0, label_60_0], axis=1), axis=0))
-    print(tf.concat([label_15_0, label_30_0, label_60_0], axis=1))
-    print('prop3')
-    print(tf.reduce_mean(tf.concat([stable_win_prop_15_1, stable_win_prop_30_1, stable_win_prop_60_1], axis=1), axis=0))
-    print(tf.concat([stable_win_prop_15_1, stable_win_prop_30_1, stable_win_prop_60_1], axis=1))
+    print 'label_15_0'
+    print label_15_0.shape
+    print label_15_0
+    print 'label_15_0 3'
+    print tf.reduce_mean(tf.concat([label_15_0, label_30_0, label_60_0], axis=1), axis=0)
+    print tf.concat([label_15_0, label_30_0, label_60_0], axis=1)
+    print 'prop3'
+    print tf.reduce_mean(tf.concat([stable_win_prop_15_1, stable_win_prop_30_1, stable_win_prop_60_1], axis=1), axis=0)
+    print tf.concat([stable_win_prop_15_1, stable_win_prop_30_1, stable_win_prop_60_1], axis=1)
     #print label_30_0
     #print label_60_0.shape
     #print label_60_0
@@ -423,7 +423,7 @@ def delay_win_select_loss(targets, outputs, params=None):
 
     loss = None
     if params["subloss"] == 1:
-        print('params["subloss"] 1')
+        print 'params["subloss"] 1'
         loss = 0.1*loss_win_15+0.05*loss_win_30+0.05*loss_win_60+0.1*loss_win_15_spm+0.05*loss_win_30_spm+0.05*loss_win_60_spm+0.6*loss_cv_spm #loss1
     #loss1 wrong auc_ma 0.840834810479, prauc_ma 0.640501172879, llloss_ma 0.391797181071
     #loss1 auc_ma 0.840922596412, prauc_ma 0.641111549595
@@ -431,25 +431,25 @@ def delay_win_select_loss(targets, outputs, params=None):
     #loss1 newdata auc_ma 0.840915778552, prauc_ma 0.641313958599, llloss_ma 0.392388541701
 
     if params["subloss"] == 2:
-        print('params["subloss"] 2')
+        print 'params["subloss"] 2'
         loss = 0.1*loss_win_15+0.1*loss_win_30+0.1*loss_win_60+0.04*loss_win_15_spm+0.03*loss_win_30_spm+0.03*loss_win_60_spm+0.6*loss_cv_spm #loss2
     #loss2 auc_ma 0.840743973481, prauc_ma 0.640195143789, llloss_ma 0.391840747798
     #loss2 real auc_ma 0.840823839357, prauc_ma 0.640766918437, llloss_ma 0.39245806335
 
     if params["subloss"] == 3:
-        print('params["subloss"] 3')
+        print 'params["subloss"] 3'
         loss = 0.09*loss_win_15+0.08*loss_win_30+0.08*loss_win_60+0.05*loss_win_15_spm+0.05*loss_win_30_spm+0.05*loss_win_60_spm+0.6*loss_cv_spm #loss3
     #loss3 auc_ma 0.840719450272, prauc_ma 0.640165336643, llloss_ma 0.392071954103
     #auc_ma 0.840865278839, prauc_ma 0.640899047731, llloss_ma 0.392095150118
 
     if params["subloss"] == 4:
-        print('params["subloss"] 4')
+        print 'params["subloss"] 4'
         loss = 0.15*loss_win_15+0.15*loss_win_60+0.05*loss_win_15_spm++0.05*loss_win_60_spm+0.6*loss_cv_spm #loss4
     #loss4 auc_ma 0.840833126014, prauc_ma 0.64074860748, llloss_ma 0.392482009323
     #auc_ma 0.840891558905, prauc_ma 0.640869974896, llloss_ma 0.392155661497
 
     if params["subloss"] == 5:
-        print('params["subloss"] 5')
+        print 'params["subloss"] 5'
         loss = 0.1*loss_win_15+0.1*loss_win_30+0.1*loss_win_60+0.1*loss_win_15_spm+0.1*loss_win_30_spm+0.1*loss_win_60_spm+0.4*loss_cv_spm #loss5
     #auc_ma 0.839641327406, prauc_ma 0.637054936063, llloss_ma 0.395906868003
     #auc_ma 0.840171224512, prauc_ma 0.638998457472, llloss_ma 0.393276991755
@@ -460,19 +460,19 @@ def delay_win_select_loss(targets, outputs, params=None):
     #loss = 0.25 * loss_win_15 + 0.15* loss_win_15_spm + 0.6 * loss_cv_spm
     #loss = 0.25 * loss_win_15 + 0.15* loss_win_spm + 0.6 * loss_cv_spm
     if params["mul"] == 1:
-        print('params["mul"] 1')
+        print 'params["mul"] 1'
         loss*=1
     if params["mul"] == 3:
-        print('params["mul"] 3')
+        print 'params["mul"] 3'
         loss*=3
     if params["mul"] == 5:
-        print('params["mul"] 5')
+        print 'params["mul"] 5'
         loss*=5
     #5loss4 auc_ma 0.840858786098, prauc_ma 0.640795619302, llloss_ma 0.392460761926
     #3loss2 auc_ma 0.840817501592, prauc_ma 0.64075829391, llloss_ma 0.39246253496
 
-    print('loss scale')
-    print(loss_win_15,loss_win_30,loss_win_60,loss_win_15_spm,loss_win_30_spm,loss_win_60_spm,loss_cv_spm)
+    print 'loss scale'
+    print loss_win_15,loss_win_30,loss_win_60,loss_win_15_spm,loss_win_30_spm,loss_win_60_spm,loss_cv_spm
     return {"loss": loss}
 
 
@@ -602,8 +602,8 @@ def delay_tn_importance_weight_loss_full(targets, outputs, params=None):
 
     z = tf.cast(targets["label"], tf.float32)
     labels = z
-    print('z.shape')
-    print(z.shape)
+    print 'z.shape'
+    print z.shape
     label_01 = tf.reshape(z[:, 0], (-1, 1))
     label_00 = tf.reshape(z[:, 1], (-1, 1))
     label_11 = tf.reshape(z[:, 2], (-1, 1))
@@ -754,7 +754,7 @@ def delay_tn_importance_weight_loss_normal(targets, outputs, params=None):
             "clf_loss": clf_loss}
 
 def delay_tn_importance_weight_loss_win_weight(targets, outputs, params=None):
-    print('targets:' ,targets["label"].shape)
+    print 'targets:' ,targets["label"].shape
     x = outputs["logits"]
     tn_logits = outputs["tn_logits"]
     dp_logits = outputs["dp_logits"]
@@ -922,8 +922,8 @@ def delay_win_time_loss(targets, outputs, params=None):
     logits = tf.cast(outputs["logits"], tf.float32)
     z = tf.cast(targets["label"], tf.float32)
     labels = z
-    print('z.shape')
-    print(z.shape)
+    print 'z.shape'
+    print z.shape
     label_01 = tf.reshape(z[:, 0], (-1, 1))
     label_00 = tf.reshape(z[:, 1], (-1, 1))
     label_11 = tf.reshape(z[:, 2], (-1, 1))
@@ -954,7 +954,7 @@ def delay_win_time_loss(targets, outputs, params=None):
     stable_win_prop_0_stop = 1 - stable_win_prop_1_stop
 
     #stable_win_prop_1 = stable_win_prop_1_stop
-    #stable_win_prop_0 = stable_win_prop_0_stop             #auc_ma 0.83788809202, prauc_ma 0.635210277143, llloss_ma 0.396383280415
+    #stable_win_prop_0 = stable_win_prop_0_stop 			#auc_ma 0.83788809202, prauc_ma 0.635210277143, llloss_ma 0.396383280415
 
     #loss_win_now = -tf.reduce_mean(tf.math.log(win_prop_1_stop) * label_01 + tf.math.log(win_prop_0_stop) * label_00)
     #auc_ma 0.838268897391, prauc_ma 0.636577855824, llloss_ma 0.395493760895
@@ -976,27 +976,27 @@ def delay_win_time_loss(targets, outputs, params=None):
     loss_win_spm = -tf.reduce_mean(tf.math.log(stable_win_prop_1) * label_01 + tf.math.log(stable_win_prop_0) * label_10 + tf.math.log(stable_win_prop_0) * label_11)
     loss_cv_spm = -tf.reduce_mean(tf.math.log(stable_cv_prop) * label_01 + tf.math.log(stable_cv_prop) * label_11 + tf.math.log(1-stable_cv_prop)* label_10)
 
-    #esdfm                                  #auc_ma 0.839974196585, prauc_ma 0.638705895854, llloss_ma 0.392870014929
-    #esdfm lr0002                              auc_ma 0.840567941748, prauc_ma 0.639743851449, llloss_ma 0.391760005826
-    #sepwintime                               #auc_ma 0.838776339428, prauc_ma 0.637686467899, llloss_ma 0.394870592343
-    #classic    
+    #esdfm								  #auc_ma 0.839974196585, prauc_ma 0.638705895854, llloss_ma 0.392870014929
+    #esdfm lr0002							  auc_ma 0.840567941748, prauc_ma 0.639743851449, llloss_ma 0.391760005826
+    #sepwintime   							#auc_ma 0.838776339428, prauc_ma 0.637686467899, llloss_ma 0.394870592343
+    #classic	
     loss = 0.25 * loss_win_now + 0.15* loss_win_spm + 0.6 * loss_cv_spm   #auc_ma 0.838354866626, prauc_ma 0.636769552212, llloss_ma 0.395351204868
     #loss = 0.3 * loss_win_now + 0.7 * loss_cv_spm
     #simple loss: auc_ma 0.841278818739, prauc_ma 0.641897278575, llloss_ma 0.391163869451
-    #lr 0.002                                   #auc_ma 0.841320768347, prauc_ma 0.642100768647, llloss_ma 0.391044942986
-    loss *= 3                                  #auc_ma 0.838617494567, prauc_ma 0.637304822108, llloss_ma 0.39513652706
-    #lr 0.002                                  auc_ma 0.8413391198, prauc_ma 0.642140924079, llloss_ma 0.391030179747
-    #loss *= 6                                  #auc_ma 0.838670803859, prauc_ma 0.637196640774, llloss_ma 0.395095014098
-    #loss *= 10                                  #auc_ma 0.838729377884, prauc_ma 0.637390114327, llloss_ma 0.39501309332
-    #loss *= 20                                  #auc_ma 0.838792319879, prauc_ma 0.637416541786, llloss_ma 0.394930307985
-    #lr0002                                  #auc_ma 0.841298669272, prauc_ma 0.642070518344, llloss_ma 0.391058392547
-    #loss *= 40                                  #auc_ma 0.838741308658, prauc_ma 0.637349426768, llloss_ma 0.395005292815
+    #lr 0.002 								  #auc_ma 0.841320768347, prauc_ma 0.642100768647, llloss_ma 0.391044942986
+    loss *= 3								  #auc_ma 0.838617494567, prauc_ma 0.637304822108, llloss_ma 0.39513652706
+    #lr 0.002								  auc_ma 0.8413391198, prauc_ma 0.642140924079, llloss_ma 0.391030179747
+    #loss *= 6								  #auc_ma 0.838670803859, prauc_ma 0.637196640774, llloss_ma 0.395095014098
+    #loss *= 10								  #auc_ma 0.838729377884, prauc_ma 0.637390114327, llloss_ma 0.39501309332
+    #loss *= 20								  #auc_ma 0.838792319879, prauc_ma 0.637416541786, llloss_ma 0.394930307985
+    #lr0002								  #auc_ma 0.841298669272, prauc_ma 0.642070518344, llloss_ma 0.391058392547
+    #loss *= 40								  #auc_ma 0.838741308658, prauc_ma 0.637349426768, llloss_ma 0.395005292815
     #loss = 0.5 * loss_win_now + 0.15* loss_win_spm + 0.35 * loss_cv_spm  #auc_ma 0.837489383951, prauc_ma 0.636017430217, llloss_ma 0.395796233339
     #loss = 0.15 * loss_win_now + 0.1* loss_win_spm + 0.75 * loss_cv_spm  #auc_ma 0.838158393511, prauc_ma 0.635659864137, llloss_ma 0.395944307324
-    #loss = 0.25* loss_win_spm + 0.75 * loss_cv_spm              #auc_ma 0.837760871004, prauc_ma 0.632442897763, llloss_ma 0.397135111464
+    #loss = 0.25* loss_win_spm + 0.75 * loss_cv_spm			  #auc_ma 0.837760871004, prauc_ma 0.632442897763, llloss_ma 0.397135111464
 
     #loss = 0.35 * loss_win_now + 0.25* loss_win_spm + 0.4 * loss_cv_spm
-    #loss = loss_win_now + loss_win_spm + loss_cv_spm                #auc_ma 0.838081507431, prauc_ma 0.636920889289, llloss_ma 0.395256672262
+    #loss = loss_win_now + loss_win_spm + loss_cv_spm  			  #auc_ma 0.838081507431, prauc_ma 0.636920889289, llloss_ma 0.395256672262
 
     #loss = loss_win_now
     #loss = loss_cv_spm
@@ -1012,8 +1012,8 @@ def delay_win_time_iwloss(targets, outputs, params=None):
     logits = tf.cast(outputs["logits"], tf.float32)
     z = tf.cast(targets["label"], tf.float32)
     labels = z
-    print('z.shape')
-    print(z.shape)
+    print 'z.shape'
+    print z.shape
     label_01 = tf.reshape(z[:, 0], (-1, 1))
     label_00 = tf.reshape(z[:, 1], (-1, 1))
     label_11 = tf.reshape(z[:, 2], (-1, 1))
@@ -1144,7 +1144,7 @@ def get_loss_fn(name):
     elif name == "esdfm_loss_full":
         return delay_tn_importance_weight_loss_full
     elif name == "esdfm_loss_normal_test":
-        return delay_tn_importance_weight_loss_normal_test
+	return delay_tn_importance_weight_loss_normal_test
     elif name == "esdfm_loss10":
         return delay_tn_importance_weight_loss10
     elif name == "delay_3class_loss":
@@ -1168,7 +1168,7 @@ def get_loss_fn(name):
     elif name == "fnw10_test_loss":
         return fnw10_test_loss
     elif name == "cross_entropy_loss_test":
-        return cross_entropy_loss_test
+	return cross_entropy_loss_test
     elif name == "win_time_loss_test":
         return win_time_loss_test
     elif name == "esdfm_loss_wines":

@@ -18,7 +18,7 @@ def run_params(args):
         try:
             pathlib.Path(args.data_cache_path).mkdir(parents=True)
         except:
-            print('exist')
+            print 'exist'
     if args.mode == "pretrain":
         if args.method == "Pretrain":
             params["loss"] = "cross_entropy_loss"
@@ -195,7 +195,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--CD", type=int, default=7,
                         help="counterfactual deadline in FSIW")
-    parser.add_argument("--C", type=float, default=0.25,
+    parser.add_argument("--C", type=int, default=0.25,
                         help="elapsed time in ES-DFM")
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--data_path", type=str, required=True,
