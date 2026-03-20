@@ -69,7 +69,7 @@ def delay_win_select_loss(
     4. 可选：从 minibatch['cv_label'] 获取原始二分类标签
     """
     # DEBUG: 打印输入形状，确认函数被调用
-    print(f"[DEBUG delay_win_select_loss] logits.shape={logits.shape}, labels.shape={labels.shape}")
+    #print(f"[DEBUG delay_win_select_loss] logits.shape={logits.shape}, labels.shape={labels.shape}")
     
     # 可选：从 minibatch 中提取原始 cv_label (单值标签)
     cv_label_from_minibatch = None
@@ -78,7 +78,7 @@ def delay_win_select_loss(
             minibatch['cv_label'].values.astype('float32'),
             device=logits.device
         )
-        print(f"[DEBUG delay_win_select_loss] cv_label from minibatch: {cv_label_from_minibatch.shape}")
+        #print(f"[DEBUG delay_win_select_loss] cv_label from minibatch: {cv_label_from_minibatch.shape}")
     
     z = labels  # (batch, 14)
     

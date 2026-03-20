@@ -175,7 +175,7 @@ class DeferTrainFlow(MsModelTrainFlow):
                 df = df.withColumn(col_name, F.col(col_name).cast("string"))
         
         df = self.random_sample(df)
-        df = df.fillna('unknown')
+        df = df.fillna('')
         
         MovasLogger.add_log(content=f"DEFER Parquet loaded, columns: {len(df.columns)}")
         return df

@@ -147,6 +147,7 @@ function defer_train() {
     local eval_keys="${2:-business_type}"
     
     nohup env PYTHONUNBUFFERED=1 $PYTHON_ENV $TRAINER_SCRIPT_PATH \
+        --name "$CURRENT_PROJ_NAME" \
         --conf "$conf_file"  \
         --eval_keys "$eval_keys" \
         2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/log.log &
