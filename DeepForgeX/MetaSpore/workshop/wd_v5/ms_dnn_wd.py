@@ -113,11 +113,20 @@ class MsModelTrainFlow:
             "spark.executorEnv.PYSPARK_DRIVER_PYTHON": "/usr/bin/python3.8",
         }
         try:
-            subprocess.run(['zip', '-r', 'python.zip', '../MetaSpore/python'], cwd='.', check=True)
-            spark_confs["spark.submit.pyFiles"] = "python.zip"
+            # 如果 python.zip 已存在，直接使用；否则尝试创建
+            if os.path.exists('python.zip'):
+                MovasLogger.add_log(content="Using existing python.zip")
+                spark_confs["spark.submit.pyFiles"] = "python.zip"
+            else:
+                subprocess.run(['zip', '-r', 'python.zip', '../MetaSpore/python'], cwd='.', check=True)
+                spark_confs["spark.submit.pyFiles"] = "python.zip"
         except subprocess.CalledProcessError as e:
-            # 假设 MovasLogger.add_log 可以在 init 之前调用，或者有默认的输出方式（如print）
-            MovasLogger.add_log(level='ERROR', content=f"Failed to create python.zip. Error: {e}")
+            # zip 创建失败，但如果 python.zip 存在则继续使用
+            if os.path.exists('python.zip'):
+                MovasLogger.add_log(level='WARN', content=f"Failed to create python.zip ({e}), using existing file")
+                spark_confs["spark.submit.pyFiles"] = "python.zip"
+            else:
+                MovasLogger.add_log(level='ERROR', content=f"Failed to create python.zip. Error: {e}")
         except FileNotFoundError:
             MovasLogger.add_log(level='ERROR', content=f"'zip' command not found or '../../../python' directory does not exist.")
 
