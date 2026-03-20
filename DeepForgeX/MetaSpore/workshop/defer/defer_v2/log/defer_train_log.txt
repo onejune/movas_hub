@@ -1,0 +1,30 @@
+[2026-03-20 16:54:09][INFO][ms_dnn_wd.py:147:_init_spark] MovasLogger initialized.
+[2026-03-20 16:54:09][INFO][ms_dnn_wd.py:148:_init_spark] Spark version: 3.1.2, appId: local-1773996848289, uiWebUrl: http://dsw-687-7fcc6c486f-9v9fw:4040
+[2026-03-20 16:54:09][INFO][ms_dnn_wd.py:457:run_complete_flow] Config loaded: {'app_name': 'defer_dnn_v2', 'experiment_name': 'defer_v2', 'train_path_prefix': '/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet', 'train_start_date': datetime.date(2026, 2, 17), 'train_end_date': datetime.date(2026, 2, 17), 'validation_date': datetime.date(2026, 2, 18), 'model_out_base_path': './output', 'model_type': 'DeferDNN', 'embedding_size': 8, 'dnn_hidden_units': [256, 256, 128], 'use_wide': False, 'batch_norm': True, 'net_dropout': 0.5, 'ftrl_l1': 1.0, 'ftrl_l2': 120.0, 'ftrl_alpha': 0.5, 'ftrl_beta': 1.0, 'adam_learning_rate': 0.001, 'combine_schema_path': './conf/combine_schema', 'wide_combine_schema_path': './conf/combine_schema', 'defer_windows': [24, 48, 72], 'defer_delay_hours': 168, 'local_spark': True, 'worker_count': 6, 'server_count': 2, 'batch_size': 512, 'worker_memory': '10G', 'server_memory': '10G', 'coordinator_memory': '4G', 'input_label_column_index': 0, 'movas_log_output_path': './log/defer_train_log.txt'}
+[2026-03-20 16:54:09][INFO][ms_dnn_wd.py:458:run_complete_flow] Starting complete flow.
+[2026-03-20 16:54:09][INFO][defer_trainFlow.py:187:_build_model_module] Building DeferDNN model module
+[2026-03-20 16:54:09][No model found for previous day: ./output/model_2026-02-16. Starting from empty model.][ms_dnn_wd.py:402:_run_training_loop] none
+[2026-03-20 16:54:09][Starting training loop.][ms_dnn_wd.py:405:_run_training_loop] none
+[2026-03-20 16:54:09][--- Training for date: 2026-02-17 ---][ms_dnn_wd.py:409:_run_training_loop] none
+[2026-03-20 16:54:09][INFO][defer_trainFlow.py:159:_read_dataset_by_date] Reading DEFER Parquet from: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-17
+[2026-03-20 16:54:23][INFO][defer_trainFlow.py:180:_read_dataset_by_date] DEFER Parquet loaded, columns: 272
+[2026-03-20 16:54:23][INFO][defer_trainFlow.py:316:_train_model] Starting DEFER training for version: 2026-02-17
+[2026-03-20 16:54:23][INFO][defer_trainFlow.py:225:_build_defer_labels] Building DEFER labels (pure Spark SQL, no UDF)
+[2026-03-20 16:54:23][INFO][defer_trainFlow.py:235:_build_defer_labels] Windows: WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=504.0h
+[2026-03-20 16:55:22][INFO][defer_trainFlow.py:325:_train_model] Dataset cached with 1487716 rows
+[2026-03-20 16:55:23][INFO][defer_trainFlow.py:304:_log_label_stats] DEFER Label Stats: delayed_positive=0, true_negative=1377716, window_positive=99992
+[2026-03-20 16:55:23][INFO][defer_trainFlow.py:359:_train_model] DEFER training: Model In: None, Model Out: ./output/model_2026-02-17
+[2026-03-20 16:56:52][Finished training loop.][ms_dnn_wd.py:423:_run_training_loop] none
+[2026-03-20 16:56:52][INFO][defer_trainFlow.py:369:_run_evaluation_phase] Starting DEFER evaluation phase
+[2026-03-20 16:56:52][INFO][defer_trainFlow.py:159:_read_dataset_by_date] Reading DEFER Parquet from: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-18
+[2026-03-20 16:57:05][INFO][defer_trainFlow.py:180:_read_dataset_by_date] DEFER Parquet loaded, columns: 272
+[2026-03-20 16:57:05][INFO][defer_trainFlow.py:225:_build_defer_labels] Building DEFER labels (pure Spark SQL, no UDF)
+[2026-03-20 16:57:05][INFO][defer_trainFlow.py:235:_build_defer_labels] Windows: WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=504.0h
+[2026-03-20 16:57:07][INFO][ms_dnn_wd.py:429:_run_evaluation_phase] 
+==================================================Evaluating model from: ./output/model_2026-02-17 ==================================================
+[2026-03-20 16:57:07][INFO][defer_trainFlow.py:159:_read_dataset_by_date] Reading DEFER Parquet from: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-18
+[2026-03-20 16:57:20][INFO][defer_trainFlow.py:180:_read_dataset_by_date] DEFER Parquet loaded, columns: 272
+[2026-03-20 16:57:20][INFO][ms_dnn_wd.py:298:_predict_data] Transforming data using model from: ./output/model_2026-02-17
+[2026-03-20 16:59:06][INFO][ms_dnn_wd.py:305:_evaluate_model] Evaluating model from: ./output/model_2026-02-17, eval_keys: None 
+[2026-03-20 16:56:52][time_use][movas_logger.py:20:wrapper] [_run_training_loop] time_use: 2.7169 minutes.
+[2026-03-20 16:59:06][time_use][movas_logger.py:20:wrapper] [_predict_data] time_use: 1.7701 minutes.
