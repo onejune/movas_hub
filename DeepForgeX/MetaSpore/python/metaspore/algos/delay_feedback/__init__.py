@@ -12,7 +12,7 @@ from .delf import DELFWideDeep
 from .defer_models import WinAdaptDNN, DeferDNN, create_defer_model
 
 # DEFER 损失函数
-from .defer_loss import delay_win_select_loss
+from .defer_loss import delay_win_select_loss, delay_win_select_loss_v2
 
 __all__ = [
     "DELFWideDeep",
@@ -20,4 +20,5 @@ __all__ = [
     "DeferDNN",
     "create_defer_model",
     "delay_win_select_loss",
+    "delay_win_select_loss_v2",
 ]
