@@ -275,47 +275,115 @@ class DeferTrainFlow(MsModelTrainFlow):
         """
         MovasLogger.add_log(content="Building DEFER labels (pure Spark SQL, no UDF)")
         
-        # 确保 diff_hours 是 float 类型
+        # =====================================================================
+        # Step 1: 预处理 diff_hours 列
+        # =====================================================================
+        # diff_hours: 点击到转化的时间间隔 (小时)
+        # - 正样本: diff_hours = 转化时间 - 点击时间
+        # - 负样本: diff_hours 通常为 null 或很大的值 (表示在归因窗口内未转化)
+        # 将 null 填充为 9999.0，确保负样本不会被误判为窗口内正样本
         if "diff_hours" in df.columns:
             df = df.withColumn("diff_hours", F.col("diff_hours").cast("float"))
             df = df.fillna({'diff_hours': 9999.0})
         
+        # =====================================================================
+        # Step 2: 定义时间窗口参数
+        # =====================================================================
+        # win1, win2, win3: 三个观测窗口 (小时)
+        # - v1 配置: 15min, 30min, 60min (转换为小时: 0.25, 0.5, 1.0)
+        # - v2 配置: 24h, 48h, 72h
         win1, win2, win3 = self.win1_hours, self.win2_hours, self.win3_hours
-        delay = win3 * 7  # 默认 delay = 7 * win3
+        
+        # delay: 归因窗口 (attribution window)
+        # - 含义: 超过这个时间仍未转化，才认为是"真负样本"
+        # - 设定: 默认为 7 * win3 (例如 win3=72h 时，delay=504h=21天)
+        # - 原因: 广告转化可能有很长的延迟，需要足够长的归因窗口
+        # - 可通过 config.defer_delay_hours 覆盖
+        delay = self.params.get("defer_delay_hours", win3 * 7)
         
         MovasLogger.add_log(
             content=f"Windows: WIN1={win1}h, WIN2={win2}h, WIN3={win3}h, DELAY={delay}h"
         )
         
-        label_col = F.col("label")
-        diff_col = F.col("diff_hours")
+        # =====================================================================
+        # Step 3: 定义样本分类条件
+        # =====================================================================
+        label_col = F.col("label")      # 原始标签: 1=转化, 0=未转化
+        diff_col = F.col("diff_hours")  # 转化延迟时间
         
-        # 条件判断
-        is_positive = label_col == 1.0
-        is_negative = label_col == 0.0
-        is_delayed = is_positive & (diff_col > delay)
+        # 基础分类
+        is_positive = label_col == 1.0  # 最终转化的样本
+        is_negative = label_col == 0.0  # 最终未转化的样本 (归因窗口结束后仍未转化)
+        
+        # 延迟正样本: 转化了，但转化时间超过最大观测窗口 (win3)
+        # 这些样本在训练时被观测为"未转化"，但实际上后来转化了
+        is_delayed = is_positive & (diff_col > win3)
+        
+        # 窗口内正样本: 转化了，且转化时间在各窗口内
+        # in_win1: 0 < diff_hours <= win1 (快速转化)
+        # in_win2: win1 < diff_hours <= win2 (中等延迟)
+        # in_win3: win2 < diff_hours <= win3 (较长延迟但仍在观测窗口内)
         in_win1 = is_positive & (diff_col <= win1)
         in_win2 = is_positive & (diff_col > win1) & (diff_col <= win2)
         in_win3 = is_positive & (diff_col > win2) & (diff_col <= win3)
-        in_any_win = in_win1 | in_win2 | in_win3
+        in_any_win = in_win1 | in_win2 | in_win3  # 任意窗口内的正样本
         
-        # 构建 14 个 label 列
-        df = df.withColumn("_lbl_0", F.when(is_delayed, 1.0).otherwise(0.0))  # label_10
-        df = df.withColumn("_lbl_1", F.when(is_negative, 1.0).otherwise(0.0))  # label_00_neg
-        df = df.withColumn("_lbl_2", F.when(in_win1, 1.0).otherwise(0.0))  # label_01_15
-        df = df.withColumn("_lbl_3", F.when(in_win2, 1.0).otherwise(0.0))  # label_01_30
-        df = df.withColumn("_lbl_4", F.when(in_win3, 1.0).otherwise(0.0))  # label_01_60
-        df = df.withColumn("_lbl_5", F.when(in_win1 | in_win2, 1.0).otherwise(0.0))  # label_01_30_sum
-        df = df.withColumn("_lbl_6", F.when(in_any_win, 1.0).otherwise(0.0))  # label_01_60_sum
-        df = df.withColumn("_lbl_7", F.lit(1.0))  # label_01_30_mask
-        df = df.withColumn("_lbl_8", F.lit(1.0))  # label_01_60_mask
-        df = df.withColumn("_lbl_9", F.lit(0.0))  # label_00 (not used)
-        df = df.withColumn("_lbl_10", F.when(in_any_win, 1.0).otherwise(0.0))  # label_01
-        df = df.withColumn("_lbl_11", F.when(is_delayed & (diff_col <= win3 * 2), 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_12", F.when(is_delayed & (diff_col > win3 * 2) & (diff_col <= win3 * 3), 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_13", F.when(is_delayed & (diff_col > win3 * 3), 1.0).otherwise(0.0))
+        # =====================================================================
+        # Step 4: 构建 14 维标签
+        # =====================================================================
+        # [0] label_11: 延迟正样本 (转化了但超过 win3)
+        df = df.withColumn("_lbl_0", F.when(is_delayed, 1.0).otherwise(0.0))
         
-        # 组合成 JSON 字符串（避免 array<float> 类型在 MetaSpore 中的问题）
+        # [1] label_10: 真负样本 (归因窗口结束后仍未转化)
+        df = df.withColumn("_lbl_1", F.when(is_negative, 1.0).otherwise(0.0))
+        
+        # [2] label_01_15: 窗口1内正样本 (diff <= win1)
+        df = df.withColumn("_lbl_2", F.when(in_win1, 1.0).otherwise(0.0))
+        
+        # [3] label_01_30: 窗口2内正样本 (win1 < diff <= win2)，增量
+        df = df.withColumn("_lbl_3", F.when(in_win2, 1.0).otherwise(0.0))
+        
+        # [4] label_01_60: 窗口3内正样本 (win2 < diff <= win3)，增量
+        df = df.withColumn("_lbl_4", F.when(in_win3, 1.0).otherwise(0.0))
+        
+        # [5] label_01_30_sum: 窗口1+2累积正样本 (diff <= win2)
+        df = df.withColumn("_lbl_5", F.when(in_win1 | in_win2, 1.0).otherwise(0.0))
+        
+        # [6] label_01_60_sum: 窗口1+2+3累积正样本 (diff <= win3)
+        df = df.withColumn("_lbl_6", F.when(in_any_win, 1.0).otherwise(0.0))
+        
+        # [7] label_01_30_mask: 窗口2 mask (恒为1，保留字段)
+        df = df.withColumn("_lbl_7", F.lit(1.0))
+        
+        # [8] label_01_60_mask: 窗口3 mask (恒为1，保留字段)
+        df = df.withColumn("_lbl_8", F.lit(1.0))
+        
+        # [9] label_00: 未观测负样本 (窗口内未转化但归因未结束，当前实现不使用)
+        df = df.withColumn("_lbl_9", F.lit(0.0))
+        
+        # [10] label_01: 所有窗口内正样本的汇总
+        df = df.withColumn("_lbl_10", F.when(in_any_win, 1.0).otherwise(0.0))
+        
+        # [11-13] 延迟正样本的细分 (用于 SPM loss 构建负样本 mask)
+        # 根据延迟时间将延迟正样本分成 3 段:
+        # - label_11_15: win3 < diff <= 2*win3 (轻度延迟)
+        # - label_11_30: 2*win3 < diff <= 3*win3 (中度延迟)
+        # - label_11_60: diff > 3*win3 (重度延迟)
+        df = df.withColumn("_lbl_11", 
+            F.when(is_delayed & (diff_col <= win3 * 2), 1.0).otherwise(0.0))
+        df = df.withColumn("_lbl_12", 
+            F.when(is_delayed & (diff_col > win3 * 2) & (diff_col <= win3 * 3), 1.0).otherwise(0.0))
+        df = df.withColumn("_lbl_13", 
+            F.when(is_delayed & (diff_col > win3 * 3), 1.0).otherwise(0.0))
+        
+        # =====================================================================
+        # Step 5: 组合成 JSON 字符串
+        # =====================================================================
+        # 为什么用 JSON 字符串而不是 array<float>?
+        # - MetaSpore 的 PyTorchEstimator 在处理 ArrayType 时会触发额外的 Spark stage
+        # - 新 stage 会启动新的 Python worker，但这些 worker 没有注册 PS agent
+        # - 导致 "no ps agent registered for thread" 错误
+        # - 使用 JSON 字符串可以避免这个问题，在 estimator 中再解析
         df = df.withColumn(
             "defer_label",
             F.concat(
@@ -325,7 +393,9 @@ class DeferTrainFlow(MsModelTrainFlow):
             )
         )
         
-        # 删除临时列
+        # =====================================================================
+        # Step 6: 清理临时列
+        # =====================================================================
         for i in range(14):
             df = df.drop(f"_lbl_{i}")
         
