@@ -315,9 +315,11 @@ class DeferTrainFlow(MsModelTrainFlow):
         is_positive = label_col == 1.0  # 最终转化的样本
         is_negative = label_col == 0.0  # 最终未转化的样本 (归因窗口结束后仍未转化)
         
-        # 延迟正样本: 转化了，但转化时间超过最大观测窗口 (win3)
+        # 延迟正样本: 转化了，但转化时间超过归因窗口 (delay)
         # 这些样本在训练时被观测为"未转化"，但实际上后来转化了
-        is_delayed = is_positive & (diff_col > win3)
+        # 注意: 用 delay 而不是 win3，因为 win3 < diff <= delay 的样本
+        # 虽然超出观测窗口，但仍在归因窗口内，不算"延迟正样本"
+        is_delayed = is_positive & (diff_col > delay)
         
         # 窗口内正样本: 转化了，且转化时间在各窗口内
         # in_win1: 0 < diff_hours <= win1 (快速转化)
@@ -366,15 +368,15 @@ class DeferTrainFlow(MsModelTrainFlow):
         
         # [11-13] 延迟正样本的细分 (用于 SPM loss 构建负样本 mask)
         # 根据延迟时间将延迟正样本分成 3 段:
-        # - label_11_15: win3 < diff <= 2*win3 (轻度延迟)
-        # - label_11_30: 2*win3 < diff <= 3*win3 (中度延迟)
-        # - label_11_60: diff > 3*win3 (重度延迟)
+        # - label_11_15: delay < diff <= delay + win3 (轻度延迟)
+        # - label_11_30: delay + win3 < diff <= delay + 2*win3 (中度延迟)
+        # - label_11_60: diff > delay + 2*win3 (重度延迟)
         df = df.withColumn("_lbl_11", 
-            F.when(is_delayed & (diff_col <= win3 * 2), 1.0).otherwise(0.0))
+            F.when(is_delayed & (diff_col <= delay + win3), 1.0).otherwise(0.0))
         df = df.withColumn("_lbl_12", 
-            F.when(is_delayed & (diff_col > win3 * 2) & (diff_col <= win3 * 3), 1.0).otherwise(0.0))
+            F.when(is_delayed & (diff_col > delay + win3) & (diff_col <= delay + win3 * 2), 1.0).otherwise(0.0))
         df = df.withColumn("_lbl_13", 
-            F.when(is_delayed & (diff_col > win3 * 3), 1.0).otherwise(0.0))
+            F.when(is_delayed & (diff_col > delay + win3 * 2), 1.0).otherwise(0.0))
         
         # =====================================================================
         # Step 5: 组合成 JSON 字符串
