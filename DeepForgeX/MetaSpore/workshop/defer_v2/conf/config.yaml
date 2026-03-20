@@ -1,51 +1,54 @@
-# DEFER v2 训练配置 - 24h/48h/72h 窗口
+# DEFER v2 训练配置 - 长时间窗口 (24/48/72 h)
 
+# 基础配置
 app_name: "defer_dnn_v2"
 experiment_name: "defer_v2"
 
 # 数据路径
 train_path_prefix: "/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet"
 
-# 日期
-train_start_date: 2026-02-17
+# 训练日期
+train_start_date: 2026-02-11
 train_end_date: 2026-02-17
 validation_date: 2026-02-18
 
-# 输出
+# 模型输出
 model_out_base_path: "./output"
 
-# 模型
-model_type: "DeferDNN"
+# 模型选择: WinAdaptDNN (单输出层，适合长窗口)
+model_type: "WinAdaptDNN"
+
+# 模型参数
 embedding_size: 8
 dnn_hidden_units: [256, 256, 128]
 use_wide: false
 batch_norm: true
 net_dropout: 0.5
 
-# 优化器
+# 优化器参数
 ftrl_l1: 1.0
 ftrl_l2: 120.0
 ftrl_alpha: 0.5
 ftrl_beta: 1.0
 adam_learning_rate: 0.001
 
-# 特征
+# 特征配置
 combine_schema_path: "./conf/combine_schema"
 wide_combine_schema_path: "./conf/combine_schema"
 
-# DEFER 窗口 (小时)
+# DEFER 时间窗口 (小时)
 defer_windows: [24, 48, 72]
-defer_delay_hours: 168  # 7天归因
+defer_delay_hours: 168  # 7 天归因窗口
 
-# Spark
+# Spark 配置
 local_spark: true
-worker_count: 6
+worker_count: 4
 server_count: 2
-batch_size: 512
-worker_memory: '10G'
-server_memory: '10G'
-coordinator_memory: '4G'
-input_label_column_index: 0
+batch_size: 1024
+worker_memory: "8G"
+server_memory: "8G"
+coordinator_memory: "4G"
 
-# 日志
-movas_log_output_path: './log/defer_train_log.txt'
+# 其他
+input_label_column_index: 0
+movas_log_output_path: "./log/defer_train_log.txt"

@@ -1,4 +1,4 @@
-# DEFER 训练配置
+# DEFER v1 训练配置 - 短时间窗口 (15/30/60 min)
 
 # 基础配置
 app_name: "defer_dnn_v1"
@@ -15,8 +15,10 @@ validation_date: 2026-02-18
 # 模型输出
 model_out_base_path: "./output"
 
-# 模型参数
+# 模型选择: DeferDNN (多输出头，适合短窗口)
 model_type: "DeferDNN"
+
+# 模型参数
 embedding_size: 16
 dnn_hidden_units: [512, 256, 128]
 use_wide: false
@@ -34,17 +36,9 @@ adam_learning_rate: 0.001
 combine_schema_path: "./conf/combine_schema"
 wide_combine_schema_path: "./conf/combine_schema"
 
-# DEFER 特有配置
-# 窗口大小 (分钟) - 对齐原版 DEFER: win1=6h, win2=24h, win3=72h
-# 但我们的数据 diff_hours 分布显示大部分转化在 24h 内
-# 先用较短窗口测试: 15min, 30min, 60min
-defer_windows: [15, 30, 60]  # 窗口大小 (分钟)
-defer_delay_hours: 24         # 延迟判断窗口 (小时)
-# 数据使用 diff_hours 字段表示延迟，不需要时间戳字段
-
-# 也可以用更长的窗口 (对齐原版)
-# defer_windows: [360, 1440, 4320]  # 6h, 24h, 72h (分钟)
-# defer_delay_hours: 24
+# DEFER 时间窗口 (分钟)
+defer_windows: [15, 30, 60]
+defer_delay_hours: 24
 
 # Spark 配置
 local_spark: true
@@ -57,4 +51,4 @@ coordinator_memory: "4G"
 
 # 其他
 input_label_column_index: 0
-movas_log_output_path: "./defer_train_log.txt"
+movas_log_output_path: "./log/defer_train_log.txt"

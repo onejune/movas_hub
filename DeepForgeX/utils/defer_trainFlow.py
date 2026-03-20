@@ -30,7 +30,7 @@ import torch.nn as nn
 # MetaSpore - 使用 DeepForgeX 目录
 sys.path.insert(0, "/mnt/workspace/walter.wan/git_project/movas_hub/DeepForgeX/MetaSpore/python")
 
-from metaspore.algos.delay_feedback.defer_models import WinAdaptDNN
+from metaspore.algos.delay_feedback.defer_models import WinAdaptDNN, DeferDNN, create_defer_model
 from metaspore.algos.delay_feedback.defer_loss import delay_win_select_loss
 
 # 基类 - 使用 ms_dnn_wd.py 中的 MsModelTrainFlow (defer_v1 成功时用的版本)
@@ -182,11 +182,16 @@ class DeferTrainFlow(MsModelTrainFlow):
     
     def _build_model_module(self):
         """
-        构建 WinAdaptDNN 模型
-        """
-        MovasLogger.add_log(content="Building DeferDNN model module")
+        构建 DEFER 模型
         
-        self.model_module = WinAdaptDNN(
+        根据配置 model_type 选择:
+        - WinAdaptDNN (默认): 单输出层，适合长窗口 (24/48/72h)
+        - DeferDNN: 多输出头，适合短窗口 (15/30/60min)
+        """
+        model_type = self.params.get("model_type", "WinAdaptDNN")
+        MovasLogger.add_log(content=f"Building DEFER model: {model_type}")
+        
+        model_kwargs = dict(
             embedding_dim=self.embedding_size,
             column_name_path=self.combine_schema_path,
             combine_schema_path=self.combine_schema_path,
@@ -201,6 +206,8 @@ class DeferTrainFlow(MsModelTrainFlow):
             ftrl_alpha=self.ftrl_alpha,
             ftrl_beta=self.ftrl_beta,
         )
+        
+        self.model_module = create_defer_model(model_type, **model_kwargs)
     
     def _build_defer_labels(self, df: DataFrame) -> DataFrame:
         """
