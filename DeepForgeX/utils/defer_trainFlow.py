@@ -213,21 +213,65 @@ class DeferTrainFlow(MsModelTrainFlow):
         """
         构建 DEFER 14 维标签 - 使用纯 Spark SQL 表达式，避免 Python UDF
         
-        14 维标签含义:
-        [0] label_10: delayed positive (label=1, diff_hours > delay)
-        [1] label_00_neg: true negative (label=0)
-        [2] label_01_15: window1 positive
-        [3] label_01_30: window2 positive
-        [4] label_01_60: window3 positive
-        [5] label_01_30_sum: win1+win2 positive
-        [6] label_01_60_sum: win1+win2+win3 positive
-        [7] label_01_30_mask: always 1
-        [8] label_01_60_mask: always 1
-        [9] label_00: unobserved negative (not used)
-        [10] label_01: all window positive
-        [11] label_11_15: delayed in 2*win3
-        [12] label_11_30: delayed in 3*win3
-        [13] label_11_60: delayed beyond 3*win3
+        背景:
+        -----
+        DEFER (Delayed Feedback Modeling) 处理延迟转化问题。用户点击广告后，
+        转化可能在几分钟到几天后发生。传统方法将"未转化"样本直接标为负样本，
+        但这些样本可能只是"尚未观测到转化"，造成标签噪声。
+        
+        DEFER 将样本分为 4 类:
+        - 窗口内正样本 (label_01): 在观测窗口内转化
+        - 延迟正样本 (label_11): 超过窗口但最终转化
+        - 真负样本 (label_10): 超过归因窗口仍未转化
+        - 未观测样本 (label_00): 窗口内未转化，但归因窗口未结束 (不用于训练)
+        
+        时间窗口示例 (v2 配置):
+        ----------------------
+        假设 win1=24h, win2=48h, win3=72h, delay=168h (7天):
+        
+        点击时刻 ──┬── 24h ──┬── 48h ──┬── 72h ──┬─────── 168h ────┬───→ 时间
+                   │  win1   │  win2   │  win3   │   delay window   │
+                   │         │         │         │                  │
+        转化在此 → label_01_15 (窗口1正样本)
+                             → label_01_30 (窗口2正样本)
+                                       → label_01_60 (窗口3正样本)
+                                                 → label_11 (延迟正样本)
+        168h后仍未转化 ─────────────────────────────────────→ label_10 (真负样本)
+        
+        14 维标签格式:
+        -------------
+        索引  名称              含义                              用途
+        ----  ----              ----                              ----
+        [0]   label_11          延迟正样本 (label=1, diff > delay) CV loss 正样本
+        [1]   label_10          真负样本 (label=0)                 CV loss 负样本
+        [2]   label_01_15       窗口1内正样本 (diff ≤ win1)        win1 loss
+        [3]   label_01_30       窗口2内正样本 (win1 < diff ≤ win2) win2 loss (增量)
+        [4]   label_01_60       窗口3内正样本 (win2 < diff ≤ win3) win3 loss (增量)
+        [5]   label_01_30_sum   窗口1+2累积 (diff ≤ win2)          win2 loss (累积)
+        [6]   label_01_60_sum   窗口1+2+3累积 (diff ≤ win3)        win3 loss (累积)
+        [7]   label_01_30_mask  窗口2 mask (恒为1)                 保留
+        [8]   label_01_60_mask  窗口3 mask (恒为1)                 保留
+        [9]   label_00          未观测负样本 (未使用)              保留
+        [10]  label_01          所有窗口内正样本                   CV loss 正样本
+        [11]  label_11_15       延迟正 (delay < diff ≤ 2*win3)     SPM loss
+        [12]  label_11_30       延迟正 (2*win3 < diff ≤ 3*win3)    SPM loss
+        [13]  label_11_60       延迟正 (diff > 3*win3)             SPM loss
+        
+        损失函数使用:
+        -----------
+        - CV loss: 正样本 = label_01 + label_11, 负样本 = label_10
+        - Window loss: 使用 label_01_xx_sum 作为累积正样本
+        - SPM loss: 使用 label_11_xx 细分延迟正样本，构建负样本 mask
+        
+        输入要求:
+        --------
+        - df 必须包含 "label" 列 (0/1 二分类)
+        - df 必须包含 "diff_hours" 列 (点击到转化的小时数，负样本为大值或 null)
+        
+        输出:
+        -----
+        - 新增 "defer_label" 列: JSON 字符串格式 "[0.0,1.0,0.0,...]"
+        - 使用 JSON 字符串而非 array<float>，避免 MetaSpore Spark 类型问题
         """
         MovasLogger.add_log(content="Building DEFER labels (pure Spark SQL, no UDF)")
         
