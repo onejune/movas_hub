@@ -9,15 +9,14 @@ MODEL_OUTPUT_DIR="./output"
 LOG_DIR="./log"
 OSSUTIL_CONFIG="./ossutilconfig"
 LOG_FILE="${LOG_DIR}/train_$(date +%Y%m%d%H%M%S).log"
+
 ################################################################################################
-# 系统默认的metaspore库在 /root/anaconda3/envs/spore/lib/python3.8/site-packages/metaspore/
-# 这是通过 pip install metaspore 安装的
-# 如果自己开发模型代码，需要先 pip uninstall metaspore
-# 然后在MetaSpore目录下执行 pip install -e . 
-# 会在系统的site-packages下生成一个软链接: metaspore.egg-info 指向真实的 ms 路径，或者直接修改 egg-info指向自己的开发路径
-# 需要保证真实的 ms 路径下有"metaspore/algos/"目录
+# MetaSpore 路径配置
+# 使用 DeepForgeX 内的 MetaSpore (包含 DEFER 等自定义模型)
 ################################################################################################
-METASPORE_DIR="/mnt/workspace/walter.wan/dnn/MetaSpore/python/" # 模型依赖的 metaspore.algos在这个路径下
+METASPORE_DIR="/mnt/workspace/walter.wan/git_project/movas_hub/DeepForgeX/MetaSpore/python"
+
+# 训练脚本路径 (由具体实验覆盖)
 TRAINER_SCRIPT_PATH="./src/dnn_trainFlow.py"
 
 # 定义中断控制文件路径
@@ -32,27 +31,39 @@ function init_env() {
     LOGFILE="${LOG_DIR}/script_$(date +%Y%m%d).log"
     echo "python_env: ${PYTHON_ENV}"
     echo "log_file: ${LOG_FILE}"
-    echo "oss_sample_path: ${OSS_SAMPLE_PATH}"
     touch "$INTERRUPT_FILE"
     log "INFO" "中断控制文件已创建: $INTERRUPT_FILE"
 
-    export PYTHONPATH=$METASPORE_DIR
+    export PYTHONPATH=$METASPORE_DIR:$PYTHONPATH
     export PATH="$PYTHON_ENV_DIR:$PATH"
+    export PYSPARK_PYTHON=$PYTHON_ENV
+    export PYSPARK_DRIVER_PYTHON=$PYTHON_ENV
 
-    #获取当前执行目录
+    # 获取当前执行目录
     current_dir=$(pwd)
     echo "current_dir: ${current_dir}"
-    # 获取dnn_lib_common.sh 脚本所在目录
+    
+    # 获取 dnn_lib_common.sh 脚本所在目录 (DeepForgeX/utils)
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-    echo "dnn_lib_common.sh 所在的目录是: $SCRIPT_DIR"
+    echo "utils 目录: $SCRIPT_DIR"
+    
     CURRENT_PROJ_NAME=$(basename "$PWD")
     echo "项目名称: $CURRENT_PROJ_NAME"
 
+    # 复制依赖到实验目录
     cp $SCRIPT_DIR/movas_logger.py $METASPORE_DIR/metaspore/
     cp $SCRIPT_DIR/*.py $current_dir/src/
-    cp $SCRIPT_DIR/python.zip $current_dir/
-    cp $SCRIPT_DIR/kill_trainer.sh $current_dir/
-    echo "开始后台运行......"
+    cp $SCRIPT_DIR/kill_trainer.sh $current_dir/ 2>/dev/null || true
+    
+    # 打包 python.zip (Spark executor 需要)
+    echo "打包 python.zip..."
+    cd $METASPORE_DIR/..
+    rm -f python.zip
+    zip -rq python.zip python -x "*.pyc" -x "__pycache__/*"
+    mv python.zip $current_dir/
+    cd $current_dir
+    
+    echo "环境初始化完成"
 }
 
 function env_check() {
@@ -60,58 +71,20 @@ function env_check() {
     echo "环境版本检查"
     echo "=========================================="
 
-    # 检查 Python 版本
-    echo "python 路径：$(which python)"
+    echo "Python 路径: $(which python)"
     echo "Python 版本:"
-    if command -v python3 &> /dev/null; then
-        python3 --version
-    elif command -v python &> /dev/null; then
-        python --version
-    else
-        echo "未找到 Python"
-    fi
+    python3 --version 2>/dev/null || python --version 2>/dev/null || echo "未找到 Python"
     echo ""
 
-    # 检查 PySpark 版本
     echo "PySpark 版本:"
-    if python3 -c "import pyspark; print(pyspark.__version__)" 2> /dev/null; then
-        :
-    elif python -c "import pyspark; print(pyspark.__version__)" 2> /dev/null; then
-        :
-    else
-        echo "未安装 PySpark 或无法导入"
-    fi
+    python3 -c "import pyspark; print(pyspark.__version__)" 2>/dev/null || echo "未安装 PySpark"
     echo ""
 
-    # 检查 Torch 版本
     echo "Torch 版本:"
-    if python3 -c "import torch; print('PyTorch version:', torch.__version__)" 2> /dev/null; then
-        :
-    elif python -c "import torch; print('PyTorch version:', torch.__version__)" 2> /dev/null; then
-        :
-    else
-        echo "未安装 Torch 或无法导入"
-    fi
+    python3 -c "import torch; print(torch.__version__)" 2>/dev/null || echo "未安装 Torch"
     echo ""
 
-    # 检查 Conda 环境
-    echo "Conda 环境信息:"
-    if command -v conda &> /dev/null; then
-        echo "Conda 版本:"
-        conda --version
-        echo ""
-        echo "当前 Conda 环境:"
-        conda info --envs
-        echo ""
-        echo "激活的 Conda 环境:"
-        if [ -n "$CONDA_DEFAULT_ENV" ]; then
-            echo "$CONDA_DEFAULT_ENV"
-        else
-            echo "base"
-        fi
-    else
-        echo "未找到 Conda"
-    fi
+    echo "MetaSpore 路径: $METASPORE_DIR"
     echo "=========================================="
 }
 
@@ -134,26 +107,50 @@ function format_date() {
     date -d "${input_date}" +"%Y-%m-%d"
 }
 
+# 通用训练函数
 function model_train() { 
     init_env
+    local conf_file="${1:-./conf/widedeep.yaml}"
+    local eval_keys="${2:-business_type}"
+    
     nohup env PYTHONUNBUFFERED=1 $PYTHON_ENV $TRAINER_SCRIPT_PATH \
         --name "$CURRENT_PROJ_NAME"  \
-        --conf ./conf/widedeep.yaml  \
-        --eval_keys "business_type,is_ifa_null,objective_type" \
-        2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" > nohup.log &
+        --conf "$conf_file"  \
+        --eval_keys "$eval_keys" \
+        2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/log.log &
+    
+    echo "训练已启动, PID: $!"
+    echo "日志: tail -f ${LOG_DIR}/log.log"
 }
 
+# 验证函数
 function model_validation() {
     init_env
-    keys="$3"
-    if [ -z "$3" ]; then
-        keys="business_type,is_ifa_null,objective_type"
-    fi
+    local model_date="$1"
+    local sample_date="$2"
+    local eval_keys="${3:-business_type}"
+    
     $PYTHON_ENV $TRAINER_SCRIPT_PATH \
         --conf ./conf/widedeep.yaml \
         --validation True \
         --name "$CURRENT_PROJ_NAME" \
-        --model_date "$1" \
-        --sample_date "$2" \
-        --eval_keys $keys
+        --model_date "$model_date" \
+        --sample_date "$sample_date" \
+        --eval_keys "$eval_keys"
+}
+
+# DEFER 训练函数
+function defer_train() {
+    TRAINER_SCRIPT_PATH="./src/defer_trainFlow.py"
+    init_env
+    local conf_file="${1:-./conf/config.yaml}"
+    local eval_keys="${2:-business_type}"
+    
+    nohup env PYTHONUNBUFFERED=1 $PYTHON_ENV $TRAINER_SCRIPT_PATH \
+        --conf "$conf_file"  \
+        --eval_keys "$eval_keys" \
+        2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/log.log &
+    
+    echo "DEFER 训练已启动, PID: $!"
+    echo "日志: tail -f ${LOG_DIR}/log.log"
 }
