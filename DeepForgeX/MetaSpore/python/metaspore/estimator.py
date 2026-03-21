@@ -634,27 +634,9 @@ class PyTorchAgent(Agent):
             real_predictions = self.module.predict(predictions, minibatch = minibatch)
         else:
             real_predictions = predictions
-
-        #print(f'loss_type:{self.loss_type}')
+        
         if not self.loss_type or self.loss_type != 'regression': #回归模型不走评估，适配有问题
-            # DEFER 模型：使用 cv_label (原始二分类标签) 计算 AUC
-            if hasattr(self.loss_function, '__name__') and 'delay_win_select' in self.loss_function.__name__:
-                if 'cv_label' in minibatch.columns:
-                    cv_labels = torch.from_numpy(minibatch['cv_label'].values.astype('float32')).reshape(-1, 1)
-                    # 校验：cv_label 应该是 0/1 二分类标签，predictions 应该是 1 维
-                    if cv_labels.shape[1] != 1:
-                        MovasLogger.log(f'[DEFER ERROR] validate cv_labels shape mismatch: expected (batch, 1), got {cv_labels.shape}')
-                    if real_predictions.dim() > 1 and real_predictions.shape[1] != 1:
-                        MovasLogger.log(f'[DEFER ERROR] validate predictions shape mismatch for metric: expected (batch,) or (batch, 1), got {real_predictions.shape}')
-                    # 校验 cv_label 值域
-                    unique_vals = torch.unique(cv_labels)
-                    if not all(v in [0.0, 1.0] for v in unique_vals.tolist()):
-                        MovasLogger.log(f'[DEFER WARNING] validate cv_labels contains non-binary values: {unique_vals.tolist()[:10]}')
-                    self.update_progress(batch_size=len(minibatch), batch_loss=loss, predictions=real_predictions, labels=cv_labels)
-                else:
-                    MovasLogger.log(f'[DEFER ERROR] validate cv_label not found in minibatch columns: {list(minibatch.columns)[:10]}..., skipping metric update')
-            else:
-                self.update_progress(batch_size=len(minibatch), batch_loss=loss, predictions=real_predictions, labels=labels)
+            self.update_progress(batch_size=len(minibatch), batch_loss=loss, predictions=real_predictions, labels=labels)
         return self._make_validation_result(minibatch, labels, real_predictions)
 
     def _make_validation_result(self, minibatch, labels, predictions):
@@ -693,9 +675,6 @@ class PyTorchAgent(Agent):
                 or 'delf' in self.loss_function.__name__):
                 loss, task_loss = self.loss_function(predictions, labels, minibatch, 
                                         task_to_id_map=self.task_to_id_map, model=self.module)
-            elif hasattr(self.loss_function, '__name__') and 'delay_win_select' in self.loss_function.__name__:
-                # DEFER 损失函数，只需要 logits 和 labels
-                loss, task_loss = self.loss_function(predictions, labels, minibatch)
             else:
                 loss, task_loss = self.loss_function(
                         predictions, 

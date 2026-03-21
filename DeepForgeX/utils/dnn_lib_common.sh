@@ -120,7 +120,7 @@ function model_train() {
         2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/log.log &
     
     echo "训练已启动, PID: $!"
-    echo "日志: tail -f ${LOG_DIR}/log.log"
+    echo "日志: tail -f ${LOG_DIR}/train.log"
 }
 
 # 验证函数
@@ -131,11 +131,12 @@ function model_validation() {
     local eval_keys="${3:-business_type}"
     local conf_file="${4:-./conf/config.yaml}"
     
-    $PYTHON_ENV $TRAINER_SCRIPT_PATH \
+    nohup env PYTHONUNBUFFERED=1 $PYTHON_ENV $TRAINER_SCRIPT_PATH \
         --conf "$conf_file" \
         --validation True \
         --name "$CURRENT_PROJ_NAME" \
         --model_date "$model_date" \
         --sample_date "$sample_date" \
-        --eval_keys "$eval_keys"
+        --eval_keys "$eval_keys" \
+        2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/val.log &
 }

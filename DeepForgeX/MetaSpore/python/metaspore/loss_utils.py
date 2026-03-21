@@ -434,7 +434,7 @@ class LossUtils:
 
 # DEFER 损失函数
 from metaspore.algos.delay_feedback.defer_loss import (
-    delay_win_select_loss,
+    delay_win_select_loss_v1,
     delay_win_select_loss_v2,
 )
 
@@ -452,7 +452,7 @@ LOSS_FUNCTIONS = {
     'uw_mtl_loss': LossUtils.multi_label_uncertainty_loss_func,
     'delf_loss': LossUtils.delf_loss,
     # DEFER 损失函数
-    'defer_loss': delay_win_select_loss,           # v1: 14 维标签
+    'defer_loss': delay_win_select_loss_v1,           # v1: 14 维标签
     'defer_loss_v2': delay_win_select_loss_v2,     # v2: 8 维标签
 }
 
