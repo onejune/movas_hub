@@ -3,7 +3,7 @@ import os, sys, random, traceback
 import numpy as np
 from typing import List, Any, Optional
 from pyspark.sql import functions as F
-from dnn_trainFlow import MsModelTrainFlow
+from base_trainFlow import BaseTrainFlow
 sys.path.append('../MetaSpore/')
 import metaspore as ms
 from metaspore.algos.deep_censored_model import DeepCensoredModel
@@ -14,7 +14,7 @@ from metaspore.algos.dcn_net import DCN
 from metaspore.loss_utils import LossUtils
 from movas_logger import MovasLogger, how_much_time
 
-class WinrateModelTrainFlow(MsModelTrainFlow):
+class WinrateModelTrainFlow(BaseTrainFlow):
     """继承MsModelTrainFlow并重载random_sample方法"""
     def __init__(self, config_path):
         super().__init__(config_path)

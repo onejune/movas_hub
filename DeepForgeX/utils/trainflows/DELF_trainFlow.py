@@ -14,7 +14,7 @@ import time
 from tabulate import tabulate
 from collections import namedtuple
 from typing import List, Any, Optional
-from dnn_trainFlow import MsModelTrainFlow
+from base_trainFlow import BaseTrainFlow
 import metaspore as ms
 from metaspore.algos.star_net import STARModel
 
@@ -26,7 +26,7 @@ from movas_logger import MovasLogger, how_much_time
 
 MovasLogger.set_debug_mode(False)
 
-class DELFModelTrainFlow(MsModelTrainFlow):
+class DELFModelTrainFlow(BaseTrainFlow):
     def __init__(self, config_path):
         super().__init__(config_path)
     

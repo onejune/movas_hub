@@ -17,7 +17,7 @@ from tabulate import tabulate
 from collections import namedtuple
 from typing import List, Any, Optional
 from pyspark.sql import functions as F
-from dnn_trainFlow import MsModelTrainFlow
+from base_trainFlow import BaseTrainFlow
 import metaspore as ms
 from metaspore.algos.star_net import STARModel
 from metaspore.algos.multitask import MMoEProModel
@@ -25,7 +25,7 @@ from metaspore.algos.widedeep_net import WideDeep
 from metaspore.loss_utils import get_loss_function
 from movas_logger import MovasLogger, how_much_time
 
-class MetaCPLTrainFlow(MsModelTrainFlow):
+class MetaCPLTrainFlow(BaseTrainFlow):
     def __init__(self, config_path):
         super().__init__(config_path)
     

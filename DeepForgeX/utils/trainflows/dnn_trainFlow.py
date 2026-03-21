@@ -34,7 +34,7 @@ from base_trainFlow import BaseTrainFlow
 from movas_logger import MovasLogger
 
 
-class MsModelTrainFlow(BaseTrainFlow):
+class DNNModelTrainFlow(BaseTrainFlow):
     """
     DNN 模型训练流程
 
@@ -229,8 +229,8 @@ class MsModelTrainFlow(BaseTrainFlow):
 
 
 if __name__ == "__main__":
-    args = MsModelTrainFlow.parse_args()
-    print(f'MsModelTrainFlow: debug_args={args}')
-    trainer = MsModelTrainFlow(config_path=args.conf)
+    args = DNNModelTrainFlow.parse_args()
+    print(f'DNNModelTrainFlow: debug_args={args}')
+    trainer = DNNModelTrainFlow(config_path=args.conf)
     trainer.run_complete_flow(args)
     MovasLogger.save_to_local()

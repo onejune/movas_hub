@@ -15,7 +15,7 @@ from tabulate import tabulate
 from collections import namedtuple
 from typing import List, Any, Optional
 from pyspark.sql import functions as F
-from dnn_trainFlow import MsModelTrainFlow
+from base_trainFlow import BaseTrainFlow
 import metaspore as ms
 from metaspore.algos.multi_task import MtlMMoEModel, MdlMMoEModel, MMoE, PEPNet, PEPNet2, M2MModel, MultiLayerPLEMD
 from metaspore.algos.multi_domain import HC2WideDeepModel, STARModel, HC2STARModel, HC2MMoEModel, AdaSparseMDLModel, HiNet, HMoENetwork, SACNModel, SAINetModel, DSWINModel,StarCrossFusionModel
@@ -26,7 +26,7 @@ from movas_logger import MovasLogger, how_much_time
 
 MovasLogger.set_debug_mode(False)
 
-class MDLModelTrainFlow(MsModelTrainFlow):
+class MDLModelTrainFlow(BaseTrainFlow):
     def __init__(self, config_path):
         super().__init__(config_path)
     
