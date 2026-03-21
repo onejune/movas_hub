@@ -353,6 +353,53 @@ class DeferTrainFlow(MsModelTrainFlow):
         model = estimator.fit(train_dataset)
         self.trained_model_path = model_out_path_current
         return model
+    
+    # ========================================================================
+    # 预测 (重写基类方法)
+    # ========================================================================
+    
+    def _predict_data(self, dataset_to_transform, model_in_path_current):
+        """
+        预测数据 - 处理 DEFER 标签切换
+        
+        Validation 阶段:
+        - 输入数据有 label (1维) 和 defer_label (14维JSON)
+        - 切换: label -> cv_label, defer_label -> label
+        - 预测完成后切换回来: label -> defer_label, cv_label -> label
+        - 这样 _evaluate_model 可以使用 1 维的 label 计算 AUC/PCOC
+        """
+        if not self.model_module:
+            self._build_model_module()
+        
+        loss_func = get_loss_function(self.loss_func)
+        if not loss_func:
+            raise ValueError(f"Invalid loss function: {self.loss_func}")
+        
+        MovasLogger.log(f"[DEFER] Predicting with model: {model_in_path_current}")
+        
+        # 标签切换: label -> cv_label, defer_label -> label
+        dataset_to_transform = dataset_to_transform.withColumnRenamed("label", "cv_label")
+        dataset_to_transform = dataset_to_transform.withColumnRenamed("defer_label", "label")
+        
+        model_transformer = ms.PyTorchModel(
+            module=self.model_module,
+            worker_count=self.worker_count,
+            server_count=self.server_count,
+            model_in_path=model_in_path_current, 
+            experiment_name=self.experiment_name,
+            loss_function=loss_func,
+            input_label_column_name='label',
+        )
+        
+        test_result = model_transformer.transform(dataset_to_transform)
+        
+        # 切换回来: label -> defer_label, cv_label -> label
+        # 这样 _evaluate_model 使用 1 维的 label 计算 AUC/PCOC
+        test_result = test_result.withColumnRenamed("label", "defer_label")
+        test_result = test_result.withColumnRenamed("cv_label", "label")
+        
+        MovasLogger.log(f"[DEFER] Prediction completed")
+        return test_result
 
 
 # ============================================================================
