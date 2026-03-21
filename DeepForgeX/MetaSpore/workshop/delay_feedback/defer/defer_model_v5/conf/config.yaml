@@ -10,8 +10,8 @@ experiment_name: "defer_model_v5"
 
 train_path_prefix: "/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet"
 train_start_date: 2026-02-11
-train_end_date: 2026-02-11
-validation_date: 2026-02-12
+train_end_date: 2026-02-17
+validation_date: 2026-02-18
 model_out_base_path: "./output"
 
 # ============================================================================

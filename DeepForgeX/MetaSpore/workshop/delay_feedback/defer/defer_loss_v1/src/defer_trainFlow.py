@@ -155,7 +155,7 @@ class DeferTrainFlow(MsModelTrainFlow):
         if self.label_version == "v2":
             df = self._build_defer_labels_v2(df)  # 8 维标签
         else:
-            df = self._build_defer_labels(df)     # 14 维标签
+            df = self._build_defer_labels_v1(df)     # 14 维标签
         
         MovasLogger.log(f"[DEFER] Loaded {len(df.columns)} columns")
         return df
@@ -164,7 +164,7 @@ class DeferTrainFlow(MsModelTrainFlow):
     # DEFER 标签构建
     # ========================================================================
     
-    def _build_defer_labels(self, df: DataFrame) -> DataFrame:
+    def _build_defer_labels_v1(self, df: DataFrame) -> DataFrame:
         """
         构建 DEFER 14 维标签 - 纯 Spark SQL，避免 Python UDF
         

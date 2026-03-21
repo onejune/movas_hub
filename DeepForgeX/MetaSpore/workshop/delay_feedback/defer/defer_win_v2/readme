@@ -1,0 +1,11 @@
+DEFER 延迟反馈实验: defer_win_v2
+
+实验变量:
+- model: WinAdaptDNN (共享trunk+4输出头)
+- loss: defer_loss_v1 (14维标签, SPM loss)
+- windows: 24/48/72h (长窗口)
+
+训练配置:
+- 训练数据: 2026-02-11 ~ 2026-02-17 (7天)
+- 验证数据: 2026-02-18
+- 数据源: ivr_sample_v7

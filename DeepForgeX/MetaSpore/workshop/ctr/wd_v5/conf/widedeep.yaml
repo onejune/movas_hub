@@ -11,9 +11,9 @@ local_spark: local
 
 ## datasets
 train_path_prefix: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet
-train_start_date: 2025-11-09
-train_end_date: 2025-11-09
-validation_date: 2025-11-10
+train_start_date: 2026-02-11
+train_end_date: 2026-02-17
+validation_date: 2026-02-18
 movas_log_output_path: ./log/movas.log
 
 ## model configurations
@@ -28,7 +28,7 @@ experiment_name: dnn_ruf2_v1
 input_label_column_index: 113
 
 ## model hyper params
-embedding_size: 12
+embedding_size: 8
 adam_learning_rate: 0.00001
 ftrl_alpha: 0.005
 ftrl_beta: 0.05
