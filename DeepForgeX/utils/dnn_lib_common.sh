@@ -129,29 +129,13 @@ function model_validation() {
     local model_date="$1"
     local sample_date="$2"
     local eval_keys="${3:-business_type}"
+    local conf_file="${4:-./conf/config.yaml}"
     
     $PYTHON_ENV $TRAINER_SCRIPT_PATH \
-        --conf ./conf/widedeep.yaml \
+        --conf "$conf_file" \
         --validation True \
         --name "$CURRENT_PROJ_NAME" \
         --model_date "$model_date" \
         --sample_date "$sample_date" \
         --eval_keys "$eval_keys"
-}
-
-# DEFER 训练函数
-function defer_train() {
-    TRAINER_SCRIPT_PATH="./src/defer_trainFlow.py"
-    init_env
-    local conf_file="${1:-./conf/config.yaml}"
-    local eval_keys="${2:-business_type}"
-    
-    nohup env PYTHONUNBUFFERED=1 $PYTHON_ENV $TRAINER_SCRIPT_PATH \
-        --name "$CURRENT_PROJ_NAME" \
-        --conf "$conf_file"  \
-        --eval_keys "$eval_keys" \
-        2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/log.log &
-    
-    echo "DEFER 训练已启动, PID: $!"
-    echo "日志: tail -f ${LOG_DIR}/log.log"
 }
