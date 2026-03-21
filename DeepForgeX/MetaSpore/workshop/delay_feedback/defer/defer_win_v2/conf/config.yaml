@@ -27,7 +27,7 @@ model_out_base_path: "./output"
 model_type: "WinAdaptDNN"
 
 # 损失函数: defer_loss (14 维标签, SPM loss) - 固定
-loss_func: "defer_loss"
+loss_func: "defer_loss_v1"
 
 # DEFER 时间窗口: 24/48/72h (长窗口)
 defer_windows: [24, 48, 72]

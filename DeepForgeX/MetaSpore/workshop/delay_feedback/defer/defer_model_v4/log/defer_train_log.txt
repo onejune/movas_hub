@@ -1,0 +1,87 @@
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:177:_init_spark] MovasLogger initialized.
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:178:_init_spark] Spark version: 3.1.2, appId: local-1774060028493, uiWebUrl: http://dsw-687-7fcc6c486f-9v9fw:4041
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:732:run_complete_flow] Config loaded: {'app_name': 'defer_model_v4', 'experiment_name': 'defer_model_v4', 'train_path_prefix': '/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet', 'train_start_date': datetime.date(2026, 2, 11), 'train_end_date': datetime.date(2026, 2, 11), 'validation_date': datetime.date(2026, 2, 12), 'model_out_base_path': './output', 'model_type': 'DeferDNN', 'loss_func': 'defer_loss_v1', 'defer_windows': [6, 12, 24], 'defer_delay_hours': 72, 'embedding_size': 8, 'dnn_hidden_units': [256, 256, 128], 'use_wide': False, 'batch_norm': True, 'net_dropout': 0.5, 'ftrl_l1': 1.0, 'ftrl_l2': 120.0, 'ftrl_alpha': 0.5, 'ftrl_beta': 1.0, 'adam_learning_rate': 0.001, 'combine_schema_path': './conf/combine_schema', 'wide_combine_schema_path': './conf/combine_schema', 'local_spark': True, 'worker_count': 8, 'server_count': 2, 'batch_size': 512, 'worker_memory': '8G', 'server_memory': '8G', 'coordinator_memory': '4G', 'input_label_column_index': 0, 'movas_log_output_path': './log/defer_train_log.txt'}
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:733:run_complete_flow] Starting complete flow.
+[2026-03-21 10:27:09][INFO][defer_trainFlow.py:470:_build_model_module] [DEFER] Building model: DeferDNN
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:676:_run_training_loop] No model found for previous day: ./output/model_2026-02-10. Starting from empty model.
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:679:_run_training_loop] Starting training loop.
+[2026-03-21 10:27:09][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-11 ---
+[2026-03-21 10:27:09][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-11
+[2026-03-21 10:27:23][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 10:27:23][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=6.0h, WIN2=12.0h, WIN3=24.0h, DELAY=72.0h
+[2026-03-21 10:28:13][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=8187, true_neg=1245493, window_pos=52900
+[2026-03-21 10:28:13][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 10:28:13][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-11
+[2026-03-21 10:29:20][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,344,657 rows
+[2026-03-21 10:29:20][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=None, model_out=./output/model_2026-02-11, loss=defer_loss_v1
+[2026-03-21 10:30:47][INFO][dnn_trainFlow.py:699:_run_training_loop] Finished training loop.
+[2026-03-21 10:30:47][INFO][dnn_trainFlow.py:705:_run_evaluation_phase] 
+==================================================Evaluating model: ./output/model_2026-02-11, val_date:2026-02-12==================================================
+[2026-03-21 10:30:47][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-12
+[2026-03-21 10:30:59][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 10:31:00][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=6.0h, WIN2=12.0h, WIN3=24.0h, DELAY=72.0h
+[2026-03-21 10:31:39][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=9062, true_neg=1222095, window_pos=48661
+[2026-03-21 10:31:39][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 10:31:39][INFO][dnn_trainFlow.py:486:_predict_data] Transforming data using model from: ./output/model_2026-02-11
+[2026-03-21 10:33:07][INFO][dnn_trainFlow.py:493:_evaluate_model] Evaluating model from: ./output/model_2026-02-11, eval_keys: business_type 
+[2026-03-21 10:33:50][INFO][dnn_trainFlow.py:532:_evaluate_model] validation data: 2026-02-12
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| Model              | Key1          | Key2        |    AUC |   PCOC |   LogLoss |    Pos |     Neg |    Ivr |
++====================+===============+=============+========+========+===========+========+=========+========+
+| val-defer_model_v4 | Overall       | Overall     | 0.7482 | 0.6407 |    0.2596 | 105930 | 1319238 | 0.0803 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | shopee_cps  | 0.7503 | 0.2952 |    0.3472 |  57516 |  565960 | 0.1016 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | aecps       | 0.7514 | 0.9109 |    0.1670 |   7579 |  166407 | 0.0455 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | aedsp       | 0.7537 | 1.4879 |    0.0831 |   2508 |  141596 | 0.0177 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | lazada_cps  | 0.7512 | 0.3100 |    0.2251 |   7529 |  132687 | 0.0567 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | lazada_rta  | 0.7274 | 1.3173 |    0.4214 |  11868 |   69257 | 0.1714 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | mobplus     | 0.7386 | 1.1948 |    0.3312 |   7558 |   61583 | 0.1227 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | aemc        | 0.7719 | 1.4489 |    0.1144 |   1293 |   47550 | 0.0272 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | shein       | 0.6328 | 1.6274 |    0.1109 |    885 |   38354 | 0.0231 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | novabeyond  | 0.7682 | 1.7911 |    0.1223 |    882 |   29799 | 0.0296 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | aerta       | 0.7602 | 1.3127 |    0.1268 |    896 |   28576 | 0.0314 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | fluentleads | 0.8733 | 1.1029 |    0.1652 |   1042 |   17723 | 0.0588 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | liongame    | 0.8134 | 0.9939 |    0.5099 |   1994 |    4646 | 0.4292 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | mena_ae_cps | 0.7425 | 0.8455 |    0.2346 |    290 |    4027 | 0.0720 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | everglowly  | 0.8629 | 0.9357 |    0.5070 |   2101 |    3592 | 0.5849 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | aedsp_cc    | 0.6838 | 1.8624 |    0.1277 |     68 |    2467 | 0.0276 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | detroitrain | 0.7696 | 0.8165 |    0.2814 |   1316 |    1368 | 0.9620 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_model_v4 | business_type | swiftlink   | 0.6202 | 0.8585 |    0.9617 |    532 |     817 | 0.6512 |
++--------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+
+
+[2026-03-21 10:33:50][INFO][dnn_trainFlow.py:556:_evaluate_model] table_title: Validation Result For [2026-02-12], msg_title: defer_model_v4 [2026-02-12], msg_text: train_start_time: 2026-03-21 10:27:09                     
+send_info_time: 2026-03-21 10:33:50                     
+train_execution_time: 0.1 hours                     
+val_execution_time: 0.1 hours                     
+                     
+super_params: 0.5 1.0 1.0 120.0 False [256, 256, 128]                     
+batchsize: 512                     
+model_type: DeferDNN                     
+loss_func: defer_loss_v1                     
+model_path: ./output/model_2026-02-11                     
+[2026-03-21 10:33:51][INFO][dnn_trainFlow.py:709:_run_evaluation_phase] 
+==================================================Evaluating model from: ./output/model_2026-02-11 ==================================================
+[2026-03-21 10:33:51][INFO][dnn_trainFlow.py:183:_stop_spark] Debug--spark stop
+[2026-03-21 10:33:51][INFO][dnn_trainFlow.py:758:run_complete_flow] Completed complete flow.
+[2026-03-21 10:30:47][time_use][movas_logger.py:20:wrapper] [_run_training_loop] time_use: 3.6323 minutes.
+[2026-03-21 10:33:07][time_use][movas_logger.py:20:wrapper] [_predict_data] time_use: 1.4661 minutes.
+[2026-03-21 10:33:51][time_use][movas_logger.py:20:wrapper] [_evaluate_model] time_use: 0.7301 minutes.
+[2026-03-21 10:33:51][time_use][movas_logger.py:20:wrapper] [_run_evaluation_phase] time_use: 3.0704 minutes.
+[2026-03-21 10:33:51][time_use][movas_logger.py:20:wrapper] [run_complete_flow] time_use: 6.7519 minutes.
