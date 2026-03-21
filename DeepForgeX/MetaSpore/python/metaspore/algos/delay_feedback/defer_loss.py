@@ -1,8 +1,29 @@
 """
-DEFER 损失函数
+DEFER 损失函数 (Delayed Feedback Modeling)
 
-提供两个版本:
+================================================================================
+背景
+================================================================================
+广告转化存在延迟反馈问题: 用户点击广告后，转化可能在几小时甚至几天后发生。
+传统做法是等待足够长时间 (如7天) 才能确定标签，但这会导致数据延迟。
+DEFER 方法通过时间窗口对样本分类，结合概率建模来处理延迟反馈。
 
+================================================================================
+核心思想
+================================================================================
+将转化概率分解为两部分:
+    P(转化) = P(最终会转化) × P(在窗口内转化 | 最终会转化)
+            = cv_prob × time_prob
+
+模型输出 4 个 logit:
+- cv_logit: 最终转化概率 (是否会转化)
+- time_w1_logit: 在窗口1内转化的概率
+- time_w2_logit: 在窗口2内转化的概率
+- time_w3_logit: 在窗口3内转化的概率
+
+================================================================================
+提供两个版本
+================================================================================
 1. delay_win_select_loss (v1):
    - 完全对齐 src_tf_github/loss.py 实现
    - 14 维标签，包含 SPM loss
@@ -27,7 +48,7 @@ from typing import Dict, Optional
 # ============================================================================
 
 def stable_sigmoid(x: torch.Tensor, eps: float = 1e-7) -> torch.Tensor:
-    """数值稳定的 sigmoid"""
+    """数值稳定的 sigmoid，避免 log(0) 和 log(1) 的数值问题"""
     return torch.clamp(torch.sigmoid(x), eps, 1.0 - eps)
 
 
@@ -44,38 +65,80 @@ def delay_win_select_loss(
     """
     WinAdapt 损失函数 - 适配 MetaSpore PyTorchEstimator
     
+    ============================================================================
+    输入参数
+    ============================================================================
     Args:
-        logits: (batch, 4) - 模型输出 [cv_logit, time_w1, time_w2, time_w3]
-        labels: (batch, 14) - 14 维标签 (从 input_label_column 解析)
+        logits: (batch, 4) - 模型输出
+            - logits[:, 0]: cv_logit (最终转化概率)
+            - logits[:, 1]: time_w1_logit (窗口1内转化概率)
+            - logits[:, 2]: time_w2_logit (窗口2内转化概率)
+            - logits[:, 3]: time_w3_logit (窗口3内转化概率)
+        
+        labels: (batch, 14) - 14 维标签 (fallback，通常不使用)
+        
         minibatch: MetaSpore minibatch DataFrame，包含:
-            - cv_label: 原始二分类标签 (是否最终转化)
+            - defer_label: 14 维标签的 JSON 字符串 (优先使用)
+            - label: 原始 1 维标签 (用于 AUC 评估)
             - 其他特征列
+        
         **kwargs: 其他参数 (task_to_id_map, task_weights_dict 等)
     
     Returns:
         (loss, task_loss): tuple of scalar tensors (MetaSpore 要求返回两个值)
     
-    标签格式 (14 维):
-    - z[:, 0]: label_11 - 延迟正样本 (delayed positive)
-    - z[:, 1]: label_10 - 真负样本 (true negative)
-    - z[:, 2]: label_01_15 - 窗口1内正样本
-    - z[:, 3]: label_01_30 - 窗口2内正样本 (增量)
-    - z[:, 4]: label_01_60 - 窗口3内正样本 (增量)
-    - z[:, 5]: label_01_30_sum - 窗口2累积
-    - z[:, 6]: label_01_60_sum - 窗口3累积
-    - z[:, 7]: label_01_30_mask - 窗口2 mask
-    - z[:, 8]: label_01_60_mask - 窗口3 mask
-    - z[:, 9]: label_00 - 窗口内负样本 (未观测完)
-    - z[:, 10]: label_01 - 窗口内正样本 (所有)
-    - z[:, 11]: label_11_15 - 延迟正 w1-w2
-    - z[:, 12]: label_11_30 - 延迟正 w2-w3
-    - z[:, 13]: label_11_60 - 延迟正 >w3
+    ============================================================================
+    14 维标签格式 (从 defer_label JSON 解析)
+    ============================================================================
+    索引  名称              含义                                    用途
+    ----  ----              ----                                    ----
+    [0]   label_11          延迟正样本 (label=1, diff>delay)        SPM loss 正样本
+    [1]   label_10          真负样本 (label=0)                      CV/SPM loss 负样本
+    [2]   label_01_win1     窗口1内正样本 (diff<=win1)              窗口1 loss
+    [3]   label_01_win2     窗口2内正样本 (win1<diff<=win2)         窗口2 loss (增量)
+    [4]   label_01_win3     窗口3内正样本 (win2<diff<=win3)         窗口3 loss (增量)
+    [5]   label_01_sum12    窗口1+2累积正样本                       窗口2 loss
+    [6]   label_01_sum123   窗口1+2+3累积正样本                     窗口3 loss
+    [7]   mask_win2         窗口2 mask (恒为1)                      保留
+    [8]   mask_win3         窗口3 mask (恒为1)                      保留
+    [9]   reserved          保留位 (恒为0)                          未使用
+    [10]  label_01          所有窗口内正样本 (同[6])                CV loss 正样本
+    [11]  label_11_w1       延迟正细分1 (delay<diff<=delay+win3)   SPM loss 细分
+    [12]  label_11_w2       延迟正细分2                             SPM loss 细分
+    [13]  label_11_w3       延迟正细分3 (diff>delay+2*win3)        SPM loss 细分
     
-    关键点:
-    1. stop_gradient 放在 time_prop 上，不是 cv_prop
-    2. SPM 损失的负样本 = 延迟正样本 + 真负样本 (排除 label_00)
-    3. CV 损失: 正例=label01+label11, 负例=label10 (排除 label_00)
-    4. 可选：从 minibatch['cv_label'] 获取原始二分类标签
+    ============================================================================
+    损失函数组成
+    ============================================================================
+    总损失 = 0.10 × loss_win_15      (窗口1 loss，stop_gradient on time_prob)
+           + 0.05 × loss_win_30      (窗口2 loss，stop_gradient on time_prob)
+           + 0.05 × loss_win_60      (窗口3 loss，stop_gradient on time_prob)
+           + 0.10 × loss_win_15_spm  (窗口1 SPM loss，无 stop_gradient)
+           + 0.05 × loss_win_30_spm  (窗口2 SPM loss，无 stop_gradient)
+           + 0.05 × loss_win_60_spm  (窗口3 SPM loss，无 stop_gradient)
+           + 0.60 × loss_cv_spm      (CV loss，主任务)
+    
+    ============================================================================
+    关键设计点
+    ============================================================================
+    1. stop_gradient 放在 time_prob 上，不是 cv_prob
+       - 窗口 loss 只更新 cv_head，不更新 time_head
+       - 这样 time_head 只通过 SPM loss 更新
+    
+    2. SPM 损失的负样本定义
+       - 窗口1负样本 = 所有延迟正样本 + 真负样本
+       - 窗口2负样本 = w2之后的延迟正样本 + 真负样本
+       - 窗口3负样本 = w3之后的延迟正样本 + 真负样本
+       - 注意：排除 label_00 (未观测完样本)
+    
+    3. CV 损失的样本定义
+       - 正样本 = label_01 (窗口内正) + label_11 (延迟正)
+       - 负样本 = label_10 (真负)
+       - 排除 label_00 (未观测完样本)
+    
+    4. 标签来源
+       - 优先从 minibatch['defer_label'] 解析 JSON 获取 14 维标签
+       - fallback 到 labels 参数 (通常不使用)
     """
     # DEBUG: 打印输入形状，确认函数被调用
     #print(f"[DEBUG delay_win_select_loss] logits.shape={logits.shape}, labels.shape={labels.shape}")
@@ -96,46 +159,63 @@ def delay_win_select_loss(
     
     eps = 1e-7
     
-    # ========== 解析标签 ==========
-    label_11 = z[:, 0]           # delayed positive (>w3)
-    label_10 = z[:, 1]           # true negative
-    label_01_15 = z[:, 2]        # window 1 positive
-    label_01_30_sum = z[:, 5]    # window 2 cumulative (w1 + w2)
-    label_01_60_sum = z[:, 6]    # window 3 cumulative (w1 + w2 + w3)
-    label_01 = z[:, 10]          # window positive (all)
-    label_11_15 = z[:, 11]       # delayed positive w1-w2
-    label_11_30 = z[:, 12]       # delayed positive w2-w3
-    label_11_60 = z[:, 13]       # delayed positive >w3
+    # ==========================================================================
+    # Step 1: 解析 14 维标签
+    # ==========================================================================
+    # 标签含义参见 docstring 中的表格
+    label_11 = z[:, 0]           # 延迟正样本: label=1, diff>delay
+    label_10 = z[:, 1]           # 真负样本: label=0
+    label_01_15 = z[:, 2]        # 窗口1内正样本: label=1, diff<=win1
+    label_01_30_sum = z[:, 5]    # 窗口1+2累积: label=1, diff<=win2
+    label_01_60_sum = z[:, 6]    # 窗口1+2+3累积: label=1, diff<=win3
+    label_01 = z[:, 10]          # 所有窗口内正样本 (同 label_01_60_sum)
+    label_11_15 = z[:, 11]       # 延迟正细分1: delay<diff<=delay+win3
+    label_11_30 = z[:, 12]       # 延迟正细分2: delay+win3<diff<=delay+2*win3
+    label_11_60 = z[:, 13]       # 延迟正细分3: diff>delay+2*win3
     
-    # ========== 解析 logits ==========
-    cv_logit = logits[:, 0]
-    time_15_logit = logits[:, 1]
-    time_30_logit = logits[:, 2]
-    time_60_logit = logits[:, 3]
+    # ==========================================================================
+    # Step 2: 解析模型输出 (4 个 logit)
+    # ==========================================================================
+    cv_logit = logits[:, 0]       # 最终转化概率 logit
+    time_15_logit = logits[:, 1]  # 窗口1内转化概率 logit
+    time_30_logit = logits[:, 2]  # 窗口2内转化概率 logit
+    time_60_logit = logits[:, 3]  # 窗口3内转化概率 logit
     
-    # ========== 计算概率 ==========
-    cv_prob = stable_sigmoid(cv_logit)
-    time_15_prob = stable_sigmoid(time_15_logit)
-    time_30_prob = stable_sigmoid(time_30_logit)
-    time_60_prob = stable_sigmoid(time_60_logit)
+    # ==========================================================================
+    # Step 3: 计算概率 (sigmoid)
+    # ==========================================================================
+    cv_prob = stable_sigmoid(cv_logit)           # P(最终会转化)
+    time_15_prob = stable_sigmoid(time_15_logit) # P(在win1内转化 | 会转化)
+    time_30_prob = stable_sigmoid(time_30_logit) # P(在win2内转化 | 会转化)
+    time_60_prob = stable_sigmoid(time_60_logit) # P(在win3内转化 | 会转化)
     
-    # ========== stop_gradient 版本 (关键：stop 在 time_prop 上) ==========
+    # ==========================================================================
+    # Step 4: stop_gradient 版本 (关键设计点)
+    # ==========================================================================
+    # 对 time_prob 做 stop_gradient，这样窗口 loss 只更新 cv_head
+    # time_head 只通过 SPM loss 更新
     time_15_prob_stop = time_15_prob.detach()
     time_30_prob_stop = time_30_prob.detach()
     time_60_prob_stop = time_60_prob.detach()
     
-    # ========== 窗口概率 ==========
-    # 正常版本 (用于 SPM loss)
+    # ==========================================================================
+    # Step 5: 计算窗口概率 P(在窗口内转化) = cv_prob × time_prob
+    # ==========================================================================
+    # 正常版本 (用于 SPM loss，梯度同时流向 cv_head 和 time_head)
     win_prob_15 = cv_prob * time_15_prob
     win_prob_30 = cv_prob * time_30_prob
     win_prob_60 = cv_prob * time_60_prob
     
-    # stop_gradient 版本 (用于窗口 loss，只更新 cv_head)
+    # stop_gradient 版本 (用于窗口 loss，梯度只流向 cv_head)
     win_prob_15_stop = cv_prob * time_15_prob_stop
     win_prob_30_stop = cv_prob * time_30_prob_stop
     win_prob_60_stop = cv_prob * time_60_prob_stop
     
-    # ========== 窗口损失 (stop_gradient on time_prop) ==========
+    # ==========================================================================
+    # Step 6: 窗口损失 (Binary Cross Entropy, stop_gradient on time_prob)
+    # ==========================================================================
+    # 这些 loss 只更新 cv_head，让 cv_head 学习窗口内转化的模式
+    # 公式: -[y*log(p) + (1-y)*log(1-p)]
     loss_win_15 = -torch.mean(
         label_01_15 * torch.log(win_prob_15_stop + eps) +
         (1 - label_01_15) * torch.log(1 - win_prob_15_stop + eps)
@@ -151,7 +231,19 @@ def delay_win_select_loss(
         (1 - label_01_60_sum) * torch.log(1 - win_prob_60_stop + eps)
     )
     
-    # ========== SPM 损失 (关键：正确的负样本 mask) ==========
+    # ==========================================================================
+    # Step 7: SPM 损失 (关键：正确的负样本 mask)
+    # ==========================================================================
+    # SPM (Selective Prediction Mask) loss 的负样本需要仔细设计:
+    # - 窗口1负样本 = 所有延迟正样本 + 真负样本 (排除 label_00)
+    # - 窗口2负样本 = w2之后的延迟正样本 + 真负样本
+    # - 窗口3负样本 = w3之后的延迟正样本 + 真负样本
+    # 
+    # 为什么要这样设计？
+    # - 延迟正样本在窗口内被误判为负样本，但实际是正样本
+    # - 我们希望模型预测这些样本的窗口概率较低 (因为它们确实不在窗口内转化)
+    # - 所以把它们作为 SPM loss 的负样本
+    
     # 窗口1的负样本: 所有延迟正样本 + 真负样本
     label_15_neg = torch.clamp(label_11_15 + label_11_30 + label_11_60 + label_10, max=1.0)
     
@@ -161,6 +253,8 @@ def delay_win_select_loss(
     # 窗口3的负样本: w3之后的延迟正样本 + 真负样本
     label_60_neg = torch.clamp(label_11_60 + label_10, max=1.0)
     
+    # SPM loss 公式: -[正样本*log(p) + 负样本*log(1-p)]
+    # 注意：这里正样本和负样本不互斥，可能有样本两者都不是 (label_00)
     loss_win_15_spm = -torch.mean(
         label_01_15 * torch.log(win_prob_15 + eps) +
         label_15_neg * torch.log(1 - win_prob_15 + eps)
@@ -176,24 +270,34 @@ def delay_win_select_loss(
         label_60_neg * torch.log(1 - win_prob_60 + eps)
     )
     
-    # ========== CV 损失 ==========
-    # 正样本: label_01 (窗口内正) + label_11 (延迟正)
-    # 负样本: label_10 (真负)
+    # ==========================================================================
+    # Step 8: CV 损失 (主任务损失)
+    # ==========================================================================
+    # CV (Conversion) loss 预测最终是否会转化
+    # - 正样本 = label_01 (窗口内正) + label_11 (延迟正)
+    # - 负样本 = label_10 (真负)
+    # - 排除 label_00 (未观测完样本)，因为它们的最终标签不确定
     loss_cv_spm = -torch.mean(
-        label_01 * torch.log(cv_prob + eps) +
-        label_11 * torch.log(cv_prob + eps) +
-        label_10 * torch.log(1 - cv_prob + eps)
+        label_01 * torch.log(cv_prob + eps) +          # 窗口内正样本
+        label_11 * torch.log(cv_prob + eps) +          # 延迟正样本
+        label_10 * torch.log(1 - cv_prob + eps)        # 真负样本
     )
     
-    # ========== 总损失 (subloss=1 配置) ==========
+    # ==========================================================================
+    # Step 9: 总损失 (加权组合)
+    # ==========================================================================
+    # 权重配置 (subloss=1):
+    # - CV loss 权重最大 (0.60)，因为这是主任务
+    # - 窗口 loss 权重较小，起辅助作用
+    # - win1 权重 > win2 > win3，因为短窗口的标签更可靠
     loss = (
-        0.10 * loss_win_15 +
-        0.05 * loss_win_30 +
-        0.05 * loss_win_60 +
-        0.10 * loss_win_15_spm +
-        0.05 * loss_win_30_spm +
-        0.05 * loss_win_60_spm +
-        0.60 * loss_cv_spm
+        0.10 * loss_win_15 +      # 窗口1 loss (stop_gradient)
+        0.05 * loss_win_30 +      # 窗口2 loss (stop_gradient)
+        0.05 * loss_win_60 +      # 窗口3 loss (stop_gradient)
+        0.10 * loss_win_15_spm +  # 窗口1 SPM loss
+        0.05 * loss_win_30_spm +  # 窗口2 SPM loss
+        0.05 * loss_win_60_spm +  # 窗口3 SPM loss
+        0.60 * loss_cv_spm        # CV loss (主任务)
     )
     
     # MetaSpore 要求返回 (loss, task_loss) tuple

@@ -161,63 +161,132 @@ class DeferTrainFlow(MsModelTrainFlow):
         """
         构建 DEFER 14 维标签 - 纯 Spark SQL，避免 Python UDF
         
+        ============================================================================
+        DEFER (Delayed Feedback) 模型标签设计说明
+        ============================================================================
+        
+        背景:
+        - 广告转化存在延迟反馈问题: 用户点击广告后，转化可能在几小时甚至几天后发生
+        - 传统做法是等待足够长时间 (如7天) 才能确定标签，但这会导致数据延迟
+        - DEFER 方法通过时间窗口对样本分类，结合概率建模来处理延迟反馈
+        
+        样本分类 (基于 label 和 diff_hours):
+        - label: 最终转化标签 (0=未转化, 1=转化)
+        - diff_hours: 从点击到转化的时间差 (小时)
+        
+        +-----------------+------------------+-----------------------------------+
+        | 样本类型        | 条件              | 说明                              |
+        +-----------------+------------------+-----------------------------------+
+        | label_01        | label=1,         | 窗口内正样本: 在观测窗口内转化    |
+        | (window pos)    | diff <= win3     | 这些样本可以确定是正样本          |
+        +-----------------+------------------+-----------------------------------+
+        | label_11        | label=1,         | 延迟正样本: 超过观测窗口才转化    |
+        | (delayed pos)   | diff > delay     | 训练时这些样本被误判为负样本      |
+        +-----------------+------------------+-----------------------------------+
+        | label_10        | label=0          | 真负样本: 最终未转化              |
+        | (true neg)      |                  | 需要足够长的归因窗口才能确定      |
+        +-----------------+------------------+-----------------------------------+
+        | label_00        | label=1,         | 未观测完样本: 在窗口外但未超过    |
+        | (unobserved)    | win3<diff<=delay | 归因窗口，无法确定最终标签        |
+        +-----------------+------------------+-----------------------------------+
+        
+        时间窗口示意 (以 24/48/72h 窗口, 168h 归因为例):
+        
+        点击时刻 -----> 时间流逝 ----->
+        |----win1(24h)----|----win2(48h)----|----win3(72h)----|----delay(168h)----|
+        |<-- label_01_w1 ->|<-- label_01_w2 ->|<-- label_01_w3 ->|                  |
+        |<-------------- label_01 (窗口内正) ---------------->|                  |
+                                                              |<-- label_00 -->|
+                                                                               |<-- label_11 (延迟正) -->
+        
         14 维标签格式:
-        [0]  label_11: 延迟正样本 (label=1, diff > delay)
-        [1]  label_10: 真负样本 (label=0)
-        [2]  label_01_win1: 窗口1内正样本
-        [3]  label_01_win2: 窗口2内正样本 (增量)
-        [4]  label_01_win3: 窗口3内正样本 (增量)
-        [5]  label_01_win1_win2_sum: 窗口1+2累积
-        [6]  label_01_all_win_sum: 窗口1+2+3累积
-        [7]  mask_win2: 恒为1
-        [8]  mask_win3: 恒为1
-        [9]  reserved: 未使用
-        [10] label_01: 所有窗口内正样本
-        [11-13] label_11_xx: 延迟正样本细分
+        ============================================================================
+        索引  名称              计算公式                          用途
+        ============================================================================
+        [0]   label_11          label=1 AND diff>delay            延迟正样本 (SPM loss)
+        [1]   label_10          label=0                           真负样本 (CV/SPM loss)
+        [2]   label_01_win1     label=1 AND diff<=win1            窗口1正样本 (time loss)
+        [3]   label_01_win2     label=1 AND win1<diff<=win2       窗口2正样本 (增量)
+        [4]   label_01_win3     label=1 AND win2<diff<=win3       窗口3正样本 (增量)
+        [5]   label_01_sum12    label_01_win1 OR label_01_win2    窗口1+2累积
+        [6]   label_01_sum123   label_01_win1 OR _win2 OR _win3   窗口1+2+3累积
+        [7]   mask_win2         1.0 (恒定)                        窗口2 mask
+        [8]   mask_win3         1.0 (恒定)                        窗口3 mask
+        [9]   reserved          0.0 (保留)                        未使用
+        [10]  label_01          同 [6]                            所有窗口内正样本
+        [11]  label_11_w1       延迟正 AND diff<=delay+win3       延迟正细分1
+        [12]  label_11_w2       延迟正 AND delay+win3<diff<=...   延迟正细分2
+        [13]  label_11_w3       延迟正 AND diff>delay+2*win3      延迟正细分3
+        ============================================================================
         
         输出:
-        - defer_label: 新增列 (JSON 字符串)，用于 loss 计算
-        - label: 保持原始 1 维标签，用于 AUC 评估
+        - defer_label: 新增列 (JSON 字符串 "[0.0,1.0,...]")，用于 loss 计算
+        - label: 保持原始 1 维标签 (0/1)，用于 AUC 评估
+        
+        注意:
+        - 使用 JSON 字符串而非 ArrayType，避免 Spark ArrayType 触发 PS agent 问题
+        - loss 函数从 minibatch['defer_label'] 解析 JSON 获取 14 维标签
         """
         MovasLogger.log("[DEFER] Building 14-dim labels (Spark SQL)")
         
-        # 预处理 diff_hours
+        # ========== Step 1: 预处理 diff_hours ==========
+        # diff_hours 表示从点击到转化的时间差 (小时)
+        # 如果为 null (未转化)，填充为 9999.0 (远大于任何窗口)
         if "diff_hours" in df.columns:
             df = df.withColumn("diff_hours", F.col("diff_hours").cast("float"))
             df = df.fillna({'diff_hours': 9999.0})
         
+        # 时间窗口参数 (从 config 读取)
         win1, win2, win3 = self.win1_hours, self.win2_hours, self.win3_hours
         delay = self.delay_hours
         
         MovasLogger.log(f"[DEFER] WIN1={win1}h, WIN2={win2}h, WIN3={win3}h, DELAY={delay}h")
         
-        # 条件定义
+        # ========== Step 2: 定义分类条件 ==========
         label_col = F.col("label")
         diff_col = F.col("diff_hours")
         
-        is_positive = label_col == 1.0
-        is_negative = label_col == 0.0
+        # 基础条件
+        is_positive = label_col == 1.0  # 最终转化
+        is_negative = label_col == 0.0  # 最终未转化
+        
+        # 延迟正样本: 转化了，但超过归因窗口才转化
         is_delayed = is_positive & (diff_col > delay)
         
-        in_win1 = is_positive & (diff_col <= win1)
-        in_win2 = is_positive & (diff_col > win1) & (diff_col <= win2)
-        in_win3 = is_positive & (diff_col > win2) & (diff_col <= win3)
-        in_any_win = in_win1 | in_win2 | in_win3
+        # 窗口内正样本: 转化了，且在对应窗口内转化
+        in_win1 = is_positive & (diff_col <= win1)                        # 0 ~ win1
+        in_win2 = is_positive & (diff_col > win1) & (diff_col <= win2)    # win1 ~ win2
+        in_win3 = is_positive & (diff_col > win2) & (diff_col <= win3)    # win2 ~ win3
+        in_any_win = in_win1 | in_win2 | in_win3                          # 0 ~ win3
         
-        # 构建 14 维标签
+        # ========== Step 3: 构建 14 维标签 ==========
+        # [0] label_11: 延迟正样本
         df = df.withColumn("_lbl_0", F.when(is_delayed, 1.0).otherwise(0.0))
+        
+        # [1] label_10: 真负样本
         df = df.withColumn("_lbl_1", F.when(is_negative, 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_2", F.when(in_win1, 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_3", F.when(in_win2, 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_4", F.when(in_win3, 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_5", F.when(in_win1 | in_win2, 1.0).otherwise(0.0))
-        df = df.withColumn("_lbl_6", F.when(in_any_win, 1.0).otherwise(0.0))
+        
+        # [2-4] 各窗口正样本 (增量，不重叠)
+        df = df.withColumn("_lbl_2", F.when(in_win1, 1.0).otherwise(0.0))  # win1 内
+        df = df.withColumn("_lbl_3", F.when(in_win2, 1.0).otherwise(0.0))  # win1~win2
+        df = df.withColumn("_lbl_4", F.when(in_win3, 1.0).otherwise(0.0))  # win2~win3
+        
+        # [5-6] 累积窗口正样本
+        df = df.withColumn("_lbl_5", F.when(in_win1 | in_win2, 1.0).otherwise(0.0))  # win1+win2
+        df = df.withColumn("_lbl_6", F.when(in_any_win, 1.0).otherwise(0.0))         # win1+win2+win3
+        
+        # [7-8] mask (恒为 1.0，用于 loss 计算)
         df = df.withColumn("_lbl_7", F.lit(1.0))  # mask_win2
         df = df.withColumn("_lbl_8", F.lit(1.0))  # mask_win3
-        df = df.withColumn("_lbl_9", F.lit(0.0))  # reserved
+        
+        # [9] reserved (保留位，未使用)
+        df = df.withColumn("_lbl_9", F.lit(0.0))
+        
+        # [10] label_01: 所有窗口内正样本 (同 [6])
         df = df.withColumn("_lbl_10", F.when(in_any_win, 1.0).otherwise(0.0))
         
-        # 延迟正样本细分
+        # [11-13] 延迟正样本细分 (用于更精细的 loss 计算)
+        # 细分为: delay~delay+win3, delay+win3~delay+2*win3, >delay+2*win3
         df = df.withColumn("_lbl_11", 
             F.when(is_delayed & (diff_col <= delay + win3), 1.0).otherwise(0.0))
         df = df.withColumn("_lbl_12", 
@@ -225,7 +294,9 @@ class DeferTrainFlow(MsModelTrainFlow):
         df = df.withColumn("_lbl_13", 
             F.when(is_delayed & (diff_col > delay + win3 * 2), 1.0).otherwise(0.0))
         
-        # 组合成 JSON 字符串 (避免 ArrayType 触发 PS agent 问题)
+        # ========== Step 4: 组合成 JSON 字符串 ==========
+        # 使用 JSON 字符串而非 ArrayType，避免 Spark ArrayType 触发 PS agent 注册问题
+        # 格式: "[0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0]"
         df = df.withColumn(
             "defer_label",
             F.concat(
@@ -235,7 +306,7 @@ class DeferTrainFlow(MsModelTrainFlow):
             )
         )
         
-        # 清理临时列
+        # ========== Step 5: 清理临时列 ==========
         for i in range(14):
             df = df.drop(f"_lbl_{i}")
         
