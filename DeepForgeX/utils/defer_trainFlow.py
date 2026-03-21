@@ -89,8 +89,12 @@ class DeferTrainFlow(MsModelTrainFlow):
         # 模型类型
         self.defer_model_type = self.params.get("model_type", "WinAdaptDNN")
         
+        # 标签版本: v1 (14维) 或 v2 (8维)
+        # defer_loss -> v1, defer_loss_v2 -> v2
+        self.label_version = "v2" if self.loss_func == "defer_loss_v2" else "v1"
+        
         MovasLogger.log(f"[DEFER] Windows: {self.win1_hours}h, {self.win2_hours}h, {self.win3_hours}h, Delay: {self.delay_hours}h")
-        MovasLogger.log(f"[DEFER] Model type: {self.defer_model_type}, Loss: {self.loss_func}")
+        MovasLogger.log(f"[DEFER] Model type: {self.defer_model_type}, Loss: {self.loss_func}, Label version: {self.label_version}")
     
     # ========================================================================
     # 数据读取 (重写基类方法)
@@ -147,8 +151,11 @@ class DeferTrainFlow(MsModelTrainFlow):
         df = self.random_sample(df)
         df = df.fillna('')
         
-        # 构建 DEFER 14 维标签
-        df = self._build_defer_labels(df)
+        # 根据 loss 函数选择标签版本
+        if self.label_version == "v2":
+            df = self._build_defer_labels_v2(df)  # 8 维标签
+        else:
+            df = self._build_defer_labels(df)     # 14 维标签
         
         MovasLogger.log(f"[DEFER] Loaded {len(df.columns)} columns")
         return df
@@ -315,8 +322,104 @@ class DeferTrainFlow(MsModelTrainFlow):
         
         return df
     
+    def _build_defer_labels_v2(self, df: DataFrame) -> DataFrame:
+        """
+        构建 DEFER 8 维标签 (v2 版本) - 用于 delay_win_select_loss_v2
+        
+        ============================================================================
+        与 v1 (14 维) 的区别
+        ============================================================================
+        v1 (14维): 复杂的 SPM loss，需要延迟正样本细分、累积窗口标签等
+        v2 (8维):  简化版，只需要各窗口标签 + observable mask
+        
+        ============================================================================
+        8 维标签格式
+        ============================================================================
+        索引  名称              计算公式                          用途
+        ----  ----              ----                              ----
+        [0]   label_win1        label=1 AND diff<=win1            窗口1标签 (累积)
+        [1]   label_win2        label=1 AND diff<=win2            窗口2标签 (累积)
+        [2]   label_win3        label=1 AND diff<=win3            窗口3标签 (累积)
+        [3]   label_oracle      label=1 AND diff<=delay           最终转化标签
+        [4]   observable_win1   sample_age >= win1                窗口1可观察 mask
+        [5]   observable_win2   sample_age >= win2                窗口2可观察 mask
+        [6]   observable_win3   sample_age >= win3                窗口3可观察 mask
+        [7]   observable_oracle 1.0 (恒定)                        oracle 可观察 mask
+        
+        ============================================================================
+        observable mask 说明
+        ============================================================================
+        样本年龄 (sample_age) = 当前时间 - 样本时间
+        
+        如果样本年龄 < 窗口时间，则该样本在该窗口上不可观察:
+        - 例如: 样本年龄=12h，win1=24h，则 observable_win1=0
+        - 这意味着我们不知道该样本是否会在 24h 内转化
+        
+        在 loss 计算中，不可观察的样本会被 mask 掉，不参与梯度计算
+        
+        注意: 当前实现假设所有样本都已经过了足够长的时间 (observable=1)
+        如果需要处理实时数据，需要传入 sample_age 列
+        """
+        MovasLogger.log("[DEFER] Building 8-dim labels v2 (Spark SQL)")
+        
+        # ========== Step 1: 预处理 diff_hours ==========
+        if "diff_hours" in df.columns:
+            df = df.withColumn("diff_hours", F.col("diff_hours").cast("float"))
+            df = df.fillna({'diff_hours': 9999.0})
+        
+        win1, win2, win3 = self.win1_hours, self.win2_hours, self.win3_hours
+        delay = self.delay_hours
+        
+        MovasLogger.log(f"[DEFER v2] WIN1={win1}h, WIN2={win2}h, WIN3={win3}h, DELAY={delay}h")
+        
+        # ========== Step 2: 定义分类条件 ==========
+        label_col = F.col("label")
+        diff_col = F.col("diff_hours")
+        
+        is_positive = label_col == 1.0
+        
+        # 累积窗口标签 (注意: v2 是累积的，不是增量的)
+        in_win1 = is_positive & (diff_col <= win1)    # 0 ~ win1
+        in_win2 = is_positive & (diff_col <= win2)    # 0 ~ win2
+        in_win3 = is_positive & (diff_col <= win3)    # 0 ~ win3
+        in_delay = is_positive & (diff_col <= delay)  # 0 ~ delay (oracle)
+        
+        # ========== Step 3: 构建 8 维标签 ==========
+        # [0-3] 各窗口标签 (累积)
+        df = df.withColumn("_lbl_0", F.when(in_win1, 1.0).otherwise(0.0))   # label_win1
+        df = df.withColumn("_lbl_1", F.when(in_win2, 1.0).otherwise(0.0))   # label_win2
+        df = df.withColumn("_lbl_2", F.when(in_win3, 1.0).otherwise(0.0))   # label_win3
+        df = df.withColumn("_lbl_3", F.when(in_delay, 1.0).otherwise(0.0))  # label_oracle
+        
+        # [4-7] observable mask
+        # 当前实现: 假设所有样本都已经过了足够长的时间
+        # TODO: 如果需要处理实时数据，可以从 sample_age 列计算
+        df = df.withColumn("_lbl_4", F.lit(1.0))  # observable_win1
+        df = df.withColumn("_lbl_5", F.lit(1.0))  # observable_win2
+        df = df.withColumn("_lbl_6", F.lit(1.0))  # observable_win3
+        df = df.withColumn("_lbl_7", F.lit(1.0))  # observable_oracle
+        
+        # ========== Step 4: 组合成 JSON 字符串 ==========
+        df = df.withColumn(
+            "defer_label",
+            F.concat(
+                F.lit("["),
+                F.concat_ws(",", *[F.col(f"_lbl_{i}").cast("string") for i in range(8)]),
+                F.lit("]")
+            )
+        )
+        
+        # ========== Step 5: 清理临时列 ==========
+        for i in range(8):
+            df = df.drop(f"_lbl_{i}")
+        
+        # 打印标签统计
+        self._log_label_stats_v2(df)
+        
+        return df
+    
     def _log_label_stats(self, df: DataFrame) -> None:
-        """打印标签统计"""
+        """打印 14 维标签统计 (v1)"""
         df_parsed = df.withColumn(
             "defer_label_array",
             F.from_json(F.col("defer_label"), ArrayType(DoubleType()))
@@ -329,8 +432,27 @@ class DeferTrainFlow(MsModelTrainFlow):
         ).collect()[0]
         
         MovasLogger.log(
-            f"[DEFER] Labels: delayed_pos={stats['delayed_pos']}, "
+            f"[DEFER v1] Labels: delayed_pos={stats['delayed_pos']}, "
             f"true_neg={stats['true_neg']}, window_pos={stats['window_pos']}"
+        )
+    
+    def _log_label_stats_v2(self, df: DataFrame) -> None:
+        """打印 8 维标签统计 (v2)"""
+        df_parsed = df.withColumn(
+            "defer_label_array",
+            F.from_json(F.col("defer_label"), ArrayType(DoubleType()))
+        )
+        
+        stats = df_parsed.select(
+            F.sum(F.when(F.col("defer_label_array")[0] == 1.0, 1).otherwise(0)).alias("win1_pos"),
+            F.sum(F.when(F.col("defer_label_array")[1] == 1.0, 1).otherwise(0)).alias("win2_pos"),
+            F.sum(F.when(F.col("defer_label_array")[2] == 1.0, 1).otherwise(0)).alias("win3_pos"),
+            F.sum(F.when(F.col("defer_label_array")[3] == 1.0, 1).otherwise(0)).alias("oracle_pos"),
+        ).collect()[0]
+        
+        MovasLogger.log(
+            f"[DEFER v2] Labels: win1_pos={stats['win1_pos']}, win2_pos={stats['win2_pos']}, "
+            f"win3_pos={stats['win3_pos']}, oracle_pos={stats['oracle_pos']}"
         )
     
     # ========================================================================
@@ -424,42 +546,6 @@ class DeferTrainFlow(MsModelTrainFlow):
         self.trained_model_path = model_out_path_current
         return model
     
-    # ========================================================================
-    # 预测 (重写基类方法)
-    # ========================================================================
-    
-    def _predict_data(self, dataset_to_transform, model_in_path_current):
-        """
-        预测数据 - 不需要标签切换
-        
-        loss 函数直接从 minibatch['defer_label'] 获取 14 维标签
-        label 列 (1 维) 保留用于 AUC/PCOC 评估
-        """
-        if not self.model_module:
-            self._build_model_module()
-        
-        loss_func = get_loss_function(self.loss_func)
-        if not loss_func:
-            raise ValueError(f"Invalid loss function: {self.loss_func}")
-        
-        MovasLogger.log(f"[DEFER] Predicting with model: {model_in_path_current}")
-        
-        model_transformer = ms.PyTorchModel(
-            module=self.model_module,
-            worker_count=self.worker_count,
-            server_count=self.server_count,
-            model_in_path=model_in_path_current, 
-            experiment_name=self.experiment_name,
-            loss_function=loss_func,
-            input_label_column_name='label',
-        )
-        
-        test_result = model_transformer.transform(dataset_to_transform)
-        
-        MovasLogger.log(f"[DEFER] Prediction completed")
-        return test_result
-
-
 # ============================================================================
 # Main
 # ============================================================================
