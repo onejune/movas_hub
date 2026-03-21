@@ -30,11 +30,11 @@ from metaspore.algos.fwfm_net import FwFM
 from metaspore.algos.apg_net import APGNet
 from metaspore.algos.pepnet_singleTask import PEPNetSingleTask
 
-from base_trainFlow import MsBaseTrainFlow
+from base_trainFlow import BaseTrainFlow
 from movas_logger import MovasLogger
 
 
-class MsModelTrainFlow(MsBaseTrainFlow):
+class MsModelTrainFlow(BaseTrainFlow):
     """
     DNN 模型训练流程
 

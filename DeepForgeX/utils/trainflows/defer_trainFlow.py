@@ -35,7 +35,7 @@ import metaspore as ms
 from metaspore.algos.delay_feedback.defer_models import create_defer_model
 from metaspore.loss_utils import get_loss_function
 
-from base_trainFlow import MsBaseTrainFlow
+from base_trainFlow import BaseTrainFlow
 from movas_logger import MovasLogger
 
 
@@ -56,7 +56,7 @@ DEFAULT_DELAY_HOURS = 168.0  # 归因窗口 7 天
 MovasLogger.set_debug_mode(False)
 
 
-class DeferTrainFlow(MsBaseTrainFlow):
+class DeferTrainFlow(BaseTrainFlow):
     """
     DEFER (Delayed Feedback) 训练流程
 

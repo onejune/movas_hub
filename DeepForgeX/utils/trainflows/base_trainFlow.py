@@ -40,7 +40,7 @@ from movas_logger import MovasLogger, how_much_time
 from feishu_notifier import FeishuNotifier
 
 
-class MsBaseTrainFlow:
+class BaseTrainFlow:
     """
     MetaSpore 训练流程基类
 
