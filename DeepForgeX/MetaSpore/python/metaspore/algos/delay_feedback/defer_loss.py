@@ -80,16 +80,19 @@ def delay_win_select_loss(
     # DEBUG: 打印输入形状，确认函数被调用
     #print(f"[DEBUG delay_win_select_loss] logits.shape={logits.shape}, labels.shape={labels.shape}")
     
-    # 可选：从 minibatch 中提取原始 cv_label (单值标签)
-    cv_label_from_minibatch = None
-    if minibatch is not None and 'cv_label' in minibatch.columns:
-        cv_label_from_minibatch = torch.tensor(
-            minibatch['cv_label'].values.astype('float32'),
+    # ========== 从 minibatch 中提取 defer_label (14 维) ==========
+    # 优先使用 minibatch['defer_label']，如果没有则使用 labels 参数
+    if minibatch is not None and 'defer_label' in minibatch.columns:
+        import json
+        defer_labels_raw = minibatch['defer_label'].values
+        # defer_label 是 JSON 字符串，需要解析
+        z = torch.tensor(
+            [json.loads(v) if isinstance(v, str) else v for v in defer_labels_raw],
+            dtype=torch.float32,
             device=logits.device
         )
-        #print(f"[DEBUG delay_win_select_loss] cv_label from minibatch: {cv_label_from_minibatch.shape}")
-    
-    z = labels  # (batch, 14)
+    else:
+        z = labels  # (batch, 14) - fallback to labels parameter
     
     eps = 1e-7
     

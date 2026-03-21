@@ -317,10 +317,9 @@ class DeferTrainFlow(MsModelTrainFlow):
         row_count = train_dataset.count()
         MovasLogger.log(f"[DEFER] Dataset cached: {row_count:,} rows")
         
-        # 训练时标签切换: label -> cv_label, defer_label -> label
-        # 这样 estimator 使用 defer_label 作为 loss 输入
-        train_dataset = train_dataset.withColumnRenamed("label", "cv_label")
-        train_dataset = train_dataset.withColumnRenamed("defer_label", "label")
+        # 不需要切换标签了！
+        # loss 函数直接从 minibatch['defer_label'] 获取 14 维标签
+        # label 列 (1 维) 保留用于 AUC 评估
         
         # 获取损失函数 (统一走 get_loss_function)
         loss_func = get_loss_function(self.loss_func)
@@ -360,13 +359,10 @@ class DeferTrainFlow(MsModelTrainFlow):
     
     def _predict_data(self, dataset_to_transform, model_in_path_current):
         """
-        预测数据 - 处理 DEFER 标签切换
+        预测数据 - 不需要标签切换
         
-        Validation 阶段:
-        - 输入数据有 label (1维) 和 defer_label (14维JSON)
-        - 切换: label -> cv_label, defer_label -> label
-        - 预测完成后切换回来: label -> defer_label, cv_label -> label
-        - 这样 _evaluate_model 可以使用 1 维的 label 计算 AUC/PCOC
+        loss 函数直接从 minibatch['defer_label'] 获取 14 维标签
+        label 列 (1 维) 保留用于 AUC/PCOC 评估
         """
         if not self.model_module:
             self._build_model_module()
@@ -376,10 +372,6 @@ class DeferTrainFlow(MsModelTrainFlow):
             raise ValueError(f"Invalid loss function: {self.loss_func}")
         
         MovasLogger.log(f"[DEFER] Predicting with model: {model_in_path_current}")
-        
-        # 标签切换: label -> cv_label, defer_label -> label
-        dataset_to_transform = dataset_to_transform.withColumnRenamed("label", "cv_label")
-        dataset_to_transform = dataset_to_transform.withColumnRenamed("defer_label", "label")
         
         model_transformer = ms.PyTorchModel(
             module=self.model_module,
@@ -392,11 +384,6 @@ class DeferTrainFlow(MsModelTrainFlow):
         )
         
         test_result = model_transformer.transform(dataset_to_transform)
-        
-        # 切换回来: label -> defer_label, cv_label -> label
-        # 这样 _evaluate_model 使用 1 维的 label 计算 AUC/PCOC
-        test_result = test_result.withColumnRenamed("label", "defer_label")
-        test_result = test_result.withColumnRenamed("cv_label", "label")
         
         MovasLogger.log(f"[DEFER] Prediction completed")
         return test_result
