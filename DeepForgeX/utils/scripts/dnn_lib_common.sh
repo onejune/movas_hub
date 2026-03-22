@@ -45,13 +45,22 @@ function init_env() {
 
     # 检查并下载 _metaspore.so（不纳入 git，从 OSS 自动拉取）
     if [ ! -f "$METASPORE_SO_LOCAL" ]; then
-        log "INFO" "_metaspore.so 不存在，从 OSS 下载: $METASPORE_SO_OSS"
-        ossutil cp "$METASPORE_SO_OSS" "$METASPORE_SO_LOCAL"
+        log "INFO" "_metaspore.so 不存在，尝试从 OSS 下载: $METASPORE_SO_OSS"
+        ossutil cp "$METASPORE_SO_OSS" "$METASPORE_SO_LOCAL" 2>/dev/null
         if [ $? -eq 0 ]; then
-            log "INFO" "_metaspore.so 下载成功"
+            log "INFO" "_metaspore.so 下载成功 (OSS)"
         else
-            log "ERROR" "_metaspore.so 下载失败，请检查 OSS 权限或手动拷贝"
-            exit 1
+            log "WARN" "OSS 下载失败，尝试从本地挂载路径拷贝: /mnt/data/oss_wanjun/03_online/_metaspore.so"
+            cp "/mnt/data/oss_wanjun/03_online/_metaspore.so" "$METASPORE_SO_LOCAL" 2>/dev/null
+            if [ $? -eq 0 ]; then
+                log "INFO" "_metaspore.so 拷贝成功 (本地挂载)"
+            else
+                log "ERROR" "_metaspore.so 获取失败，已尝试以下路径："
+                log "ERROR" "  1. OSS: $METASPORE_SO_OSS"
+                log "ERROR" "  2. 本地: /mnt/data/oss_wanjun/03_online/_metaspore.so"
+                log "ERROR" "请检查 OSS 权限或确认本地挂载路径是否正确"
+                exit 1
+            fi
         fi
     else
         log "INFO" "_metaspore.so 已存在，跳过下载"
