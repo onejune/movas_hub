@@ -1,0 +1,247 @@
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:177:_init_spark] MovasLogger initialized.
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:178:_init_spark] Spark version: 3.1.2, appId: local-1774058880215, uiWebUrl: http://dsw-687-7fcc6c486f-9v9fw:4041
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:732:run_complete_flow] Config loaded: {'app_name': 'defer_win_v2', 'experiment_name': 'defer_win_v2', 'train_path_prefix': '/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet', 'train_start_date': datetime.date(2026, 2, 11), 'train_end_date': datetime.date(2026, 2, 11), 'validation_date': datetime.date(2026, 2, 12), 'model_out_base_path': './output', 'model_type': 'WinAdaptDNN', 'loss_func': 'defer_loss', 'defer_windows': [24, 48, 72], 'defer_delay_hours': 168, 'embedding_size': 8, 'dnn_hidden_units': [256, 256, 128], 'use_wide': False, 'batch_norm': True, 'net_dropout': 0.5, 'ftrl_l1': 1.0, 'ftrl_l2': 120.0, 'ftrl_alpha': 0.5, 'ftrl_beta': 1.0, 'adam_learning_rate': 0.001, 'combine_schema_path': './conf/combine_schema', 'wide_combine_schema_path': './conf/combine_schema', 'local_spark': True, 'worker_count': 8, 'server_count': 2, 'batch_size': 512, 'worker_memory': '8G', 'server_memory': '8G', 'coordinator_memory': '4G', 'input_label_column_index': 0, 'movas_log_output_path': './log/defer_train_log.txt'}
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:733:run_complete_flow] Starting complete flow.
+[2026-03-21 10:08:01][INFO][defer_trainFlow.py:470:_build_model_module] [DEFER] Building model: WinAdaptDNN
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:676:_run_training_loop] No model found for previous day: ./output/model_2026-02-10. Starting from empty model.
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:679:_run_training_loop] Starting training loop.
+[2026-03-21 10:08:01][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-11 ---
+[2026-03-21 10:08:01][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-11
+[2026-03-21 10:08:15][INFO][defer_trainFlow.py:237:_build_defer_labels] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 10:08:16][INFO][defer_trainFlow.py:250:_build_defer_labels] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 10:09:33][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1245493, window_pos=98264
+[2026-03-21 10:09:33][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 10:09:33][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-11
+[2026-03-21 10:11:13][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,344,657 rows
+[2026-03-21 10:11:13][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=None, model_out=./output/model_2026-02-11, loss=defer_loss
+[2026-03-21 10:12:51][INFO][dnn_trainFlow.py:699:_run_training_loop] Finished training loop.
+[2026-03-21 10:12:51][INFO][dnn_trainFlow.py:705:_run_evaluation_phase] 
+==================================================Evaluating model: ./output/model_2026-02-11, val_date:2026-02-12==================================================
+[2026-03-21 10:12:51][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-12
+[2026-03-21 10:13:04][INFO][defer_trainFlow.py:237:_build_defer_labels] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 10:13:04][INFO][defer_trainFlow.py:250:_build_defer_labels] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 10:14:10][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1222095, window_pos=96868
+[2026-03-21 10:14:10][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 10:14:10][INFO][dnn_trainFlow.py:486:_predict_data] Transforming data using model from: ./output/model_2026-02-11
+[2026-03-21 10:16:14][INFO][dnn_trainFlow.py:493:_evaluate_model] Evaluating model from: ./output/model_2026-02-11, eval_keys: business_type 
+[2026-03-21 10:17:01][INFO][dnn_trainFlow.py:532:_evaluate_model] validation data: 2026-02-12
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| Model            | Key1          | Key2        |    AUC |   PCOC |   LogLoss |    Pos |     Neg |    Ivr |
++==================+===============+=============+========+========+===========+========+=========+========+
+| val-defer_win_v2 | Overall       | Overall     | 0.8283 | 1.4862 |    0.2343 | 105930 | 1319238 | 0.0803 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | shopee_cps  | 0.7955 | 1.3421 |    0.2817 |  57516 |  565960 | 0.1016 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aecps       | 0.7830 | 1.9328 |    0.1880 |   7579 |  166407 | 0.0455 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aedsp       | 0.7789 | 2.4778 |    0.0939 |   2508 |  141596 | 0.0177 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | lazada_cps  | 0.7922 | 1.5080 |    0.1940 |   7529 |  132687 | 0.0567 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | lazada_rta  | 0.7474 | 1.4675 |    0.4274 |  11868 |   69257 | 0.1714 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | mobplus     | 0.7554 | 1.6779 |    0.3529 |   7558 |   61583 | 0.1227 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aemc        | 0.7968 | 2.2026 |    0.1233 |   1293 |   47550 | 0.0272 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | shein       | 0.7056 | 2.6894 |    0.1214 |    885 |   38354 | 0.0231 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | novabeyond  | 0.7738 | 2.3046 |    0.1323 |    882 |   29799 | 0.0296 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aerta       | 0.7953 | 2.1730 |    0.1393 |    896 |   28576 | 0.0314 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | fluentleads | 0.8841 | 1.6027 |    0.1820 |   1042 |   17723 | 0.0588 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | liongame    | 0.8599 | 1.0707 |    0.4771 |   1994 |    4646 | 0.4292 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | mena_ae_cps | 0.7817 | 1.7596 |    0.2489 |    290 |    4027 | 0.0720 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | everglowly  | 0.8853 | 1.0408 |    0.4063 |   2101 |    3592 | 0.5849 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aedsp_cc    | 0.7333 | 3.1631 |    0.1476 |     68 |    2467 | 0.0276 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | detroitrain | 0.6689 | 0.9673 |    0.1642 |   1316 |    1368 | 0.9620 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | swiftlink   | 0.5985 | 1.1889 |    0.6726 |    532 |     817 | 0.6512 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+
+
+[2026-03-21 10:17:01][INFO][dnn_trainFlow.py:556:_evaluate_model] table_title: Validation Result For [2026-02-12], msg_title: defer_win_v2 [2026-02-12], msg_text: train_start_time: 2026-03-21 10:08:01                     
+send_info_time: 2026-03-21 10:17:01                     
+train_execution_time: 0.1 hours                     
+val_execution_time: 0.1 hours                     
+                     
+super_params: 0.5 1.0 1.0 120.0 False [256, 256, 128]                     
+batchsize: 512                     
+model_type: WinAdaptDNN                     
+loss_func: defer_loss                     
+model_path: ./output/model_2026-02-11                     
+[2026-03-21 10:17:02][INFO][dnn_trainFlow.py:709:_run_evaluation_phase] 
+==================================================Evaluating model from: ./output/model_2026-02-11 ==================================================
+[2026-03-21 10:17:02][INFO][dnn_trainFlow.py:183:_stop_spark] Debug--spark stop
+[2026-03-21 10:17:02][INFO][dnn_trainFlow.py:758:run_complete_flow] Completed complete flow.
+[2026-03-21 10:12:51][time_use][movas_logger.py:20:wrapper] [_run_training_loop] time_use: 4.8386 minutes.
+[2026-03-21 10:16:14][time_use][movas_logger.py:20:wrapper] [_predict_data] time_use: 2.0709 minutes.
+[2026-03-21 10:17:02][time_use][movas_logger.py:20:wrapper] [_evaluate_model] time_use: 0.7977 minutes.
+[2026-03-21 10:17:02][time_use][movas_logger.py:20:wrapper] [_run_evaluation_phase] time_use: 4.18 minutes.
+[2026-03-21 10:17:02][time_use][movas_logger.py:20:wrapper] [run_complete_flow] time_use: 9.0638 minutes.[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:177:_init_spark] MovasLogger initialized.
+[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:178:_init_spark] Spark version: 3.1.2, appId: local-1774065027185, uiWebUrl: http://dsw-687-7fcc6c486f-9v9fw:4040
+[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:732:run_complete_flow] Config loaded: {'app_name': 'defer_win_v2', 'experiment_name': 'defer_win_v2', 'train_path_prefix': '/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet', 'train_start_date': datetime.date(2026, 2, 11), 'train_end_date': datetime.date(2026, 2, 17), 'validation_date': datetime.date(2026, 2, 18), 'model_out_base_path': './output', 'model_type': 'WinAdaptDNN', 'loss_func': 'defer_loss_v1', 'defer_windows': [24, 48, 72], 'defer_delay_hours': 168, 'embedding_size': 8, 'dnn_hidden_units': [256, 256, 128], 'use_wide': False, 'batch_norm': True, 'net_dropout': 0.5, 'ftrl_l1': 1.0, 'ftrl_l2': 120.0, 'ftrl_alpha': 0.5, 'ftrl_beta': 1.0, 'adam_learning_rate': 0.001, 'combine_schema_path': './conf/combine_schema', 'wide_combine_schema_path': './conf/combine_schema', 'local_spark': True, 'worker_count': 8, 'server_count': 2, 'batch_size': 512, 'worker_memory': '8G', 'server_memory': '8G', 'coordinator_memory': '4G', 'input_label_column_index': 0, 'movas_log_output_path': './log/defer_train_log.txt'}
+[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:733:run_complete_flow] Starting complete flow.
+[2026-03-21 11:50:28][INFO][defer_trainFlow.py:470:_build_model_module] [DEFER] Building model: WinAdaptDNN
+[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:676:_run_training_loop] No model found for previous day: ./output/model_2026-02-10. Starting from empty model.
+[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:679:_run_training_loop] Starting training loop.
+[2026-03-21 11:50:28][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-11 ---
+[2026-03-21 11:50:28][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-11
+[2026-03-21 11:50:43][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 11:50:43][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 11:51:31][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1245493, window_pos=98264
+[2026-03-21 11:51:31][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 11:51:31][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-11
+[2026-03-21 11:52:48][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,344,657 rows
+[2026-03-21 11:52:48][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=None, model_out=./output/model_2026-02-11, loss=defer_loss_v1
+[2026-03-21 11:54:10][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-12 ---
+[2026-03-21 11:54:10][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-12
+[2026-03-21 11:54:23][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 11:54:23][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 11:55:06][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1222095, window_pos=96868
+[2026-03-21 11:55:06][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 11:55:06][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-12
+[2026-03-21 11:56:19][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,319,238 rows
+[2026-03-21 11:56:19][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=./output/model_2026-02-11, model_out=./output/model_2026-02-12, loss=defer_loss_v1
+[2026-03-21 11:57:36][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-13 ---
+[2026-03-21 11:57:36][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-13
+[2026-03-21 11:57:49][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 11:57:49][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 11:58:31][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1163349, window_pos=89452
+[2026-03-21 11:58:31][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 11:58:31][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-13
+[2026-03-21 11:59:38][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,254,695 rows
+[2026-03-21 11:59:38][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=./output/model_2026-02-12, model_out=./output/model_2026-02-13, loss=defer_loss_v1
+[2026-03-21 12:00:47][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-14 ---
+[2026-03-21 12:00:47][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-14
+[2026-03-21 12:01:00][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 12:01:00][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 12:01:23][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1113623, window_pos=94488
+[2026-03-21 12:01:23][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 12:01:23][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-14
+[2026-03-21 12:02:12][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,212,094 rows
+[2026-03-21 12:02:12][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=./output/model_2026-02-13, model_out=./output/model_2026-02-14, loss=defer_loss_v1
+[2026-03-21 12:03:19][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-15 ---
+[2026-03-21 12:03:19][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-15
+[2026-03-21 12:03:32][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 12:03:32][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 12:04:17][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1152883, window_pos=102149
+[2026-03-21 12:04:17][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 12:04:17][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-15
+[2026-03-21 12:05:25][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,260,531 rows
+[2026-03-21 12:05:25][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=./output/model_2026-02-14, model_out=./output/model_2026-02-15, loss=defer_loss_v1
+[2026-03-21 12:06:37][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-16 ---
+[2026-03-21 12:06:37][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-16
+[2026-03-21 12:06:50][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 12:06:50][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 12:07:10][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1096666, window_pos=101388
+[2026-03-21 12:07:10][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 12:07:10][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-16
+[2026-03-21 12:07:56][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,201,660 rows
+[2026-03-21 12:07:56][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=./output/model_2026-02-15, model_out=./output/model_2026-02-16, loss=defer_loss_v1
+[2026-03-21 12:09:02][INFO][dnn_trainFlow.py:686:_run_training_loop] --- Training for date: 2026-02-17 ---
+[2026-03-21 12:09:02][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-17
+[2026-03-21 12:09:15][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 12:09:15][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 12:09:30][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1083382, window_pos=99992
+[2026-03-21 12:09:30][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 12:09:30][INFO][defer_trainFlow.py:506:_train_model] [DEFER] Training version: 2026-02-17
+[2026-03-21 12:10:16][INFO][defer_trainFlow.py:511:_train_model] [DEFER] Dataset cached: 1,187,166 rows
+[2026-03-21 12:10:16][INFO][defer_trainFlow.py:540:_train_model] [DEFER] Training: model_in=./output/model_2026-02-16, model_out=./output/model_2026-02-17, loss=defer_loss_v1
+[2026-03-21 12:11:21][INFO][dnn_trainFlow.py:699:_run_training_loop] Finished training loop.
+[2026-03-21 12:11:21][INFO][dnn_trainFlow.py:705:_run_evaluation_phase] 
+==================================================Evaluating model: ./output/model_2026-02-17, val_date:2026-02-18==================================================
+[2026-03-21 12:11:21][INFO][defer_trainFlow.py:132:_read_dataset_by_date] [DEFER] Reading Parquet: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet/part=2026-02-18
+[2026-03-21 12:11:34][INFO][defer_trainFlow.py:237:_build_defer_labels_v1] [DEFER] Building 14-dim labels (Spark SQL)
+[2026-03-21 12:11:34][INFO][defer_trainFlow.py:250:_build_defer_labels_v1] [DEFER] WIN1=24.0h, WIN2=48.0h, WIN3=72.0h, DELAY=168.0h
+[2026-03-21 12:12:10][INFO][defer_trainFlow.py:434:_log_label_stats] [DEFER v1] Labels: delayed_pos=0, true_neg=1248940, window_pos=118399
+[2026-03-21 12:12:10][INFO][defer_trainFlow.py:160:_read_dataset_by_date] [DEFER] Loaded 273 columns
+[2026-03-21 12:12:10][INFO][dnn_trainFlow.py:486:_predict_data] Transforming data using model from: ./output/model_2026-02-17
+[2026-03-21 12:13:42][INFO][dnn_trainFlow.py:493:_evaluate_model] Evaluating model from: ./output/model_2026-02-17, eval_keys: business_type 
+[2026-03-21 12:14:26][INFO][dnn_trainFlow.py:532:_evaluate_model] validation data: 2026-02-18
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| Model            | Key1          | Key2        |    AUC |   PCOC |   LogLoss |    Pos |     Neg |    Ivr |
++==================+===============+=============+========+========+===========+========+=========+========+
+| val-defer_win_v2 | Overall       | Overall     | 0.8143 | 1.2395 |    0.2653 | 129298 | 1369713 | 0.0944 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | shopee_cps  | 0.7502 | 1.0778 |    0.3595 |  71101 |  511104 | 0.1391 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aecps       | 0.8207 | 1.7709 |    0.1699 |   9487 |  205787 | 0.0461 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | lazada_rta  | 0.7680 | 1.1874 |    0.3543 |  21981 |  159429 | 0.1379 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | lazada_cps  | 0.7988 | 1.2656 |    0.2140 |   9427 |  138890 | 0.0679 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aedsp       | 0.7953 | 2.8542 |    0.1020 |   2408 |  124359 | 0.0194 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | mobplus     | 0.7799 | 1.2303 |    0.3248 |   7831 |   62681 | 0.1249 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | shein       | 0.7493 | 2.3194 |    0.1178 |   1049 |   43173 | 0.0243 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aemc        | 0.8074 | 2.3045 |    0.1247 |   1184 |   42832 | 0.0276 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | novabeyond  | 0.7916 | 1.7892 |    0.2224 |    922 |   27506 | 0.0335 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aerta       | 0.8037 | 2.2982 |    0.1341 |    826 |   27360 | 0.0302 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | fluentleads | 0.9514 | 1.1108 |    0.1035 |    537 |   11836 | 0.0454 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | mena_ae_cps | 0.8010 | 1.3786 |    0.2479 |    370 |    4546 | 0.0814 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | aedsp_cc    | 0.7908 | 2.3317 |    0.1524 |    129 |    3737 | 0.0345 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | everglowly  | 0.8767 | 0.9456 |    0.4327 |   1464 |    2287 | 0.6401 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | swiftlink   | 0.7266 | 0.8150 |    0.5922 |    215 |     310 | 0.6935 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+| val-defer_win_v2 | business_type | detroitrain | 0.8114 | 0.9652 |    0.1377 |    295 |     307 | 0.9609 |
++------------------+---------------+-------------+--------+--------+-----------+--------+---------+--------+
+实验信息:
+DEFER 延迟反馈实验: defer_win_v2
+
+实验变量:
+- model: WinAdaptDNN (共享trunk+4输出头)
+- loss: defer_loss_v1 (14维标签, SPM loss)
+- windows: 24/48/72h (长窗口)
+
+训练配置:
+- 训练数据: 2026-02-11 ~ 2026-02-17 (7天)
+- 验证数据: 2026-02-18
+- 数据源: ivr_sample_v7
+
+[2026-03-21 12:14:26][INFO][dnn_trainFlow.py:556:_evaluate_model] table_title: Validation Result For [2026-02-18], msg_title: defer_win_v2 [2026-02-18], msg_text: train_start_time: 2026-03-21 11:50:28                     
+send_info_time: 2026-03-21 12:14:26                     
+train_execution_time: 0.3 hours                     
+val_execution_time: 0.1 hours                     
+实验信息:
+DEFER 延迟反馈实验: defer_win_v2
+
+实验变量:
+- model: WinAdaptDNN (共享trunk+4输出头)
+- loss: defer_loss_v1 (14维标签, SPM loss)
+- windows: 24/48/72h (长窗口)
+
+训练配置:
+- 训练数据: 2026-02-11 ~ 2026-02-17 (7天)
+- 验证数据: 2026-02-18
+- 数据源: ivr_sample_v7                     
+super_params: 0.5 1.0 1.0 120.0 False [256, 256, 128]                     
+batchsize: 512                     
+model_type: WinAdaptDNN                     
+loss_func: defer_loss_v1                     
+model_path: ./output/model_2026-02-17                     
+[2026-03-21 12:14:27][INFO][dnn_trainFlow.py:709:_run_evaluation_phase] 
+==================================================Evaluating model from: ./output/model_2026-02-17 ==================================================
+[2026-03-21 12:14:27][INFO][dnn_trainFlow.py:183:_stop_spark] Debug--spark stop
+[2026-03-21 12:14:27][INFO][dnn_trainFlow.py:758:run_complete_flow] Completed complete flow.
+[2026-03-21 12:11:21][time_use][movas_logger.py:20:wrapper] [_run_training_loop] time_use: 20.8866 minutes.
+[2026-03-21 12:13:42][time_use][movas_logger.py:20:wrapper] [_predict_data] time_use: 1.5309 minutes.
+[2026-03-21 12:14:27][time_use][movas_logger.py:20:wrapper] [_evaluate_model] time_use: 0.7504 minutes.
+[2026-03-21 12:14:27][time_use][movas_logger.py:20:wrapper] [_run_evaluation_phase] time_use: 3.0978 minutes.
+[2026-03-21 12:14:27][time_use][movas_logger.py:20:wrapper] [run_complete_flow] time_use: 24.0369 minutes.

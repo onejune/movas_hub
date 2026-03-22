@@ -1,0 +1,50 @@
+# ============================================================================
+# DEFER 实验: defer_model_v5
+# ============================================================================
+# 测试: DeferDNN + defer_loss_v2 (8维) + 短窗口 6/12/24h
+# 预期: 最优模型 + 最优 loss + 短窗口
+# ============================================================================
+
+app_name: "defer_model_v5"
+experiment_name: "defer_model_v5"
+
+train_path_prefix: "/mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet"
+train_start_date: 2026-02-11
+train_end_date: 2026-02-17
+validation_date: 2026-02-18
+model_out_base_path: "./output"
+
+# ============================================================================
+# 实验变量
+# ============================================================================
+model_type: "DeferDNN"
+loss_func: "defer_loss_v2"
+defer_windows: [6, 12, 24]
+defer_delay_hours: 72
+# ============================================================================
+
+embedding_size: 8
+dnn_hidden_units: [256, 256, 128]
+use_wide: false
+batch_norm: true
+net_dropout: 0.5
+
+ftrl_l1: 1.0
+ftrl_l2: 120.0
+ftrl_alpha: 0.5
+ftrl_beta: 1.0
+adam_learning_rate: 0.001
+
+combine_schema_path: "./conf/combine_schema"
+wide_combine_schema_path: "./conf/combine_schema"
+
+local_spark: true
+worker_count: 8
+server_count: 2
+batch_size: 512
+worker_memory: "8G"
+server_memory: "8G"
+coordinator_memory: "4G"
+
+input_label_column_index: 0
+movas_log_output_path: "./log/defer_train_log.txt"

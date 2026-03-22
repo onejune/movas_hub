@@ -432,6 +432,12 @@ class LossUtils:
         total_loss = prop_loss + lambda_time * time_loss
         return total_loss, prop_loss
 
+# DEFER 损失函数
+from metaspore.algos.delay_feedback.defer_loss import (
+    delay_win_select_loss_v1,
+    delay_win_select_loss_v2,
+)
+
 # 定义损失函数映射字典
 LOSS_FUNCTIONS = {
     'log_loss': LossUtils.log_loss,
@@ -445,6 +451,9 @@ LOSS_FUNCTIONS = {
     'mtl_loss': LossUtils.multi_label_loss_func,
     'uw_mtl_loss': LossUtils.multi_label_uncertainty_loss_func,
     'delf_loss': LossUtils.delf_loss,
+    # DEFER 损失函数
+    'defer_loss_v1': delay_win_select_loss_v1,     # v1: 14 维标签
+    'defer_loss_v2': delay_win_select_loss_v2,     # v2: 8 维标签
 }
 
 def get_loss_function(loss_name: str):

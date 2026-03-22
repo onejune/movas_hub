@@ -15,7 +15,7 @@
 #
 
 import io,traceback,logging
-import torch, random
+import torch, random, inspect
 import pyspark.ml.base
 import torch.nn.functional as F
 from torch.distributions import Normal
@@ -459,11 +459,25 @@ class PyTorchAgent(Agent):
 
     def _default_preprocess_minibatch(self, minibatch):
         import numpy as np
+        import json
         if self.input_label_column_name is not None:
             label_column_name = self.input_label_column_name
         else:
             label_column_name = minibatch.columns[self.input_label_column_index]
-        labels = minibatch[label_column_name].values.astype(np.float32)
+        label_values = minibatch[label_column_name].values
+        # Support multi-dimensional labels
+        if label_values.dtype == object:
+            first_val = label_values[0]
+            if isinstance(first_val, str) and first_val.startswith('['):
+                # JSON string format: "[0.0,1.0,...]"
+                labels = np.array([json.loads(v) for v in label_values], dtype=np.float32)
+            elif isinstance(first_val, (list, np.ndarray)):
+                # array<float> from Spark
+                labels = np.stack(label_values).astype(np.float32)
+            else:
+                labels = label_values.astype(np.float32)
+        else:
+            labels = label_values.astype(np.float32)
         return minibatch, labels
 
     def train_minibatch(self, minibatch):
@@ -487,15 +501,18 @@ class PyTorchAgent(Agent):
         #print('debug_minibatch_minibatch:', minibatch.shape)
         minibatch, labels = self.preprocess_minibatch(minibatch)
         
-        MovasLogger.debug(f'debug_minibatch_labels: {minibatch.shape}, {labels.shape}')
+        #MovasLogger.log(f'debug_minibatch_labels: {minibatch.shape}, {labels.shape}')
         
         #model forward的输出，可能是多值（tuple）
         predictions = self.model(minibatch)
 
-        labels = torch.from_numpy(labels).reshape(-1, 1)
+        # Support multi-dimensional labels: reshape to (-1, label_dim) instead of (-1, 1)
+        labels = torch.from_numpy(labels)
+        if labels.dim() == 1:
+            labels = labels.reshape(-1, 1)
         loss, per_task_loss = self.compute_loss(predictions, labels, minibatch)
 
-        MovasLogger.debug(f'debug_loss_func:, {self.loss_function}, loss: {loss}, {per_task_loss}')
+        #MovasLogger.log(f'debug_loss_func:, {self.loss_function}, loss: {loss}, {per_task_loss}')
 
         #概率打印 loss weight
         if hasattr(self.module, 'use_uncertainty_weighting') and self.module.use_uncertainty_weighting:
@@ -512,8 +529,28 @@ class PyTorchAgent(Agent):
         else:
             real_predictions = predictions
 
-        MovasLogger.debug(f'real_predictions: {real_predictions.shape}')
-        if not self.loss_type or self.loss_type != 'regression': #回归模型不走评估，适配有问题
+        #MovasLogger.log(f'real_predictions: {real_predictions.shape}')
+        if self.loss_type == 'regression': #回归模型不走评估
+            return
+        # DEFER 模型：使用 cv_label (原始二分类标签) 计算 AUC，而不是 14 维 defer_label
+        if hasattr(self.loss_function, '__name__') and 'delay_win_select' in self.loss_function.__name__:
+            # 从 minibatch 中获取 cv_label 用于 metric 计算
+            if 'cv_label' in minibatch.columns:
+                cv_labels = torch.from_numpy(minibatch['cv_label'].values.astype('float32')).reshape(-1, 1)
+                # 校验：cv_label 应该是 0/1 二分类标签，predictions 应该是 1 维
+                if cv_labels.shape[1] != 1:
+                    MovasLogger.log(f'[DEFER ERROR] cv_labels shape mismatch: expected (batch, 1), got {cv_labels.shape}')
+                if real_predictions.dim() > 1 and real_predictions.shape[1] != 1:
+                    MovasLogger.log(f'[DEFER ERROR] predictions shape mismatch for metric: expected (batch,) or (batch, 1), got {real_predictions.shape}')
+                # 校验 cv_label 值域
+                unique_vals = torch.unique(cv_labels)
+                if not all(v in [0.0, 1.0] for v in unique_vals.tolist()):
+                    MovasLogger.log(f'[DEFER WARNING] cv_labels contains non-binary values: {unique_vals.tolist()[:10]}')
+                self.update_progress(batch_size=len(minibatch), batch_loss=loss, predictions=real_predictions, labels=cv_labels)
+            else:
+                # 如果没有 cv_label，跳过 metric 更新
+                MovasLogger.log(f'[DEFER ERROR] cv_label not found in minibatch columns: {list(minibatch.columns)[:10]}..., skipping metric update')
+        else:
             self.update_progress(batch_size=len(minibatch), batch_loss=loss, predictions=real_predictions, labels=labels)
         return
 
@@ -585,7 +622,10 @@ class PyTorchAgent(Agent):
         #print('labels:', labels)
         predictions = self.model(minibatch)
         #print('predictions:', predictions)
-        labels = torch.from_numpy(labels).reshape(-1, 1)
+        # Support multi-dimensional labels: reshape to (-1, label_dim) instead of (-1, 1)
+        labels = torch.from_numpy(labels)
+        if labels.dim() == 1:
+            labels = labels.reshape(-1, 1)
         loss, task_loss = self.compute_loss(predictions, labels, minibatch)
         #print('loss:', loss)
 
@@ -594,8 +634,7 @@ class PyTorchAgent(Agent):
             real_predictions = self.module.predict(predictions, minibatch = minibatch)
         else:
             real_predictions = predictions
-
-        #print(f'loss_type:{self.loss_type}')
+        
         if not self.loss_type or self.loss_type != 'regression': #回归模型不走评估，适配有问题
             self.update_progress(batch_size=len(minibatch), batch_loss=loss, predictions=real_predictions, labels=labels)
         return self._make_validation_result(minibatch, labels, real_predictions)
@@ -621,7 +660,13 @@ class PyTorchAgent(Agent):
 
     def compute_loss(self, predictions, labels, minibatch):
         if hasattr(self.module, 'compute_loss') and callable(self.module.compute_loss):
-            loss, task_loss = self.module.compute_loss(predictions, labels, minibatch, task_to_id_map = self.task_to_id_map)
+            try:
+                loss, task_loss = self.module.compute_loss(predictions, labels, minibatch, task_to_id_map = self.task_to_id_map)
+            except Exception as e:
+                print(f"Error in compute_loss: {e}")
+                print(f"Module type: {type(self.module).__name__}")
+                print(f"Method signature: {inspect.signature(self.module.compute_loss)}")
+                raise e
             return loss, task_loss
         
         if self.loss_function is not None:
@@ -635,8 +680,8 @@ class PyTorchAgent(Agent):
                         predictions, 
                         labels, 
                         minibatch, 
-                        task_to_id_map = self.task_to_id_map, 
-                        task_weights_dict = self.task_weights_dict
+                        task_to_id_map = getattr(self, 'task_to_id_map', None), 
+                        task_weights_dict = getattr(self, 'task_weights_dict', None)
                     )
             return loss, task_loss
         
@@ -651,14 +696,48 @@ class PyTorchAgent(Agent):
 
     def update_progress(self, **kwargs):
         self.minibatch_id += 1
+        
+        # 校验 predictions 和 labels 的 shape 是否匹配
+        predictions = kwargs.get('predictions')
+        labels = kwargs.get('labels')
+        #MovasLogger.log(f'[update_progress] minibatch_id: {self.minibatch_id}, predictions shape: {predictions.shape}, labels shape: {labels.shape}')
+
+        if predictions is not None and labels is not None:
+            import torch
+            # 转换为 tensor 进行检查
+            if isinstance(predictions, torch.Tensor):
+                pred_shape = predictions.shape
+            else:
+                pred_shape = predictions.shape if hasattr(predictions, 'shape') else None
+            if isinstance(labels, torch.Tensor):
+                label_shape = labels.shape
+            else:
+                label_shape = labels.shape if hasattr(labels, 'shape') else None
+            
+            if pred_shape is not None and label_shape is not None:
+                # batch size 必须一致
+                if pred_shape[0] != label_shape[0]:
+                    MovasLogger.log(f'[update_progress ERROR] batch size mismatch: predictions {pred_shape}, labels {label_shape}')
+                
+                # 对于二分类 metric，predictions 和 labels 应该是 (batch,) 或 (batch, 1)
+                pred_dim = len(pred_shape)
+                label_dim = len(label_shape)
+                if pred_dim > 2 or label_dim > 2:
+                    MovasLogger.log(f'[update_progress WARNING] high-dim tensors: predictions {pred_shape}, labels {label_shape}')
+                
+                # 如果 labels 是多维的（非 1 列），可能是错误地传了多任务标签
+                if label_dim == 2 and label_shape[1] > 1:
+                    MovasLogger.log(f'[update_progress ERROR] labels has multiple columns ({label_shape[1]}), expected 1 for binary classification metric. Did you pass multi-task labels by mistake?')
+                
+                # 如果 predictions 是多维的（非 1 列），可能是错误地传了多头输出
+                if pred_dim == 2 and pred_shape[1] > 1:
+                    MovasLogger.log(f'[update_progress ERROR] predictions has multiple columns ({pred_shape[1]}), expected 1 for binary classification metric. Did you pass multi-head output by mistake?')
+        
         self.update_metric(**kwargs)
-
-        MovasLogger.debug(f'minibatch {self.minibatch_id}, kwargs: {kwargs}')
-
+        #MovasLogger.log(f'minibatch {self.minibatch_id}, kwargs: {kwargs}')
         if self.minibatch_id % self.metric_update_interval == 0:
             self.push_metric()
-
-        MovasLogger.debug(f'[update_progress over]')
+        #MovasLogger.log(f'[update_progress over]')
 
     def _get_metric_class(self):
         metric_class = self.metric_class
