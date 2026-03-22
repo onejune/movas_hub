@@ -1,24 +1,28 @@
-#!/usr/bin/env python3
 """
 DEFUSE PyTorch Implementation
+
+模块结构:
+- config.py: 配置
+- data.py: 数据加载 (支持天级增量)
+- models.py: 模型定义
+- loss.py: 损失函数 (DEFUSE, ES-DFM)
+- trainer.py: 训练器
 """
 
-from .models import DEFUSEModel, BiDEFUSEModel
-from .loss import pretrain_loss, defuse_loss, bidefuse_loss, cross_entropy_loss, get_loss_fn
-from .data import CategoryEncoder, load_parquet_data, create_dataloader
-from .metrics import compute_metrics, print_metrics
+from .config import Config, DataConfig, ModelConfig, TrainConfig
+from .data import (
+    FeatureEncoder, IncrementalDataLoader, compute_labels,
+    list_available_dates, get_date_range
+)
+from .models import DEFUSEModel
+from .loss import defuse_loss, esdfm_loss, pretrain_loss
+from .trainer import Trainer
 
 __all__ = [
+    'Config', 'DataConfig', 'ModelConfig', 'TrainConfig',
+    'FeatureEncoder', 'IncrementalDataLoader', 'compute_labels',
+    'list_available_dates', 'get_date_range',
     'DEFUSEModel',
-    'BiDEFUSEModel',
-    'pretrain_loss',
-    'defuse_loss',
-    'bidefuse_loss',
-    'cross_entropy_loss',
-    'get_loss_fn',
-    'CategoryEncoder',
-    'load_parquet_data',
-    'create_dataloader',
-    'compute_metrics',
-    'print_metrics',
+    'defuse_loss', 'esdfm_loss', 'pretrain_loss',
+    'Trainer',
 ]

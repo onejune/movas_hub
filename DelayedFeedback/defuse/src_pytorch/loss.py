@@ -1,143 +1,136 @@
-#!/usr/bin/env python3
 """
-DEFUSE Loss Functions
+DEFUSE 损失函数
+
+包含:
+- DEFUSE loss: 4-component label correction (IP/FN/RN/DP)
+- ES-DFM loss: Simple importance weighting
+- Pretrain loss: BCE for tn/dp heads
 """
 
 import torch
 import torch.nn.functional as F
 
 
-def stable_log1pex(x):
-    """Numerically stable log(1 + exp(x))"""
-    return torch.clamp(x, min=0) + torch.log1p(torch.exp(-torch.abs(x)))
+def stable_log1pex(x: torch.Tensor) -> torch.Tensor:
+    """
+    计算 log(1 + exp(-x)) = softplus(-x) = -log(sigmoid(x))
+    
+    数值稳定版本
+    """
+    return F.softplus(-x)
 
 
-def pretrain_loss(outputs, targets):
+def pretrain_loss(tn_logits: torch.Tensor,
+                  dp_logits: torch.Tensor,
+                  tn_label: torch.Tensor,
+                  dp_label: torch.Tensor) -> torch.Tensor:
     """
-    Pretraining loss for tn/dp classifiers
-    Same as ES-DFM pretraining
+    Stage 1: 预训练 tn/dp 分类器
+    
+    使用 BCE loss 训练 tn 和 dp 头
     """
-    tn_logits = outputs['tn_logits'].squeeze(-1)
-    dp_logits = outputs['dp_logits'].squeeze(-1)
-    
-    tn_label = targets['tn_label'].float()
-    dp_label = targets['dp_label'].float()
-    pos_label = targets['pos_label'].float()
-    
-    # tn_mask: non-positive + delayed positive samples
-    tn_mask = (1 - pos_label) + dp_label
-    
-    # tn loss (masked)
-    tn_loss_raw = F.binary_cross_entropy_with_logits(tn_logits, tn_label, reduction='none')
-    tn_loss = (tn_loss_raw * tn_mask).sum() / (tn_mask.sum() + 1e-8)
-    
-    # dp loss
-    dp_loss = F.binary_cross_entropy_with_logits(dp_logits, dp_label, reduction='mean')
-    
+    tn_loss = F.binary_cross_entropy_with_logits(tn_logits, tn_label)
+    dp_loss = F.binary_cross_entropy_with_logits(dp_logits, dp_label)
     return tn_loss + dp_loss
 
 
-def defuse_loss(outputs, targets):
+def defuse_loss(cv_logits: torch.Tensor,
+                tn_prob: torch.Tensor,
+                dp_prob: torch.Tensor,
+                label: torch.Tensor,
+                eps: float = 1e-7) -> torch.Tensor:
     """
-    DEFUSE loss function
-    Asymptotically unbiased estimation via label correction
+    DEFUSE loss: 4-component label correction
     
-    Samples are divided into 4 categories:
-    - IP (In-window Positive): z=1, converted within window
-    - DP (Delayed Positive): z=1, converted after window  
-    - RN (Real Negative): z=0, truly negative
-    - FN (Fake Negative): z=0, will convert but not observed yet
+    样本类型:
+    - IP (In-window Positive): 窗口内转化, label=1
+    - FN (Fake Negative): 假负样本 (实际会转化但还没观察到), label=0
+    - RN (Real Negative): 真负样本, label=0
+    - DP (Delayed Positive): 延迟正样本 (窗口外转化), label=0
+    
+    Loss 公式:
+    - loss1 (IP): -log(σ(x)) * (1 + dp_prob)
+    - loss2 (FN): zi * -log(σ(x)) * dp_prob
+    - loss3 (RN): (1-zi) * -log(1-σ(x)) * (1 + dp_prob)
+    - loss4 (DP): -log(σ(x)) * 1
+    
+    其中 zi = 1 - tn_prob = P(fake negative)
+    
+    Args:
+        cv_logits: CVR 预测 logits
+        tn_prob: True Negative 概率 (detached)
+        dp_prob: Delayed Positive 概率 (detached)
+        label: 观察到的标签 (0 或 1)
+        eps: 数值稳定性
+    
+    Returns:
+        标量 loss
     """
-    cv_logits = outputs['cv_logits'].squeeze(-1)
-    tn_logits = outputs['tn_logits'].squeeze(-1)
-    dp_logits = outputs['dp_logits'].squeeze(-1)
+    # zi = P(fake negative) = 1 - P(true negative)
+    zi = torch.clamp(1.0 - tn_prob, eps, 1.0 - eps)
+    dp_prob = torch.clamp(dp_prob, eps, 1.0 - eps)
     
-    z = targets['label'].float()  # observed label
+    # -log(σ(x)) = log(1 + exp(-x)) = stable_log1pex(x)
+    neg_log_sigmoid = stable_log1pex(cv_logits)
     
-    # Stop gradient for auxiliary predictions
-    tn_prob = torch.sigmoid(tn_logits).detach()
-    dp_prob = torch.sigmoid(dp_logits).detach()
+    # -log(1 - σ(x)) = x + log(1 + exp(-x)) = x + stable_log1pex(x)
+    neg_log_1_minus_sigmoid = cv_logits + stable_log1pex(cv_logits)
     
-    # zi: probability of being fake negative (1 - tn_prob)
-    zi = 1 - tn_prob
+    # 正样本 (label=1): loss1 + loss4
+    # loss1: -log(σ(x)) * (1 + dp_prob)
+    # loss4: -log(σ(x)) * 1
+    pos_loss = neg_log_sigmoid * (1.0 + dp_prob) + neg_log_sigmoid
     
-    # Loss components (from paper)
-    loss1 = stable_log1pex(cv_logits)  # IP: -log(sigmoid(x))
-    loss2 = stable_log1pex(cv_logits)  # FN: -log(sigmoid(x))
-    loss3 = cv_logits + stable_log1pex(cv_logits)  # RN: -log(1-sigmoid(x))
-    loss4 = stable_log1pex(cv_logits)  # DP: -log(sigmoid(x))
+    # 负样本 (label=0): loss2 + loss3
+    # loss2: zi * -log(σ(x)) * dp_prob
+    # loss3: (1-zi) * -log(1-σ(x)) * (1 + dp_prob)
+    neg_loss = (zi * neg_log_sigmoid * dp_prob + 
+                (1.0 - zi) * neg_log_1_minus_sigmoid * (1.0 + dp_prob))
     
-    # Weights (from paper)
-    loss1_weight = (1 + dp_prob).detach()
-    loss2_weight = dp_prob.detach()
-    loss3_weight = (1 + dp_prob).detach()
-    loss4_weight = torch.ones_like(dp_prob)
+    # 组合
+    loss = label * pos_loss + (1.0 - label) * neg_loss
     
-    # Weighted losses
-    loss1 = loss1 * loss1_weight
-    loss2 = zi * loss2 * loss2_weight
-    loss3 = (1 - zi) * loss3 * loss3_weight
-    loss4 = loss4 * loss4_weight
-    
-    # Final loss: z * (IP + DP) + (1-z) * (FN + RN)
-    loss = torch.mean(z * (loss1 + loss4) + (1 - z) * (loss2 + loss3))
-    
-    return loss
+    return loss.mean()
 
 
-def bidefuse_loss(outputs, targets):
+def esdfm_loss(cv_logits: torch.Tensor,
+               tn_prob: torch.Tensor,
+               dp_prob: torch.Tensor,
+               label: torch.Tensor,
+               eps: float = 1e-7) -> torch.Tensor:
     """
-    Bi-DEFUSE loss function
-    Dual-head model: in-window + out-window predictions
+    ES-DFM loss: Simple importance weighting
+    
+    公式:
+    - pos_weight = 1 + dp_prob
+    - neg_weight = (1 + dp_prob) * tn_prob
+    - loss = pos_loss * pos_weight * z + neg_loss * neg_weight * (1-z)
+    
+    Args:
+        cv_logits: CVR 预测 logits
+        tn_prob: True Negative 概率 (detached)
+        dp_prob: Delayed Positive 概率 (detached)
+        label: 观察到的标签 (0 或 1)
+        eps: 数值稳定性
+    
+    Returns:
+        标量 loss
     """
-    inw_logits = outputs['logits_inw'].squeeze(-1)
-    outw_logits = outputs['logits_outw'].squeeze(-1)
+    tn_prob = torch.clamp(tn_prob, eps, 1.0 - eps)
+    dp_prob = torch.clamp(dp_prob, eps, 1.0 - eps)
     
-    cvr_label = targets['label'].float()
-    outw_label = targets.get('outw_label', targets.get('dp_label', torch.zeros_like(cvr_label))).float()
-    inw_mask = targets.get('inw_mask', torch.ones_like(cvr_label)).float()
+    # 权重
+    pos_weight = 1.0 + dp_prob
+    neg_weight = (1.0 + dp_prob) * tn_prob
     
-    # In-window loss (masked)
-    inw_pos = stable_log1pex(inw_logits)
-    inw_neg = inw_logits + stable_log1pex(inw_logits)
-    inw_loss = ((cvr_label * inw_pos + (1 - cvr_label) * inw_neg) * inw_mask).sum() / (inw_mask.sum() + 1e-8)
+    # 正负样本 loss
+    neg_log_sigmoid = stable_log1pex(cv_logits)  # -log(σ(x))
+    neg_log_1_minus_sigmoid = cv_logits + stable_log1pex(cv_logits)  # -log(1-σ(x))
     
-    # Out-window loss with DEFUSE correction
-    p_no_grad = torch.sigmoid(outw_logits).detach()
-    wi = p_no_grad
+    pos_loss = neg_log_sigmoid * pos_weight
+    neg_loss = neg_log_1_minus_sigmoid * neg_weight
     
-    loss1 = stable_log1pex(outw_logits)
-    loss2 = outw_logits + stable_log1pex(outw_logits)
-    loss3 = stable_log1pex(outw_logits)
+    # 组合
+    loss = label * pos_loss + (1.0 - label) * neg_loss
     
-    loss1_weight = torch.ones_like(p_no_grad)
-    loss2_weight = 1 + p_no_grad
-    loss3_weight = p_no_grad
-    
-    loss1 = loss1_weight * loss1
-    loss2 = loss2_weight * loss2 * (1 - wi)
-    loss3 = loss3_weight * loss3 * wi
-    
-    outw_loss = torch.mean(outw_label * loss1 + (1 - outw_label) * (loss2 + loss3))
-    
-    return inw_loss + outw_loss
-
-
-def cross_entropy_loss(outputs, targets):
-    """Standard cross entropy loss (vanilla baseline)"""
-    cv_logits = outputs['cv_logits'].squeeze(-1)
-    label = targets['label'].float()
-    return F.binary_cross_entropy_with_logits(cv_logits, label)
-
-
-def get_loss_fn(name):
-    """Get loss function by name"""
-    loss_fns = {
-        'pretrain': pretrain_loss,
-        'defuse': defuse_loss,
-        'bidefuse': bidefuse_loss,
-        'cross_entropy': cross_entropy_loss,
-    }
-    if name not in loss_fns:
-        raise ValueError(f"Unknown loss function: {name}. Available: {list(loss_fns.keys())}")
-    return loss_fns[name]
+    return loss.mean()
