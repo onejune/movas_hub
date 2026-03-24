@@ -1,3 +1,23 @@
-*.zip
-*/log/
+# 编译产物
+*.pyc
+*.class
+*.so
+__pycache__/
+target/
+
+# .so 说明: _metaspore.so 超过 100M 不纳入 git
+# init_env() 会自动从 OSS 下载: oss://spark-ml-train-new/wanjun/03_online/_metaspore.so
+
+# 运行产物
 */output/
+*/log/
+*/temp/
+*/train_output/
+exp_output/
+train_interrupt.flag
+
+# 打包产物
+*.zip
+
+# 其他
+.ossutil_checkpoint

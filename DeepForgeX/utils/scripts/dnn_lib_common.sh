@@ -16,6 +16,10 @@ LOG_FILE="${LOG_DIR}/train_$(date +%Y%m%d%H%M%S).log"
 ################################################################################################
 METASPORE_DIR="/mnt/workspace/walter.wan/git_project/movas_hub/DeepForgeX/MetaSpore/python"
 
+# _metaspore.so OSS 路径（超过 100M，不纳入 git，启动时自动下载）
+METASPORE_SO_OSS="oss://spark-ml-train-new/wanjun/03_online/_metaspore.so"
+METASPORE_SO_LOCAL="${METASPORE_DIR}/metaspore/_metaspore.so"
+
 # 训练脚本路径 (由具体实验覆盖)
 TRAINER_SCRIPT_PATH="./src/dnn_trainFlow.py"
 
@@ -38,6 +42,29 @@ function init_env() {
     export PATH="$PYTHON_ENV_DIR:$PATH"
     export PYSPARK_PYTHON=$PYTHON_ENV
     export PYSPARK_DRIVER_PYTHON=$PYTHON_ENV
+
+    # 检查并下载 _metaspore.so（不纳入 git，从 OSS 自动拉取）
+    if [ ! -f "$METASPORE_SO_LOCAL" ]; then
+        log "INFO" "_metaspore.so 不存在，尝试从 OSS 下载: $METASPORE_SO_OSS"
+        ossutil cp "$METASPORE_SO_OSS" "$METASPORE_SO_LOCAL" 2>/dev/null
+        if [ $? -eq 0 ]; then
+            log "INFO" "_metaspore.so 下载成功 (OSS)"
+        else
+            log "WARN" "OSS 下载失败，尝试从本地挂载路径拷贝: /mnt/data/oss_wanjun/03_online/_metaspore.so"
+            cp "/mnt/data/oss_wanjun/03_online/_metaspore.so" "$METASPORE_SO_LOCAL" 2>/dev/null
+            if [ $? -eq 0 ]; then
+                log "INFO" "_metaspore.so 拷贝成功 (本地挂载)"
+            else
+                log "ERROR" "_metaspore.so 获取失败，已尝试以下路径："
+                log "ERROR" "  1. OSS: $METASPORE_SO_OSS"
+                log "ERROR" "  2. 本地: /mnt/data/oss_wanjun/03_online/_metaspore.so"
+                log "ERROR" "请检查 OSS 权限或确认本地挂载路径是否正确"
+                exit 1
+            fi
+        fi
+    else
+        log "INFO" "_metaspore.so 已存在，跳过下载"
+    fi
 
     # 获取当前执行目录
     current_dir=$(pwd)
