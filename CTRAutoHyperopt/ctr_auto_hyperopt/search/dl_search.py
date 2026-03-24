@@ -55,6 +55,7 @@ class DLSearch:
         'AutoInt': AutoInt if DEEPCTR_AVAILABLE else None,
         'NFM': NFM if DEEPCTR_AVAILABLE else None,
         'AFM': AFM if DEEPCTR_AVAILABLE else None,
+        'PNN': PNN if DEEPCTR_AVAILABLE else None,  # fix: PNN was missing from registry
         'WDL': WDL if DEEPCTR_AVAILABLE else None,
         'FiBiNET': FiBiNET if DEEPCTR_AVAILABLE else None,
         'AFN': AFN if DEEPCTR_AVAILABLE else None,
@@ -130,7 +131,10 @@ class DLSearch:
                     validation_data=(data['val_input'], data['y_val'])
                 )
                 y_pred = model.predict(data['val_input'], batch_size=batch_size)
-                return roc_auc_score(data['y_val'], y_pred)
+                score = roc_auc_score(data['y_val'], y_pred)
+                # fix: save model to trial user_attrs so _collect_results can retrieve it
+                trial.set_user_attr('model_obj', model)
+                return score
             except Exception as e:
                 if self.verbose >= 2:
                     print(f"  Trial failed ({model_name}): {e}")
@@ -249,6 +253,11 @@ class DLSearch:
             kwargs.pop('dnn_hidden_units', None)
             kwargs.pop('dnn_dropout', None)
             kwargs['attention_factor'] = trial.suggest_categorical('attention_factor', [4, 8, 16])
+        elif model_name == 'PNN':
+            # PNN only takes dnn_feature_columns, not linear_feature_columns
+            kwargs.pop('linear_feature_columns', None)
+            kwargs['use_inner'] = True
+            kwargs['use_outter'] = False
         
         return model_class(**kwargs)
     
@@ -300,7 +309,12 @@ class DLSearch:
             if trial.state == optuna.trial.TrialState.COMPLETE:
                 model = trial.params.get('model', 'unknown')
                 if model not in model_best or trial.value > model_best[model]['score']:
-                    model_best[model] = {'score': trial.value, 'params': trial.params}
+                    model_best[model] = {
+                        'score': trial.value,
+                        'params': trial.params,
+                        # fix: retrieve saved model object (may be None if trial failed mid-way)
+                        'model_obj': trial.user_attrs.get('model_obj', None),
+                    }
         
         results = []
         for model_name, info in model_best.items():
@@ -308,7 +322,7 @@ class DLSearch:
                 'model_name': model_name,
                 'score': info['score'],
                 'params': info['params'],
-                'model': None,
+                'model': info['model_obj'],  # fix: was always None before
             })
             if self.verbose >= 1:
                 print(f"  {model_name}: {self.metric.upper()}={info['score']:.6f}")
