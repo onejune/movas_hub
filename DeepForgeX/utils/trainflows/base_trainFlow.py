@@ -137,6 +137,10 @@ class BaseTrainFlow:
             self.loss_func = 'log_loss'
         if not hasattr(self, 'use_uncertainty_weighting'):
             self.use_uncertainty_weighting = False
+        # 多值特征列：从配置项 multivalue_cols 读取（逗号分隔字符串），不配置则为空集合
+        raw = self.params.get('multivalue_cols', 'tags,duf_outer_shopee_pur_top5_list')
+        self.multivalue_cols = set(c.strip() for c in raw.split(',') if c.strip())
+        MovasLogger.add_log(content=f'multivalue_cols: {self.multivalue_cols}')
 
     # ========================================================================
     # Spark 管理
@@ -229,17 +233,37 @@ class BaseTrainFlow:
     def _read_dataset_by_date(self, base_path: str, date_str: str):
         data_path = os.path.join(base_path, f"part={date_str}")
         df = self.spark_session.read.parquet(data_path)
+        for mv_col in self.multivalue_cols:
+            if mv_col in df.columns:
+                df = df.withColumn(mv_col, F.split(F.col(mv_col).cast("string"), "\001"))
         df = df.select(*self.used_fea_list)
         MovasLogger.log(f'before random_sample: sample_count={df.count()}')
 
         for col_name in df.columns:
             if col_name == 'label':
                 df = df.withColumn(col_name, F.col(col_name).cast("float"))
+            elif col_name in self.multivalue_cols:
+                pass  # 保留 array<string> 类型，供 C++ StringBKDRHashKernelListString 处理多值
             else:
                 df = df.withColumn(col_name, F.col(col_name).cast("string"))
         df = df.withColumn("domain_id", F.lit(0))
         df = self.random_sample(df)
-        df = df.fillna('none')
+        # df = df.fillna('none')
+        for col_name in df.columns:
+            if col_name in self.multivalue_cols:
+                # 多值列：null → 空数组 []
+                # C++ 路径：begin==end → AppendNull → id=0（比填 [''] 更安全，见注释）
+                # ⚠️ 不用 F.array(F.lit('')) 的原因：空字符串会经过 value_builder.AppendNull()
+                #    后产生 list([null_uint64])，null uint64 的 raw 值依赖 Arrow 实现（通常为0但不保证）
+                df = df.withColumn(col_name,
+                    F.when(F.col(col_name).isNull(), F.array()).otherwise(F.col(col_name)))
+            elif col_name != 'label':
+                # 单值列：null → ''（空字符串）
+                # C++ 路径：empty string → AppendNull → id=0，比 'none' 更安全
+                # ⚠️ 不用 'none' 的原因：'none' 会被 BKDRHash 哈希成真实 uint64，
+                #    可能与正常特征值碰撞，污染 embedding table
+                df = df.withColumn(col_name,
+                    F.when(F.col(col_name).isNull(), F.lit('')).otherwise(F.col(col_name)))
         MovasLogger.log(f'after random_sample: sample_count={df.count()}')
         return df
 

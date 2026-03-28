@@ -184,7 +184,8 @@ def run_flaml(X_train, y_train, X_test, y_test, test_df_raw):
         metric='roc_auc',
         time_budget=CONFIG['flaml_time_budget'],
         estimator_list=['lgbm', 'xgboost', 'catboost'],
-        verbose=1,
+        n_jobs=1,   # 禁用多进程，避免子进程被 kill 导致父进程静默退出
+        verbose=2,
     )
 
     y_pred = automl.predict_proba(X_test)[:, 1]
