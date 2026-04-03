@@ -155,7 +155,7 @@ class DenseFeatureLayer(nn.Module):
             self._dense_output = torch.cat(dense_cols, dim=1).float()
         elif hasattr(minibatch, '__class__') and minibatch.__class__.__name__ == 'DataFrame':
             # Pandas DataFrame - 直接按 dense 特征名提取
-            dense_values = minibatch[self._feature_names].values
+            dense_values = minibatch[self.feature_names].values
             self._dense_output = torch.tensor(dense_values, dtype=torch.float32)
         elif isinstance(minibatch, torch.Tensor):
             # 纯 tensor
@@ -297,7 +297,7 @@ class DenseFeatureEmbedding(nn.Module):
             self._dense_output = torch.cat(dense_cols, dim=1).float()
         elif hasattr(minibatch, '__class__') and minibatch.__class__.__name__ == 'DataFrame':
             # Pandas DataFrame - 直接按 dense 特征名提取
-            dense_values = minibatch[self._feature_names].values
+            dense_values = minibatch[self.feature_names].values
             self._dense_output = torch.tensor(dense_values, dtype=torch.float32)
         elif hasattr(minibatch, 'data'):
             data = minibatch.data
