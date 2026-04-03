@@ -109,15 +109,36 @@ class BaseTrainFlow:
         return params
 
     def _load_combine_schema(self):
+        """加载 combine_schema (sparse 特征) 和 dense_features (dense 特征)"""
+        # 1. 加载 sparse 特征 (从 combine_schema)
         fin = open('./conf/combine_schema', 'r')
-        all_feas_list = []
+        sparse_feas_list = []
         for line in fin:
             arr = line.strip().split('#')
-            all_feas_list.extend(arr)
-        all_feas_list = list(set(all_feas_list))
-        le = len(all_feas_list)
-        MovasLogger.add_log(content=f'Debug--load combine_schema: {le} features!')
-        all_feas_list = all_feas_list + ['label']
+            sparse_feas_list.extend(arr)
+        sparse_feas_list = list(set(sparse_feas_list))
+        fin.close()
+        
+        # 2. 加载 dense 特征 (从 dense_features_path 配置)
+        dense_feas_list = []
+        dense_features_path = self.params.get('dense_features_path', None)
+        if dense_features_path and os.path.exists(dense_features_path):
+            with open(dense_features_path, 'r') as f:
+                for line in f:
+                    name = line.strip()
+                    if name and not name.startswith('#'):
+                        dense_feas_list.append(name)
+            MovasLogger.add_log(content=f'Debug--load dense_features: {len(dense_feas_list)} features from {dense_features_path}')
+        
+        # 3. 合并特征列表
+        self.sparse_fea_list = sparse_feas_list
+        self.dense_fea_list = dense_feas_list
+        all_feas_list = sparse_feas_list + dense_feas_list + ['label']
+        # 去重但保持顺序
+        seen = set()
+        all_feas_list = [x for x in all_feas_list if not (x in seen or seen.add(x))]
+        
+        MovasLogger.add_log(content=f'Debug--load combine_schema: {len(sparse_feas_list)} sparse + {len(dense_feas_list)} dense features!')
         self.used_fea_list = all_feas_list
 
     def _initialize_params(self):
@@ -232,14 +253,32 @@ class BaseTrainFlow:
         df = df.select(*self.used_fea_list)
         MovasLogger.log(f'before random_sample: sample_count={df.count()}')
 
+        # 获取 dense 特征集合 (用于区分处理)
+        dense_fea_set = set(getattr(self, 'dense_fea_list', []))
+        
         for col_name in df.columns:
             if col_name == 'label':
                 df = df.withColumn(col_name, F.col(col_name).cast("float"))
+            elif col_name in dense_fea_set:
+                # Dense 特征保持 float 类型
+                df = df.withColumn(col_name, F.col(col_name).cast("float"))
             else:
+                # Sparse 特征转为 string
                 df = df.withColumn(col_name, F.col(col_name).cast("string"))
+        
         df = df.withColumn("domain_id", F.lit(0))
         df = self.random_sample(df)
-        df = df.fillna('none')
+        
+        # fillna: sparse 用 'none', dense 用 0.0
+        if dense_fea_set:
+            # 先填充 sparse 特征
+            sparse_cols = [c for c in df.columns if c not in dense_fea_set and c != 'label' and c != 'domain_id']
+            df = df.fillna('none', subset=sparse_cols)
+            # 再填充 dense 特征
+            df = df.fillna(0.0, subset=list(dense_fea_set))
+        else:
+            df = df.fillna('none')
+        
         MovasLogger.log(f'after random_sample: sample_count={df.count()}')
         return df
 

@@ -231,8 +231,20 @@ class WideDeepDense(torch.nn.Module):
         else:
             self.final_activation = None
         
-        # 存储列名信息 (运行时从 minibatch 获取)
+        # 存储列名信息 (由 trainFlow 设置)
         self._column_names = None
+    
+    def set_column_names(self, column_names: list):
+        """
+        设置列名列表，用于 dense 特征提取
+        
+        在 trainFlow 中构建模型后调用:
+            self.model_module.set_column_names(self.used_fea_list)
+        """
+        self._column_names = column_names
+        if self.dense_layer is not None:
+            self.dense_layer.set_column_names(column_names)
+            print(f"[WideDeepDense] Column names set, total {len(column_names)} columns")
     
     def do_extra_work(self, minibatch):
         """
@@ -241,20 +253,6 @@ class WideDeepDense(torch.nn.Module):
         在 SparseModel.__call__() 中，forward() 之前被调用
         """
         if self.dense_layer is not None:
-            # 首次调用时获取列名
-            if self._column_names is None:
-                if hasattr(minibatch, 'column_names'):
-                    self._column_names = minibatch.column_names
-                elif hasattr(minibatch, 'schema'):
-                    self._column_names = minibatch.schema
-                else:
-                    # 尝试从 conf/column_name 加载
-                    try:
-                        with open('./conf/column_name', 'r') as f:
-                            self._column_names = [line.strip() for line in f if line.strip()]
-                    except:
-                        raise ValueError("Cannot get column names from minibatch or conf/column_name")
-            
             self.dense_layer.extract(minibatch, self._column_names)
     
     def forward(self, x):

@@ -122,30 +122,43 @@ class DenseFeatureLayer(nn.Module):
             else:
                 raise ValueError(f"Dense feature '{name}' not found in minibatch columns: {column_names[:10]}...")
     
+    def set_column_names(self, column_names: List[str]):
+        """
+        设置列名列表，用于构建特征索引映射
+        
+        在模型初始化后、训练开始前调用一次即可
+        """
+        self._build_feature_indices(column_names)
+    
     def extract(self, minibatch, column_names: List[str] = None):
         """
         从 minibatch 提取 dense 特征
         
         Args:
             minibatch: MiniBatch 对象，包含 tensor 数据
-            column_names: 列名列表，用于定位特征位置
+            column_names: 列名列表，用于定位特征位置 (首次调用需要)
         
         在 model.do_extra_work(minibatch) 中调用
         """
         # 首次调用时构建索引映射
         if self._feature_indices is None:
             if column_names is None:
-                raise ValueError("column_names required for first extract() call")
+                raise ValueError("column_names required for first extract() call, or call set_column_names() first")
             self._build_feature_indices(column_names)
         
         # 从 minibatch 提取数据
-        # minibatch.tensor 形状: [batch_size, num_columns]
+        # minibatch 可能是不同类型，尝试多种方式获取数据
+        data = None
         if hasattr(minibatch, 'tensor'):
             data = minibatch.tensor
         elif hasattr(minibatch, 'data'):
             data = minibatch.data
+        elif hasattr(minibatch, 'x'):
+            data = minibatch.x
+        elif isinstance(minibatch, torch.Tensor):
+            data = minibatch
         else:
-            raise ValueError("minibatch must have 'tensor' or 'data' attribute")
+            raise ValueError(f"Cannot extract data from minibatch of type {type(minibatch)}")
         
         # 按索引提取 dense 特征列
         dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]

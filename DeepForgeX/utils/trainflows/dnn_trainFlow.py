@@ -247,6 +247,8 @@ class DNNModelTrainFlow(BaseTrainFlow):
                 ftrl_alpha=self.ftrl_alpha,
                 ftrl_beta=self.ftrl_beta
             )
+            # 设置列名，用于 dense 特征提取
+            self.model_module.set_column_names(self.used_fea_list)
         else:
             raise ValueError(
                 f"Unsupported model type: {configed_model}. "
