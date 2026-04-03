@@ -223,27 +223,15 @@ class WideDeepDense(torch.nn.Module):
         
         # 用于存储 dense 数据
         self._dense_data = None
-        self._column_names = None
-        self._dense_indices = None
-    
-    def set_column_names(self, column_names: list):
-        """设置列名，建立 dense 特征索引"""
-        self._column_names = column_names
-        if self.dense_fea_list:
-            self._dense_indices = [column_names.index(f) for f in self.dense_fea_list]
-            print(f"[WideDeepDense] Dense indices built: {len(self._dense_indices)} features")
     
     def do_extra_work(self, minibatch):
-        """从 minibatch 提取 dense 特征"""
-        if self.dense_encoder is None or self._dense_indices is None:
+        """从 minibatch (DataFrame) 提取 dense 特征"""
+        if self.dense_encoder is None or not self.dense_fea_list:
             return
         
-        if hasattr(minibatch, 'tensor'):
-            data = minibatch.tensor
-        else:
-            data = minibatch
-        
-        self._dense_data = data[:, self._dense_indices].float()
+        # minibatch 是 DataFrame，直接按列名提取
+        dense_values = minibatch[self.dense_fea_list].values
+        self._dense_data = torch.tensor(dense_values, dtype=torch.float32)
     
     def forward(self, x):
         # Wide
