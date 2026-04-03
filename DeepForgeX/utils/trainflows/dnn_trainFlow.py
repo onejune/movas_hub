@@ -18,6 +18,7 @@ print("metaspore.__file__ =", ms.__file__)
 
 from metaspore.algos.lr_ftrl_net import *
 from metaspore.algos.widedeep_net import *
+from metaspore.algos.widedeep_net import WideDeepDense
 from metaspore.algos.maskNet import MaskNet
 from metaspore.algos.deepfm_net import DeepFM
 from metaspore.algos.ffm_net import FFM
@@ -219,10 +220,37 @@ class DNNModelTrainFlow(BaseTrainFlow):
                 ftrl_alpha=self.ftrl_alpha,
                 ftrl_beta=self.ftrl_beta
             )
+        elif configed_model == "WideDeepDense":
+            # 支持 Dense 特征的 WideDeep 模型
+            # 需要配置 dense_features_path: ./conf/dense_features
+            dense_features_path = self.params.get('dense_features_path', None)
+            dense_output_dim = self.params.get('dense_output_dim', None)
+            dense_batch_norm = self.params.get('dense_batch_norm', True)
+            dense_dropout = self.params.get('dense_dropout', 0.0)
+            
+            self.model_module = WideDeepDense(
+                use_wide=self.use_wide,
+                batch_norm=self.batch_norm,
+                net_dropout=self.net_dropout,
+                wide_embedding_dim=self.embedding_size,
+                deep_embedding_dim=self.embedding_size,
+                wide_combine_schema_path=self.wide_combine_schema_path,
+                deep_combine_schema_path=self.combine_schema_path,
+                dense_features_path=dense_features_path,
+                dense_output_dim=dense_output_dim,
+                dense_batch_norm=dense_batch_norm,
+                dense_dropout=dense_dropout,
+                dnn_hidden_units=self.dnn_hidden_units,
+                dnn_hidden_activations="relu",
+                ftrl_l1=self.ftrl_l1,
+                ftrl_l2=self.ftrl_l2,
+                ftrl_alpha=self.ftrl_alpha,
+                ftrl_beta=self.ftrl_beta
+            )
         else:
             raise ValueError(
                 f"Unsupported model type: {configed_model}. "
-                f"Supported: LRFtrl, LRFtrl2, LRFtrl3, DeepFM, WideDeep, WideDeep2, "
+                f"Supported: LRFtrl, LRFtrl2, LRFtrl3, DeepFM, WideDeep, WideDeep2, WideDeepDense, "
                 f"masknet, FourChannelGateModel, FFM, DCN, apg, fwfm, ppnet"
             )
         self.configed_model = configed_model
