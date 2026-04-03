@@ -248,7 +248,7 @@ class BaseTrainFlow:
     # ========================================================================
 
     def _read_dataset_by_date(self, base_path: str, date_str: str):
-        data_path = os.path.join(base_path, f"part={date_str}")
+        data_path = os.path.join(base_path, f"{date_str}")
         df = self.spark_session.read.parquet(data_path)
         df = df.select(*self.used_fea_list)
         MovasLogger.log(f'before random_sample: sample_count={df.count()}')
