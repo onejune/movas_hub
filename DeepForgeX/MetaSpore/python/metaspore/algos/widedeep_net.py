@@ -228,19 +228,9 @@ class WideDeepDense(torch.nn.Module):
                     dropout=dense_dropout
                 )
             elif dense_encoder_type == 'minmax':
-                # 优先使用预计算的特征列表，否则从配置文件加载
-                if hasattr(self, '_column_names') and self._column_names:
-                    # 如果框架已提供列名，尝试从中识别 dense 特征
-                    # 这里假设 dense 特征列表在某个地方可用
-                    self.dense_layer = DenseFeatureMinMaxScaler(
-                        precomputed_features=getattr(self, 'dense_fea_list', None) if hasattr(self, 'dense_fea_list') else None,
-                        feature_names=None,
-                        dense_features_path=dense_features_path
-                    )
-                else:
-                    self.dense_layer = DenseFeatureMinMaxScaler(
-                        dense_features_path=dense_features_path
-                    )
+                self.dense_layer = DenseFeatureMinMaxScaler(
+                    dense_features=self.dense_fea_list
+                )
                 
                 # 对于 MinMaxScaler，输出维度通常等于特征数
                 # 如果指定了 dense_output_dim，额外添加线性变换
@@ -251,17 +241,9 @@ class WideDeepDense(torch.nn.Module):
                 else:
                     self.dense_post_linear = None
             elif dense_encoder_type == 'standard':
-                # 优先使用预计算的特征列表
-                if hasattr(self, 'dense_fea_list') and self.dense_fea_list:
-                    self.dense_layer = DenseFeatureStandardScaler(
-                        precomputed_features=self.dense_fea_list,
-                        feature_names=None,
-                        dense_features_path=dense_features_path
-                    )
-                else:
-                    self.dense_layer = DenseFeatureStandardScaler(
-                        dense_features_path=dense_features_path
-                    )
+                self.dense_layer = DenseFeatureStandardScaler(
+                    dense_features=self.dense_fea_list
+                )
                 
                 if dense_output_dim and dense_output_dim != self.dense_layer.output_dim:
                     self.dense_post_linear = torch.nn.Linear(
@@ -270,20 +252,11 @@ class WideDeepDense(torch.nn.Module):
                 else:
                     self.dense_post_linear = None
             elif dense_encoder_type == 'numeric':
-                # 优先使用预计算的特征列表
-                if hasattr(self, 'dense_fea_list') and self.dense_fea_list:
-                    self.dense_layer = DenseFeatureNumericEmbedding(
-                        precomputed_features=self.dense_fea_list,
-                        feature_names=None,
-                        embedding_dim=dense_embedding_dim,
-                        hidden_dim=dense_hidden_dim
-                    )
-                else:
-                    self.dense_layer = DenseFeatureNumericEmbedding(
-                        dense_features_path=dense_features_path,
-                        embedding_dim=dense_embedding_dim,
-                        hidden_dim=dense_hidden_dim
-                    )
+                self.dense_layer = DenseFeatureNumericEmbedding(
+                    dense_features=self.dense_fea_list,
+                    embedding_dim=dense_embedding_dim,
+                    hidden_dim=dense_hidden_dim
+                )
                 
                 # Numeric embedding 的输出维度是特征数 * embedding_dim
                 # 如果指定了 dense_output_dim，添加线性变换
@@ -294,17 +267,9 @@ class WideDeepDense(torch.nn.Module):
                 else:
                     self.dense_post_linear = None
             elif dense_encoder_type == 'log':
-                # 优先使用预计算的特征列表
-                if hasattr(self, 'dense_fea_list') and self.dense_fea_list:
-                    self.dense_layer = DenseFeatureLogTransform(
-                        precomputed_features=self.dense_fea_list,
-                        feature_names=None,
-                        dense_features_path=dense_features_path
-                    )
-                else:
-                    self.dense_layer = DenseFeatureLogTransform(
-                        dense_features_path=dense_features_path
-                    )
+                self.dense_layer = DenseFeatureLogTransform(
+                    dense_features=self.dense_fea_list
+                )
                 
                 if dense_output_dim and dense_output_dim != self.dense_layer.output_dim:
                     self.dense_post_linear = torch.nn.Linear(

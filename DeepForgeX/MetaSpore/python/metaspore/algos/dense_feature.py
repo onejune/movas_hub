@@ -282,24 +282,11 @@ class DenseFeatureMinMaxScaler(BaseDenseEncoder):
     """
     
     def __init__(self, 
-                 dense_features_path: str = None,
-                 feature_names: List[str] = None,
-                 fit_on_data: bool = True,
-                 precomputed_features: List[str] = None):
+                 dense_features: List[str],
+                 fit_on_data: bool = True):
         super().__init__()
         
-        # 优先使用预计算的特征列表（来自框架）
-        if precomputed_features is not None:
-            self.feature_names = precomputed_features
-        # 其次使用直接传入的特征名列表
-        elif feature_names is not None:
-            self.feature_names = list(feature_names)
-        # 最后从配置文件加载
-        elif dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
-        else:
-            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
-        
+        self.feature_names = dense_features
         self.feature_dim = len(self.feature_names)
         self.fit_on_data = fit_on_data
         
@@ -309,16 +296,6 @@ class DenseFeatureMinMaxScaler(BaseDenseEncoder):
         self._fitted = False
         
         print(f"[DenseFeatureMinMaxScaler] Initialized for {self.feature_dim} features")
-    
-    def _load_feature_names(self, path: str) -> List[str]:
-        """从配置文件加载特征名列表"""
-        feature_names = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f:
-                name = line.strip()
-                if name and not name.startswith('#'):
-                    feature_names.append(name)
-        return feature_names
     
     def fit(self, x: torch.Tensor):
         """用数据拟合缩放参数"""
@@ -354,24 +331,11 @@ class DenseFeatureStandardScaler(BaseDenseEncoder):
     """
     
     def __init__(self, 
-                 dense_features_path: str = None,
-                 feature_names: List[str] = None,
-                 fit_on_data: bool = True,
-                 precomputed_features: List[str] = None):
+                 dense_features: List[str],
+                 fit_on_data: bool = True):
         super().__init__()
         
-        # 优先使用预计算的特征列表（来自框架）
-        if precomputed_features is not None:
-            self.feature_names = precomputed_features
-        # 其次使用直接传入的特征名列表
-        elif feature_names is not None:
-            self.feature_names = list(feature_names)
-        # 最后从配置文件加载
-        elif dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
-        else:
-            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
-        
+        self.feature_names = dense_features
         self.feature_dim = len(self.feature_names)
         self.fit_on_data = fit_on_data
         
@@ -381,16 +345,6 @@ class DenseFeatureStandardScaler(BaseDenseEncoder):
         self._fitted = False
         
         print(f"[DenseFeatureStandardScaler] Initialized for {self.feature_dim} features")
-    
-    def _load_feature_names(self, path: str) -> List[str]:
-        """从配置文件加载特征名列表"""
-        feature_names = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f:
-                name = line.strip()
-                if name and not name.startswith('#'):
-                    feature_names.append(name)
-        return feature_names
     
     def fit(self, x: torch.Tensor):
         """用数据拟合标准化参数"""
@@ -427,25 +381,12 @@ class DenseFeatureNumericEmbedding(BaseDenseEncoder):
     """
     
     def __init__(self,
-                 dense_features_path: str = None,
-                 feature_names: List[str] = None,
+                 dense_features: List[str],
                  embedding_dim: int = 16,
-                 hidden_dim: int = 64,
-                 precomputed_features: List[str] = None):
+                 hidden_dim: int = 64):
         super().__init__()
         
-        # 优先使用预计算的特征列表（来自框架）
-        if precomputed_features is not None:
-            self.feature_names = precomputed_features
-        # 其次使用直接传入的特征名列表
-        elif feature_names is not None:
-            self.feature_names = list(feature_names)
-        # 最后从配置文件加载
-        elif dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
-        else:
-            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
-        
+        self.feature_names = dense_features
         self.feature_dim = len(self.feature_names)
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
@@ -462,16 +403,6 @@ class DenseFeatureNumericEmbedding(BaseDenseEncoder):
         ])
         
         print(f"[DenseFeatureNumericEmbedding] {self.feature_dim} features -> {embedding_dim} dim each")
-    
-    def _load_feature_names(self, path: str) -> List[str]:
-        """从配置文件加载特征名列表"""
-        feature_names = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f:
-                name = line.strip()
-                if name and not name.startswith('#'):
-                    feature_names.append(name)
-        return feature_names
     
     @property
     def output_dim(self) -> int:
@@ -495,36 +426,13 @@ class DenseFeatureLogTransform(BaseDenseEncoder):
     """
     
     def __init__(self, 
-                 dense_features_path: str = None,
-                 feature_names: List[str] = None,
-                 precomputed_features: List[str] = None):
+                 dense_features: List[str]):
         super().__init__()
         
-        # 优先使用预计算的特征列表（来自框架）
-        if precomputed_features is not None:
-            self.feature_names = precomputed_features
-        # 其次使用直接传入的特征名列表
-        elif feature_names is not None:
-            self.feature_names = list(feature_names)
-        # 最后从配置文件加载
-        elif dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
-        else:
-            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
-        
+        self.feature_names = dense_features
         self.feature_dim = len(self.feature_names)
         
         print(f"[DenseFeatureLogTransform] Initialized for {self.feature_dim} features")
-    
-    def _load_feature_names(self, path: str) -> List[str]:
-        """从配置文件加载特征名列表"""
-        feature_names = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f:
-                name = line.strip()
-                if name and not name.startswith('#'):
-                    feature_names.append(name)
-        return feature_names
     
     @property
     def output_dim(self) -> int:
