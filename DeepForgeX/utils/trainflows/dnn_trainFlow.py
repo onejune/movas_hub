@@ -224,7 +224,10 @@ class DNNModelTrainFlow(BaseTrainFlow):
             # 支持 Dense 特征的 WideDeep 模型
             # 需要配置 dense_features_path: ./conf/dense_features
             dense_features_path = self.params.get('dense_features_path', None)
+            dense_encoder_type = self.params.get('dense_encoder_type', 'linear')  # 新增编码器类型
             dense_output_dim = self.params.get('dense_output_dim', None)
+            dense_embedding_dim = self.params.get('dense_embedding_dim', 16)  # numeric encoder 专用
+            dense_hidden_dim = self.params.get('dense_hidden_dim', 64)       # numeric encoder 专用
             dense_batch_norm = self.params.get('dense_batch_norm', True)
             dense_dropout = self.params.get('dense_dropout', 0.0)
             
@@ -237,7 +240,10 @@ class DNNModelTrainFlow(BaseTrainFlow):
                 wide_combine_schema_path=self.wide_combine_schema_path,
                 deep_combine_schema_path=self.combine_schema_path,
                 dense_features_path=dense_features_path,
+                dense_encoder_type=dense_encoder_type,
                 dense_output_dim=dense_output_dim,
+                dense_embedding_dim=dense_embedding_dim,
+                dense_hidden_dim=dense_hidden_dim,
                 dense_batch_norm=dense_batch_norm,
                 dense_dropout=dense_dropout,
                 dnn_hidden_units=self.dnn_hidden_units,
