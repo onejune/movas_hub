@@ -40,22 +40,6 @@ dense_feature.py - Dense 特征编码器
 >>> from dense_feature import create_dense_encoder
 >>> encoder = create_dense_encoder('linear', num_features=39, output_dim=32)
 >>> dense_out = encoder(dense_tensor)  # [batch, 32]
-
-配合 WideDeepDense 使用
-----------------------
-WideDeepDense 模型会自动调用编码器：
-1. do_extra_work(minibatch): 从 DataFrame 提取 dense 特征
-2. forward(): 调用 encoder 处理，与 sparse embedding 拼接
-
-数据流
------
-DataFrame (minibatch)
-    ↓ minibatch[dense_fea_list].values
-torch.Tensor [batch, num_features]
-    ↓ encoder.forward()
-torch.Tensor [batch, output_dim]
-    ↓ concat with sparse
-MLP input
 """
 
 import torch
@@ -108,7 +92,9 @@ class DenseFeatureLinear(nn.Module):
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.bn:
-            x = self.bn(x)
+            # BatchNorm 需要 batch_size > 1，否则跳过
+            if x.size(0) > 1:
+                x = self.bn(x)
         if self.linear:
             x = self.linear(x)
         if self.dropout:

@@ -92,7 +92,9 @@ class DenseFeatureLinear(nn.Module):
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.bn:
-            x = self.bn(x)
+            # BatchNorm 需要 batch_size > 1，否则跳过
+            if x.size(0) > 1:
+                x = self.bn(x)
         if self.linear:
             x = self.linear(x)
         if self.dropout:
