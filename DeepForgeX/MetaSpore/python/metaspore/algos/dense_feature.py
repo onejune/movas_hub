@@ -155,8 +155,8 @@ class DenseFeatureLayer(nn.Module):
             dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
             self._dense_output = torch.cat(dense_cols, dim=1).float()
         elif isinstance(minibatch, pd.DataFrame):
-            # Pandas DataFrame - 直接按列名提取
-            dense_values = minibatch[self._column_names].values
+            # Pandas DataFrame - 直接按 dense 特征名提取
+            dense_values = minibatch[self._feature_names].values
             self._dense_output = torch.tensor(dense_values, dtype=torch.float32)
         elif isinstance(minibatch, torch.Tensor):
             # 纯 tensor
