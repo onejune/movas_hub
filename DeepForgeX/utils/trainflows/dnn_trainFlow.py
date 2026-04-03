@@ -222,12 +222,11 @@ class DNNModelTrainFlow(BaseTrainFlow):
             )
         elif configed_model == "WideDeepDense":
             # 支持 Dense 特征的 WideDeep 模型
-            # 需要配置 dense_features_path: ./conf/dense_features
-            dense_features_path = self.params.get('dense_features_path', None)
-            dense_encoder_type = self.params.get('dense_encoder_type', 'linear')  # 新增编码器类型
+            # dense_fea_list 由 base_trainFlow._load_combine_schema() 加载
+            dense_encoder_type = self.params.get('dense_encoder_type', 'linear')
             dense_output_dim = self.params.get('dense_output_dim', None)
-            dense_embedding_dim = self.params.get('dense_embedding_dim', 16)  # numeric encoder 专用
-            dense_hidden_dim = self.params.get('dense_hidden_dim', 64)       # numeric encoder 专用
+            dense_embedding_dim = self.params.get('dense_embedding_dim', 16)
+            dense_hidden_dim = self.params.get('dense_hidden_dim', 64)
             dense_batch_norm = self.params.get('dense_batch_norm', True)
             dense_dropout = self.params.get('dense_dropout', 0.0)
             
@@ -239,7 +238,7 @@ class DNNModelTrainFlow(BaseTrainFlow):
                 deep_embedding_dim=self.embedding_size,
                 wide_combine_schema_path=self.wide_combine_schema_path,
                 deep_combine_schema_path=self.combine_schema_path,
-                dense_features_path=dense_features_path,
+                dense_fea_list=self.dense_fea_list,  # 直接传入
                 dense_encoder_type=dense_encoder_type,
                 dense_output_dim=dense_output_dim,
                 dense_embedding_dim=dense_embedding_dim,
@@ -253,7 +252,7 @@ class DNNModelTrainFlow(BaseTrainFlow):
                 ftrl_alpha=self.ftrl_alpha,
                 ftrl_beta=self.ftrl_beta
             )
-            # 设置列名，用于 dense 特征提取
+            # 设置列名，用于 dense 特征索引
             self.model_module.set_column_names(self.used_fea_list)
         else:
             raise ValueError(
