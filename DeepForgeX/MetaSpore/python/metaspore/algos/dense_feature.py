@@ -28,7 +28,19 @@ dense_feature.py - Dense 特征处理模块
 import os
 import torch
 import torch.nn as nn
+import numpy as np
 from typing import List, Optional
+
+
+class BaseDenseEncoder(nn.Module):
+    """Dense特征编码器基类"""
+    
+    @property
+    def output_dim(self) -> int:
+        raise NotImplementedError
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        raise NotImplementedError
 
 
 class DenseFeatureLayer(nn.Module):
@@ -260,6 +272,248 @@ class DenseFeatureEmbedding(nn.Module):
         self._feature_indices = None
         
         print(f"[DenseFeatureEmbedding] {self.feature_dim} features x {embedding_dim} dim = {self.output_dim}")
+
+
+class DenseFeatureMinMaxScaler(BaseDenseEncoder):
+    """
+    MinMaxScaler：将特征缩放到 [0, 1] 区间
+    
+    x' = (x - min) / (max - min + eps)
+    """
+    
+    def __init__(self, 
+                 dense_features_path: str = None,
+                 feature_names: List[str] = None,
+                 fit_on_data: bool = True):
+        super().__init__()
+        
+        # 加载特征名
+        if dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
+        elif feature_names is not None:
+            self.feature_names = list(feature_names)
+        else:
+            raise ValueError("Must specify either dense_features_path or feature_names")
+        
+        self.feature_dim = len(self.feature_names)
+        self.fit_on_data = fit_on_data
+        
+        # 统计参数
+        self.register_buffer("x_min", torch.zeros(self.feature_dim))
+        self.register_buffer("x_max", torch.ones(self.feature_dim))
+        self._fitted = False
+        
+        print(f"[DenseFeatureMinMaxScaler] Initialized for {self.feature_dim} features")
+    
+    def _load_feature_names(self, path: str) -> List[str]:
+        """从配置文件加载特征名列表"""
+        feature_names = []
+        with open(path, 'r', encoding='utf-8') as f:
+            for line in f:
+                name = line.strip()
+                if name and not name.startswith('#'):
+                    feature_names.append(name)
+        return feature_names
+    
+    def fit(self, x: torch.Tensor):
+        """用数据拟合缩放参数"""
+        self.x_min = torch.min(x, dim=0)[0]
+        self.x_max = torch.max(x, dim=0)[0]
+        self._fitted = True
+        print(f"[DenseFeatureMinMaxScaler] Fit complete: min={self.x_min[:3]}, max={self.x_max[:3]}")
+    
+    def fit_from_numpy(self, x: np.ndarray):
+        """用 numpy 数组拟合缩放参数"""
+        x_tensor = torch.from_numpy(x).float()
+        self.fit(x_tensor)
+    
+    @property
+    def output_dim(self) -> int:
+        return self.feature_dim
+    
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if not self._fitted and self.fit_on_data:
+            # 首次调用时自动拟合
+            self.fit(x)
+        
+        x_min = self.x_min.to(x.device)
+        x_max = self.x_max.to(x.device)
+        return (x - x_min) / (x_max - x_min + 1e-8)
+
+
+class DenseFeatureStandardScaler(BaseDenseEncoder):
+    """
+    StandardScaler：Z-score 标准化，均值0方差1
+    
+    x' = (x - μ) / σ
+    """
+    
+    def __init__(self, 
+                 dense_features_path: str = None,
+                 feature_names: List[str] = None,
+                 fit_on_data: bool = True):
+        super().__init__()
+        
+        # 加载特征名
+        if dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
+        elif feature_names is not None:
+            self.feature_names = list(feature_names)
+        else:
+            raise ValueError("Must specify either dense_features_path or feature_names")
+        
+        self.feature_dim = len(self.feature_names)
+        self.fit_on_data = fit_on_data
+        
+        # 统计参数
+        self.register_buffer("mean", torch.zeros(self.feature_dim))
+        self.register_buffer("std", torch.ones(self.feature_dim))
+        self._fitted = False
+        
+        print(f"[DenseFeatureStandardScaler] Initialized for {self.feature_dim} features")
+    
+    def _load_feature_names(self, path: str) -> List[str]:
+        """从配置文件加载特征名列表"""
+        feature_names = []
+        with open(path, 'r', encoding='utf-8') as f:
+            for line in f:
+                name = line.strip()
+                if name and not name.startswith('#'):
+                    feature_names.append(name)
+        return feature_names
+    
+    def fit(self, x: torch.Tensor):
+        """用数据拟合标准化参数"""
+        self.mean = torch.mean(x, dim=0)
+        self.std = torch.std(x, dim=0, unbiased=False)  # 使用总体标准差
+        self._fitted = True
+        print(f"[DenseFeatureStandardScaler] Fit complete: mean={self.mean[:3]}, std={self.std[:3]}")
+    
+    def fit_from_numpy(self, x: np.ndarray):
+        """用 numpy 数组拟合标准化参数"""
+        x_tensor = torch.from_numpy(x).float()
+        self.fit(x_tensor)
+    
+    @property
+    def output_dim(self) -> int:
+        return self.feature_dim
+    
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if not self._fitted and self.fit_on_data:
+            # 首次调用时自动拟合
+            self.fit(x)
+        
+        mean = self.mean.to(x.device)
+        std = self.std.to(x.device)
+        return (x - mean) / (std + 1e-8)
+
+
+class DenseFeatureNumericEmbedding(BaseDenseEncoder):
+    """
+    NumericEmbedding：每个特征独立的小 MLP 映射
+    
+    每个标量特征通过独立 MLP 映射到 embedding 空间
+    适用于需要非线性变换的连续特征
+    """
+    
+    def __init__(self,
+                 dense_features_path: str = None,
+                 feature_names: List[str] = None,
+                 embedding_dim: int = 16,
+                 hidden_dim: int = 64):
+        super().__init__()
+        
+        # 加载特征名
+        if dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
+        elif feature_names is not None:
+            self.feature_names = list(feature_names)
+        else:
+            raise ValueError("Must specify either dense_features_path or feature_names")
+        
+        self.feature_dim = len(self.feature_names)
+        self.embedding_dim = embedding_dim
+        self.hidden_dim = hidden_dim
+        
+        # 为每个特征创建独立的 MLP
+        # 每个特征: Linear(1->hidden) -> ReLU -> Linear(hidden->emb_dim)
+        self.mlps = nn.ModuleList([
+            nn.Sequential(
+                nn.Linear(1, hidden_dim),
+                nn.ReLU(),
+                nn.Linear(hidden_dim, embedding_dim),
+            )
+            for _ in range(self.feature_dim)
+        ])
+        
+        print(f"[DenseFeatureNumericEmbedding] {self.feature_dim} features -> {embedding_dim} dim each")
+    
+    def _load_feature_names(self, path: str) -> List[str]:
+        """从配置文件加载特征名列表"""
+        feature_names = []
+        with open(path, 'r', encoding='utf-8') as f:
+            for line in f:
+                name = line.strip()
+                if name and not name.startswith('#'):
+                    feature_names.append(name)
+        return feature_names
+    
+    @property
+    def output_dim(self) -> int:
+        return self.feature_dim * self.embedding_dim
+    
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # x: (batch, n_features)
+        outputs = []
+        for i in range(self.feature_dim):
+            xi = x[:, i:i+1]  # (batch, 1)
+            emb = self.mlps[i](xi)  # (batch, emb_dim)
+            outputs.append(emb)
+        return torch.cat(outputs, dim=-1)  # (batch, n_features * emb_dim)
+
+
+class DenseFeatureLogTransform(BaseDenseEncoder):
+    """
+    LogTransform：对数变换，适用于长尾分布特征
+    
+    x' = log(x + 1)  # 使用 log1p 避免精度问题
+    """
+    
+    def __init__(self, 
+                 dense_features_path: str = None,
+                 feature_names: List[str] = None):
+        super().__init__()
+        
+        # 加载特征名
+        if dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
+        elif feature_names is not None:
+            self.feature_names = list(feature_names)
+        else:
+            raise ValueError("Must specify either dense_features_path or feature_names")
+        
+        self.feature_dim = len(self.feature_names)
+        
+        print(f"[DenseFeatureLogTransform] Initialized for {self.feature_dim} features")
+    
+    def _load_feature_names(self, path: str) -> List[str]:
+        """从配置文件加载特征名列表"""
+        feature_names = []
+        with open(path, 'r', encoding='utf-8') as f:
+            for line in f:
+                name = line.strip()
+                if name and not name.startswith('#'):
+                    feature_names.append(name)
+        return feature_names
+    
+    @property
+    def output_dim(self) -> int:
+        return self.feature_dim
+    
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # 先确保非负，然后应用 log1p
+        x_clamped = torch.clamp(x, min=0.0)
+        return torch.log1p(x_clamped)
     
     def _load_feature_names(self, path: str) -> List[str]:
         """从配置文件加载特征名列表"""
