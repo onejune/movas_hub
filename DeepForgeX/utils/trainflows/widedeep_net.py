@@ -230,8 +230,10 @@ class WideDeepDense(torch.nn.Module):
             return
         
         # minibatch 是 DataFrame，直接按列名提取
-        dense_values = minibatch[self.dense_fea_list].values
-        self._dense_data = torch.tensor(dense_values, dtype=torch.float32)
+        # .astype(float) 确保是 float64，然后 torch 转 float32
+        import numpy as np
+        dense_values = minibatch[self.dense_fea_list].values.astype(np.float32)
+        self._dense_data = torch.from_numpy(dense_values)
     
     def forward(self, x):
         # Wide
