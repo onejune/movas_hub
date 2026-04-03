@@ -148,21 +148,30 @@ class DenseFeatureLayer(nn.Module):
         
         # 从 minibatch 提取数据
         # minibatch 可能是不同类型，尝试多种方式获取数据
-        data = None
         if hasattr(minibatch, 'tensor'):
+            # MiniBatch 对象
             data = minibatch.tensor
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
+        elif isinstance(minibatch, pd.DataFrame):
+            # Pandas DataFrame - 直接按列名提取
+            dense_values = minibatch[self._column_names].values
+            self._dense_output = torch.tensor(dense_values, dtype=torch.float32)
+        elif isinstance(minibatch, torch.Tensor):
+            # 纯 tensor
+            data = minibatch
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
         elif hasattr(minibatch, 'data'):
             data = minibatch.data
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
         elif hasattr(minibatch, 'x'):
             data = minibatch.x
-        elif isinstance(minibatch, torch.Tensor):
-            data = minibatch
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
         else:
             raise ValueError(f"Cannot extract data from minibatch of type {type(minibatch)}")
-        
-        # 按索引提取 dense 特征列
-        dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
-        self._dense_output = torch.cat(dense_cols, dim=1).float()
     
     def forward(self, x=None) -> torch.Tensor:
         """

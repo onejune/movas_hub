@@ -14,7 +14,7 @@ LOG_FILE="${LOG_DIR}/train_$(date +%Y%m%d%H%M%S).log"
 # MetaSpore 路径配置
 # 使用 DeepForgeX 内的 MetaSpore (包含 DEFER 等自定义模型)
 ################################################################################################
-METASPORE_DIR="/mnt/workspace/walter.wan/git_project/movas_hub/DeepForgeX/MetaSpore/python"
+METASPORE_DIR="/mnt/workspace/walter.wan/git_project/github_onejune/movas_hub/DeepForgeX/MetaSpore/python"
 
 # _metaspore.so OSS 路径（超过 100M，不纳入 git，启动时自动下载）
 METASPORE_SO_OSS="oss://spark-ml-train-new/wanjun/03_online/_metaspore.so"
@@ -45,22 +45,15 @@ function init_env() {
 
     # 检查并下载 _metaspore.so（不纳入 git，从 OSS 自动拉取）
     if [ ! -f "$METASPORE_SO_LOCAL" ]; then
-        log "INFO" "_metaspore.so 不存在，尝试从 OSS 下载: $METASPORE_SO_OSS"
-        ossutil cp "$METASPORE_SO_OSS" "$METASPORE_SO_LOCAL" 2>/dev/null
+        cp "/mnt/data/oss_wanjun/03_online/_metaspore.so" "$METASPORE_SO_LOCAL" 2>/dev/null
         if [ $? -eq 0 ]; then
-            log "INFO" "_metaspore.so 下载成功 (OSS)"
+            log "INFO" "_metaspore.so 拷贝成功 (本地挂载)"
         else
-            log "WARN" "OSS 下载失败，尝试从本地挂载路径拷贝: /mnt/data/oss_wanjun/03_online/_metaspore.so"
-            cp "/mnt/data/oss_wanjun/03_online/_metaspore.so" "$METASPORE_SO_LOCAL" 2>/dev/null
-            if [ $? -eq 0 ]; then
-                log "INFO" "_metaspore.so 拷贝成功 (本地挂载)"
-            else
-                log "ERROR" "_metaspore.so 获取失败，已尝试以下路径："
-                log "ERROR" "  1. OSS: $METASPORE_SO_OSS"
-                log "ERROR" "  2. 本地: /mnt/data/oss_wanjun/03_online/_metaspore.so"
-                log "ERROR" "请检查 OSS 权限或确认本地挂载路径是否正确"
-                exit 1
-            fi
+            log "ERROR" "_metaspore.so 获取失败，已尝试以下路径："
+            log "ERROR" "  1. OSS: $METASPORE_SO_OSS"
+            log "ERROR" "  2. 本地: /mnt/data/oss_wanjun/03_online/_metaspore.so"
+            log "ERROR" "请检查 OSS 权限或确认本地挂载路径是否正确"
+            exit 1
         fi
     else
         log "INFO" "_metaspore.so 已存在，跳过下载"
