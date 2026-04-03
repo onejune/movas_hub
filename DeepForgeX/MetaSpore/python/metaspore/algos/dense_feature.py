@@ -288,13 +288,32 @@ class DenseFeatureEmbedding(nn.Module):
                 raise ValueError("column_names required for first extract() call")
             self._build_feature_indices(column_names)
         
+        # 从 minibatch 提取数据
+        # minibatch 可能是不同类型，尝试多种方式获取数据
         if hasattr(minibatch, 'tensor'):
+            # MiniBatch 对象
             data = minibatch.tensor
-        else:
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
+        elif isinstance(minibatch, pd.DataFrame):
+            # Pandas DataFrame - 直接按 dense 特征名提取
+            dense_values = minibatch[self._feature_names].values
+            self._dense_output = torch.tensor(dense_values, dtype=torch.float32)
+        elif hasattr(minibatch, 'data'):
             data = minibatch.data
-        
-        dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
-        self._dense_output = torch.cat(dense_cols, dim=1).float()
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
+        elif hasattr(minibatch, 'x'):
+            data = minibatch.x
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
+        elif isinstance(minibatch, torch.Tensor):
+            # 纯 tensor
+            data = minibatch
+            dense_cols = [data[:, idx:idx+1] for idx in self._feature_indices]
+            self._dense_output = torch.cat(dense_cols, dim=1).float()
+        else:
+            raise ValueError(f"Cannot extract data from minibatch of type {type(minibatch)}")
     
     def forward(self, x=None) -> torch.Tensor:
         """返回 dense 特征的 embedding 拼接"""
