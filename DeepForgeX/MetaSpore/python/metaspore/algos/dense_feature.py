@@ -284,16 +284,21 @@ class DenseFeatureMinMaxScaler(BaseDenseEncoder):
     def __init__(self, 
                  dense_features_path: str = None,
                  feature_names: List[str] = None,
-                 fit_on_data: bool = True):
+                 fit_on_data: bool = True,
+                 precomputed_features: List[str] = None):
         super().__init__()
         
-        # 加载特征名
-        if dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
+        # 优先使用预计算的特征列表（来自框架）
+        if precomputed_features is not None:
+            self.feature_names = precomputed_features
+        # 其次使用直接传入的特征名列表
         elif feature_names is not None:
             self.feature_names = list(feature_names)
+        # 最后从配置文件加载
+        elif dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
         else:
-            raise ValueError("Must specify either dense_features_path or feature_names")
+            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
         
         self.feature_dim = len(self.feature_names)
         self.fit_on_data = fit_on_data
@@ -351,16 +356,21 @@ class DenseFeatureStandardScaler(BaseDenseEncoder):
     def __init__(self, 
                  dense_features_path: str = None,
                  feature_names: List[str] = None,
-                 fit_on_data: bool = True):
+                 fit_on_data: bool = True,
+                 precomputed_features: List[str] = None):
         super().__init__()
         
-        # 加载特征名
-        if dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
+        # 优先使用预计算的特征列表（来自框架）
+        if precomputed_features is not None:
+            self.feature_names = precomputed_features
+        # 其次使用直接传入的特征名列表
         elif feature_names is not None:
             self.feature_names = list(feature_names)
+        # 最后从配置文件加载
+        elif dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
         else:
-            raise ValueError("Must specify either dense_features_path or feature_names")
+            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
         
         self.feature_dim = len(self.feature_names)
         self.fit_on_data = fit_on_data
@@ -420,16 +430,21 @@ class DenseFeatureNumericEmbedding(BaseDenseEncoder):
                  dense_features_path: str = None,
                  feature_names: List[str] = None,
                  embedding_dim: int = 16,
-                 hidden_dim: int = 64):
+                 hidden_dim: int = 64,
+                 precomputed_features: List[str] = None):
         super().__init__()
         
-        # 加载特征名
-        if dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
+        # 优先使用预计算的特征列表（来自框架）
+        if precomputed_features is not None:
+            self.feature_names = precomputed_features
+        # 其次使用直接传入的特征名列表
         elif feature_names is not None:
             self.feature_names = list(feature_names)
+        # 最后从配置文件加载
+        elif dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
         else:
-            raise ValueError("Must specify either dense_features_path or feature_names")
+            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
         
         self.feature_dim = len(self.feature_names)
         self.embedding_dim = embedding_dim
@@ -481,16 +496,21 @@ class DenseFeatureLogTransform(BaseDenseEncoder):
     
     def __init__(self, 
                  dense_features_path: str = None,
-                 feature_names: List[str] = None):
+                 feature_names: List[str] = None,
+                 precomputed_features: List[str] = None):
         super().__init__()
         
-        # 加载特征名
-        if dense_features_path is not None:
-            self.feature_names = self._load_feature_names(dense_features_path)
+        # 优先使用预计算的特征列表（来自框架）
+        if precomputed_features is not None:
+            self.feature_names = precomputed_features
+        # 其次使用直接传入的特征名列表
         elif feature_names is not None:
             self.feature_names = list(feature_names)
+        # 最后从配置文件加载
+        elif dense_features_path is not None:
+            self.feature_names = self._load_feature_names(dense_features_path)
         else:
-            raise ValueError("Must specify either dense_features_path or feature_names")
+            raise ValueError("Must specify one of: precomputed_features, feature_names, or dense_features_path")
         
         self.feature_dim = len(self.feature_names)
         
