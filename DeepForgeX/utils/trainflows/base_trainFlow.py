@@ -269,6 +269,23 @@ class BaseTrainFlow:
         df = df.withColumn("domain_id", F.lit(0))
         df = self.random_sample(df)
         
+        # === Permutation Importance: 特征打乱 ===
+        shuffle_feature = getattr(self, 'shuffle_feature', None)
+        if shuffle_feature and shuffle_feature in df.columns:
+            MovasLogger.log(f"[Permutation Importance] 打乱特征: {shuffle_feature}")
+            # 简化版本：通过随机采样替换特征值
+            # 收集所有特征值并随机重排
+            feature_col = df.select(shuffle_feature).orderBy(F.rand(42))
+            # 给原始 df 和打乱后的特征列分别编号
+            df = df.withColumn("_pi_idx", F.monotonically_increasing_id())
+            feature_col = feature_col.withColumn("_pi_idx", F.monotonically_increasing_id())
+            feature_col = feature_col.withColumnRenamed(shuffle_feature, f"_pi_{shuffle_feature}")
+            # join 并替换
+            df = df.join(feature_col, on="_pi_idx", how="inner")
+            df = df.drop(shuffle_feature, "_pi_idx").withColumnRenamed(f"_pi_{shuffle_feature}", shuffle_feature)
+            MovasLogger.log(f"[Permutation Importance] 特征 {shuffle_feature} 已打乱")
+        # === Permutation Importance 结束 ===
+        
         # fillna: sparse 用 'none', dense 用 0.0
         if dense_fea_set:
             # 先填充 sparse 特征
@@ -585,6 +602,7 @@ class BaseTrainFlow:
 
         self.eval_keys = args.eval_keys
         self.name = args.name
+        self.shuffle_feature = getattr(args, 'shuffle_feature', None)
 
         self._preprocess()
         self._build_model_module()
@@ -618,4 +636,5 @@ class BaseTrainFlow:
         parser.add_argument('--model_date', type=str, required=False, help='model date for manual eval')
         parser.add_argument('--sample_date', type=str, required=False, help='sample date for manual eval')
         parser.add_argument('--eval_keys', type=str, required=True, help='eval keys (comma separated)')
+        parser.add_argument('--shuffle_feature', type=str, required=False, default=None, help='feature to shuffle for permutation importance')
         return parser.parse_args()

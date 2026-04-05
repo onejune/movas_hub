@@ -20,7 +20,7 @@ METASPORE_DIR="/mnt/workspace/walter.wan/git_project/github_onejune/movas_hub/De
 METASPORE_SO_OSS="oss://spark-ml-train-new/wanjun/03_online/_metaspore.so"
 METASPORE_SO_LOCAL="${METASPORE_DIR}/metaspore/_metaspore.so"
 
-# 训练脚本路径 (由具体实验覆盖)
+# 训练脚本路径 (由具体实验覆盖, 实验运行后从utils/scripts/中拷贝到实验的src目录）
 TRAINER_SCRIPT_PATH="./src/dnn_trainFlow.py"
 
 # 定义中断控制文件路径
@@ -152,6 +152,12 @@ function model_validation() {
     local sample_date="$2"
     local eval_keys="${3:-business_type}"
     local conf_file="${4:-./conf/config.yaml}"
+    local shuffle_feature="${5:-}"
+    
+    local shuffle_arg=""
+    if [ -n "$shuffle_feature" ]; then
+        shuffle_arg="--shuffle_feature $shuffle_feature"
+    fi
     
     nohup env PYTHONUNBUFFERED=1 $PYTHON_ENV $TRAINER_SCRIPT_PATH \
         --conf "$conf_file" \
@@ -160,5 +166,6 @@ function model_validation() {
         --model_date "$model_date" \
         --sample_date "$sample_date" \
         --eval_keys "$eval_keys" \
+        $shuffle_arg \
         2>&1 | grep -v -E "bkdr_hash_combine|add expr|StringBKDRHash" | tee ${LOG_DIR}/val.log &
 }
