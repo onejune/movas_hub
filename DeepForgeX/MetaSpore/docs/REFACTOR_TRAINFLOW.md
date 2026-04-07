@@ -148,11 +148,11 @@ __all__ = ["MovasLogger", "how_much_time", "compute_auc_pcoc",
 | **新建** | `metaspore/utils/metrics.py` | ✅ 完成 |
 | **新建** | `metaspore/utils/notifier.py` | ✅ 完成 |
 | **新建** | `metaspore/trainflows/__init__.py` | ✅ 完成 |
-| **新建** | `metaspore/trainflows/base.py` | ⏳ 待做 |
-| **新建** | `metaspore/trainflows/dnn.py` | ⏳ 待做 |
-| **新建** | `metaspore/trainflows/mtl.py` | ⏳ 待做 |
-| **新建** | 各实验目录的 `train.py` | ⏳ 待做 |
-| **测试** | import 测试 | ⏳ 待做 |
+| **新建** | `metaspore/trainflows/base.py` | ✅ 完成 |
+| **新建** | `metaspore/trainflows/dnn.py` | ✅ 完成 |
+| **新建** | `metaspore/trainflows/mtl.py` | ✅ 完成 |
+| **新建** | 各实验目录的 `train.py` | ✅ 部分完成 |
+| **测试** | import 测试 | ✅ 完成 |
 
 ---
 
