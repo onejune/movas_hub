@@ -1,0 +1,11 @@
+实验: baseline
+====================
+
+目的: 不使用 Dense 特征的 baseline
+
+配置:
+- 模型: WideDeepDense (仅 sparse)
+- Sparse 特征: 270 个
+- Dense 特征: 无
+- 训练日期: 2026-03-01
+- 验证日期: 2026-03-02

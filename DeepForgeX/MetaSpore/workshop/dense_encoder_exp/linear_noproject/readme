@@ -1,0 +1,13 @@
+实验: linear_noproject
+====================
+
+目的: Linear 编码器，不降维 (130 → 130)
+
+配置:
+- 模型: WideDeepDense
+- Sparse 特征: 270 个
+- Dense 特征: 130 个
+- Dense 编码器: linear (BatchNorm only, no projection)
+- 输出维度: 130 (不降维)
+- 训练日期: 2026-03-01
+- 验证日期: 2026-03-02

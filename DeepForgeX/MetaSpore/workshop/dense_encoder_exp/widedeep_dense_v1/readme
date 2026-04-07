@@ -1,0 +1,19 @@
+实验名称: widedeep_dense_v1
+
+实验变量:
+- 模型类型: WideDeepDense (支持 Dense 特征)
+- Dense 编码器: linear
+- Dense 输出维度: 32
+- Dense 特征: 266 个 (duf/huf + 无 ipua + 时间窗口 >= 7 天 + _org 后缀)
+
+训练配置:
+- 训练数据: 2026-03-01 (1天)
+- 验证数据: 2026-03-02
+- 数据源: ivr_sample_v16
+
+超参:
+- embedding_size: 8
+- dnn_hidden_units: [512, 256, 64]
+- batch_size: 256
+- use_wide: False
+- net_dropout: 0.5

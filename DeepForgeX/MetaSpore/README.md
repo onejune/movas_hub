@@ -131,7 +131,8 @@ my_experiment/
 
 ```bash
 #!/bin/bash
-source /mnt/workspace/walter.wan/git_project/movas_hub/DeepForgeX/utils/scripts/dnn_lib_common.sh
+
+source /mnt/workspace/walter.wan/git_project/github_onejune/movas_hub/DeepForgeX/utils/scripts/dnn_lib_common.sh
 
 # 普通 DNN 训练
 TRAINER_SCRIPT_PATH="./src/dnn_trainFlow.py"
@@ -299,6 +300,86 @@ class MyTrainFlow(BaseTrainFlow):
         # 添加自定义特征
         df = df.withColumn("my_feature", ...)
         return df
+```
+
+## 📊 支持的模型
+
+| 模型 | 实现 | 说明 |
+|------|------|------|
+| Wide & Deep | MetaSpore | Wide (LR) + Deep (DNN) |
+| **WideDeepDense** | MetaSpore | Wide & Deep + Dense 特征支持 |
+| DeepFM | MetaSpore | FM + DNN |
+| DCN | MetaSpore | Deep & Cross Network |
+| FFM | MetaSpore | Field-aware FM |
+| xDeepFM | MetaSpore | Compressed Interaction Network |
+
+---
+
+## 🆕 Dense 特征支持
+
+MetaSpore 框架新增 **Dense 特征** 处理能力，支持连续值特征（如统计特征、数值特征）与稀疏特征联合建模。
+
+### 支持的编码器
+
+| 编码器 | 说明 | 输出维度 |
+|--------|------|----------|
+| `linear` | BatchNorm + Linear + Dropout | 可配置 |
+| `minmax` | Min-Max 归一化到 [0,1] | = 特征数 |
+| `standard` | Z-score 标准化 | = 特征数 |
+| `log` | 对数变换 log(x+1) | = 特征数 |
+| `numeric` | 每特征独立 MLP (AutoDis) | 特征数 × embedding_dim |
+
+### 配置方式
+
+**1. 创建 dense 特征列表文件** (`conf/dense_features`)
+
+```
+# 每行一个特征名
+duf_imp_3d
+duf_imp_7d
+duf_re_3d
+duf_re_7d
+...
+```
+
+**2. 配置 YAML**
+
+```yaml
+model_type: WideDeepDense
+
+# Dense 特征配置
+dense_features_path: ./conf/dense_features
+dense_encoder_type: linear    # linear|minmax|standard|log|numeric
+dense_output_dim: 32          # 可选，映射到固定维度
+
+# numeric 编码器专用
+dense_embedding_dim: 16
+dense_hidden_dim: 64
+```
+
+### 数据流
+
+```
+Parquet 数据
+    ↓
+base_trainFlow 加载 sparse_fea_list + dense_fea_list
+    ↓
+WideDeepDense 模型
+    ├── Sparse → EmbeddingSumConcat → [batch, sparse_dim]
+    ├── Dense  → Encoder → [batch, dense_dim]
+    └── Concat → MLP → output
+```
+
+### 示例
+
+```python
+# dnn_trainFlow.py 自动处理
+self.model_module = WideDeepDense(
+    dense_fea_list=self.dense_fea_list,  # 从配置加载
+    dense_encoder_type='numeric',
+    dense_output_dim=32,
+    ...
+)
 ```
 
 ---
