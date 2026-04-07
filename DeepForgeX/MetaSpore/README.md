@@ -13,6 +13,7 @@
 - **多种损失函数** — CrossEntropy、WCE、MSE、ZILN、DEFER loss 等
 - **飞书通知** — 训练完成自动发送飞书通知（读取 `readme` 文件内容）
 - **统一 TrainFlow 体系** — 所有任务共用 `BaseTrainFlow`，扩展方便
+- **现代化包结构** — 支持标准包导入，零文件复制架构
 
 ---
 
@@ -39,7 +40,23 @@ MetaSpore/
 │       │   ├── multi_task/             # 多任务学习
 │       │   └── multi_domain/           # 多域学习
 │       ├── estimator.py                # 训练器（支持多维标签）
-│       └── loss_utils.py               # 损失函数注册表
+│       ├── loss_utils.py               # 损失函数注册表
+│       ├── trainflows/                 # TrainFlow 包模块
+│       │   ├── __init__.py             # 包入口
+│       │   ├── base.py                 # BaseTrainFlow
+│       │   ├── dnn.py                  # DNNTrainFlow
+│       │   ├── mtl.py                  # MTLTrainFlow
+│       │   ├── defer.py                # DeferTrainFlow
+│       │   ├── delf.py                 # DELFTrainFlow
+│       │   ├── ltv.py                  # LTVTrainFlow
+│       │   ├── mdl.py                  # MDLTrainFlow
+│       │   ├── winrate.py              # WinRateTrainFlow
+│       │   └── metacpl.py              # MetaCPLTrainFlow
+│       └── utils/                      # 工具类
+│           ├── __init__.py             # 包入口
+│           ├── logger.py               # 日志
+│           ├── metrics.py              # 评估指标
+│           └── notifier.py             # 飞书通知
 │
 ├── workshop/                           # 实验目录（按任务分类）
 │   ├── ctr/                            # CTR/CVR 单任务
@@ -51,19 +68,19 @@ MetaSpore/
 │   └── archive/                        # 归档
 │
 └── utils/                              # 工具脚本（源文件，勿直接改 src/）
-    ├── trainflows/                     # TrainFlow 体系
-    │   ├── base_trainFlow.py           # 基类（所有 TrainFlow 继承此类）
-    │   ├── dnn_trainFlow.py            # CTR/CVR 单任务
-    │   ├── defer_trainFlow.py          # 延迟反馈 DEFER
-    │   ├── MTL_trainFlow.py            # 多任务学习
-    │   ├── MDL_trainFlow.py            # 多域学习
-    │   ├── ltv_trainFlow.py            # LTV 预估
-    │   ├── winrate_trainFlow.py        # Winrate
-    │   └── DELF_trainFlow.py           # DELF
-    ├── tools/                          # 工具类
-    │   ├── feishu_notifier.py          # 飞书通知
-    │   ├── movas_logger.py             # 日志
-    │   └── metrics_eval.py             # 评估指标
+    ├── trainflows/                     # TrainFlow 源文件（已迁移至包结构）
+    │   ├── base_trainFlow.py           # 基类（已迁移）
+    │   ├── dnn_trainFlow.py            # CTR/CVR 单任务（已迁移）
+    │   ├── defer_trainFlow.py          # 延迟反馈 DEFER（已迁移）
+    │   ├── MTL_trainFlow.py            # 多任务学习（已迁移）
+    │   ├── MDL_trainFlow.py            # 多域学习（已迁移）
+    │   ├── ltv_trainFlow.py            # LTV 预估（已迁移）
+    │   ├── winrate_trainFlow.py        # Winrate（已迁移）
+    │   └── DELF_trainFlow.py           # DELF（已迁移）
+    ├── tools/                          # 工具类（已迁移至 metaspore.utils）
+    │   ├── feishu_notifier.py          # 飞书通知（已迁移）
+    │   ├── movas_logger.py             # 日志（已迁移）
+    │   └── metrics_eval.py             # 评估指标（已迁移）
     └── scripts/
         ├── dnn_lib_common.sh           # 公共 shell 函数
         └── lib_common.sh
@@ -86,12 +103,15 @@ cd workshop/delay_feedback/defer/
 cd workshop/mtl/
 ```
 
-### 2. 复制已有实验作为模板
+### 2. 创建新实验（零文件复制架构）
 
 ```bash
-# 以 wd_v5 为模板新建 wd_v6
-cp -r workshop/ctr/wd_v5 workshop/ctr/wd_v6
-cd workshop/ctr/wd_v6
+# 创建新实验目录
+mkdir workshop/ctr/my_experiment
+cd workshop/ctr/my_experiment
+
+# 使用标准模板创建项目
+# 无需复制任何源代码文件！
 ```
 
 ### 3. 实验目录标准结构
@@ -102,20 +122,19 @@ my_experiment/
 │   ├── config.yaml         # 主配置文件（必须）
 │   ├── combine_schema      # 特征配置（必须）
 │   └── column_name         # 列名映射（可选）
-├── run_train.sh            # 训练启动脚本（必须）
-├── validation.sh           # 验证脚本（可选）
+├── train.py                # 训练入口（新架构，零复制）
+├── run_train.sh            # 训练启动脚本（统一脚本）
 ├── readme                  # 实验说明（必须，飞书通知会读取）
-├── src/                    # 训练代码（由 init_env 从 utils/ 复制）
 ├── log/                    # 日志输出（gitignore）
 └── output/                 # 模型输出（gitignore）
 ```
 
 ### 4. 编写 `readme` 文件（必须）
 
-`readme` 文件（注意：不是 `README.md`）会被 `dnn_trainFlow.py` 自动读取，并在训练完成后发送到飞书群。
+`readme` 文件（注意：不是 `README.md`）会被 `train.py` 自动读取，并在训练完成后发送到飞书群。
 
 ```
-实验名称: wd_v6
+实验名称: my_experiment
 
 实验变量:
 - 新增 xxx 特征
@@ -127,25 +146,86 @@ my_experiment/
 - 数据源: ivr_sample_v7
 ```
 
-### 5. 配置 `run_train.sh`
+### 5. 配置 `train.py`（新架构）
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+MetaSpore DNN Training Framework
+Zero-Copy Architecture Template
+"""
+import argparse
+import sys
+import os
+
+def ensure_metaspore_path():
+    """确保 metaspore 包路径正确"""
+    # 添加当前项目的 metaspore 路径
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.join(current_dir, '..', '..')
+    metaspore_path = os.path.join(project_root, 'MetaSpore', 'python')
+    
+    if metaspore_path not in sys.path:
+        sys.path.insert(0, metaspore_path)
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='DNN Training')
+    parser.add_argument('--config', type=str, required=True, help='config yaml path')
+    parser.add_argument('--business-type', type=str, default='all', help='business type')
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
+    
+    # 确保包路径正确
+    ensure_metaspore_path()
+    
+    # 导入训练流程
+    from metaspore.trainflows import DNNTrainFlow
+    
+    # 运行完整训练流程
+    trainer = DNNTrainFlow()
+    trainer.run_complete_flow(args.config, args.business_type)
+
+if __name__ == "__main__":
+    main()
+```
+
+### 6. 配置 `run_train.sh`（统一脚本）
 
 ```bash
 #!/bin/bash
 
-source /mnt/workspace/walter.wan/git_project/github_onejune/movas_hub/DeepForgeX/utils/scripts/dnn_lib_common.sh
+# 统一训练脚本 - 支持 train/validate/help 命令
+# 使用标准包结构，无需复制任何源文件
 
-# 普通 DNN 训练
-TRAINER_SCRIPT_PATH="./src/dnn_trainFlow.py"
-env_check
-model_train ./conf/config.yaml business_type
+# 设置 Python 路径
+export METASPORE_DIR="/mnt/workspace/walter.wan/git_project/github_onejune/movas_hub/DeepForgeX/MetaSpore/python"
+export PYTHONPATH="$METASPORE_DIR:$PYTHONPATH"
 
-# DEFER 延迟反馈训练
-# TRAINER_SCRIPT_PATH="./src/defer_trainFlow.py"
-# env_check
-# model_train ./conf/config.yaml business_type
+case "${1:-train}" in
+    train)
+        echo "Starting training..."
+        python train.py --config ./conf/config.yaml --business-type all
+        ;;
+    validate)
+        echo "Starting validation..."
+        # Add validation command if needed
+        ;;
+    help)
+        echo "Usage: $0 [train|validate|help]"
+        echo "  train: Start training (default)"
+        echo "  validate: Start validation"
+        echo "  help: Show this help"
+        ;;
+    *)
+        echo "Unknown command: $1"
+        echo "Usage: $0 [train|validate|help]"
+        exit 1
+        ;;
+esac
 ```
-
-> ⚠️ `env_check` 会调用 `init_env()`，将 `utils/` 下的文件复制到 `src/`。**修改代码请改 `utils/` 源文件，不要改 `src/`**。
 
 ---
 
@@ -250,20 +330,36 @@ osv#make#campaignsetid
 
 ---
 
-## 🔧 TrainFlow 体系
+## 🔧 TrainFlow 包结构
 
-所有 TrainFlow 继承 `BaseTrainFlow`，结构如下：
+所有 TrainFlow 现在作为标准 Python 包提供，支持直接导入：
 
 ```
-BaseTrainFlow (base_trainFlow.py)
-├── DNNModelTrainFlow (dnn_trainFlow.py)   — CTR/CVR 单任务，13种模型
-├── DeferTrainFlow (defer_trainFlow.py)    — 延迟反馈 DEFER
-├── MTLModelTrainFlow (MTL_trainFlow.py)   — 多任务学习
-├── MDLModelTrainFlow (MDL_trainFlow.py)   — 多域学习
-├── LtvModelTrainFlow (ltv_trainFlow.py)   — LTV 预估
-├── WinrateModelTrainFlow (winrate_trainFlow.py) — Winrate
-├── DELFModelTrainFlow (DELF_trainFlow.py) — DELF
-└── MetaCPLTrainFlow (MetaCPL_trainFlow.py)
+metaspore.trainflows (包结构)
+├── __init__.py                    # 包入口，导出所有 TrainFlow
+├── base.py                       # BaseTrainFlow
+├── dnn.py                        # DNNTrainFlow
+├── mtl.py                        # MTLTrainFlow
+├── defer.py                      # DeferTrainFlow
+├── delf.py                       # DELFTrainFlow
+├── ltv.py                        # LTVTrainFlow
+├── mdl.py                        # MDLTrainFlow
+├── winrate.py                    # WinRateTrainFlow
+└── metacpl.py                    # MetaCPLTrainFlow
+```
+
+### 标准导入方式
+
+```python
+# 新架构 - 直接从包导入
+from metaspore.trainflows import DNNTrainFlow, BaseTrainFlow
+from metaspore.trainflows import DeferTrainFlow, DELFTrainFlow
+from metaspore.trainflows import LTVTrainFlow, MDLTrainFlow
+from metaspore.trainflows import WinRateTrainFlow, MTLTrainFlow
+
+# 也可以直接导入特定模块
+from metaspore.trainflows.dnn import DNNTrainFlow
+from metaspore.trainflows.mtl import MTLTrainFlow
 ```
 
 ### BaseTrainFlow 提供的公共方法
@@ -284,7 +380,7 @@ BaseTrainFlow (base_trainFlow.py)
 ### 自定义 TrainFlow（示例）
 
 ```python
-from base_trainFlow import BaseTrainFlow
+from metaspore.trainflows import BaseTrainFlow
 
 class MyTrainFlow(BaseTrainFlow):
     def _build_model_module(self):
@@ -373,7 +469,8 @@ WideDeepDense 模型
 ### 示例
 
 ```python
-# dnn_trainFlow.py 自动处理
+# train.py 自动处理
+from metaspore.trainflows import DNNTrainFlow
 self.model_module = WideDeepDense(
     dense_fea_list=self.dense_fea_list,  # 从配置加载
     dense_encoder_type='numeric',
@@ -428,17 +525,12 @@ self.model_module = WideDeepDense(
 ### 新建 DEFER 实验
 
 ```bash
-cp -r workshop/delay_feedback/defer/defer_win_v2 workshop/delay_feedback/defer/defer_win_v3
-cd workshop/delay_feedback/defer/defer_win_v3
+# 创建新实验目录（零复制）
+mkdir workshop/delay_feedback/defer/my_defer_experiment
+cd workshop/delay_feedback/defer/my_defer_experiment
 
-# 编辑配置
-vim conf/config.yaml
-
-# 编辑实验说明（飞书通知会读取）
-vim readme
-
-# 启动训练
-bash run_train.sh
+# 使用标准模板
+# 无需复制任何源文件！
 ```
 
 ---
@@ -472,7 +564,7 @@ bash run_train.sh
 
 ```bash
 # ✅ 正确
-export PYTHONPATH=/mnt/workspace/walter.wan/git_project/movas_hub/DeepForgeX/MetaSpore/python
+export PYTHONPATH=/mnt/workspace/walter.wan/git_project/github_onejune/movas_hub/DeepForgeX/MetaSpore/python
 
 # ❌ 错误：两个 MetaSpore 路径会导致 PS Agent 注册冲突
 export PYTHONPATH=/path/A/MetaSpore/python:/path/B/MetaSpore/python
@@ -525,16 +617,14 @@ cd MetaSpore/python && zip -r ../python.zip .
 /root/anaconda3/envs/spore/bin/python3.8
 ```
 
-### 7. 修改代码改 utils/，不要改 src/
-
-`init_env()` 每次训练前会将 `utils/` 文件复制到 `src/`，覆盖本地修改：
+### 7. 新架构 - 无需复制文件
 
 ```bash
-# ✅ 正确：修改 utils/ 源文件
-vim utils/trainflows/defer_trainFlow.py
+# ✅ 正确：使用包结构，无需复制任何源文件
+from metaspore.trainflows import DNNTrainFlow
 
-# ❌ 错误：修改 src/ 会被下次 init_env 覆盖
-vim workshop/my_exp/src/defer_trainFlow.py
+# 旧架构（已废弃）：
+# vim utils/trainflows/dnn_trainFlow.py  # 不再需要
 ```
 
 ---
@@ -574,6 +664,27 @@ ftrl_l2: 120.0
 batch_size: 512
 net_dropout: 0.5
 batch_norm: true
+```
+
+---
+
+## 🆕 零文件复制架构 (Zero-Copy Architecture)
+
+### 优势
+- **无需复制**: 新实验无需复制任何源代码文件
+- **统一管理**: 所有 trainFlow 在 metaspore.trainflows 包中统一管理
+- **易于维护**: 一次修改，所有项目受益
+- **标准化**: 统一的导入接口和使用方式
+
+### 使用方式
+```python
+# 旧方式（已废弃）
+# cp -r utils/trainflows/* workshop/my_proj/src/
+# from src.dnn_trainFlow import DNNTrainFlow
+
+# 新方式（推荐）
+from metaspore.trainflows import DNNTrainFlow
+from metaspore.trainflows import BaseTrainFlow, MTLTrainFlow
 ```
 
 ---
