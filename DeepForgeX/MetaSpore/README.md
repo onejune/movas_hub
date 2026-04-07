@@ -66,24 +66,7 @@ MetaSpore/
 │   ├── mdl/                            # 多域学习
 │   ├── winrate/                        # 竞价/出价模型
 │   └── archive/                        # 归档
-│
-└── utils/                              # 工具脚本（源文件，勿直接改 src/）
-    ├── trainflows/                     # TrainFlow 源文件（已迁移至包结构）
-    │   ├── base_trainFlow.py           # 基类（已迁移）
-    │   ├── dnn_trainFlow.py            # CTR/CVR 单任务（已迁移）
-    │   ├── defer_trainFlow.py          # 延迟反馈 DEFER（已迁移）
-    │   ├── MTL_trainFlow.py            # 多任务学习（已迁移）
-    │   ├── MDL_trainFlow.py            # 多域学习（已迁移）
-    │   ├── ltv_trainFlow.py            # LTV 预估（已迁移）
-    │   ├── winrate_trainFlow.py        # Winrate（已迁移）
-    │   └── DELF_trainFlow.py           # DELF（已迁移）
-    ├── tools/                          # 工具类（已迁移至 metaspore.utils）
-    │   ├── feishu_notifier.py          # 飞书通知（已迁移）
-    │   ├── movas_logger.py             # 日志（已迁移）
-    │   └── metrics_eval.py             # 评估指标（已迁移）
-    └── scripts/
-        ├── dnn_lib_common.sh           # 公共 shell 函数
-        └── lib_common.sh
+
 ```
 
 ---
