@@ -10,10 +10,10 @@ coordinator_memory: '10G'
 local_spark: local
 
 ## datasets
-train_path_prefix: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v7/parquet
+train_path_prefix: /mnt/data/oss_dsp_algo/ivr/sample/ivr_sample_v16/parquet
 train_start_date: 2026-02-11
-train_end_date: 2026-02-17
-validation_date: 2026-02-18
+train_end_date: 2026-02-11
+validation_date: 2026-02-12
 movas_log_output_path: ./log/movas.log
 
 ## model configurations
