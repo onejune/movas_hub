@@ -1,0 +1,96 @@
+## spark session（128G 机器，server=1 worker=4，内存充分利用）
+app_name: 'ivr16_dnn_v3'
+local: True
+# worker 4、server 1（大机器难申请，缩配后内存 128G 充分利用）
+worker_count: 4
+server_count: 1
+# batch_size 256，内存有余可尝试 512
+batch_size: 256
+# MetaSpore：4×12 + 1×8 + 6 = 62G
+worker_memory: '12G'
+server_memory: '8G'
+coordinator_memory: '6G'
+local_spark: local[*]
+
+## spark 资源配置（128G 总预算：Driver 18G + Executor 42G + MetaSpore 62G + ~6G 余量）
+spark_driver_memory: '12g'
+spark_driver_memoryOverhead: '6g'
+spark_executor_memory: '30g'
+spark_executor_memoryOverhead: '12g'
+#  parallelism 按 CPU 核数，16 核可设 64–128
+spark_default_parallelism: 128
+spark_sql_shuffle_partitions: 128
+spark_sql_files_maxPartitionBytes: 67108864
+# executor_cores 16（128G 机器通常 16 vCPU）
+spark_executor_cores: 16
+
+## datasets
+train_path_prefix: /mnt/dsp_algo/ivr/sample/ivr_sample_v16/parquet
+# 数据分区格式: "part={date}" 表示 part=2025-12-01；"{date}" 表示 2025-12-01（v16 无 part= 前缀）
+data_partition_format: "{date}"
+# batch_days: 一次训练合并的天数，1=逐日增量，>1=多日合并后训练（模型以批次结束日期命名）
+batch_days: 1
+train_start_date: 2025-11-01
+train_end_date: 2026-03-02
+validation_date: 2026-03-03
+movas_log_output_path: ./log/movas.log
+
+## model configurations
+combine_schema_path: ./conf/combine_schema
+wide_combine_schema_path: ./conf/combine_schema
+model_in_path: null
+model_out_base_path: ./output/
+model_out_mount_dir: /mnt/dsp_algo/ivr/model/ivr16_dnn_v5
+model_export_path: null
+model_version: '0.1'
+experiment_name: ivr16_dnn_v3
+input_label_column_index: 113
+
+## DNN 结构（配置化：层数、神经元个数）
+dnn_hidden_units: [512, 256, 64]
+embedding_size: 8
+net_dropout: 0.5
+adam_learning_rate: 0.00001
+ftrl_alpha: 0.005
+ftrl_beta: 0.05
+ftrl_l1: 1.0
+ftrl_l2: 10.0
+training_epoches: 1
+shuffle_training_dataset: True
+model_type: WideDeep
+
+## 纯 DNN 模式（use_wide=False 时仅 Deep 侧，无 Wide 线性表，可减小内存）
+use_wide: False
+loss_func: 'log_loss'
+
+## ONNX export
+enable_onnx_export: True
+onnx_opset_version: 13
+onnx_dynamic_batch: True
+
+## Model retention
+model_retention_days: 3
+enable_auto_cleanup: True
+
+## 训练过程中 AUC 日志（MetaSpore 在 fit 时每 N 步打印，非 run_validation_after_train）
+## 设很大可减少刷屏，如 999999999
+metric_update_interval: 1000
+
+## 训练后是否执行验证评估（读 validation_date 做预测、表格；关闭每日验证后仅在此统一验证）
+run_validation_after_train: True
+
+## 预估分数保存：null 不保存；非空则保存 test_result_df 到 parquet，路径模板支持 {date}、{hour}
+## 如 "predictscore/part={date}" → model_out_mount_dir/predictscore/part=2026-03-03
+## 如 "predictscore/part={date}/hour={hour}" → model_out_mount_dir/predictscore/part=2026-03-03/hour=14
+## Part1(model_compare 当天模型 vs 回流) 自动派生 model_compare_part1/part={date}/hour=HH
+## Part2(model_compare 同版本一致性)    自动派生 model_compare_part2/part={date}/hour=HH
+## 同天多次验证不覆盖（hour 不同则写不同目录）
+## predict_score_extra_cols: 保存时额外保留的列（逗号分隔），用于 trace/回放、model_compare 回流；含 algoInfo 供在离线打分对比
+## 如 requestid；algoInfo 为线上响应 JSON（p_ivr、model_info 等），model_compare 需此列
+predict_score_save_path: "predictscore/part={date}"
+#predict_score_save_path: null
+predict_score_extra_cols: "requestid,algoInfo"
+
+## 飞书/邮件通知（接收人: felix.liu），关闭可加速训练
+enable_feishu_notify: False
+multivalue_cols: 'tags,duf_outer_shopee_pur_top5_list'

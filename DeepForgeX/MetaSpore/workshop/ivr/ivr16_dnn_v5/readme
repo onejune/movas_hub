@@ -1,0 +1,6 @@
+1. WideDeep model;
+2. delete some crossed features;
+3. emb size = 12;
+4. without ipua 特征;
+5. use_wide = False, net_dropout = 0.5;
+6. batchsize = 128;
